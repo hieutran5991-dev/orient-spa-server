@@ -1,6 +1,6 @@
 'use client';
 
-import './css/home.css';
+import '@/css/home.css';
 import Layout from "@/components/layout/Layout";
 import HomeContent from "@/components/HomeContent";
 import Script from 'next/script';
