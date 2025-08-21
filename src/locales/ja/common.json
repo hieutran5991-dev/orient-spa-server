@@ -1,0 +1,151 @@
+{
+  "navigation": {
+    "home": "ホーム",
+    "services": "サービス・料金",
+    "promotions": "プロモーション",
+    "booking": "予約",
+    "contact": "お問い合わせ",
+    "about": "概要"
+  },
+  "hero": {
+    "tagline": "すべての感覚のためのリラックスできる隠れ家",
+    "title": "オリエントスパへようこそ",
+    "subtitle": "ハノイの中心部にある、すべての感覚のためのリラックスできる隠れ家。"
+  },
+  "booking": {
+    "title": "オンライン予約",
+    "location": "場所",
+    "date": "日付",
+    "time": "時間",
+    "guest": "ゲスト",
+    "guests": "ゲスト",
+    "bookNow": "今すぐ予約！",
+    "processing": "処理中...",
+    "selectLocation": "場所を選択",
+    "selectDate": "日付を選択",
+    "selectTime": "時間を選択",
+    "selectGuest": "ゲスト数を選択",
+    "done": "完了",
+    "makeReservation": "予約する",
+    "availabilityFor": "空き状況：",
+    "morning": "午前",
+    "afternoon": "午後",
+    "evening": "夕方"
+  },
+  "about": {
+    "description": "2017年に設立され、来訪者と地元の人々にリラックスできるスパ体験を提供することを目的として、\nオリエントスパハノイは現在、ハノイ旧市街の中心部で3つのスパを運営しています。\nフットマッサージとボディマッサージ、ネイルケアとシャンプー、スパパッケージを提供しています。\nスパは毎日午前10時から午後10時まで営業しています。特に週末は事前予約をお勧めします。"
+  },
+  "locations": {
+    "title": "店舗一覧",
+    "subtitle": "現在、以下の場所でサービスを提供しています",
+    "maxCapacity": "最大収容人数：{count}名",
+    "roomTypes": "シングル/ダブル/トリプルルーム完備",
+    "openHours": "営業時間：毎日午前10時〜午後10時",
+    "enquiry": "電話またはWhatsApp/Kakaoでお問い合わせ：",
+    "discoverMore": "詳細を見る"
+  },
+
+  "whyChooseUs": {
+    "title": "オリエントスパハノイを選ぶ理由は？",
+    "subtitle": "オリエントスパハノイを訪れて、日常から離れた天国のような休息を取るか、長旅の後に自分を素敵に甘やかしてください。",
+    "features": {
+      "couples": {
+        "title": "カップル、グループ、一人旅に最適",
+        "description": "一人旅でも、新婚旅行でも、小さなお子様連れでも、いつでも何かをご提供できます。"
+      },
+      "location": {
+        "title": "便利で中心的な立地",
+        "description": "すべてのスパは、ホアンキエム湖や聖ヨセフ大聖堂などハノイの主要観光地から徒歩すぐの場所にあります。"
+      },
+      "service": {
+        "title": "熟練したセラピストと行き届いた受付スタッフ",
+        "description": "最初から最後まで、フレンドリーなスタッフによって温かく迎えられ、専門的にケアされます。"
+      }
+    }
+  },
+  "common": {
+    "showMore": "もっと見る",
+    "viewAll": "すべて表示",
+    "learnMore": "詳細を見る",
+    "getStarted": "始める",
+    "contactUs": "お問い合わせ",
+    "bookNow": "今すぐ予約",
+    "currency": "VND",
+    "phone": "電話",
+    "email": "メール",
+    "address": "住所"
+  },
+  "services": {
+    "title": "スパメニュー・料金",
+    "subtitle": "リラックスできるスパトリートメントとウェルネスサービスをご発見ください",
+    "bookTreatment": "トリートメントを予約",
+    "duration": "所要時間",
+    "price": "料金"
+  },
+  "contact": {
+    "title": "お問い合わせ",
+    "subtitle": "オリエントスパハノイへのお問い合わせ",
+    "name": "お名前",
+    "email": "メールアドレス",
+    "phone": "電話番号", 
+    "message": "メッセージ",
+    "send": "メッセージを送信",
+    "address": "住所",
+    "hours": "営業時間"
+  },
+  "promotions": {
+    "title": "プロモーション",
+    "subtitle": "限定オファーをお楽しみいただき、リラックスできるスパ体験をお楽しみください",
+    "pageTitle": "オリエントスパ 2025年8月プロモーション",
+    "specialTitle": "特別プロモーション",
+    "specialSubtitle": "限定オファーをお楽しみいただき、リラックスできるスパ体験をお楽しみください",
+    "save": "節約",
+    "validUntil": "有効期限",
+    "learnMore": "詳細を見る",
+    "bookNow": "今すぐ予約",
+    "viewDetails": "詳細を見る",
+    "includes": "含まれるもの",
+    "minutes": "分",
+    "duration": "{minutes}分",
+    "readMore": "続きを読む",
+    "viewSpaMenu": "スパメニューを見る",
+    "originalPrice": "通常料金",
+    "specialPrice": "特別料金",
+    "youSave": "お得額",
+    "aboutTreatment": "このトリートメントについて",
+    "whatsIncluded": "含まれるもの",
+    "massageOptions": "マッサージスタイルのオプション",
+    "termsConditions": "利用規約",
+    "bookThisPromotion": "このプロモーションを予約",
+    "advancedBooking": "事前予約をお勧めします",
+    "backToPromotions": "← 全プロモーションに戻る",
+    "importantInfo": "重要な情報",
+    "bookingPolicy": "予約ポリシー",
+    "whatToBring": "お持ちいただくもの",
+    "contactForMoreInfo": "詳細についてはお問い合わせください",
+    "cta": {
+      "title": "オリエントスパで完璧なリラクゼーションを体験",
+      "description": "静かな環境でプロフェッショナルなサービスとともにプレミアムスパトリートメントを発見してください。最高のリラクゼーションの時間をお届けします。",
+      "contact": "相談へのお問い合わせ"
+    },
+    "policies": {
+      "advancedBooking": "特に週末は事前予約をお勧めします",
+      "arriveEarly": "予約時間の15分前にお越しください",
+      "cancellation": "キャンセルは少なくとも4時間前にお願いします"
+    },
+    "bringItems": {
+      "clothing": "快適な服装",
+      "identification": "身分証明書",
+      "healthInfo": "健康状態に関する情報（必要に応じて）"
+    },
+    "otherPromotions": "2025年8月の他のプロモーション",
+    "howToBook": "予約方法",
+    "sendMessage": "メッセージ",
+    "onlineReservation": "オンライン予約"
+  },
+  "languages": {
+    "en": "English",
+    "vi": "Tiếng Việt",
+    "ja": "日本語"
+  }
+}

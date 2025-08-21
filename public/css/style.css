@@ -216,7 +216,6 @@
 .s1_n li {
   padding: 10px 15px;
   cursor: pointer;
-  border-bottom: 1px solid #eee;
   transition: background-color 0.2s;
 }
 

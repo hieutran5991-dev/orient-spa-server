@@ -2,8 +2,27 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useLocale, useTranslations } from 'next-intl';
+import { useRouter, usePathname } from 'next/navigation';
+import { SUPPORTED_LANGUAGE, type Locale } from '@/lib/i18n';
 
 const Header = () => {
+    const t = useTranslations();
+    const locale = useLocale();
+    const router = useRouter();
+    const pathname = usePathname();
+
+    const handleLanguageChange = (newLocale: Locale) => {
+        // Remove the current locale from the pathname
+        const segments = pathname.split('/');
+        if (SUPPORTED_LANGUAGE.includes(segments[1] as Locale)) {
+            segments.splice(1, 1);
+        }
+
+        // Add the new locale to the pathname
+        const newPath = `/${newLocale}${segments.join('/')}`;
+        router.push(newPath);
+    };
     return (
         <header className="h">
             <div className="container">
@@ -13,9 +32,9 @@ const Header = () => {
                     </span>
                     <div className="h_c w1">
                         <div className="h_a fl fl-2">
-                            <Link href="/">
+                            <a href={`/${locale}`}>
                                 <Image src="/fonts/orientspahanoi.svg" alt="Orient Spa Hanoi" width={150} height={40} />
-                            </Link>
+                            </a>
                         </div>
                     </div>
                     <div className="h_c w2 h1">
@@ -23,13 +42,13 @@ const Header = () => {
                             <i className="ic ic-close"></i>
                         </span>
                         <ul className="h_n n1 fl">
-                            <li><Link href="/">Home</Link></li>
-                            <li><Link href="/services-prices.html">Spa menu</Link></li>
-                            <li><Link href="/promotions.html">Promotions</Link></li>
+                            <li><a href={`/${locale}`}>{t('navigation.home')}</a></li>
+                            <li><a href={`/${locale}/services-prices`}>{t('navigation.services')}</a></li>
+                            <li><a href={`/${locale}/promotions`}>{t('navigation.promotions')}</a></li>
                         </ul>
                         <div className="h_v hidden-lg hidden-md">
-                            <Link href="/reservation.html">
-                                <span className="btn btn-1 btn-block">Make A Reservation</span>
+                            <Link href={`/${locale}/booking`}>
+                                <span className="btn btn-1 btn-block">{t('booking.makeReservation')}</span>
                             </Link>
                         </div>
                     </div>
@@ -50,16 +69,35 @@ const Header = () => {
                                     <li><Link href="/blog.html">Blogs</Link></li>
                                 </ul>
                             </li>
-                            <li className="lhs"><Link href="/contact-us.html">Contact</Link></li>
-                            <li className="lhs"><Link href="/reservation.html">Book Online</Link></li>
+                            <li className="lhs"><Link href={`/${locale}/contact`}>{t('navigation.contact')}</Link></li>
+                            <li className="lhs"><Link href={`/${locale}/booking`}>{t('navigation.booking')}</Link></li>
                             <li className="lgs">
                                 <span className="lgs_h"><i className="ic ic-language"></i></span>
                                 <ul className="h_s w2">
-                                    <li><Link href="/">English</Link></li>
-                                    <li><Link href="/zh-hans">Chinese (中文)</Link></li>
-                                    <li><Link href="/ja">Japanese (日本語)</Link></li>
-                                    <li><Link href="/ko">Korean (한국어)</Link></li>
-                                    <li><Link href="/es">Spanish (Español)</Link></li>
+                                    <li>
+                                        <button
+                                            onClick={() => handleLanguageChange('en')}
+                                            className={`bg-transparent border-none text-inherit font-inherit cursor-pointer px-3 py-2 w-full text-left transition-colors duration-200 ease-in-out hover:bg-black/10 ${locale === 'en' ? 'bg-black/15 font-bold' : ''}`}
+                                        >
+                                            🇺🇸 {t('languages.en')}
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button
+                                            onClick={() => handleLanguageChange('vi')}
+                                            className={`bg-transparent border-none text-inherit font-inherit cursor-pointer px-3 py-2 w-full text-left transition-colors duration-200 ease-in-out hover:bg-black/10 ${locale === 'vi' ? 'bg-black/15 font-bold' : ''}`}
+                                        >
+                                            🇻🇳 {t('languages.vi')}
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button
+                                            onClick={() => handleLanguageChange('ja')}
+                                            className={`bg-transparent border-none text-inherit font-inherit cursor-pointer px-3 py-2 w-full text-left transition-colors duration-200 ease-in-out hover:bg-black/10 ${locale === 'ja' ? 'bg-black/15 font-bold' : ''}`}
+                                        >
+                                            🇯🇵 {t('languages.ja')}
+                                        </button>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
@@ -69,6 +107,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
+
         </header>
     );
 };

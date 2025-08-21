@@ -4,14 +4,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
 import { spaLocations } from '@/lib/mockData';
 
 const HomeContent = () => {
     const router = useRouter();
+    const locale = useLocale() as 'en' | 'vi' | 'ja';
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
-
-
+    const t = useTranslations();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -79,9 +80,9 @@ const HomeContent = () => {
     ];
 
     const heroContent = {
-        tagline: "A relaxing escape for all your senses",
-        title: "Welcome to orient spa",
-        subtitle: "A relaxing escape for all your senses, in the heart of Hanoi."
+        tagline: t('hero.tagline'),
+        title: t('hero.title'),
+        subtitle: t('hero.subtitle')
     };
 
     const timeSlots = {
@@ -89,17 +90,17 @@ const HomeContent = () => {
         periods: [
             {
                 id: 1,
-                period: "Morning",
+                period: t('booking.morning'),
                 times: ["10:00", "10:30", "11:00", "11:30"]
             },
             {
                 id: 2,
-                period: "Afternoon",
+                period: t('booking.afternoon'),
                 times: ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30"]
             },
             {
                 id: 3,
-                period: "Evening",
+                period: t('booking.evening'),
                 times: ["19:00", "19:30", "20:00", "20:30"]
             }
         ]
@@ -111,22 +112,19 @@ const HomeContent = () => {
     };
 
     const aboutContent = {
-        description: `Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience, 
-Orient Spa Hanoi currently operates 3 spas all in the heart of Hanoi Old Quarter.
-We offer foot and body massage, nails care and shampoo, as well as spa packages.
-Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommended especially during weekend.`
+        description: t('about.description')
     };
 
     // Locations section data
     const locationsSection = {
-        title: "OUR LOCATIONS",
-        subtitle: "We currently offer services at the following locations",
+        title: t('locations.title'),
+        subtitle: t('locations.subtitle'),
         locations: [
             {
                 id: 1,
                 name: "Orient Spa & Nails",
                 address: "No 18 Bao Khanh, Hoan Kiem, Hanoi",
-                capacity: "18 guests",
+                capacity: t('locations.maxCapacity', { count: 18 }),
                 phone: "(+84) 866 903 499",
                 href: "/spa/orient-spa-nails",
                 image: "/images/2501a13248def0544df4943d3312fb4b.jpg"
@@ -136,13 +134,13 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
 
     // Promotions section data
     const promotionsSection = {
-        title: "August 2025 Special Promotions",
-        subtitle: "Enjoy special promotions at Orient Spa and treat yourself to a refreshing break you deserve.",
+        title: t('promotions.title'),
+        subtitle: t('promotions.subtitle'),
         promotions: [
             {
                 id: 1,
                 title: "Body & Foot Massage - 105min",
-                duration: "105 min",
+                duration: t('promotions.duration', { minutes: 105 }),
                 price: "620,000 VND",
                 image: "/images/fcea460533a817d981e00a9b84e0eb65.jpg",
                 href: "/promotions/body-foot-massage",
@@ -157,26 +155,26 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
 
     // Why choose us section data
     const whyChooseUsSection = {
-        title: "Why Choose Orient spa Hanoi?",
-        subtitle: "Visit Orient Spa Hanoi and take a heavenly break from your daily routine or pamper yourself nicely after a long trip.",
+        title: t('whyChooseUs.title'),
+        subtitle: t('whyChooseUs.subtitle'),
         features: [
             {
                 id: 1,
                 icon: "ic ic-group",
-                title: "Perfect for couples, groups, and solo travelers",
-                description: "Whether you're traveling alone, or on a honeymoon, or even with young kids, we always have something to offer."
+                title: t('whyChooseUs.features.couples.title'),
+                description: t('whyChooseUs.features.couples.description')
             },
             {
                 id: 2,
                 icon: "ic ic-location",
-                title: "Convenient and central location",
-                description: "All our spas are just a short walk from major attractions of Hanoi such as Hoan Kiem Lake and Saint Joseph Cathedral."
+                title: t('whyChooseUs.features.location.title'),
+                description: t('whyChooseUs.features.location.description')
             },
             {
                 id: 3,
                 icon: "ic ic-service",
-                title: "Skilled therapists and attentive receptionists",
-                description: "Be warmly welcomed and expertly cared for by friendly staff from start to finish."
+                title: t('whyChooseUs.features.service.title'),
+                description: t('whyChooseUs.features.service.description')
             }
         ]
     };
@@ -213,7 +211,7 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
                 <div className="s1">
                     <form action="/api/booking" method="post" id="formBookBox" className="s1_f" onSubmit={handleSubmit}>
                         <div className="s1_t hidden-lg hidden-md">
-                            <strong>Online Booking</strong>
+                            <strong>{t('booking.title')}</strong>
                             <i className="s1_z ic ic-close"></i>
                         </div>
                         <div className="row">
@@ -226,14 +224,14 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
                                         className="form-control u1 js-v2"
                                         required
                                     />
-                                    <label htmlFor="f2" className="s1_v">Location</label>
+                                    <label htmlFor="f2" className="s1_v">{t('booking.location')}</label>
                                     <span className="fc-feedback">
                                         <i className="fa fa-angle-down"></i>
                                     </span>
 
                                     <div className="s1_s w2 s1_s2">
                                         <div className="s1_sh hidden-lg hidden-md">
-                                            <div className="s1_st">Select location</div>
+                                            <div className="s1_st">{t('booking.selectLocation')}</div>
                                             <span className="s1_x js-done">
                                                 <i className="ic ic-close"></i>
                                             </span>
@@ -242,14 +240,14 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
                                             <ul className="s1_d">
                                                 {spaLocations.map((location) => (
                                                     <li key={location.id} data-value={location.id}>
-                                                        <strong>{location.name}</strong>
-                                                        <span>{location.address}</span>
+                                                        <strong>{location.name[locale]}</strong>
+                                                        <span>{location.address[locale]}</span>
                                                     </li>
                                                 ))}
                                             </ul>
                                         </div>
                                         <div className="s1_sf hidden-lg hidden-md">
-                                            <span className="s1_su js-done btn btn-1 btn-block">Done</span>
+                                            <span className="s1_su js-done btn btn-1 btn-block">{t('booking.done')}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -263,11 +261,25 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
                                         className="form-control u1 js-v1"
                                         required
                                     />
-                                    <label htmlFor="date" className="s1_v">Date</label>
+                                    <label htmlFor="date" className="s1_v">{t('booking.date')}</label>
                                     <span className="fc-feedback">
                                         <i className="fa fa-calendar"></i>
                                     </span>
                                 </div>
+
+                                {/*<div className="s1_s w2 s1_s1">*/}
+                                {/*    <div className="s1_sh hidden-lg hidden-md">*/}
+                                {/*        <div className="s1_st">{t('booking.selectDate')}</div>*/}
+                                {/*        <span className="s1_x js-done"><i className="ic ic-close"></i></span>*/}
+                                {/*    </div>*/}
+                                {/*    <div className="s1_sd">*/}
+                                {/*        <div className="s1_y" id="iDate">*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+                                {/*    <div className="s1_sf hidden-lg hidden-md">*/}
+                                {/*        <span className="s1_su js-done btn btn-1 btn-block">{t('booking.done')}</span>*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
                             </div>
                             <div className="s1_g">
                                 <div className="form-group has-feedback">
@@ -278,19 +290,19 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
                                         className="form-control u1 js-v3"
                                         required
                                     />
-                                    <label htmlFor="f3" className="s1_v">Time</label>
+                                    <label htmlFor="f3" className="s1_v">{t('booking.time')}</label>
                                     <span className="fc-feedback">
                                         <i className="fa fa-angle-down"></i>
                                     </span>
 
                                     <div className="s1_s w2 s1_s3">
                                         <div className="s1_sh hidden-lg hidden-md">
-                                            <div className="s1_st">Select time</div>
+                                            <div className="s1_st">{t('booking.selectTime')}</div>
                                             <span className="s1_x js-done"><i className="ic ic-close"></i></span>
                                         </div>
                                         <div className="s1_sd">
                                             <div className="s1_k" id="listTimes">
-                                                <div className="s1_l">Availability for {timeSlots.availabilityDate}</div>
+                                                <div className="s1_l">{t('booking.availabilityFor')} {timeSlots.availabilityDate}</div>
 
                                                 {timeSlots.periods.map((period) => (
                                                     <dl key={period.id} className="s1_j">
@@ -303,7 +315,7 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
                                             </div>
                                         </div>
                                         <div className="s1_sf hidden-lg hidden-md">
-                                            <span className="s1_su js-done btn btn-1 btn-block">Done</span>
+                                            <span className="s1_su js-done btn btn-1 btn-block">{t('booking.done')}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -317,14 +329,14 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
                                         className="form-control u1 js-v4"
                                         required
                                     />
-                                    <label htmlFor="f4" className="s1_v">Guest</label>
+                                    <label htmlFor="f4" className="s1_v">{t('booking.guest')}</label>
                                     <span className="fc-feedback">
                                         <i className="fa fa-angle-down"></i>
                                     </span>
 
                                     <div className="s1_s s1_s4">
                                         <div className="s1_sh hidden-lg hidden-md">
-                                            <div className="s1_st">Select guest</div>
+                                            <div className="s1_st">{t('booking.selectGuest')}</div>
                                             <span className="s1_x js-done"><i className="ic ic-close"></i></span>
                                         </div>
                                         <div className="s1_sd">
@@ -335,7 +347,7 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
                                             </ul>
                                         </div>
                                         <div className="s1_sf hidden-lg hidden-md">
-                                            <span className="s1_su js-done btn btn-1 btn-block">Done</span>
+                                            <span className="s1_su js-done btn btn-1 btn-block">{t('booking.done')}</span>
                                         </div>
                                     </div>
 
@@ -343,7 +355,8 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
                             </div>
                         </div>
                         {error && (
-                            <div className="error-message" style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>
+                            <div className="error-message"
+                                 style={{color: 'red', marginBottom: '10px', textAlign: 'center'}}>
                                 {error}
                             </div>
                         )}
@@ -352,11 +365,11 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
                             className="btn btn-block btn-1 s1_u booknow"
                             disabled={isSubmitting}
                         >
-                            {isSubmitting ? 'Processing...' : 'BOOK NOW!'}
+                            {isSubmitting ? t('booking.processing') : t('booking.bookNow')}
                         </button>
                     </form>
                 </div>
-                <span className="a1_a btn hidden-lg hidden-md">BOOK NOW!</span>
+                <span className="a1_a btn hidden-lg hidden-md">{t('booking.bookNow')}</span>
             </div>
 
             <div className="s sH s2">
@@ -366,13 +379,13 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
                             {aboutContent.description.split('\n').map((line, index) => (
                                 <span key={index}>
                                     {line}
-                                    {index < aboutContent.description.split('\n').length - 1 && <br />}
+                                    {index < aboutContent.description.split('\n').length - 1 && <br/>}
                                 </span>
                             ))}
                         </p>
                     </div>
                     <div className="text-center hidden-lg hidden-md">
-                        <span className="s2_v">Show more</span>
+                                                                <span className="s2_v">{t('common.showMore')}</span>
                     </div>
                 </div>
             </div>
@@ -381,8 +394,8 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
             <section className="s sH s3">
                 <div className="container">
                     <div className="s_h">
-                        <h2 className="s_t">OUR LOCATIONS</h2>
-                        <p className="s_p">We currently offer services at the following locations</p>
+                        <h2 className="s_t">{locationsSection.title}</h2>
+                        <p className="s_p">{locationsSection.subtitle}</p>
                     </div>
                     <div className="s2_m">
                         <div className="s2_mw">
@@ -413,16 +426,16 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
                                                 </h3>
                                                 <div className="s2_d">No 18 Bao Khanh, Hoan Kiem, Hanoi</div>
                                                 <ul className="s2_c">
-                                                    <li>Max capacity: 18 guests</li>
-                                                    <li>Single/double/triple room available</li>
-                                                    <li>Open Daily: 10:00am - 10:00pm</li>
+                                                    <li>{locationsSection.locations[0].capacity}</li>
+                                                    <li>{t('locations.roomTypes')}</li>
+                                                    <li>{t('locations.openHours')}</li>
                                                     <li>
-                                                        Enquiry by phone or WhatsApp/Kakao:{' '}
+                                                        {t('locations.enquiry')}{' '}
                                                         <strong className="inline-block">(+84) 866 903 499</strong>
                                                     </li>
                                                 </ul>
                                                 <Link href="/spa/orient-spa-nails" className="s2_y">
-                                                    DISCOVER MORE
+                                                    {t('locations.discoverMore')}
                                                 </Link>
                                             </div>
                                         </div>
@@ -432,7 +445,7 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
                             </div>
                         </div>
                         <Link href="/reservation" className="btn btn-1 s2_u">
-                            Make A Reservation
+                            {t('booking.makeReservation')}
                         </Link>
                     </div>
                     <div className="s2_f">
@@ -488,7 +501,7 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
                                                         ))}
                                                     </ul>
                                                     <Link href={promotion.href} className="s2_y">
-                                                        Read More
+                                                        {t('promotions.readMore')}
                                                     </Link>
                                                 </div>
                                             </div>
@@ -499,7 +512,7 @@ Our spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommende
                         </div>
                         <div className="s6_f fl fl-2">
                             <Link href="/services-prices" className="btn btn-2 s6_fa">
-                                View Spa Menu
+                                {t('promotions.viewSpaMenu')}
                             </Link>
                         </div>
                     </div>

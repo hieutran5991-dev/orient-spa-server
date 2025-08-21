@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useLocale } from 'next-intl';
 import { spaServices } from '@/lib/mockData';
 
 interface BookingData {
@@ -21,6 +22,7 @@ interface GuestFormData {
 
 const BookingContent = () => {
     const router = useRouter();
+    const locale = useLocale() as 'en' | 'vi' | 'ja';
     const [bookingData, setBookingData] = useState<BookingData>({});
     const [guestForms, setGuestForms] = useState<GuestFormData[]>([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -104,14 +106,12 @@ const BookingContent = () => {
 
 
 
-    // Booking steps data
     const bookingSteps = [
         { id: 1, icon: "ic-reserve", title: "Reserve", active: true },
         { id: 2, icon: "ic-select", title: "Select", active: true },
         { id: 3, icon: "ic-confirm", title: "Confirm!", active: false }
     ];
 
-    // Appointment summary data (this would come from session storage in real implementation)
     const appointmentSummary = {
         date: bookingData.date || "27 August 2025",
         time: bookingData.time || "10:00",
@@ -195,13 +195,16 @@ const BookingContent = () => {
                                                         {spaServices.map((service) => (
                                                             <div key={service.id} className="s8_i">
                                                                 <div className="s8_c">
-                                                                    <h3 className="s8_l">{service.name}</h3>
+                                                                    <h3 className="s8_l">{service.name[locale]}</h3>
                                                                     <div className="s8_p">
-                                                                        <p style={{ whiteSpace: 'pre-line' }}>{service.description}</p>
+                                                                        <p style={{ whiteSpace: 'pre-line' }}>{service.description[locale]}</p>
                                                                     </div>
                                                                     <div className="s8_d">
-                                                                        <span>{service.duration}</span>
-                                                                        <strong>{service.price}</strong>
+                                                                        <span>{service.duration} phút</span>
+                                                                        <strong>{new Intl.NumberFormat('vi-VN', {
+                                                                            style: 'currency',
+                                                                            currency: 'VND'
+                                                                        }).format(service.price)}</strong>
                                                                     </div>
                                                                 </div>
                                                                 <div className="s8_v">
