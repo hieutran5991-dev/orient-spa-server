@@ -7,62 +7,6 @@
     "contact": "Contact",
     "about": "About"
   },
-  "hero": {
-    "tagline": "A relaxing escape for all your senses",
-    "title": "Welcome to orient spa",
-    "subtitle": "A relaxing escape for all your senses, in the heart of Hanoi."
-  },
-  "booking": {
-    "title": "Online Booking",
-    "location": "Location",
-    "date": "Date",
-    "time": "Time",
-    "guest": "Guest",
-    "guests": "Guests",
-    "bookNow": "BOOK NOW!",
-    "processing": "Processing...",
-    "selectLocation": "Select location",
-    "selectDate": "Select date",
-    "selectTime": "Select time",
-    "selectGuest": "Select guest",
-    "done": "Done",
-    "makeReservation": "Make A Reservation",
-    "availabilityFor": "Availability for",
-    "morning": "Morning",
-    "afternoon": "Afternoon",
-    "evening": "Evening"
-  },
-  "about": {
-    "description": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience, \nOrient Spa Hanoi currently operates 3 spas all in the heart of Hanoi Old Quarter.\nWe offer foot and body massage, nails care and shampoo, as well as spa packages.\nOur spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommended especially during weekend."
-  },
-  "locations": {
-    "title": "OUR LOCATIONS",
-    "subtitle": "We currently offer services at the following locations",
-    "maxCapacity": "Max capacity: {count} guests",
-    "roomTypes": "Single/double/triple room available",
-    "openHours": "Open Daily: 10:00am - 10:00pm",
-    "enquiry": "Enquiry by phone or WhatsApp/Kakao:",
-    "discoverMore": "DISCOVER MORE"
-  },
-
-  "whyChooseUs": {
-    "title": "Why Choose Orient spa Hanoi?",
-    "subtitle": "Visit Orient Spa Hanoi and take a heavenly break from your daily routine or pamper yourself nicely after a long trip.",
-    "features": {
-      "couples": {
-        "title": "Perfect for couples, groups, and solo travelers",
-        "description": "Whether you're traveling alone, or on a honeymoon, or even with young kids, we always have something to offer."
-      },
-      "location": {
-        "title": "Convenient and central location",
-        "description": "All our spas are just a short walk from major attractions of Hanoi such as Hoan Kiem Lake and Saint Joseph Cathedral."
-      },
-      "service": {
-        "title": "Skilled therapists and attentive receptionists",
-        "description": "Be warmly welcomed and expertly cared for by friendly staff from start to finish."
-      }
-    }
-  },
   "common": {
     "showMore": "Show more",
     "viewAll": "View All",
@@ -75,73 +19,25 @@
     "email": "Email",
     "address": "Address"
   },
-  "services": {
-    "title": "Spa Menu & Prices",
-    "subtitle": "Discover our relaxing spa treatments and wellness services",
-    "bookTreatment": "Book Your Treatment",
-    "duration": "Duration",
-    "price": "Price"
-  },
-  "contact": {
-    "title": "Contact Us",
-    "subtitle": "Get in touch with Orient Spa Hanoi",
-    "name": "Name",
-    "email": "Email",
-    "phone": "Phone",
-    "message": "Message",
-    "send": "Send Message",
-    "address": "Address",
-    "hours": "Opening Hours"
-  },
-  "promotions": {
-    "title": "Promotions",
-    "subtitle": "Enjoy exclusive offers and treat yourself to a relaxing spa experience",
-    "pageTitle": "Orient Spa Promotions August 2025",
-    "specialTitle": "Special Promotions",
-    "specialSubtitle": "Enjoy exclusive offers and treat yourself to a relaxing spa experience",
-    "save": "Save",
-    "validUntil": "Valid until",
-    "learnMore": "Learn More",
-    "bookNow": "Book Now",
-    "viewDetails": "View Details",
-    "includes": "What's Included",
-    "minutes": "minutes",
-    "duration": "{minutes} min",
-    "readMore": "READ MORE",
-    "viewSpaMenu": "View Spa Menu",
-    "originalPrice": "Regular Price",
-    "specialPrice": "Special Price",
-    "youSave": "You Save",
-    "aboutTreatment": "About This Treatment",
-    "whatsIncluded": "What's Included",
-    "massageOptions": "Massage Style Options",
-    "termsConditions": "Terms & Conditions",
-    "bookThisPromotion": "Book This Promotion",
-    "advancedBooking": "Advanced booking recommended",
-    "backToPromotions": "← Back to All Promotions",
-    "importantInfo": "Important Information",
-    "bookingPolicy": "Booking Policy",
-    "whatToBring": "What to Bring",
-    "contactForMoreInfo": "Contact for More Info",
-    "cta": {
-      "title": "Experience Perfect Relaxation at Orient Spa",
-      "description": "Discover premium spa treatments in a tranquil setting with professional service. Let us give you the most wonderful relaxation moments.",
-      "contact": "Contact for Consultation"
-    },
-    "policies": {
-      "advancedBooking": "Advanced booking is recommended, especially during weekends",
-      "arriveEarly": "Please arrive 15 minutes before your appointment",
-      "cancellation": "Cancellation must be made at least 4 hours in advance"
-    },
-    "bringItems": {
-      "clothing": "Comfortable clothing",
-      "identification": "Personal identification",
-      "healthInfo": "Any health conditions information"
-    },
-    "otherPromotions": "Other promotions for August 2025",
-    "howToBook": "How to book",
-    "sendMessage": "message",
-    "onlineReservation": "online reservation"
+  "footer": {
+    "locations": "Our locations",
+    "aboutUs": "About Orient Spa",
+    "followUs": "Follow us",
+    "openingHours": "Opening Hours",
+    "paymentMethods": "Payment Methods",
+    "viewMap": "(View map)",
+    "openDaily": "We are open daily from",
+    "hours": "10:00AM - 10:00PM.",
+    "advancedReservation": "Advanced reservation is recommended.",
+    "copyright": "Copyright 2025 © Orientspahanoi. All Rights Reserved.",
+    "navigation": {
+      "aboutUs": "About Us",
+      "spaMenu": "Spa Menu",
+      "promotions": "Promotions",
+      "contactUs": "Contact Us",
+      "bookOnline": "Book Online",
+      "blogs": "Blogs"
+    }
   },
   "languages": {
     "en": "English",

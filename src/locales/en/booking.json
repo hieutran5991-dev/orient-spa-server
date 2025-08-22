@@ -1,0 +1,20 @@
+{
+    "title": "Online Booking",
+    "location": "Location",
+    "date": "Date",
+    "time": "Time",
+    "guest": "Guest",
+    "guests": "Guests",
+    "bookNow": "BOOK NOW!",
+    "processing": "Processing...",
+    "selectLocation": "Select location",
+    "selectDate": "Select date",
+    "selectTime": "Select time",
+    "selectGuest": "Select guest",
+    "done": "Done",
+    "makeReservation": "Make A Reservation",
+    "availabilityFor": "Availability for",
+    "morning": "Morning",
+    "afternoon": "Afternoon",
+    "evening": "Evening"
+}

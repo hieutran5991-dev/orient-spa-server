@@ -5,14 +5,19 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import type { Locale } from '@/utils/constants';
 import { spaLocations } from '@/lib/mockData';
 
 const HomeContent = () => {
     const router = useRouter();
-    const locale = useLocale() as 'en' | 'vi' | 'ja';
+    const locale = useLocale() as Locale;
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
-    const t = useTranslations();
+
+    const t = useTranslations('home');
+    const tCommon = useTranslations('common');
+    const tBooking = useTranslations('booking');
+    const tPromotions = useTranslations('promotions');
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -34,7 +39,6 @@ const HomeContent = () => {
         };
 
         try {
-            // Call API to check availability and save booking
             const response = await fetch('/api/booking', {
                 method: 'POST',
                 headers: {
@@ -46,16 +50,13 @@ const HomeContent = () => {
             const result = await response.json();
 
             if (result.success) {
-                // Save form data to session storage
                 sessionStorage.setItem('booking_form_data', JSON.stringify(bookingData));
 
-                // Redirect to booking page
                 router.push('/booking');
             } else {
                 setError(result.message || 'Booking failed. Please try again.');
             }
         } catch (error) {
-            console.error('Booking error:', error);
             setError('Network error. Please check your connection and try again.');
         } finally {
             setIsSubmitting(false);
@@ -90,17 +91,17 @@ const HomeContent = () => {
         periods: [
             {
                 id: 1,
-                period: t('booking.morning'),
+                period: t('timePeriods.morning'),
                 times: ["10:00", "10:30", "11:00", "11:30"]
             },
             {
                 id: 2,
-                period: t('booking.afternoon'),
+                period: t('timePeriods.afternoon'),
                 times: ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30"]
             },
             {
                 id: 3,
-                period: t('booking.evening'),
+                period: t('timePeriods.evening'),
                 times: ["19:00", "19:30", "20:00", "20:30"]
             }
         ]
@@ -211,7 +212,7 @@ const HomeContent = () => {
                 <div className="s1">
                     <form action="/api/booking" method="post" id="formBookBox" className="s1_f" onSubmit={handleSubmit}>
                         <div className="s1_t hidden-lg hidden-md">
-                            <strong>{t('booking.title')}</strong>
+                            <strong>{tBooking('title')}</strong>
                             <i className="s1_z ic ic-close"></i>
                         </div>
                         <div className="row">
@@ -224,14 +225,14 @@ const HomeContent = () => {
                                         className="form-control u1 js-v2"
                                         required
                                     />
-                                    <label htmlFor="f2" className="s1_v">{t('booking.location')}</label>
+                                    <label htmlFor="f2" className="s1_v">{tBooking('location')}</label>
                                     <span className="fc-feedback">
                                         <i className="fa fa-angle-down"></i>
                                     </span>
 
                                     <div className="s1_s w2 s1_s2">
                                         <div className="s1_sh hidden-lg hidden-md">
-                                            <div className="s1_st">{t('booking.selectLocation')}</div>
+                                            <div className="s1_st">{tBooking('selectLocation')}</div>
                                             <span className="s1_x js-done">
                                                 <i className="ic ic-close"></i>
                                             </span>
@@ -247,7 +248,7 @@ const HomeContent = () => {
                                             </ul>
                                         </div>
                                         <div className="s1_sf hidden-lg hidden-md">
-                                            <span className="s1_su js-done btn btn-1 btn-block">{t('booking.done')}</span>
+                                            <span className="s1_su js-done btn btn-1 btn-block">{tBooking('done')}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -261,7 +262,7 @@ const HomeContent = () => {
                                         className="form-control u1 js-v1"
                                         required
                                     />
-                                    <label htmlFor="date" className="s1_v">{t('booking.date')}</label>
+                                    <label htmlFor="date" className="s1_v">{tBooking('date')}</label>
                                     <span className="fc-feedback">
                                         <i className="fa fa-calendar"></i>
                                     </span>
@@ -290,19 +291,19 @@ const HomeContent = () => {
                                         className="form-control u1 js-v3"
                                         required
                                     />
-                                    <label htmlFor="f3" className="s1_v">{t('booking.time')}</label>
+                                    <label htmlFor="f3" className="s1_v">{tBooking('time')}</label>
                                     <span className="fc-feedback">
                                         <i className="fa fa-angle-down"></i>
                                     </span>
 
                                     <div className="s1_s w2 s1_s3">
                                         <div className="s1_sh hidden-lg hidden-md">
-                                            <div className="s1_st">{t('booking.selectTime')}</div>
+                                            <div className="s1_st">{tBooking('selectTime')}</div>
                                             <span className="s1_x js-done"><i className="ic ic-close"></i></span>
                                         </div>
                                         <div className="s1_sd">
                                             <div className="s1_k" id="listTimes">
-                                                <div className="s1_l">{t('booking.availabilityFor')} {timeSlots.availabilityDate}</div>
+                                                <div className="s1_l">{tBooking('availabilityFor')} {timeSlots.availabilityDate}</div>
 
                                                 {timeSlots.periods.map((period) => (
                                                     <dl key={period.id} className="s1_j">
@@ -315,7 +316,7 @@ const HomeContent = () => {
                                             </div>
                                         </div>
                                         <div className="s1_sf hidden-lg hidden-md">
-                                            <span className="s1_su js-done btn btn-1 btn-block">{t('booking.done')}</span>
+                                            <span className="s1_su js-done btn btn-1 btn-block">{tBooking('done')}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -329,14 +330,14 @@ const HomeContent = () => {
                                         className="form-control u1 js-v4"
                                         required
                                     />
-                                    <label htmlFor="f4" className="s1_v">{t('booking.guest')}</label>
+                                    <label htmlFor="f4" className="s1_v">{tBooking('guest')}</label>
                                     <span className="fc-feedback">
                                         <i className="fa fa-angle-down"></i>
                                     </span>
 
                                     <div className="s1_s s1_s4">
                                         <div className="s1_sh hidden-lg hidden-md">
-                                            <div className="s1_st">{t('booking.selectGuest')}</div>
+                                            <div className="s1_st">{tBooking('selectGuest')}</div>
                                             <span className="s1_x js-done"><i className="ic ic-close"></i></span>
                                         </div>
                                         <div className="s1_sd">
@@ -347,7 +348,7 @@ const HomeContent = () => {
                                             </ul>
                                         </div>
                                         <div className="s1_sf hidden-lg hidden-md">
-                                            <span className="s1_su js-done btn btn-1 btn-block">{t('booking.done')}</span>
+                                            <span className="s1_su js-done btn btn-1 btn-block">{tBooking('done')}</span>
                                         </div>
                                     </div>
 
@@ -356,7 +357,7 @@ const HomeContent = () => {
                         </div>
                         {error && (
                             <div className="error-message"
-                                 style={{color: 'red', marginBottom: '10px', textAlign: 'center'}}>
+                                style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>
                                 {error}
                             </div>
                         )}
@@ -365,11 +366,11 @@ const HomeContent = () => {
                             className="btn btn-block btn-1 s1_u booknow"
                             disabled={isSubmitting}
                         >
-                            {isSubmitting ? t('booking.processing') : t('booking.bookNow')}
+                            {isSubmitting ? tBooking('processing') : tBooking('bookNow')}
                         </button>
                     </form>
                 </div>
-                <span className="a1_a btn hidden-lg hidden-md">{t('booking.bookNow')}</span>
+                <span className="a1_a btn hidden-lg hidden-md">{tBooking('bookNow')}</span>
             </div>
 
             <div className="s sH s2">
@@ -379,13 +380,13 @@ const HomeContent = () => {
                             {aboutContent.description.split('\n').map((line, index) => (
                                 <span key={index}>
                                     {line}
-                                    {index < aboutContent.description.split('\n').length - 1 && <br/>}
+                                    {index < aboutContent.description.split('\n').length - 1 && <br />}
                                 </span>
                             ))}
                         </p>
                     </div>
                     <div className="text-center hidden-lg hidden-md">
-                                                                <span className="s2_v">{t('common.showMore')}</span>
+                        <span className="s2_v">{tCommon('viewAll')}</span>
                     </div>
                 </div>
             </div>
@@ -445,7 +446,7 @@ const HomeContent = () => {
                             </div>
                         </div>
                         <Link href="/reservation" className="btn btn-1 s2_u">
-                            {t('booking.makeReservation')}
+                            {tBooking('makeReservation')}
                         </Link>
                     </div>
                     <div className="s2_f">
@@ -465,7 +466,6 @@ const HomeContent = () => {
                 </div>
             </section>
 
-            {/* Promotions Section */}
             <div className="s sH s4">
                 <div className="container">
                     <div className="s_h">
@@ -501,7 +501,7 @@ const HomeContent = () => {
                                                         ))}
                                                     </ul>
                                                     <Link href={promotion.href} className="s2_y">
-                                                        {t('promotions.readMore')}
+                                                        {tPromotions('readMore')}
                                                     </Link>
                                                 </div>
                                             </div>
@@ -512,7 +512,7 @@ const HomeContent = () => {
                         </div>
                         <div className="s6_f fl fl-2">
                             <Link href="/services-prices" className="btn btn-2 s6_fa">
-                                {t('promotions.viewSpaMenu')}
+                                {tPromotions('viewSpaMenu')}
                             </Link>
                         </div>
                     </div>

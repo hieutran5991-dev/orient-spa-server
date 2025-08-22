@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useLocale } from 'next-intl';
-import { spaServices } from '@/lib/mockData';
+import { useTranslations, useLocale } from 'next-intl';
+import type { Locale } from '@/utils/constants';
+import { spaLocations, spaServices } from '@/lib/mockData';
 
 interface BookingData {
     spa?: string;
@@ -22,11 +23,15 @@ interface GuestFormData {
 
 const BookingContent = () => {
     const router = useRouter();
-    const locale = useLocale() as 'en' | 'vi' | 'ja';
+    const locale = useLocale() as Locale;
     const [bookingData, setBookingData] = useState<BookingData>({});
     const [guestForms, setGuestForms] = useState<GuestFormData[]>([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
+
+    // Use namespace-based translations
+    const t = useTranslations('booking');
+    const tCommon = useTranslations('common');
 
     useEffect(() => {
         const savedData = sessionStorage.getItem('booking_form_data');

@@ -1,3 +1,5 @@
+import type { Locale } from '@/utils/constants';
+
 export interface SpaLocation {
   id: string;
   name: {
@@ -730,7 +732,7 @@ export const getSpaLocationBySlug = (slug: string): SpaLocation | undefined => {
   return spaLocations.find(location => location.slug === slug);
 };
 
-export const getSpaLocationsByLocale = (locale: 'en' | 'vi' | 'ja' = 'en'): SpaLocation[] => {
+export const getSpaLocationsByLocale = (locale: Locale = 'en'): SpaLocation[] => {
   return spaLocations;
 };
 
@@ -739,28 +741,28 @@ export const getSpaServiceBySlug = (slug: string): SpaService | undefined => {
   return spaServices.find(service => service.slug === slug);
 };
 
-export const getSpaServicesByLocale = (locale: 'en' | 'vi' | 'ja' = 'en'): SpaService[] => {
+export const getSpaServicesByLocale = (locale: Locale = 'en'): SpaService[] => {
   return spaServices;
 };
 
-export const getSpaServicesByCategory = (category: string, locale: 'en' | 'vi' | 'ja' = 'en'): SpaService[] => {
+export const getSpaServicesByCategory = (category: string, locale: Locale = 'en'): SpaService[] => {
   return spaServices.filter(service =>
     service.category[locale].toLowerCase().includes(category.toLowerCase())
   );
 };
 
 // Get promotion packages
-export const getPromotionServices = (locale: 'en' | 'vi' | 'ja' = 'en'): SpaService[] => {
+export const getPromotionServices = (locale: Locale = 'en'): SpaService[] => {
   return promotionPackages;
 };
 
 // Get only regular services (non-promotion)
-export const getRegularServices = (locale: 'en' | 'vi' | 'ja' = 'en'): SpaService[] => {
+export const getRegularServices = (locale: Locale = 'en'): SpaService[] => {
   return spaServices.filter(service => service.isPromotion === false);
 };
 
 // Get hot/featured services
-export const getHotServices = (locale: 'en' | 'vi' | 'ja' = 'en'): SpaService[] => {
+export const getHotServices = (locale: Locale = 'en'): SpaService[] => {
   return promotionPackages.filter(service => service.isHot === true);
 };
 

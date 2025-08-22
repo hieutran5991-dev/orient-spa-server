@@ -1,0 +1,50 @@
+{
+    "title": "Khuyến Mãi",
+    "subtitle": "Tận hưởng các ưu đãi độc quyền và tự thưởng cho bản thân trải nghiệm spa thư giãn",
+    "pageTitle": "Khuyến Mãi Orient Spa Tháng 8 2025",
+    "specialTitle": "Khuyến Mãi Đặc Biệt",
+    "specialSubtitle": "Tận hưởng các ưu đãi độc quyền và tự thưởng cho bản thân trải nghiệm spa thư giãn",
+    "save": "Tiết kiệm",
+    "validUntil": "Có hiệu lực đến",
+    "learnMore": "Tìm hiểu thêm",
+    "bookNow": "Đặt lịch ngay",
+    "viewDetails": "Xem chi tiết",
+    "includes": "Bao gồm",
+    "minutes": "phút",
+    "duration": "{minutes} phút",
+    "readMore": "ĐỌC THÊM",
+    "viewSpaMenu": "Xem menu Spa",
+    "originalPrice": "Giá thông thường",
+    "specialPrice": "Giá đặc biệt",
+    "youSave": "Bạn tiết kiệm",
+    "aboutTreatment": "Về Liệu Pháp Này",
+    "whatsIncluded": "Bao Gồm Những Gì",
+    "massageOptions": "Tùy Chọn Kiểu Massage",
+    "termsConditions": "Điều Khoản & Điều Kiện",
+    "bookThisPromotion": "Đặt Khuyến Mãi Này",
+    "advancedBooking": "Khuyến khích đặt lịch trước",
+    "backToPromotions": "← Quay lại tất cả khuyến mãi",
+    "importantInfo": "Thông Tin Quan Trọng",
+    "bookingPolicy": "Chính Sách Đặt Lịch",
+    "whatToBring": "Những Gì Cần Mang Theo",
+    "contactForMoreInfo": "Liên hệ để biết thêm thông tin",
+    "cta": {
+        "title": "Trải nghiệm thư giãn hoàn hảo tại Orient Spa",
+        "description": "Khám phá những liệu pháp spa cao cấp với không gian yên tĩnh và dịch vụ chuyên nghiệp. Hãy để chúng tôi mang đến cho bạn những giây phút thư giãn tuyệt vời nhất.",
+        "contact": "Liên hệ tư vấn"
+    },
+    "policies": {
+        "advancedBooking": "Khuyến khích đặt lịch trước, đặc biệt vào cuối tuần",
+        "arriveEarly": "Vui lòng đến sớm 15 phút trước giờ hẹn",
+        "cancellation": "Hủy lịch phải thực hiện ít nhất 4 tiếng trước"
+    },
+    "bringItems": {
+        "clothing": "Quần áo thoải mái",
+        "identification": "Giấy tờ tùy thân",
+        "healthInfo": "Thông tin về tình trạng sức khỏe (nếu có)"
+    },
+    "otherPromotions": "Các khuyến mãi khác tháng 8 2025",
+    "howToBook": "Cách đặt lịch",
+    "sendMessage": "tin nhắn",
+    "onlineReservation": "đặt lịch trực tuyến"
+}

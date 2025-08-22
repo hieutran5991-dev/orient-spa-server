@@ -4,7 +4,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import "../globals.css";
 import Script from "next/script";
-import { SUPPORTED_LANGUAGE } from '@/lib/i18n';
+import { SUPPORTED_LANGUAGE, type Locale } from '@/utils/constants';
 
 export const metadata: Metadata = {
   title: "Orient Spa Hanoi",
@@ -24,7 +24,7 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  if (!SUPPORTED_LANGUAGE.includes(locale as any)) {
+  if (!SUPPORTED_LANGUAGE.includes(locale as Locale)) {
     notFound();
   }
 
@@ -33,7 +33,6 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
-        {/* global css */}
         <link rel="stylesheet" href="/css/style.css" />
       </head>
       <body>

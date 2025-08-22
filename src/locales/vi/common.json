@@ -1,147 +1,43 @@
 {
   "navigation": {
     "home": "Trang chủ",
-    "services": "Dịch vụ & Giá",
+    "services": "Dịch vụ & Giá cả",
     "promotions": "Khuyến mãi",
     "booking": "Đặt lịch",
     "contact": "Liên hệ",
     "about": "Giới thiệu"
-  },
-  "hero": {
-    "tagline": "Nơi thư giãn tuyệt vời cho mọi giác quan",
-    "title": "Chào mừng đến Orient Spa",
-    "subtitle": "Nơi thư giãn tuyệt vời cho mọi giác quan, ngay tại trung tâm Hà Nội."
-  },
-  "booking": {
-    "title": "Đặt lịch trực tuyến",
-    "location": "Địa điểm",
-    "date": "Ngày",
-    "time": "Giờ",
-    "guest": "Khách",
-    "guests": "Khách",
-    "bookNow": "ĐẶT LỊCH NGAY!",
-    "processing": "Đang xử lý...",
-    "selectLocation": "Chọn địa điểm",
-    "selectDate": "Chọn ngày",
-    "selectTime": "Chọn giờ",
-    "selectGuest": "Chọn số khách",
-    "done": "Xong",
-    "makeReservation": "Đặt lịch hẹn",
-    "availabilityFor": "Lịch trống cho",
-    "morning": "Sáng",
-    "afternoon": "Chiều",
-    "evening": "Tối"
-  },
-  "about": {
-    "description": "Thành lập năm 2017 với mục tiêu mang đến cho du khách và người dân địa phương trải nghiệm spa thư giãn, \nOrient Spa Hà Nội hiện đang vận hành 3 spa tại trung tâm Phố cổ Hà Nội.\nChúng tôi cung cấp massage chân và toàn thân, chăm sóc móng tay và gội đầu, cũng như các gói spa.\nSpa của chúng tôi mở cửa từ 10:00 sáng - 10:00 tối hàng ngày. Khuyến khích đặt lịch trước, đặc biệt vào cuối tuần."
-  },
-  "locations": {
-    "title": "CÁC CHI NHÁNH",
-    "subtitle": "Chúng tôi hiện cung cấp dịch vụ tại các địa điểm sau",
-    "maxCapacity": "Sức chứa tối đa: {count} khách",
-    "roomTypes": "Có phòng đơn/đôi/ba",
-    "openHours": "Mở cửa hàng ngày: 10:00 sáng - 10:00 tối",
-    "enquiry": "Liên hệ qua điện thoại hoặc WhatsApp/Kakao:",
-    "discoverMore": "KHÁM PHÁ THÊM"
-  },
-
-  "whyChooseUs": {
-    "title": "Tại sao chọn Orient Spa Hà Nội?",
-    "subtitle": "Ghé thăm Orient Spa Hà Nội và tận hưởng khoảng nghỉ tuyệt vời khỏi thói quen hàng ngày hoặc tự chiều chuộng bản thân sau một chuyến đi dài.",
-    "features": {
-      "couples": {
-        "title": "Hoàn hảo cho các cặp đôi, nhóm bạn và du khách đơn lẻ",
-        "description": "Dù bạn đi du lịch một mình, trong tuần trăng mật, hay thậm chí với trẻ nhỏ, chúng tôi luôn có điều gì đó để mang lại."
-      },
-      "location": {
-        "title": "Vị trí thuận tiện và trung tâm",
-        "description": "Tất cả các spa của chúng tôi chỉ cách một quãng đi bộ ngắn từ các điểm tham quan chính của Hà Nội như Hồ Hoàn Kiếm và Nhà thờ Lớn Thánh Giuse."
-      },
-      "service": {
-        "title": "Nhân viên massage có tay nghề và lễ tân chu đáo",
-        "description": "Được chào đón nồng nhiệt và chăm sóc chuyên nghiệp bởi đội ngũ nhân viên thân thiện từ đầu đến cuối."
-      }
-    }
   },
   "common": {
     "showMore": "Xem thêm",
     "viewAll": "Xem tất cả",
     "learnMore": "Tìm hiểu thêm",
     "getStarted": "Bắt đầu",
-    "contactUs": "Liên hệ chúng tôi",
+    "contactUs": "Liên hệ với chúng tôi",
     "bookNow": "Đặt lịch ngay",
     "currency": "VND",
     "phone": "Điện thoại",
     "email": "Email",
     "address": "Địa chỉ"
   },
-  "services": {
-    "title": "Menu Spa & Giá Cả",
-    "subtitle": "Khám phá các liệu pháp spa thư giãn và dịch vụ chăm sóc sức khỏe",
-    "bookTreatment": "Đặt Lịch Điều Trị",
-    "duration": "Thời gian",
-    "price": "Giá"
-  },
-  "contact": {
-    "title": "Liên Hệ",
-    "subtitle": "Liên lạc với Orient Spa Hà Nội",
-    "name": "Tên",
-    "email": "Email", 
-    "phone": "Điện thoại",
-    "message": "Tin nhắn",
-    "send": "Gửi tin nhắn",
-    "address": "Địa chỉ",
-    "hours": "Giờ mở cửa"
-  },
-  "promotions": {
-    "title": "Khuyến Mãi",
-    "subtitle": "Tận hưởng các ưu đãi độc quyền và tự thưởng cho bản thân trải nghiệm spa thư giãn",
-    "pageTitle": "Khuyến Mãi Orient Spa Tháng 8 2025",
-    "specialTitle": "Khuyến Mãi Đặc Biệt",
-    "specialSubtitle": "Tận hưởng các ưu đãi độc quyền và tự thưởng cho bản thân trải nghiệm spa thư giãn",
-    "save": "Tiết kiệm",
-    "validUntil": "Có hiệu lực đến",
-    "learnMore": "Tìm hiểu thêm",
-    "bookNow": "Đặt lịch ngay",
-    "viewDetails": "Xem chi tiết",
-    "includes": "Bao gồm",
-    "minutes": "phút",
-    "duration": "{minutes} phút",
-    "readMore": "ĐỌC THÊM",
-    "viewSpaMenu": "Xem menu Spa",
-    "originalPrice": "Giá thông thường",
-    "specialPrice": "Giá đặc biệt",
-    "youSave": "Bạn tiết kiệm",
-    "aboutTreatment": "Về Liệu Pháp Này",
-    "whatsIncluded": "Bao Gồm Những Gì",
-    "massageOptions": "Tùy Chọn Kiểu Massage",
-    "termsConditions": "Điều Khoản & Điều Kiện",
-    "bookThisPromotion": "Đặt Khuyến Mãi Này",
-    "advancedBooking": "Khuyến khích đặt lịch trước",
-    "backToPromotions": "← Quay lại tất cả khuyến mãi",
-    "importantInfo": "Thông Tin Quan Trọng",
-    "bookingPolicy": "Chính Sách Đặt Lịch",
-    "whatToBring": "Những Gì Cần Mang Theo",
-    "contactForMoreInfo": "Liên hệ để biết thêm thông tin",
-    "cta": {
-      "title": "Trải nghiệm thư giãn hoàn hảo tại Orient Spa",
-      "description": "Khám phá những liệu pháp spa cao cấp với không gian yên tĩnh và dịch vụ chuyên nghiệp. Hãy để chúng tôi mang đến cho bạn những giây phút thư giãn tuyệt vời nhất.",
-      "contact": "Liên hệ tư vấn"
-    },
-    "policies": {
-      "advancedBooking": "Khuyến khích đặt lịch trước, đặc biệt vào cuối tuần",
-      "arriveEarly": "Vui lòng đến sớm 15 phút trước giờ hẹn",
-      "cancellation": "Hủy lịch phải thực hiện ít nhất 4 tiếng trước"
-    },
-    "bringItems": {
-      "clothing": "Quần áo thoải mái",
-      "identification": "Giấy tờ tùy thân",
-      "healthInfo": "Thông tin về tình trạng sức khỏe (nếu có)"
-    },
-    "otherPromotions": "Các khuyến mãi khác tháng 8 2025",
-    "howToBook": "Cách đặt lịch",
-    "sendMessage": "tin nhắn",
-    "onlineReservation": "đặt lịch trực tuyến"
+  "footer": {
+    "locations": "Các chi nhánh",
+    "aboutUs": "Về Orient Spa",
+    "followUs": "Theo dõi chúng tôi",
+    "openingHours": "Giờ mở cửa",
+    "paymentMethods": "Phương thức thanh toán",
+    "viewMap": "(Xem bản đồ)",
+    "openDaily": "Chúng tôi mở cửa hàng ngày từ",
+    "hours": "10:00 sáng - 10:00 tối.",
+    "advancedReservation": "Khuyến khích đặt lịch trước.",
+    "copyright": "Bản quyền 2025 © Orientspahanoi. Tất cả quyền được bảo lưu.",
+    "navigation": {
+      "aboutUs": "Giới thiệu",
+      "spaMenu": "Menu Spa",
+      "promotions": "Khuyến mãi",
+      "contactUs": "Liên hệ",
+      "bookOnline": "Đặt lịch trực tuyến",
+      "blogs": "Blog"
+    }
   },
   "languages": {
     "en": "English",

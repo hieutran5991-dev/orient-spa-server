@@ -1,0 +1,20 @@
+{
+    "title": "オンライン予約",
+    "location": "場所",
+    "date": "日付",
+    "time": "時間",
+    "guest": "ゲスト",
+    "guests": "ゲスト",
+    "bookNow": "今すぐ予約！",
+    "processing": "処理中...",
+    "selectLocation": "場所を選択",
+    "selectDate": "日付を選択",
+    "selectTime": "時間を選択",
+    "selectGuest": "ゲスト数を選択",
+    "done": "完了",
+    "makeReservation": "予約する",
+    "availabilityFor": "空き状況：",
+    "morning": "午前",
+    "afternoon": "午後",
+    "evening": "夕方"
+}

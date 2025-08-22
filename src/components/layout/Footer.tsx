@@ -2,8 +2,13 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
+import type { Locale } from '@/utils/constants';
 
 const Footer = () => {
+  // Use namespace-based translations
+  const tCommon = useTranslations('common');
+  const locale = useLocale() as Locale;
   return (
     <footer className="f">
       <div className="f_m">
@@ -11,7 +16,7 @@ const Footer = () => {
           <div className="f_mw">
             <div className="f_mi">
               <div className="f_i">
-                <h4 className="f_t">Our locations</h4>
+                <h4 className="f_t">{tCommon('footer.locations')}</h4>
                 <div className="f_c">
                   <dl>
                     <dt>Orient Spa &amp; Nails (Hoan Kiem Lake Branch)</dt>
@@ -22,7 +27,7 @@ const Footer = () => {
                         target="_blank"
                         rel="nofollow"
                       >
-                        (View map)
+                        {tCommon('footer.viewMap')}
                       </a>
                     </dd>
                     <dd>
@@ -38,7 +43,7 @@ const Footer = () => {
                         target="_blank"
                         rel="nofollow"
                       >
-                        (View map)
+                        {tCommon('footer.viewMap')}
                       </a>
                     </dd>
                     <dd>
@@ -54,7 +59,7 @@ const Footer = () => {
                         target="_blank"
                         rel="nofollow"
                       >
-                        (View map)
+                        {tCommon('footer.viewMap')}
                       </a>
                     </dd>
                     <dd>
@@ -69,24 +74,24 @@ const Footer = () => {
             </div>
             <div className="f_mi">
               <div className="f_i">
-                <h4 className="f_t">About Orient Spa</h4>
+                <h4 className="f_t">{tCommon('footer.aboutUs')}</h4>
                 <div className="f_c">
                   <ul className="f_n fl">
-                    <li><Link href="/page/about-us">About Us</Link></li>
-                    <li><Link href="/services-prices">Spa Menu</Link></li>
-                    <li><Link href="/promotions">Promotions</Link></li>
-                    <li><Link href="/contact-us">Contact Us</Link></li>
-                    <li><Link href="/reservation">Book Online</Link></li>
-                    <li><Link href="/blog">Blogs</Link></li>
+                    <li><Link href={`/${locale}/page/about-us`}>{tCommon('footer.navigation.aboutUs')}</Link></li>
+                    <li><Link href={`/${locale}/services-prices`}>{tCommon('footer.navigation.spaMenu')}</Link></li>
+                    <li><Link href={`/${locale}/promotions`}>{tCommon('footer.navigation.promotions')}</Link></li>
+                    <li><Link href={`/${locale}/contact`}>{tCommon('footer.navigation.contactUs')}</Link></li>
+                    <li><Link href={`/${locale}/booking`}>{tCommon('footer.navigation.bookOnline')}</Link></li>
+                    <li><Link href={`/${locale}/blog`}>{tCommon('footer.navigation.blogs')}</Link></li>
                   </ul>
                 </div>
               </div>
               <div className="f_i">
-                <h4 className="f_t">Opening Hours</h4>
+                <h4 className="f_t">{tCommon('footer.openingHours')}</h4>
                 <div className="f_c">
                   <p className="f_o">
-                    We are open daily from <strong>10:00AM - 10:00PM.</strong><br />
-                    Advanced reservation is recommended.
+                    {tCommon('footer.openDaily')} <strong>{tCommon('footer.hours')}</strong><br />
+                    {tCommon('footer.advancedReservation')}
                   </p>
                 </div>
               </div>
@@ -94,7 +99,7 @@ const Footer = () => {
 
             <div className="f_mi">
               <div className="f_i">
-                <h4 className="f_t">Follow us</h4>
+                <h4 className="f_t">{tCommon('footer.followUs')}</h4>
                 <div className="f_c">
                   <div className="f_s fl">
                     <span>
@@ -130,7 +135,7 @@ const Footer = () => {
             </div>
             <div className="f_mi">
               <div className="f_i">
-                <h4 className="f_t">Payment Methods</h4>
+                <h4 className="f_t">{tCommon('footer.paymentMethods')}</h4>
                 <div className="f_c">
                   <Image
                     src="/fonts/payment-methods.svg"
@@ -142,26 +147,26 @@ const Footer = () => {
               </div>
             </div>
           </div>
-            <div className="sP">
-                <div className="sP_i" id="toTop" data-bis-skin-checked="1"><span><i className="fa fa-angle-up"></i></span>
-                </div>
-                <a href="https://qr.kakao.com/talk/EicqtwXI6griqg1G99.rFTSkaJo-" rel="nofollow" target="_blank"
-                   className="sP_i"><span><i className="ic ic-talk"></i></span></a>
-                <a href="https://wa.me/84977903499" rel="nofollow" target="_blank" className="sP_i"><span><img
-                    src="/fonts/whatsapp-icon.svg" alt=""/></span></a>
-                <a href="https://zalo.me/84866903499" rel="nofollow" target="_blank" className="sP_i"><span><img
-                    src="/fonts/zalo-icon.svg" alt=""/></span></a>
-                <a href="tel:+84977903499" className="sP_i" data-title="0977903499"><span><i
-                    className="ic ic-phone"></i></span></a>
+          <div className="sP">
+            <div className="sP_i" id="toTop" data-bis-skin-checked="1"><span><i className="fa fa-angle-up"></i></span>
             </div>
+            <a href="https://qr.kakao.com/talk/EicqtwXI6griqg1G99.rFTSkaJo-" rel="nofollow" target="_blank"
+              className="sP_i"><span><i className="ic ic-talk"></i></span></a>
+            <a href="https://wa.me/84977903499" rel="nofollow" target="_blank" className="sP_i"><span><img
+              src="/fonts/whatsapp-icon.svg" alt="" /></span></a>
+            <a href="https://zalo.me/84866903499" rel="nofollow" target="_blank" className="sP_i"><span><img
+              src="/fonts/zalo-icon.svg" alt="" /></span></a>
+            <a href="tel:+84977903499" className="sP_i" data-title="0977903499"><span><i
+              className="ic ic-phone"></i></span></a>
+          </div>
         </div>
       </div>
 
-        <div className="f_e">
-            <div className="container">
-                <div>Copyright 2025 © Orientspahanoi. All Rights Reserved.</div>
-            </div>
+      <div className="f_e">
+        <div className="container">
+          <div>{tCommon('footer.copyright')}</div>
         </div>
+      </div>
     </footer>
   );
 };

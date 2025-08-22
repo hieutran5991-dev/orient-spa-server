@@ -1,0 +1,50 @@
+{
+    "title": "プロモーション",
+    "subtitle": "限定オファーをお楽しみいただき、リラックスできるスパ体験をお楽しみください",
+    "pageTitle": "オリエントスパ 2025年8月プロモーション",
+    "specialTitle": "特別プロモーション",
+    "specialSubtitle": "限定オファーをお楽しみいただき、リラックスできるスパ体験をお楽しみください",
+    "save": "節約",
+    "validUntil": "有効期限",
+    "learnMore": "詳細を見る",
+    "bookNow": "今すぐ予約",
+    "viewDetails": "詳細を見る",
+    "includes": "含まれるもの",
+    "minutes": "分",
+    "duration": "{minutes}分",
+    "readMore": "続きを読む",
+    "viewSpaMenu": "スパメニューを見る",
+    "originalPrice": "通常料金",
+    "specialPrice": "特別料金",
+    "youSave": "お得額",
+    "aboutTreatment": "このトリートメントについて",
+    "whatsIncluded": "含まれるもの",
+    "massageOptions": "マッサージスタイルのオプション",
+    "termsConditions": "利用規約",
+    "bookThisPromotion": "このプロモーションを予約",
+    "advancedBooking": "事前予約をお勧めします",
+    "backToPromotions": "← 全プロモーションに戻る",
+    "importantInfo": "重要な情報",
+    "bookingPolicy": "予約ポリシー",
+    "whatToBring": "お持ちいただくもの",
+    "contactForMoreInfo": "詳細についてはお問い合わせください",
+    "cta": {
+        "title": "オリエントスパで完璧なリラクゼーションを体験",
+        "description": "静かな環境でプロフェッショナルなサービスとともにプレミアムスパトリートメントを発見してください。最高のリラクゼーションの時間をお届けします。",
+        "contact": "相談へのお問い合わせ"
+    },
+    "policies": {
+        "advancedBooking": "特に週末は事前予約をお勧めします",
+        "arriveEarly": "予約時間の15分前にお越しください",
+        "cancellation": "キャンセルは少なくとも4時間前にお願いします"
+    },
+    "bringItems": {
+        "clothing": "快適な服装",
+        "identification": "身分証明書",
+        "healthInfo": "健康状態に関する情報（必要に応じて）"
+    },
+    "otherPromotions": "2025年8月の他のプロモーション",
+    "howToBook": "予約方法",
+    "sendMessage": "メッセージ",
+    "onlineReservation": "オンライン予約"
+}

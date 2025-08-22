@@ -4,22 +4,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
-import { SUPPORTED_LANGUAGE, type Locale } from '@/lib/i18n';
+import { SUPPORTED_LANGUAGE, type Locale } from '@/utils/constants';
 
 const Header = () => {
-    const t = useTranslations();
-    const locale = useLocale();
+    const tCommon = useTranslations('common');
+    const tBooking = useTranslations('booking');
+    const locale = useLocale() as Locale;
     const router = useRouter();
     const pathname = usePathname();
 
     const handleLanguageChange = (newLocale: Locale) => {
-        // Remove the current locale from the pathname
         const segments = pathname.split('/');
         if (SUPPORTED_LANGUAGE.includes(segments[1] as Locale)) {
             segments.splice(1, 1);
         }
 
-        // Add the new locale to the pathname
         const newPath = `/${newLocale}${segments.join('/')}`;
         router.push(newPath);
     };
@@ -42,20 +41,20 @@ const Header = () => {
                             <i className="ic ic-close"></i>
                         </span>
                         <ul className="h_n n1 fl">
-                            <li><a href={`/${locale}`}>{t('navigation.home')}</a></li>
-                            <li><a href={`/${locale}/services-prices`}>{t('navigation.services')}</a></li>
-                            <li><a href={`/${locale}/promotions`}>{t('navigation.promotions')}</a></li>
+                            <li><a href={`/${locale}`}>{tCommon('navigation.home')}</a></li>
+                            <li><a href={`/${locale}/services-prices`}>{tCommon('navigation.services')}</a></li>
+                            <li><a href={`/${locale}/promotions`}>{tCommon('navigation.promotions')}</a></li>
                         </ul>
                         <div className="h_v hidden-lg hidden-md">
                             <Link href={`/${locale}/booking`}>
-                                <span className="btn btn-1 btn-block">{t('booking.makeReservation')}</span>
+                                <span className="btn btn-1 btn-block">{tBooking('makeReservation')}</span>
                             </Link>
                         </div>
                     </div>
                     <div className="h_c w2 h2 hidden-sm hidden-xs">
                         <ul className="h_n n2 fl">
                             <li className="h_d lhs">
-                                <span>About Us <i className="fa fa-angle-down"></i></span>
+                                <span>{tCommon('navigation.about')} <i className="fa fa-angle-down"></i></span>
                                 <ul className="h_s w1">
                                     <li><Link href="/page/about-us.html">About Orient Spa</Link></li>
                                     <li>
@@ -69,8 +68,8 @@ const Header = () => {
                                     <li><Link href="/blog.html">Blogs</Link></li>
                                 </ul>
                             </li>
-                            <li className="lhs"><Link href={`/${locale}/contact`}>{t('navigation.contact')}</Link></li>
-                            <li className="lhs"><Link href={`/${locale}/booking`}>{t('navigation.booking')}</Link></li>
+                            <li className="lhs"><Link href={`/${locale}/contact`}>{tCommon('navigation.contact')}</Link></li>
+                            <li className="lhs"><Link href={`/${locale}/booking`}>{tCommon('navigation.booking')}</Link></li>
                             <li className="lgs">
                                 <span className="lgs_h"><i className="ic ic-language"></i></span>
                                 <ul className="h_s w2">
@@ -79,7 +78,7 @@ const Header = () => {
                                             onClick={() => handleLanguageChange('en')}
                                             className={`bg-transparent border-none text-inherit font-inherit cursor-pointer px-3 py-2 w-full text-left transition-colors duration-200 ease-in-out hover:bg-black/10 ${locale === 'en' ? 'bg-black/15 font-bold' : ''}`}
                                         >
-                                            🇺🇸 {t('languages.en')}
+                                            🇺🇸 {tCommon('languages.en')}
                                         </button>
                                     </li>
                                     <li>
@@ -87,7 +86,7 @@ const Header = () => {
                                             onClick={() => handleLanguageChange('vi')}
                                             className={`bg-transparent border-none text-inherit font-inherit cursor-pointer px-3 py-2 w-full text-left transition-colors duration-200 ease-in-out hover:bg-black/10 ${locale === 'vi' ? 'bg-black/15 font-bold' : ''}`}
                                         >
-                                            🇻🇳 {t('languages.vi')}
+                                            🇻🇳 {tCommon('languages.vi')}
                                         </button>
                                     </li>
                                     <li>
@@ -95,7 +94,7 @@ const Header = () => {
                                             onClick={() => handleLanguageChange('ja')}
                                             className={`bg-transparent border-none text-inherit font-inherit cursor-pointer px-3 py-2 w-full text-left transition-colors duration-200 ease-in-out hover:bg-black/10 ${locale === 'ja' ? 'bg-black/15 font-bold' : ''}`}
                                         >
-                                            🇯🇵 {t('languages.ja')}
+                                            🇯🇵 {tCommon('languages.ja')}
                                         </button>
                                     </li>
                                 </ul>
@@ -107,7 +106,6 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-
         </header>
     );
 };

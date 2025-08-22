@@ -20,7 +20,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<BookingAp
           }
           body.guest_1_services.push(value.toString());
         } else {
-          (body as any)[key] = value.toString();
+          (body as Record<string, string | string[]>)[key] = value.toString();
         }
       });
     } else {
@@ -51,9 +51,9 @@ export async function POST(request: NextRequest): Promise<NextResponse<BookingAp
         { date: '2025-08-27', time: '16:30', spa: '1' }
       ];
 
-      const isTimeBlocked = mockBookedTimes.some(booking => 
-        booking.date === body.date && 
-        booking.time === body.time && 
+      const isTimeBlocked = mockBookedTimes.some(booking =>
+        booking.date === body.date &&
+        booking.time === body.time &&
         booking.spa === body.spa
       );
 
