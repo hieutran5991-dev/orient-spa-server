@@ -1,11 +1,48 @@
 {
-    "title": "Contact Us",
-    "subtitle": "Get in touch with Orient Spa Hanoi",
-    "name": "Name",
-    "email": "Email",
-    "phone": "Phone",
-    "message": "Message",
-    "send": "Send Message",
-    "address": "Address",
-    "hours": "Opening Hours"
+  "title": "Contact us",
+  "emailSection": {
+    "title": "Contact us by email",
+    "description": "Let us pamper you with our unique treatments. We look forward to seeing you at Orient Spa."
+  },
+  "form": {
+    "fullName": "Full name",
+    "emailAddress": "Email address",
+    "title": "Title",
+    "content": "Content",
+    "contentPlaceholder": "Content...",
+    "send": "Send",
+    "captcha": {
+      "text": "Anti-Robot Verification",
+      "button": "Click to start verification"
+    }
+  },
+  "locations": {
+    "main": {
+      "title": "Orient spa hanoi",
+      "email": "Email",
+      "address1": "No 18 Bao Khanh, Hoan Kiem, Hanoi",
+      "phone1": "Phone: (+84) 866 903 499",
+      "address2": "No 26 Au Trieu, Hoan Kiem, Hanoi",
+      "phone2": "Phone: (+84) 977 903 499",
+      "address3": "No 22 Au Trieu, Hoan Kiem, Hanoi",
+      "phone3": "Phone: (+84) 867 903 499"
+    },
+    "cathedral": {
+      "title": "Orient Spa (Cathedral Branch)",
+      "address": "No 26 Au Trieu, Hoan Kiem, Hanoi",
+      "phone": "Phone: (+84) 977 903 499"
+    },
+    "laFlora": {
+      "title": "La Flora Spa",
+      "address": "No 22 Au Trieu, Hoan Kiem, Hanoi",
+      "phone": "Phone: (+84) 867 903 499"
+    }
+  },
+  "phoneSection": {
+    "title": "Contact us by phone",
+    "description": "Scan this code to start a WhatsApp or Kakao Talk chat with us"
+  },
+  "map": {
+    "alt": "Spa map showing Orient Spa locations in Hanoi"
+  }
 }

@@ -1,11 +1,48 @@
 {
-    "title": "Liên Hệ",
-    "subtitle": "Liên lạc với Orient Spa Hà Nội",
-    "name": "Tên",
-    "email": "Email",
-    "phone": "Điện thoại",
-    "message": "Tin nhắn",
-    "send": "Gửi tin nhắn",
-    "address": "Địa chỉ",
-    "hours": "Giờ mở cửa"
+  "title": "Liên hệ với chúng tôi",
+  "emailSection": {
+    "title": "Liên hệ với chúng tôi qua email",
+    "description": "Hãy để chúng tôi chăm sóc bạn với những liệu pháp độc đáo. Chúng tôi mong được gặp bạn tại Orient Spa."
+  },
+  "form": {
+    "fullName": "Họ và tên",
+    "emailAddress": "Địa chỉ email",
+    "title": "Tiêu đề",
+    "content": "Nội dung",
+    "contentPlaceholder": "Nội dung...",
+    "send": "Gửi",
+    "captcha": {
+      "text": "Xác minh chống robot",
+      "button": "Nhấp để bắt đầu xác minh"
+    }
+  },
+  "locations": {
+    "main": {
+      "title": "Orient spa hanoi",
+      "email": "Email",
+      "address1": "Số 18 Bảo Khánh, Hoàn Kiếm, Hà Nội",
+      "phone1": "Điện thoại: (+84) 866 903 499",
+      "address2": "Số 26 Ấu Triệu, Hoàn Kiếm, Hà Nội",
+      "phone2": "Điện thoại: (+84) 977 903 499",
+      "address3": "Số 22 Ấu Triệu, Hoàn Kiếm, Hà Nội",
+      "phone3": "Điện thoại: (+84) 867 903 499"
+    },
+    "cathedral": {
+      "title": "Orient Spa (Chi nhánh Nhà thờ)",
+      "address": "Số 26 Ấu Triệu, Hoàn Kiếm, Hà Nội",
+      "phone": "Điện thoại: (+84) 977 903 499"
+    },
+    "laFlora": {
+      "title": "La Flora Spa",
+      "address": "Số 22 Ấu Triệu, Hoàn Kiếm, Hà Nội",
+      "phone": "Điện thoại: (+84) 867 903 499"
+    }
+  },
+  "phoneSection": {
+    "title": "Liên hệ với chúng tôi qua điện thoại",
+    "description": "Quét mã QR này để bắt đầu cuộc trò chuyện WhatsApp hoặc Kakao Talk với chúng tôi"
+  },
+  "map": {
+    "alt": "Bản đồ spa hiển thị các chi nhánh Orient Spa tại Hà Nội"
+  }
 }

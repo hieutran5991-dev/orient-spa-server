@@ -1,7 +1,14 @@
 {
-    "title": "Spa Menu & Prices",
-    "subtitle": "Discover our relaxing spa treatments and wellness services",
-    "bookTreatment": "Book Your Treatment",
-    "duration": "Duration",
-    "price": "Price"
+  "title": "Spa Menu & Prices",
+  "subtitle": "Discover our relaxing spa treatments and wellness services",
+  "bookTreatment": "Book Your Treatment",
+  "duration": "Duration",
+  "price": "Price",
+  "hotlineText": "Call hotline <strong>0977 903 499</strong> for consultation and appointment booking.",
+  "downloadMenu": "Download PDF Menu",
+  "treatmentMenu": "Treatment Menu",
+  "minutes": "minutes",
+  "note": "Note:",
+  "noteText": "You can choose multiple treatments in one visit. For groups of 3 or more people, please",
+  "noteEnd": ". We look forward to serving you!"
 }

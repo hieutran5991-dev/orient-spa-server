@@ -80,29 +80,36 @@ const BookingContent = () => {
         };
 
         try {
-            const response = await fetch('/api/booking', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(finalBookingData)
-            });
+            // Import API service dynamically to avoid SSR issues
+            const { BookingApiService, apiUtils } = await import('@/lib/api-service');
 
-            const result = await response.json();
+            const result = await BookingApiService.createBooking(finalBookingData);
 
-            if (result.success) {
+            if (result.success && result.data) {
                 // Save final booking data to session storage for confirmation page
                 sessionStorage.setItem('final_booking_data', JSON.stringify(finalBookingData));
-                sessionStorage.setItem('booking_id', result.data?.bookingId || '');
+                sessionStorage.setItem('booking_id', result.data.bookingId || '');
 
                 // Redirect to confirmation page
                 router.push('/confirm');
             } else {
-                setError(result.message || 'Booking failed. Please try again.');
+                setError(result.message || 'Đặt lịch thất bại. Vui lòng thử lại.');
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error('Booking error:', error);
-            setError('Network error. Please check your connection and try again.');
+            const { apiUtils } = await import('@/lib/api-service');
+
+            if (apiUtils.isValidationError(error)) {
+                // Handle validation errors
+                const fieldErrors = apiUtils.getFieldErrors(error);
+                setError(Object.values(fieldErrors).join(', ') || 'Dữ liệu không hợp lệ');
+            } else if (apiUtils.isAuthError(error)) {
+                setError('Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.');
+            } else if (apiUtils.isServerError(error)) {
+                setError('Lỗi máy chủ. Vui lòng thử lại sau.');
+            } else {
+                setError(apiUtils.getErrorMessage(error) || 'Lỗi kết nối mạng. Vui lòng kiểm tra kết nối và thử lại.');
+            }
         } finally {
             setIsSubmitting(false);
         }

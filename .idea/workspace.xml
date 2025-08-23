@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0414ec2c-5753-4986-9de4-d528b0b5a6b3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HomeContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeContent.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +62,7 @@
     "git-widget-placeholder": "main",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
+    "last_opened_file_path": "/home/chientt/Desktop/Workspace/orient-spa-server",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -116,6 +115,7 @@
       <updated>1755786456743</updated>
       <workItem from="1755786458322" duration="8909000" />
       <workItem from="1755799270498" duration="395000" />
+      <workItem from="1755927853424" duration="3987000" />
     </task>
     <servers />
   </component>

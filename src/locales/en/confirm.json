@@ -1,12 +1,43 @@
 {
-    "title": "Booking Confirmation",
-    "subtitle": "Your booking has been confirmed",
-    "bookingDetails": "Booking Details",
-    "confirmationNumber": "Confirmation Number",
-    "thankYou": "Thank you for choosing Orient Spa Hanoi",
-    "nextSteps": "Next Steps",
-    "arriveEarly": "Please arrive 15 minutes before your appointment",
-    "whatToBring": "What to Bring",
-    "contactInfo": "Contact Information",
-    "questions": "Questions? Contact us"
+  "steps": {
+    "reserve": "Reserve",
+    "select": "Select",
+    "confirm": "Confirm!"
+  },
+  "appointmentSummary": {
+    "title": "Appointment summary",
+    "date": "Date:",
+    "time": "Time:",
+    "location": "Location:",
+    "guests": "No. of Guests:",
+    "guest": "Guest"
+  },
+  "serviceDetails": {
+    "title": "Your Service Details",
+    "totalPrice": "Total price"
+  },
+  "contactInfo": {
+    "title": "Contact info",
+    "lastName": "Last name:",
+    "firstName": "First name:",
+    "phone": "Phone number:",
+    "email": "Email:"
+  },
+  "spaLocation": {
+    "title": "Spa Location",
+    "spaName": "Spa Name:",
+    "location": "Location:",
+    "contact": "Contact:"
+  },
+  "cancellationPolicy": {
+    "title": "Cancellation policy",
+    "advance": "Please cancel or reschedule at least 24 hours in advance of your reservation time.",
+    "confirmation": "Upon booking, we will send you a confirmation email to confirm whether we can arrange the service for you and in case fully booked, we will inform you the closest time available.",
+    "urgent": "If you need to make change or make urgent booking please contact out hotline: +84 977 903 499 or email orientspahanoi@gmail.com",
+    "arrive": "We suggest you to arrive at our spa 10 minutes in advance of the treatment time to relax before the treatment time."
+  },
+  "actions": {
+    "changeService": "Change Service",
+    "confirm": "CONFIRM"
+  }
 }

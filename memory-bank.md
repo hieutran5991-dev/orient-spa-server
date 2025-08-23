@@ -1,475 +1,339 @@
-# Memory Bank - Development Rules & Standards
+# Memory Bank - Project Context & History
 
-## 🚀 Project Overview
-This is a **multilanguage Next.js project** with the following structure:
-- **Languages**: English (en), Vietnamese (vi), Japanese (ja)
-- **Framework**: Next.js 14+ with App Router
-- **Internationalization**: next-intl
-- **Styling**: CSS modules + global CSS
-- **Constants**: Centralized in `src/utils/constants.ts` ✅
-- **Translations**: Dynamic loading for better performance ✅
+## Project Overview
 
-> **📝 Note**: All locale constants have been migrated from `src/lib/i18n.ts` to `src/utils/constants.ts` for better organization and maintainability.
+**Project Name:** Next.js Multi-language Spa Website  
+**Framework:** Next.js 14 with App Router  
+**Internationalization:** next-intl  
+**Styling:** Tailwind CSS  
+**Language Support:** English, Vietnamese, Japanese
 
-> **🚀 Performance**: Translations are now loaded dynamically based on the current page, improving performance and reducing bundle size.
+## Project Timeline & Evolution
 
-## 📋 Core Development Rules
+### Phase 1: Initial Setup
 
-### 1. **Multilanguage Implementation (MANDATORY)**
-When adding new pages/components, **ALWAYS** implement translations:
+- **Request:** "for me plan to implement multi langueage"
+- **Implementation:** Set up `next-intl` library and basic configuration
+- **Files Created:**
+  - `next.config.ts` - next-intl plugin integration
+  - `src/lib/i18n.ts` - internationalization configuration
+  - `src/middleware.ts` - locale detection and routing
+  - Basic translation files for EN/VI/JA
 
-#### ✅ **DO THIS:**
-```tsx
-import { useTranslations } from 'next-intl';
-import type { Locale } from '@/lib/i18n';
+### Phase 2: Core Structure
 
-const MyComponent = () => {
-  const t = useTranslations();
-  const locale = useLocale() as Locale;
-  
-  return (
-    <div>
-      <h1>{t('page.title')}</h1>
-      <p>{t('page.description')}</p>
-    </div>
-  );
-};
+- **Request:** "i want / then no redirect to /en but to be English directly"
+- **Implementation:** Configured middleware with `localePrefix: 'as-needed'`
+- **Key Changes:**
+  - Root URL `/` serves English content directly
+  - `/[locale]/...` routes for other languages
+  - Deleted conflicting `page.tsx` files
+
+### Phase 3: Page Implementation
+
+- **Request:** "now do for me other page"
+- **Implementation:** Created locale-aware pages:
+  - `/[locale]/booking/page.tsx`
+  - `/[locale]/contact/page.tsx`
+  - `/[locale]/services-prices/page.tsx`
+  - `/[locale]/promotions/page.tsx`
+  - `/[locale]/promotions/[slug]/page.tsx`
+
+### Phase 4: Data Refactoring
+
+- **Request:** "sao có 2 mock data nhỉ, tôi muốn gộp chúng lại"
+- **Implementation:** Unified data structure in `src/lib/mockData.ts`
+- **Key Changes:**
+  - Merged `spaServices` and `promotionServices`
+  - Added `isPromotion`, `isHot`, `originalPrice`, `validUntil` fields
+  - Created `promotionPackages` array for new HTML structure
+
+### Phase 5: Component Refactoring
+
+- **Request:** "hãy tạo thành component service-prices giống trang home"
+- **Implementation:** Created dedicated content components:
+  - `ServicesPricesContent.tsx`
+  - `PromotionsContent.tsx`
+  - `PromotionDetailContent.tsx`
+  - Following `HomeContent.tsx` pattern
+
+### Phase 6: Styling Updates
+
+- **Request:** "in header make style jsx to tailwind"
+- **Implementation:** Converted Header component from JSX styling to Tailwind CSS
+
+### Phase 7: HTML Structure Implementation
+
+- **Request:** "this is detail page structure <main class='main-content'>..."
+- **Implementation:** Rebuilt `PromotionDetailContent.tsx` to match exact HTML structure
+- **Key Features:**
+  - Exact CSS class matching
+  - "Other promotions" section
+  - Proper breadcrumb navigation
+  - Full translation support
+
+### Phase 8: Contact Page Implementation
+
+- **Request:** "base on memory bank, rule @memory-bank.md adding contact: <main class='main-content'>..."
+- **Implementation:** Created complete contact page following project patterns
+- **Key Features:**
+  - Exact HTML structure matching with CSS classes
+  - Contact form with validation and API integration
+  - Google Maps integration
+  - QR code sections for WhatsApp/Kakao Talk
+  - Full multi-language support (EN/VI/JA)
+  - API endpoint for form submission
+  - Form state management and error handling
+
+## Technical Architecture
+
+### File Structure
+
+```
+src/
+├── app/
+│   ├── [locale]/
+│   │   ├── layout.tsx          # Locale-aware layout
+│   │   ├── page.tsx            # Homepage
+│   │   ├── booking/page.tsx    # Booking page
+│   │   ├── contact/page.tsx    # Contact page
+│   │   ├── services-prices/page.tsx  # Services & prices
+│   │   └── promotions/
+│   │       ├── page.tsx        # Promotions listing
+│   │       └── [slug]/page.tsx # Promotion detail
+│   └── layout.tsx              # Root layout (minimal)
+├── components/
+│   ├── HomeContent.tsx         # Homepage content
+│   ├── ServicesPricesContent.tsx  # Services content
+│   ├── PromotionsContent.tsx   # Promotions listing
+│   ├── PromotionDetailContent.tsx # Promotion detail
+│   ├── ContactContent.tsx      # Contact page content
+│   └── layout/
+│       ├── Header.tsx          # Navigation + language switcher
+│       ├── Footer.tsx          # Footer
+│       └── Layout.tsx          # Page wrapper
+├── lib/
+│   ├── i18n.ts                 # Internationalization config
+│   └── mockData.ts             # Unified data structure
+├── app/
+│   └── api/
+│       └── contact/
+│           └── route.ts         # Contact form API endpoint
+├── locales/
+│   ├── en/
+│   │   ├── common.json         # English common translations
+│   │   └── contact.json        # English contact translations
+│   ├── vi/
+│   │   ├── common.json         # Vietnamese common translations
+│   │   └── contact.json        # Vietnamese contact translations
+│   └── ja/
+│       ├── common.json         # Japanese common translations
+│       └── contact.json        # Japanese contact translations
+└── middleware.ts                # Locale routing
 ```
 
-#### ❌ **NEVER DO THIS:**
-```tsx
-// Hardcoded text - FORBIDDEN!
-const MyComponent = () => {
-  return (
-    <div>
-      <h1>Welcome to our spa</h1>  // ❌ NO HARDCODED TEXT
-      <p>Book your appointment today</p>  // ❌ NO HARDCODED TEXT
-    </div>
-  );
-};
-```
+### Key Technologies & Libraries
 
-### 1.1. **Locale Type Usage (REQUIRED)**
-Always use the `Locale` type from `@/utils/constants` instead of hardcoded string literals:
+#### Next.js Configuration
 
-```tsx
-// ✅ CORRECT - Import and use Locale type
-import type { Locale } from '@/utils/constants';
-const locale = useLocale() as Locale;
+- **App Router:** Uses `app/` directory with dynamic `[locale]` routing
+- **Middleware:** Handles locale detection and URL rewriting
+- **Image Optimization:** Next.js Image component for performance
 
-// ❌ INCORRECT - Hardcoded string literals
-const locale = useLocale() as 'en' | 'vi' | 'ja';
-```
+#### Internationalization
 
-**Benefits:**
-- Type safety across the entire application
-- Centralized locale management
-- Easier to add new languages in the future
-- Consistent locale handling
+- **next-intl:** Primary i18n library
+- **Locale Detection:** Automatic based on URL path
+- **Translation Files:** JSON-based with nested key structure
+- **Dynamic Locale:** `useLocale()` and `useTranslations()` hooks
 
-### 1.2. **Constants Organization (REQUIRED)**
-All project constants are centralized in `src/utils/constants.ts`:
+#### Data Management
 
-```tsx
-// ✅ CORRECT - Import from constants file
-import { SUPPORTED_LANGUAGE, DEFAULT_LANGUAGE, type Locale } from '@/utils/constants';
-import { BOOKING_CONFIG, VALIDATION_RULES } from '@/utils/constants';
+- **TypeScript Interfaces:** `SpaLocation`, `SpaService`, `PromotionPackage`
+- **Mock Data:** Centralized in `mockData.ts`
+- **Helper Functions:** Data retrieval and filtering utilities
 
-// ❌ INCORRECT - Hardcoded values or imports from other files
-const languages = ['en', 'vi', 'ja']; // ❌ NO HARDCODED ARRAYS
-import { SUPPORTED_LANGUAGE } from '@/lib/i18n'; // ❌ OLD IMPORT PATH
-```
+#### Styling
 
-**Available Constants:**
-- `SUPPORTED_LANGUAGE` - Array of supported locales
-- `DEFAULT_LANGUAGE` - Default locale
-- `Locale` - TypeScript type for locales
-- `APP_CONFIG` - Application configuration
-- `API_CONFIG` - API configuration
-- `BOOKING_CONFIG` - Booking system configuration
-- `VALIDATION_RULES` - Form validation rules
-- `UPLOAD_CONFIG` - File upload configuration
+- **Tailwind CSS:** Utility-first CSS framework
+- **Responsive Design:** Mobile-first approach
+- **Component Styling:** Consistent class naming conventions
 
-### 1.3. **Translation Loading with Namespaces (RECOMMENDED)**
-Use `next-intl`'s built-in namespace feature for clean and performant translation loading:
+## Translation Structure
 
-#### **✅ BEST APPROACH: Use useTranslations with Namespaces**
-```tsx
-import { useTranslations } from 'next-intl';
-
-const MyComponent = () => {
-  // Load page-specific translations
-  const t = useTranslations('home');
-  // Load common/shared translations
-  const tCommon = useTranslations('common');
-  
-  return (
-    <div>
-      <h1>{t('hero.title')}</h1>
-      <p>{t('hero.subtitle')}</p>
-      <button>{tCommon('bookNow')}</button>
-    </div>
-  );
-};
-```
-
-#### **Available Namespaces:**
-- `useTranslations('common')` - Shared translations (navigation, common buttons, etc.)
-- `useTranslations('home')` - Home page specific translations
-- `useTranslations('booking')` - Booking page specific translations
-- `useTranslations('services')` - Services page specific translations
-- `useTranslations('promotions')` - Promotions page specific translations
-- `useTranslations('contact')` - Contact page specific translations
-- `useTranslations('confirm')` - Confirm page specific translations
-
-#### **Benefits of Namespace Approach:**
-- ✅ **Cleaner Code** - No custom hooks needed
-- ✅ **Better Performance** - Built-in optimization by next-intl
-- ✅ **Type Safety** - Better TypeScript support
-- ✅ **Simpler Syntax** - Just `t('key')` instead of `translations.key`
-- ✅ **Automatic Caching** - next-intl handles caching automatically
-- ✅ **No Loading States** - Translations are available immediately
-
-#### **Example Usage in Components:**
-```tsx
-// Home page component
-const HomeContent = () => {
-  const t = useTranslations('home');
-  const tCommon = useTranslations('common');
-  
-  return (
-    <div>
-      <h1>{t('hero.title')}</h1>
-      <p>{t('hero.subtitle')}</p>
-      <button>{tCommon('bookNow')}</button>
-    </div>
-  );
-};
-
-// Booking page component
-const BookingContent = () => {
-  const t = useTranslations('booking');
-  const tCommon = useTranslations('common');
-  
-  return (
-    <div>
-      <h1>{t('title')}</h1>
-      <p>{t('makeReservation')}</p>
-      <button>{tCommon('bookNow')}</button>
-    </div>
-  );
-};
-```
-
-### 2. **Translation Key Structure**
-Follow this naming convention for translation keys:
-```
-page.section.element
-```
-Examples:
-- `home.hero.title`
-- `booking.form.submit`
-- `services.list.massage`
-
-### 3. **Page Structure Requirements**
-Every new page MUST follow this structure:
-
-#### **File Organization:**
-```
-src/app/[locale]/new-page/
-├── page.tsx          # Main page component
-└── (optional sub-pages)
-
-src/components/
-└── NewPageContent.tsx  # Main content component
-
-src/locales/
-├── en/
-│   └── new-page.json   # English translations
-├── vi/
-│   └── new-page.json   # Vietnamese translations
-└── ja/
-    └── new-page.json   # Japanese translations
-```
-
-#### **Page Component Structure:**
-```tsx
-'use client';
-
-import Layout from "@/components/layout/Layout";
-import NewPageContent from "@/components/NewPageContent";
-
-export default function NewPage() {
-  return (
-    <Layout className="new-page-container">
-      <NewPageContent />
-    </Layout>
-  );
-}
-```
-
-#### **Content Component Structure:**
-```tsx
-'use client';
-
-import { useTranslations, useLocale } from 'next-intl';
-import type { Locale } from '@/lib/i18n';
-
-const NewPageContent = () => {
-  const t = useTranslations();
-  const locale = useLocale() as Locale;
-  
-  return (
-    <div>
-      <h1>{t('newPage.title')}</h1>
-      <p>{t('newPage.description')}</p>
-    </div>
-  );
-};
-
-export default NewPageContent;
-```
-
-### 4. **Translation Files Structure**
-Each translation file must contain ALL text used in the component:
+### Key Translation Categories
 
 ```json
-// src/locales/en/new-page.json
 {
-  "newPage": {
-    "title": "Page Title",
-    "description": "Page description text",
-    "button": {
-      "submit": "Submit",
-      "cancel": "Cancel"
-    }
-  }
-}
-
-// src/locales/vi/new-page.json
-{
-  "newPage": {
-    "title": "Tiêu đề trang",
-    "description": "Mô tả trang",
-    "button": {
-      "submit": "Gửi",
-      "cancel": "Hủy"
-    }
-  }
-}
-
-// src/locales/ja/new-page.json
-{
-  "newPage": {
-    "title": "ページタイトル",
-    "description": "ページの説明",
-    "button": {
-      "submit": "送信",
-      "cancel": "キャンセル"
-    }
-  }
+  "navigation": "Navigation menu items",
+  "hero": "Homepage hero section",
+  "booking": "Booking form and process",
+  "about": "About page content",
+  "locations": "Spa location information",
+  "whyChooseUs": "Value proposition",
+  "services": "Service descriptions and pricing",
+  "contact": "Contact form and information",
+  "promotions": "Promotional content and offers",
+  "common": "Shared UI elements",
+  "languages": "Language names"
 }
 ```
 
-### 5. **Constants & Types Organization**
+### Translation Patterns
 
-#### **Constants** → `src/utils/constants.ts`
-```tsx
-// Add to existing constants file
-export const NEW_PAGE_CONSTANTS = {
-  MAX_ITEMS: 10,
-  TIMEOUT: 5000,
-  STATUSES: ['active', 'inactive', 'pending']
-} as const;
-```
+- **Nested Keys:** `promotions.whatsIncluded` for complex content
+- **Dynamic Values:** `{count}` placeholders for variables
+- **Consistent Naming:** Same key structure across all languages
+- **Context-Aware:** Different translations for different use cases
 
-#### **Types** → `src/types/newPage.ts`
-```tsx
-export interface NewPageData {
-  id: string;
-  title: string;
-  description: string;
-  status: 'active' | 'inactive' | 'pending';
-}
+## Data Models
 
-export interface NewPageFormData {
-  title: string;
-  description: string;
-}
-```
+### SpaService Interface
 
-#### **Mock Data** → `src/lib/mockData.ts`
-```tsx
-// Add to existing mockData.ts file
-export const newPageMockData: NewPageData[] = [
-  {
-    id: "1",
-    title: "Sample Title",
-    description: "Sample description",
-    status: "active"
-  }
-];
-```
-
-### 6. **CSS Rules**
-- **NO NEW CSS FILES** - Use existing CSS structure
-- **NO CSS MODULES** - Use global CSS classes
-- **NO TAILWIND** - Use custom CSS classes
-- CSS will be handled by the user (you)
-
-### 7. **Import Patterns**
-Always use absolute imports with `@/` prefix:
-```tsx
-// ✅ CORRECT
-import Layout from "@/components/layout/Layout";
-import { useTranslations } from 'next-intl';
-import { NEW_PAGE_CONSTANTS } from '@/lib/constants';
-
-// ❌ INCORRECT
-import Layout from "../../components/layout/Layout";
-import { useTranslations } from 'next-intl';
-```
-
-### 8. **Component Naming Convention**
-- **Page Components**: PascalCase (e.g., `NewPageContent`)
-- **Translation Keys**: camelCase (e.g., `newPage.title`)
-- **File Names**: PascalCase for components, kebab-case for pages
-
-### 9. **Required Imports for New Pages**
-```tsx
-'use client';
-import { useTranslations } from 'next-intl';
-import type { Locale } from '@/utils/constants';
-import Layout from "@/components/layout/Layout";
-```
-
-### 10. **Translation Usage in Components**
-Always use the namespace approach for clean and performant translations:
-
-```tsx
-// ✅ CORRECT - Use namespaces
-const MyComponent = () => {
-  const t = useTranslations('pageName');        // Page-specific translations
-  const tCommon = useTranslations('common');    // Shared translations
-  
-  return (
-    <div>
-      <h1>{t('title')}</h1>
-      <button>{tCommon('bookNow')}</button>
-    </div>
-  );
-};
-
-// ❌ INCORRECT - Don't use without namespace
-const MyComponent = () => {
-  const t = useTranslations();  // ❌ No namespace specified
-  
-  return (
-    <div>
-      <h1>{t('pageName.title')}</h1>  // ❌ Verbose key structure
-    </div>
-  );
-};
-```
-
-### 10. **Locale Handling**
-Always handle locale in components:
-```tsx
-import type { Locale } from '@/utils/constants';
-
-const locale = useLocale() as Locale;
-
-// Use locale for conditional logic if needed
-if (locale === 'vi') {
-  // Vietnamese specific logic
+```typescript
+interface SpaService {
+  id: string
+  slug: string
+  name: Record<Locale, string>
+  description: Record<Locale, string>
+  benefits: Record<Locale, string[]>
+  duration: string
+  price: number
+  originalPrice?: number
+  image: string
+  isPromotion: boolean
+  isHot: boolean
+  validUntil?: string
 }
 ```
 
-## 🔄 Workflow for Adding New Pages
+### SpaLocation Interface
 
-1. **Create page directory**: `src/app/[locale]/new-page/`
-2. **Create page.tsx**: Wrap with Layout component
-3. **Create content component**: `src/components/NewPageContent.tsx`
-4. **Add translations**: Create JSON files in all 3 languages
-5. **Add constants**: Update `src/utils/constants.ts`
-6. **Add types**: Create `src/types/newPage.ts`
-7. **Add mock data**: Update `src/lib/mockData.ts`
-8. **NO CSS** - You will handle styling
-
-## 📁 **Constants & Types Organization**
-
-#### **Constants** → `src/utils/constants.ts`
-```tsx
-// Add to existing constants file
-export const NEW_PAGE_CONSTANTS = {
-  MAX_ITEMS: 10,
-  TIMEOUT: 5000,
-  STATUSES: ['active', 'inactive', 'pending']
-} as const;
-```
-
-#### **Types** → `src/types/newPage.ts`
-```tsx
-export interface NewPageData {
-  id: string;
-  title: string;
-  description: string;
-  status: 'active' | 'inactive' | 'pending';
-}
-
-export interface NewPageFormData {
-  title: string;
-  description: string;
+```typescript
+interface SpaLocation {
+  id: string
+  name: Record<Locale, string>
+  address: Record<Locale, string>
+  maxCapacity: number
+  roomTypes: string
+  image: string
 }
 ```
 
-#### **Mock Data** → `src/lib/mockData.ts`
-```tsx
-// Add to existing mockData.ts file
-export const newPageMockData: NewPageData[] = [
-  {
-    id: "1",
-    title: "Sample Title",
-    description: "Sample description",
-    status: "active"
-  }
-];
+## Routing Logic
+
+### Middleware Configuration
+
+```typescript
+export default createMiddleware({
+  locales: SUPPORTED_LANGUAGE,
+  defaultLocale: DEFAULT_LANGUAGE,
+  localePrefix: 'as-needed'
+})
 ```
 
-## ⚠️ Common Mistakes to Avoid
+### URL Patterns
 
-- ❌ Hardcoding text in components
-- ❌ Creating new CSS files
-- ❌ Using relative imports
-- ❌ Forgetting to wrap with Layout component
-- ❌ Missing translation keys
-- ❌ Inconsistent naming conventions
-- ❌ Not handling locale properly
+- **Root:** `/` → English content (default)
+- **Localized:** `/[locale]/...` → Language-specific content
+- **Dynamic:** `/[locale]/promotions/[slug]` → Specific promotion
 
-## 📚 Reference Examples
+### Locale Detection
 
-See existing implementations in:
-- `src/app/[locale]/page.tsx` (Home page)
-- `src/components/HomeContent.tsx`
-- `src/locales/en/home.json`
-- `src/lib/mockData.ts`
-- `src/types/booking.ts`
+- **URL Path:** Primary method via `[locale]` segment
+- **Fallback:** Defaults to English if locale invalid
+- **Validation:** Uses `hasLocale()` helper function
 
-## 🎯 Success Checklist
+## Error Handling
 
-Before submitting a new page, ensure:
-- [ ] All text uses translation keys
-- [ ] Translations exist in all 3 languages
-- [ ] Page wrapped with Layout component
-- [ ] Content component created in components folder
-- [ ] Constants added to utils/constants.ts
-- [ ] Types added to types folder
-- [ ] Mock data added to lib/mockData.ts
-- [ ] No new CSS files created
-- [ ] All imports use @/ prefix
-- [ ] Locale properly handled with Locale type
-- [ ] All constants imported from @/utils/constants
+### Common Issues Resolved
 
----
+1. **404 Errors:** Fixed conflicting page.tsx files
+2. **TypeScript Errors:** Corrected type definitions for next-intl
+3. **Rendering Errors:** Fixed multi-language object rendering
+4. **Import Errors:** Resolved missing export issues
 
-**Remember**: This is a multilanguage project. Every piece of text must be translatable!
+### Error Prevention
+
+- **Type Safety:** Strict TypeScript configuration
+- **Validation:** Locale validation in middleware
+- **Fallbacks:** Default values for missing data
+- **Error Boundaries:** Graceful error handling
+
+## Performance Optimizations
+
+### Image Handling
+
+- **Next.js Image:** Automatic optimization and lazy loading
+- **Responsive Images:** Proper sizing for different devices
+- **Format Optimization:** WebP support when available
+
+### Code Splitting
+
+- **Dynamic Imports:** Lazy loading for heavy components
+- **Route-based Splitting:** Automatic code splitting by route
+- **Bundle Optimization:** Minimized bundle size
+
+## User Experience Features
+
+### Language Switching
+
+- **Header Integration:** Language switcher in navigation
+- **URL Updates:** Seamless locale switching
+- **State Persistence:** Maintains user language preference
+
+### Responsive Design
+
+- **Mobile First:** Optimized for mobile devices
+- **Breakpoint System:** Consistent responsive behavior
+- **Touch Friendly:** Proper touch targets and interactions
+
+### Navigation
+
+- **Breadcrumbs:** Clear navigation hierarchy
+- **Active States:** Visual feedback for current page
+- **Smooth Transitions:** Pleasant user experience
+
+## Future Considerations
+
+### Scalability
+
+- **Content Management:** CMS integration potential
+- **Dynamic Routes:** Expandable promotion system
+- **API Integration:** Replace mock data with real APIs
+
+### Features
+
+- **Search Functionality:** Service and promotion search
+- **User Accounts:** Customer management system
+- **Online Booking:** Real-time availability and booking
+
+### Maintenance
+
+- **Translation Updates:** Easy content management
+- **Performance Monitoring:** Ongoing optimization
+- **Security Updates:** Regular dependency updates
+
+## Lessons Learned
+
+### Best Practices
+
+1. **Start Simple:** Begin with basic structure, add complexity gradually
+2. **Type Safety:** Use TypeScript from the beginning
+3. **Component Separation:** Keep pages simple, move logic to components
+4. **Data Consistency:** Unified data structure prevents conflicts
+5. **Translation Planning:** Plan translation keys carefully
+
+### Common Pitfalls
+
+1. **File Conflicts:** Avoid multiple page.tsx files
+2. **Type Mismatches:** Ensure next-intl types are correct
+3. **Import Issues:** Use absolute imports consistently
+4. **State Management:** Keep component state local when possible
+
+### Development Tips
+
+1. **Incremental Changes:** Make small, testable changes
+2. **Error Handling:** Implement proper error boundaries
+3. **Performance:** Monitor bundle size and loading times
+4. **Testing:** Test on multiple devices and browsers

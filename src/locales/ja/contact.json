@@ -1,11 +1,48 @@
 {
-    "title": "お問い合わせ",
-    "subtitle": "オリエントスパハノイへのお問い合わせ",
-    "name": "お名前",
-    "email": "メールアドレス",
-    "phone": "電話番号",
-    "message": "メッセージ",
-    "send": "メッセージを送信",
-    "address": "住所",
-    "hours": "営業時間"
+  "title": "お問い合わせ",
+  "emailSection": {
+    "title": "メールでお問い合わせ",
+    "description": "私たちのユニークなトリートメントでおもてなしいたします。オリエントスパでお会いできることを楽しみにしています。"
+  },
+  "form": {
+    "fullName": "氏名",
+    "emailAddress": "メールアドレス",
+    "title": "件名",
+    "content": "内容",
+    "contentPlaceholder": "内容...",
+    "send": "送信",
+    "captcha": {
+      "text": "ボット防止認証",
+      "button": "認証を開始するにはクリックしてください"
+    }
+  },
+  "locations": {
+    "main": {
+      "title": "オリエントスパハノイ",
+      "email": "メール",
+      "address1": "No 18 Bao Khanh, Hoan Kiem, Hanoi",
+      "phone1": "電話: (+84) 866 903 499",
+      "address2": "No 26 Au Trieu, Hoan Kiem, Hanoi",
+      "phone2": "電話: (+84) 977 903 499",
+      "address3": "No 22 Au Trieu, Hoan Kiem, Hanoi",
+      "phone3": "電話: (+84) 867 903 499"
+    },
+    "cathedral": {
+      "title": "オリエントスパ（大聖堂支店）",
+      "address": "No 26 Au Trieu, Hoan Kiem, Hanoi",
+      "phone": "電話: (+84) 977 903 499"
+    },
+    "laFlora": {
+      "title": "ラ・フローラスパ",
+      "address": "No 22 Au Trieu, Hoan Kiem, Hanoi",
+      "phone": "電話: (+84) 867 903 499"
+    }
+  },
+  "phoneSection": {
+    "title": "電話でお問い合わせ",
+    "description": "このQRコードをスキャンして、WhatsAppまたはKakao Talkでチャットを開始してください"
+  },
+  "map": {
+    "alt": "ハノイのオリエントスパの場所を示すスパマップ"
+  }
 }

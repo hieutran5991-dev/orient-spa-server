@@ -1,12 +1,43 @@
 {
-    "title": "予約確認",
-    "subtitle": "ご予約が確認されました",
-    "bookingDetails": "予約詳細",
-    "confirmationNumber": "確認番号",
-    "thankYou": "オリエントスパハノイをご利用いただき、ありがとうございます",
-    "nextSteps": "次のステップ",
-    "arriveEarly": "予約時間の15分前にお越しください",
-    "whatToBring": "お持ちいただくもの",
-    "contactInfo": "連絡先情報",
-    "questions": "ご質問がございましたら、お問い合わせください"
+  "steps": {
+    "reserve": "予約",
+    "select": "選択",
+    "confirm": "確認！"
+  },
+  "appointmentSummary": {
+    "title": "予約概要",
+    "date": "日付：",
+    "time": "時間：",
+    "location": "場所：",
+    "guests": "ゲスト数：",
+    "guest": "ゲスト"
+  },
+  "serviceDetails": {
+    "title": "サービス詳細",
+    "totalPrice": "合計料金"
+  },
+  "contactInfo": {
+    "title": "連絡先情報",
+    "lastName": "姓：",
+    "firstName": "名：",
+    "phone": "電話番号：",
+    "email": "メール："
+  },
+  "spaLocation": {
+    "title": "スパの場所",
+    "spaName": "スパ名：",
+    "location": "住所：",
+    "contact": "連絡先："
+  },
+  "cancellationPolicy": {
+    "title": "キャンセルポリシー",
+    "advance": "ご予約時間の少なくとも24時間前にキャンセルまたは変更をお願いいたします。",
+    "confirmation": "ご予約後、サービスの手配が可能かどうかを確認するための確認メールをお送りいたします。満席の場合は、最も近い利用可能な時間をお知らせいたします。",
+    "urgent": "変更や緊急予約が必要な場合は、ホットライン：+84 977 903 499またはメール：orientspahanoi@gmail.comまでご連絡ください。",
+    "arrive": "トリートメント時間の10分前にスパにお越しいただき、トリートメント前にリラックスしていただくことをお勧めします。"
+  },
+  "actions": {
+    "changeService": "サービス変更",
+    "confirm": "確認"
+  }
 }

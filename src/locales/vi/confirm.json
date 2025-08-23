@@ -1,12 +1,43 @@
 {
-    "title": "Xác Nhận Đặt Lịch",
-    "subtitle": "Đặt lịch của bạn đã được xác nhận",
-    "bookingDetails": "Chi Tiết Đặt Lịch",
-    "confirmationNumber": "Số Xác Nhận",
-    "thankYou": "Cảm ơn bạn đã chọn Orient Spa Hà Nội",
-    "nextSteps": "Các Bước Tiếp Theo",
-    "arriveEarly": "Vui lòng đến sớm 15 phút trước giờ hẹn",
-    "whatToBring": "Những Gì Cần Mang Theo",
-    "contactInfo": "Thông Tin Liên Hệ",
-    "questions": "Có câu hỏi? Liên hệ với chúng tôi"
+  "steps": {
+    "reserve": "Đặt lịch",
+    "select": "Chọn dịch vụ",
+    "confirm": "Xác nhận!"
+  },
+  "appointmentSummary": {
+    "title": "Tóm tắt cuộc hẹn",
+    "date": "Ngày:",
+    "time": "Giờ:",
+    "location": "Địa điểm:",
+    "guests": "Số khách:",
+    "guest": "Khách"
+  },
+  "serviceDetails": {
+    "title": "Chi Tiết Dịch Vụ",
+    "totalPrice": "Tổng tiền"
+  },
+  "contactInfo": {
+    "title": "Thông tin liên hệ",
+    "lastName": "Họ:",
+    "firstName": "Tên:",
+    "phone": "Số điện thoại:",
+    "email": "Email:"
+  },
+  "spaLocation": {
+    "title": "Địa Điểm Spa",
+    "spaName": "Tên Spa:",
+    "location": "Địa chỉ:",
+    "contact": "Liên hệ:"
+  },
+  "cancellationPolicy": {
+    "title": "Chính sách hủy lịch",
+    "advance": "Vui lòng hủy hoặc thay đổi lịch ít nhất 24 giờ trước thời gian đặt lịch.",
+    "confirmation": "Sau khi đặt lịch, chúng tôi sẽ gửi email xác nhận để xác nhận liệu chúng tôi có thể sắp xếp dịch vụ cho bạn hay không và trong trường hợp đã đầy, chúng tôi sẽ thông báo thời gian gần nhất có sẵn.",
+    "urgent": "Nếu bạn cần thay đổi hoặc đặt lịch khẩn cấp, vui lòng liên hệ hotline: +84 977 903 499 hoặc email orientspahanoi@gmail.com",
+    "arrive": "Chúng tôi khuyên bạn nên đến spa trước 10 phút so với thời gian điều trị để thư giãn trước khi bắt đầu."
+  },
+  "actions": {
+    "changeService": "Thay Đổi Dịch Vụ",
+    "confirm": "XÁC NHẬN"
+  }
 }

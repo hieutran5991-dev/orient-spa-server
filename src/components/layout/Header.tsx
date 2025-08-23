@@ -42,7 +42,7 @@ const Header = () => {
                         </span>
                         <ul className="h_n n1 fl">
                             <li><a href={`/${locale}`}>{tCommon('navigation.home')}</a></li>
-                            <li><a href={`/${locale}/services-prices`}>{tCommon('navigation.services')}</a></li>
+                            <li><Link href={`/${locale}/services-prices`}>{tCommon('navigation.services')}</Link></li>
                             <li><a href={`/${locale}/promotions`}>{tCommon('navigation.promotions')}</a></li>
                         </ul>
                         <div className="h_v hidden-lg hidden-md">
