@@ -3,11 +3,15 @@
 import {useEffect, useState} from 'react';
 import {useRouter} from 'next/navigation';
 import {useTranslations} from 'next-intl';
-import type {NamespaceKeys} from "use-intl/dist/types/core/MessageKeys";
-import type {BookingData} from "@/types/booking";
+import type {NamespaceKeys} from "use-intl";
+import type {BookingData, Product} from "@/types/booking";
 import {formatPrice} from "@/utils/format";
 
-const BookingContent = ({products}) => {
+interface BookingContentProps {
+    products: Product[];
+}
+
+const BookingContent = ({products}: BookingContentProps) => {
     const router = useRouter();
     const [bookingData, setBookingData] = useState<BookingData>({});
     const [guestForms, setGuestForms] = useState<Record<string, any>[]>([]);
@@ -35,9 +39,10 @@ const BookingContent = ({products}) => {
         }
     }, []);
 
-    const buildBookingDetails = (formData: any, numberOfGuest) => {
+    const buildBookingDetails = (formData: any, numberOfGuest: number | string | undefined) => {
         const bookingDetails: Record<string, string[]> = {};
         const numGuests = typeof numberOfGuest === 'string' ? parseInt(numberOfGuest) : numberOfGuest;
+        if(!numGuests || isNaN(numGuests) || numGuests < 1) return bookingDetails;
 
         for (let i = 0; i < numGuests; i++) {
             bookingDetails[`guest_${i + 1}_services`] = formData.getAll(`guest_${i + 1}_services`) as string[];

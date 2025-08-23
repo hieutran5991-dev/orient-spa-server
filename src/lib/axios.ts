@@ -26,8 +26,8 @@ export const HTTP_STATUS_MESSAGES = {
 } as const
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000',
-  timeout: process.env.API_TIMEOUT,
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000',
+  timeout: Number(process.env.API_TIMEOUT) || 30000,
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json'
@@ -51,7 +51,7 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   (response: AxiosResponse) => {
     if(response?.data) {
-        return response.data?.data
+        return response.data
     }
   },
   (error: AxiosError) => {

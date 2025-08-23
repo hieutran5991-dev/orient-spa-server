@@ -11,7 +11,8 @@ interface HomePageProps {
 }
 
 export default async function Home({ params }: HomePageProps) {
-  const spaLocations = await getListSpa() as SpaLocation[];
+  const spaLocationRes = await getListSpa();
+  const spaLocations = spaLocationRes?.data || [];
 
   return (
     <>

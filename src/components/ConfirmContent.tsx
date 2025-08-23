@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useTranslations, useLocale } from 'next-intl'
 import type { Locale } from '@/utils/constants'
 import { getSpaLocationBySlug } from '@/lib/mockData'
-import type {NamespaceKeys} from "use-intl/dist/types/core/MessageKeys";
+import type {NamespaceKeys} from "use-intl";
 import {saveBooking} from "@/api/common";
 import {BookingData} from "@/types/booking";
 import {setSocketKeepAlive} from "@smithy/node-http-handler/dist-types/set-socket-keep-alive";

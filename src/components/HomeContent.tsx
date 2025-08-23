@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import type { NamespaceKeys } from "use-intl/dist/types/core/MessageKeys";
+import type { NamespaceKeys } from "use-intl";
 import type { SpaLocation } from '@/types/api';
 import BookingForm from './BookingForm';
 

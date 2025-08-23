@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import type { Locale } from '@/utils/constants';
-import { NamespaceKeys } from "use-intl/dist/types/core/MessageKeys";
+import type { NamespaceKeys } from "use-intl";
 import { SpaLocation } from "@/types/api";
 
 interface BookingFormData {

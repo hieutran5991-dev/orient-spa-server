@@ -6,12 +6,12 @@ import {getListProducts, getListSpa} from "@/api/common";
 import {SpaLocation} from "@/types/api";
 
 export default async function BookingPage() {
-  const products = await getListProducts();
-  const spaLocations = await getListSpa() as SpaLocation[];
+  const productRes = await getListProducts();
+  const spaLocationRes= await getListSpa();
 
   return (
-    <Layout className="booking-container" spaLocations={spaLocations}>
-      <BookingContent products={products}/>
+    <Layout className="booking-container" spaLocations={spaLocationRes?.data || []}>
+      <BookingContent products={productRes?.data || []}/>
       <Script src="/js/booking.js" strategy="afterInteractive"/>
     </Layout>
   );
