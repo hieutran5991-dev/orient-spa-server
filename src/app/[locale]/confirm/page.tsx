@@ -1,5 +1,3 @@
-'use client'
-
 import '@/css/booking.css'
 import Layout from '@/components/layout/Layout'
 import ConfirmContent from '@/components/ConfirmContent'

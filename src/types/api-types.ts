@@ -99,3 +99,20 @@ export interface BookingData {
         services: string[]
     }>
 }
+
+
+export interface ApiResponse<T = any> {
+  success: boolean;
+  data?: T;
+}
+
+export interface SpaLocationApi {
+  id: number;
+  name: string;
+  address: string;
+  phone: string;
+  email: string;
+  open_time: string;
+  close_time: string;
+  capacity: number;
+}

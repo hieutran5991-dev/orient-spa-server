@@ -3,21 +3,8 @@ export const SUPPORTED_LANGUAGE = ['en', 'vi', 'ja'] as const
 export const DEFAULT_LANGUAGE = 'en' as const
 export type Locale = (typeof SUPPORTED_LANGUAGE)[number]
 
-// App Configuration
-export const APP_CONFIG = {
-  name: 'Orient Spa Hanoi',
-  description: 'A relaxing escape for all your senses, in the heart of Hanoi.',
-  version: '1.0.0'
-} as const
-
-export const API_CONFIG = {
-  baseUrl: process.env.NEXT_PUBLIC_API_URL || '/api'
-} as const
-
 export const BOOKING_CONFIG = {
   maxGuests: 10,
-  minAdvanceBooking: 24,
-  maxAdvanceBooking: 30,
   timeSlots: {
     morning: ['10:00', '10:30', '11:00', '11:30'],
     afternoon: [

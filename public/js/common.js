@@ -10096,27 +10096,27 @@ jQuery(document).ready(function($) {
             checkDate();
         },
     });
-    $('.js-v1, .js-v2, .js-v3, .js-v4, .s1_s').on('touchstart click', function(e) {
-        e.stopPropagation();
-    });
-    $(".js-v1").click(function() {
-        $(".s1_s2, .s1_s3").hide();
-        if (ww < 992) {
-            $('body').addClass('box-hidden');
-            $('.main-content').addClass('zf');
-        }
-        $(".s1_s1").show();
-    });
+    // $('.js-v1, .js-v2, .js-v3, .js-v4, .s1_s').on('touchstart click', function(e) {
+    //     e.stopPropagation();
+    // });
+    // $(".js-v1").click(function() {
+    //     $(".s1_s2, .s1_s3").hide();
+    //     if (ww < 992) {
+    //         $('body').addClass('box-hidden');
+    //         $('.main-content').addClass('zf');
+    //     }
+    //     $(".s1_s1").show();
+    // });
     $(".js-v2").click(function() {
         $(".s1_s1, .s1_s3, .s1_s4").hide();
         $(".s1_s2").show();
     });
-    $(".s1_s2 ul li").click(function() {
-        $(".s1_s2").hide();
-        $(".js-v2").val($(this).find('strong').text());
-        $('#spa_id').val($(this).attr('data-value'));
-        checkDate();
-    });
+    // $(".s1_s2 ul li").click(function() {
+    //     $(".s1_s2").hide();
+    //     $(".js-v2").val($(this).find('strong').text());
+    //     $('#spa_id').val($(this).attr('data-value'));
+    //     checkDate();
+    // });
     $(".js-v3").click(function() {
         $(".s1_s1, .s1_s2, .s1_s4").hide();
         $(".s1_s3").show();
@@ -10133,9 +10133,9 @@ jQuery(document).ready(function($) {
             $(".js-v4").val($(this).text());
         });
     });
-    $('body').on('touchstart click', function(e) {
-        $(".s1_s").hide();
-    });
+    // $('body').on('touchstart click', function(e) {
+    //     $(".s1_s").hide();
+    // });
     $('.js-done').click(function() {
         $('.s1_s').hide();
     });
@@ -10166,47 +10166,3 @@ jQuery(document).ready(function($) {
         }
     });
 });
-
-function bookService(id) {
-    var name = $('#name' + id).text();
-    $('#modal-name').text(name);
-    $('#service_id').val(id);
-    var lang = $('#lang').val();
-    $.ajax({
-        type: "POST",
-        url: '/ajax/check-spas',
-        data: {
-            service_id: id,
-            lang: lang
-        },
-        success: function(data) {
-            if ($.trim(data) != "ERROR") {
-                $('#listSpas').html(data);
-                $(".s1_s2 ul li").click(function() {
-                    $(".s1_s2").hide();
-                    $(".js-v2").val($(this).find('strong').text());
-                    $('#spa_id').val($(this).attr('data-value'));
-                    checkDate();
-                });
-            }
-        }
-    });
-}
-
-function checkDate(date) {
-    var spa_id = $('#spa_id').val();
-    var date = $('#date_hide').val();
-    $.ajax({
-        type: "POST",
-        url: '/ajax/check-date',
-        data: {
-            spa_id: spa_id,
-            date: date
-        },
-        success: function(data) {
-            if ($.trim(data) != "ERROR") {
-                $('#listTimes').html(data);
-            }
-        }
-    });
-};

@@ -10,6 +10,7 @@ import { formatPrice } from '@/utils/format'
 const ServicesPricesContent = () => {
   const locale = useLocale() as Locale
   const t = useTranslations('services' as NamespaceKeys<string, any>)
+  const tCommon = useTranslations('common' as NamespaceKeys<string, any>)
   const [activeTab, setActiveTab] = useState('tab-1')
 
   // Get services data
@@ -148,7 +149,7 @@ const ServicesPricesContent = () => {
                           </div>
                         </div>
                         <a className='btn btn-2 s8_v js-bk' href={`/${locale}/booking?service=${service.id}`}>
-                          {t('common.bookNow')}
+                          {tCommon('common.bookNow')}
                         </a>
                       </div>
                     ))}

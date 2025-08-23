@@ -1,67 +1,19 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
-import type { Locale } from '@/utils/constants';
-import { spaLocations } from '@/lib/mockData';
+import { useTranslations } from 'next-intl';
+import type { NamespaceKeys } from "use-intl/dist/types/core/MessageKeys";
+import type { SpaLocation } from '@/types/api';
+import BookingForm from './BookingForm';
 
-const HomeContent = () => {
-    const router = useRouter();
-    const locale = useLocale() as Locale;
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [error, setError] = useState('');
+interface HomeContentProps {
+    spaLocations: SpaLocation[];
+}
 
-    const t = useTranslations('home');
-    const tCommon = useTranslations('common');
-    const tBooking = useTranslations('booking');
-    const tPromotions = useTranslations('promotions');
+const HomeContent = ({ spaLocations }: HomeContentProps) => {
+    const t = useTranslations('home' as NamespaceKeys<any, any>);
+    const tCommon = useTranslations('common' as NamespaceKeys<any, any>);
+    const tPromotions = useTranslations('promotions' as NamespaceKeys<any, any>);
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        setError('');
-
-        const form = e.target as HTMLFormElement;
-        const formData = new FormData(form);
-
-        // Get form data
-        const spaInput = document.getElementById('f2') as HTMLInputElement;
-        const spaId = spaInput.getAttribute('data-spa-id') || spaInput.value;
-
-        const bookingData = {
-            spa: spaId,
-            date: formData.get('date'),
-            time: formData.get('time'),
-            people: formData.get('people')
-        };
-
-        try {
-            const response = await fetch('/api/booking', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(bookingData)
-            });
-
-            const result = await response.json();
-
-            if (result.success) {
-                sessionStorage.setItem('booking_form_data', JSON.stringify(bookingData));
-
-                router.push('/booking');
-            } else {
-                setError(result.message || 'Booking failed. Please try again.');
-            }
-        } catch (error) {
-            setError('Network error. Please check your connection and try again.');
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
     const heroBanners = [
         {
             id: 1,
@@ -86,41 +38,14 @@ const HomeContent = () => {
         subtitle: t('hero.subtitle')
     };
 
-    const timeSlots = {
-        availabilityDate: "Wed, 27 Aug 2025",
-        periods: [
-            {
-                id: 1,
-                period: t('timePeriods.morning'),
-                times: ["10:00", "10:30", "11:00", "11:30"]
-            },
-            {
-                id: 2,
-                period: t('timePeriods.afternoon'),
-                times: ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30"]
-            },
-            {
-                id: 3,
-                period: t('timePeriods.evening'),
-                times: ["19:00", "19:30", "20:00", "20:30"]
-            }
-        ]
-    };
-
-    const guestSelection = {
-        maxGuests: 10,
-        guests: Array.from({ length: 10 }, (_, i) => i + 1)
-    };
-
     const aboutContent = {
         description: t('about.description')
     };
 
-    // Locations section data
     const locationsSection = {
         title: t('locations.title'),
         subtitle: t('locations.subtitle'),
-        locations: [
+        locations: spaLocations && spaLocations?.length > 0 ? spaLocations : [
             {
                 id: 1,
                 name: "Orient Spa & Nails",
@@ -133,7 +58,6 @@ const HomeContent = () => {
         ]
     };
 
-    // Promotions section data
     const promotionsSection = {
         title: t('promotions.title'),
         subtitle: t('promotions.subtitle'),
@@ -154,7 +78,6 @@ const HomeContent = () => {
         ]
     };
 
-    // Why choose us section data
     const whyChooseUsSection = {
         title: t('whyChooseUs.title'),
         subtitle: t('whyChooseUs.subtitle'),
@@ -209,168 +132,7 @@ const HomeContent = () => {
                     <p className="a1_cp">{heroContent.subtitle}</p>
                 </div>
 
-                <div className="s1">
-                    <form action="/api/booking" method="post" id="formBookBox" className="s1_f" onSubmit={handleSubmit}>
-                        <div className="s1_t hidden-lg hidden-md">
-                            <strong>{tBooking('title')}</strong>
-                            <i className="s1_z ic ic-close"></i>
-                        </div>
-                        <div className="row">
-                            <div className="s1_g">
-                                <div className="form-group has-feedback">
-                                    <input
-                                        type="text"
-                                        id="f2"
-                                        name="spa"
-                                        className="form-control u1 js-v2"
-                                        required
-                                    />
-                                    <label htmlFor="f2" className="s1_v">{tBooking('location')}</label>
-                                    <span className="fc-feedback">
-                                        <i className="fa fa-angle-down"></i>
-                                    </span>
-
-                                    <div className="s1_s w2 s1_s2">
-                                        <div className="s1_sh hidden-lg hidden-md">
-                                            <div className="s1_st">{tBooking('selectLocation')}</div>
-                                            <span className="s1_x js-done">
-                                                <i className="ic ic-close"></i>
-                                            </span>
-                                        </div>
-                                        <div className="s1_sd">
-                                            <ul className="s1_d">
-                                                {spaLocations.map((location) => (
-                                                    <li key={location.id} data-value={location.id}>
-                                                        <strong>{location.name[locale]}</strong>
-                                                        <span>{location.address[locale]}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                        <div className="s1_sf hidden-lg hidden-md">
-                                            <span className="s1_su js-done btn btn-1 btn-block">{tBooking('done')}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="s1_g">
-                                <div className="form-group has-feedback">
-                                    <input
-                                        type="text"
-                                        id="date"
-                                        name="date"
-                                        className="form-control u1 js-v1"
-                                        required
-                                    />
-                                    <label htmlFor="date" className="s1_v">{tBooking('date')}</label>
-                                    <span className="fc-feedback">
-                                        <i className="fa fa-calendar"></i>
-                                    </span>
-                                </div>
-
-                                {/*<div className="s1_s w2 s1_s1">*/}
-                                {/*    <div className="s1_sh hidden-lg hidden-md">*/}
-                                {/*        <div className="s1_st">{t('booking.selectDate')}</div>*/}
-                                {/*        <span className="s1_x js-done"><i className="ic ic-close"></i></span>*/}
-                                {/*    </div>*/}
-                                {/*    <div className="s1_sd">*/}
-                                {/*        <div className="s1_y" id="iDate">*/}
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-                                {/*    <div className="s1_sf hidden-lg hidden-md">*/}
-                                {/*        <span className="s1_su js-done btn btn-1 btn-block">{t('booking.done')}</span>*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-                            </div>
-                            <div className="s1_g">
-                                <div className="form-group has-feedback">
-                                    <input
-                                        type="text"
-                                        id="f3"
-                                        name="time"
-                                        className="form-control u1 js-v3"
-                                        required
-                                    />
-                                    <label htmlFor="f3" className="s1_v">{tBooking('time')}</label>
-                                    <span className="fc-feedback">
-                                        <i className="fa fa-angle-down"></i>
-                                    </span>
-
-                                    <div className="s1_s w2 s1_s3">
-                                        <div className="s1_sh hidden-lg hidden-md">
-                                            <div className="s1_st">{tBooking('selectTime')}</div>
-                                            <span className="s1_x js-done"><i className="ic ic-close"></i></span>
-                                        </div>
-                                        <div className="s1_sd">
-                                            <div className="s1_k" id="listTimes">
-                                                <div className="s1_l">{tBooking('availabilityFor')} {timeSlots.availabilityDate}</div>
-
-                                                {timeSlots.periods.map((period) => (
-                                                    <dl key={period.id} className="s1_j">
-                                                        <dt>{period.period}:</dt>
-                                                        {period.times.map((time) => (
-                                                            <dd key={time}>{time}</dd>
-                                                        ))}
-                                                    </dl>
-                                                ))}
-                                            </div>
-                                        </div>
-                                        <div className="s1_sf hidden-lg hidden-md">
-                                            <span className="s1_su js-done btn btn-1 btn-block">{tBooking('done')}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="s1_g">
-                                <div className="form-group has-feedback">
-                                    <input
-                                        type="text"
-                                        id="f4"
-                                        name="people"
-                                        className="form-control u1 js-v4"
-                                        required
-                                    />
-                                    <label htmlFor="f4" className="s1_v">{tBooking('guest')}</label>
-                                    <span className="fc-feedback">
-                                        <i className="fa fa-angle-down"></i>
-                                    </span>
-
-                                    <div className="s1_s s1_s4">
-                                        <div className="s1_sh hidden-lg hidden-md">
-                                            <div className="s1_st">{tBooking('selectGuest')}</div>
-                                            <span className="s1_x js-done"><i className="ic ic-close"></i></span>
-                                        </div>
-                                        <div className="s1_sd">
-                                            <ul className="s1_n">
-                                                {guestSelection.guests.map((guestNumber) => (
-                                                    <li key={guestNumber}>{guestNumber}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                        <div className="s1_sf hidden-lg hidden-md">
-                                            <span className="s1_su js-done btn btn-1 btn-block">{tBooking('done')}</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        {error && (
-                            <div className="error-message"
-                                style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>
-                                {error}
-                            </div>
-                        )}
-                        <button
-                            type="submit"
-                            className="btn btn-block btn-1 s1_u booknow"
-                            disabled={isSubmitting}
-                        >
-                            {isSubmitting ? tBooking('processing') : tBooking('bookNow')}
-                        </button>
-                    </form>
-                </div>
-                <span className="a1_a btn hidden-lg hidden-md">{tBooking('bookNow')}</span>
+                <BookingForm spaLocations={spaLocations} />
             </div>
 
             <div className="s sH s2">
@@ -386,12 +148,11 @@ const HomeContent = () => {
                         </p>
                     </div>
                     <div className="text-center hidden-lg hidden-md">
-                        <span className="s2_v">{tCommon('viewAll')}</span>
+                        <span className="s2_v">{tCommon('common.viewAll')}</span>
                     </div>
                 </div>
             </div>
 
-            {/* Locations Section */}
             <section className="s sH s3">
                 <div className="container">
                     <div className="s_h">
@@ -446,7 +207,7 @@ const HomeContent = () => {
                             </div>
                         </div>
                         <Link href="/reservation" className="btn btn-1 s2_u">
-                            {tBooking('makeReservation')}
+                            Make Reservation
                         </Link>
                     </div>
                     <div className="s2_f">

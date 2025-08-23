@@ -4,7 +4,7 @@ import type { ContactFormData, ApiResponse } from '@/types/contact';
 export async function POST(request: NextRequest) {
   try {
     const body: ContactFormData = await request.json();
-    
+
     // Validate required fields
     if (!body.name || !body.email || !body.title || !body.content) {
       return NextResponse.json<ApiResponse>({
@@ -22,9 +22,6 @@ export async function POST(request: NextRequest) {
       }, { status: 400 });
     }
 
-    // TODO: Implement actual email sending logic
-    // For now, just simulate success
-    console.log('Contact form submission:', body);
 
     return NextResponse.json<ApiResponse>({
       success: true,
@@ -38,7 +35,7 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Contact form error:', error);
-    
+
     return NextResponse.json<ApiResponse>({
       success: false,
       message: 'An error occurred while processing your request. Please try again.'

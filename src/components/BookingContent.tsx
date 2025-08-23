@@ -1,37 +1,21 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useTranslations, useLocale } from 'next-intl';
-import type { Locale } from '@/utils/constants';
-import { spaLocations, spaServices } from '@/lib/mockData';
+import {useEffect, useState} from 'react';
+import {useRouter} from 'next/navigation';
+import {useTranslations} from 'next-intl';
+import type {NamespaceKeys} from "use-intl/dist/types/core/MessageKeys";
+import type {BookingData} from "@/types/booking";
+import {formatPrice} from "@/utils/format";
 
-interface BookingData {
-    spa?: string;
-    date?: string;
-    time?: string;
-    people?: string;
-    first_name?: string;
-    last_name?: string;
-    phone?: string;
-    email?: string;
-}
-
-interface GuestFormData {
-    services: string[];
-}
-
-const BookingContent = () => {
+const BookingContent = ({products}) => {
     const router = useRouter();
-    const locale = useLocale() as Locale;
     const [bookingData, setBookingData] = useState<BookingData>({});
-    const [guestForms, setGuestForms] = useState<GuestFormData[]>([]);
+    const [guestForms, setGuestForms] = useState<Record<string, any>[]>([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
 
-    // Use namespace-based translations
-    const t = useTranslations('booking');
-    const tCommon = useTranslations('common');
+    const t = useTranslations('booking' as NamespaceKeys<any, any>);
+    const tCommon = useTranslations('common' as NamespaceKeys<any, any>);
 
     useEffect(() => {
         const savedData = sessionStorage.getItem('booking_form_data');
@@ -40,10 +24,9 @@ const BookingContent = () => {
                 const parsedData = JSON.parse(savedData);
                 setBookingData(parsedData);
 
-                // Generate guest forms based on number of people
                 const numPeople = parseInt(parsedData.people || '1');
-                const initialGuestForms: GuestFormData[] = Array.from({ length: numPeople }, (_, index) => ({
-                    services: []
+                const initialGuestForms = Array.from({ length: numPeople }, (_, index) => ({
+                    [`guest_${index+1}_services`]: []
                 }));
                 setGuestForms(initialGuestForms);
             } catch (error) {
@@ -52,13 +35,15 @@ const BookingContent = () => {
         }
     }, []);
 
-    const handleGuestFormChange = (guestIndex: number, services: string[]) => {
-        const updatedForms = [...guestForms];
-        updatedForms[guestIndex] = {
-            services: services
-        };
-        setGuestForms(updatedForms);
-    };
+    const buildBookingDetails = (formData: any, numberOfGuest) => {
+        const bookingDetails: Record<string, string[]> = {};
+        const numGuests = typeof numberOfGuest === 'string' ? parseInt(numberOfGuest) : numberOfGuest;
+
+        for (let i = 0; i < numGuests; i++) {
+            bookingDetails[`guest_${i + 1}_services`] = formData.getAll(`guest_${i + 1}_services`) as string[];
+        }
+        return bookingDetails;
+    }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -68,55 +53,27 @@ const BookingContent = () => {
         const form = e.target as HTMLFormElement;
         const formData = new FormData(form);
 
-        // Prepare booking data
+        const bookingDetails = buildBookingDetails(formData, bookingData.people)
+
         const finalBookingData = {
             ...bookingData,
             first_name: formData.get('first_name') as string,
             last_name: formData.get('last_name') as string,
             phone: formData.get('phone') as string,
             email: formData.get('email') as string,
-            content: formData.get('content') as string,
-            guest_forms: guestForms
+            note: formData.get('content') as string,
+            booking_details: bookingDetails
         };
 
         try {
-            // Import API service dynamically to avoid SSR issues
-            const { BookingApiService, apiUtils } = await import('@/lib/api-service');
-
-            const result = await BookingApiService.createBooking(finalBookingData);
-
-            if (result.success && result.data) {
-                // Save final booking data to session storage for confirmation page
-                sessionStorage.setItem('final_booking_data', JSON.stringify(finalBookingData));
-                sessionStorage.setItem('booking_id', result.data.bookingId || '');
-
-                // Redirect to confirmation page
-                router.push('/confirm');
-            } else {
-                setError(result.message || 'Đặt lịch thất bại. Vui lòng thử lại.');
-            }
+            sessionStorage.setItem('final_booking_data', JSON.stringify(finalBookingData));
+            router.push('/confirm');
         } catch (error: any) {
-            console.error('Booking error:', error);
-            const { apiUtils } = await import('@/lib/api-service');
 
-            if (apiUtils.isValidationError(error)) {
-                // Handle validation errors
-                const fieldErrors = apiUtils.getFieldErrors(error);
-                setError(Object.values(fieldErrors).join(', ') || 'Dữ liệu không hợp lệ');
-            } else if (apiUtils.isAuthError(error)) {
-                setError('Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.');
-            } else if (apiUtils.isServerError(error)) {
-                setError('Lỗi máy chủ. Vui lòng thử lại sau.');
-            } else {
-                setError(apiUtils.getErrorMessage(error) || 'Lỗi kết nối mạng. Vui lòng kiểm tra kết nối và thử lại.');
-            }
         } finally {
             setIsSubmitting(false);
         }
     };
-
-
-
 
     const bookingSteps = [
         { id: 1, icon: "ic-reserve", title: "Reserve", active: true },
@@ -125,9 +82,9 @@ const BookingContent = () => {
     ];
 
     const appointmentSummary = {
-        date: bookingData.date || "27 August 2025",
-        time: bookingData.time || "10:00",
-        location: bookingData.spa || "Orient Spa & Nails",
+        date: bookingData.booking_date || "27 August 2025",
+        time: bookingData.booking_time || "10:00",
+        location: bookingData.agency_name || "Orient Spa & Nails",
         guests: bookingData.people || "1",
     };
 
@@ -204,19 +161,16 @@ const BookingContent = () => {
                                                         </span>
                                                     </div>
                                                     <div className="k2_sb">
-                                                        {spaServices.map((service) => (
+                                                        {products.map((service) => (
                                                             <div key={service.id} className="s8_i">
                                                                 <div className="s8_c">
-                                                                    <h3 className="s8_l">{service.name[locale]}</h3>
+                                                                    <h3 className="s8_l">{service.name}</h3>
                                                                     <div className="s8_p">
-                                                                        <p style={{ whiteSpace: 'pre-line' }}>{service.description[locale]}</p>
+                                                                        <p style={{ whiteSpace: 'pre-line' }}>{service.description}</p>
                                                                     </div>
                                                                     <div className="s8_d">
-                                                                        <span>{service.duration} phút</span>
-                                                                        <strong>{new Intl.NumberFormat('vi-VN', {
-                                                                            style: 'currency',
-                                                                            currency: 'VND'
-                                                                        }).format(service.price)}</strong>
+                                                                        <span>{service.duration}</span>
+                                                                        <strong>{formatPrice(service.price)}</strong>
                                                                     </div>
                                                                 </div>
                                                                 <div className="s8_v">

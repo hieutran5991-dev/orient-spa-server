@@ -85,6 +85,19 @@
   - API endpoint for form submission
   - Form state management and error handling
 
+### Phase 9: Booking Form Refactoring & API Integration
+
+- **Request:** "adding api to get spaLocations for booking form, move booking form to separate component"
+- **Implementation:** Refactored booking form and integrated with external API
+- **Key Features:**
+  - Created `BookingForm` component for separation of concerns
+  - Direct external API integration from client using axios
+  - Integrated with external API response structure
+  - Updated types to match API response format
+  - Removed mock data dependencies
+  - Added proper error handling with Vietnamese messages
+  - No Next.js API route needed - direct client-to-external API calls
+
 ## Technical Architecture
 
 ### File Structure
@@ -108,13 +121,17 @@ src/
 │   ├── PromotionsContent.tsx   # Promotions listing
 │   ├── PromotionDetailContent.tsx # Promotion detail
 │   ├── ContactContent.tsx      # Contact page content
+│   ├── BookingForm.tsx         # Booking form component
 │   └── layout/
 │       ├── Header.tsx          # Navigation + language switcher
 │       ├── Footer.tsx          # Footer
 │       └── Layout.tsx          # Page wrapper
 ├── lib/
 │   ├── i18n.ts                 # Internationalization config
-│   └── mockData.ts             # Unified data structure
+│   ├── mockData.ts             # Unified data structure
+│   └── axios.ts                # HTTP client with Vietnamese error messages
+├── config/
+│   └── api.ts                  # External API configuration
 ├── app/
 │   └── api/
 │       └── contact/
@@ -129,6 +146,9 @@ src/
 │   └── ja/
 │       ├── common.json         # Japanese common translations
 │       └── contact.json        # Japanese contact translations
+├── types/
+│   ├── contact.ts              # Contact form types
+│   └── api.ts                  # Common API response types
 └── middleware.ts                # Locale routing
 ```
 

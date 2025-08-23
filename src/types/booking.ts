@@ -29,3 +29,25 @@ export interface BookingApiResponse {
     };
     error?: string;
 }
+
+export interface BookingData {
+    agency_name?: string;
+    agency_id?: string | number;
+    booking_date?: string;
+    booking_time?: string;
+    people?: string;
+    first_name?: string;
+    last_name?: string;
+    phone?: string;
+    email?: string;
+    notes?: string;
+    booking_details?: any[];
+}
+
+export interface Product {
+    id: string | number;
+    name: string
+    description: string
+    duration: number;
+    price: number;
+}

@@ -4,9 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import type { Locale } from '@/utils/constants';
+import type { SpaLocation } from "@/types/api";
+interface FooterProps {
+  spaLocations: SpaLocation[];
+}
 
-const Footer = () => {
-  // Use namespace-based translations
+const Footer = ({ spaLocations }: FooterProps) => {
   const tCommon = useTranslations('common');
   const locale = useLocale() as Locale;
   return (
@@ -18,22 +21,26 @@ const Footer = () => {
               <div className="f_i">
                 <h4 className="f_t">{tCommon('footer.locations')}</h4>
                 <div className="f_c">
-                  <dl>
-                    <dt>Orient Spa &amp; Nails (Hoan Kiem Lake Branch)</dt>
-                    <dd>
-                      Address: 18 Bao Khanh, Hoan Kiem, Hanoi{' '}
-                      <a
-                        href="https://maps.app.goo.gl/HCLkqkxV6t1hNgfs9"
-                        target="_blank"
-                        rel="nofollow"
-                      >
-                        {tCommon('footer.viewMap')}
-                      </a>
-                    </dd>
-                    <dd>
-                      <i className="fa fa-phone"></i> +84.866.903.499
-                    </dd>
-                  </dl>
+                  {spaLocations.map((location) => (
+                    <dl key={location.id}>
+                      <dt>{location.name}</dt>
+                      <dd>
+                        Address: {location.address}
+                        <a
+                          href="https://maps.app.goo.gl/HCLkqkxV6t1hNgfs9"
+                          target="_blank"
+                          rel="nofollow"
+                        >
+                          {tCommon('footer.viewMap')}
+                        </a>
+                      </dd>
+                      <dd>
+                        <i className="fa fa-phone"></i> {location.phone}
+                      </dd>
+                    </dl>
+
+                  ))}
+
                   <dl>
                     <dt>Orient Spa Hanoi (Cathedral Branch)</dt>
                     <dd>

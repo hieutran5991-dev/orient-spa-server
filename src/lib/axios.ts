@@ -26,7 +26,7 @@ export const HTTP_STATUS_MESSAGES = {
 } as const
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000',
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000',
   timeout: process.env.API_TIMEOUT,
   headers: {
     'Content-Type': 'application/json',
@@ -50,7 +50,9 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
   (response: AxiosResponse) => {
-    return response
+    if(response?.data) {
+        return response.data?.data
+    }
   },
   (error: AxiosError) => {
     const status = error.response?.status

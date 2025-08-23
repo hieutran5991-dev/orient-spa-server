@@ -87,6 +87,12 @@ src/
 └── utils/        # Helper functions
 ```
 
+### 4. Type Definitions
+- **API Types** → `src/types/api.ts` - Common API response structures
+- **Entity Types** → `src/types/[entity].ts` - Specific entity interfaces
+- **Form Types** → `src/types/[entity]Form.ts` - Form data interfaces
+- **Ignore Timestamps** - Don't include `created_at`, `updated_at`, `deleted_at` in frontend types
+
 ## Communication Rules
 
 ### 1. Language
