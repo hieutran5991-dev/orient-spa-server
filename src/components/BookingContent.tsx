@@ -38,17 +38,28 @@ const BookingContent = ({ products }: BookingContentProps) => {
         }
     }, []);
 
-    const buildBookingDetails = (formData: any) => {
+    const buildBookingDetails = (formData: FormData) => {
         if(!guestForms?.length) return {};
+        let totalPrice = 0;
 
-        return guestForms.reduce((details, guestKey) => {
+        const guestServiceInfo = guestForms.reduce((details, guestKey) => {
             const services = formData.getAll(guestKey) as string[];
+            let listProductPerGuest: Product[] = [];
             if (services.length > 0) {
-                details[guestKey] = services;
+                listProductPerGuest = services.reduce((acc: Product[], productId: string) => {
+                    const product = products.find(p => p.id === Number(productId));
+                    if(product) {
+                        acc.push(product);
+                        totalPrice += product.price;
+                    }
+                    return acc;
+                }, [] as Product[]);
             }
+            details.push(listProductPerGuest);
             return details;
-        }, {} as Record<string, string[]>);
+        }, [] as Array<Product[]>);
 
+        return { guestServiceInfo, totalPrice };
     }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -67,7 +78,8 @@ const BookingContent = ({ products }: BookingContentProps) => {
             phone: formData.get('phone') as string,
             email: formData.get('email') as string,
             note: formData.get('content') as string,
-            booking_details: bookingDetails
+            booking_details: bookingDetails?.guestServiceInfo,
+            total_price: bookingDetails?.totalPrice
         };
 
         sessionStorage.setItem(BOOKING_CONFIRM_KEY, JSON.stringify(finalBookingData));

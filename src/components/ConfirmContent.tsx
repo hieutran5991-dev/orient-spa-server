@@ -5,13 +5,13 @@ import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import type {NamespaceKeys} from "use-intl";
 import {saveBooking} from "@/api/common";
-import {BookingData} from "@/types/booking";
+import {BookingData, Product} from "@/types/booking";
 import {BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY} from "@/utils/constants";
+import {formatPrice} from "@/utils/format";
 interface BookingStep {
   id: number
   icon: string
   title: string
-  active: boolean
 }
 
 const ConfirmContent = () => {
@@ -44,7 +44,15 @@ const ConfirmContent = () => {
     setIsConfirming(true)
 
     try {
-        const result = await saveBooking(bookingData)
+        const submitData = {
+          ...bookingData,
+          booking_details: bookingData.booking_details?.reduce((acc, services, index) => {
+            const guestKey = `guest_${index + 1}_services`;
+            acc[guestKey] = services.map(service => service.id);
+            return acc;
+          }, {} as Record<string, (string | number)[]>)
+        }
+        const result = await saveBooking(submitData)
 
         if (result) {
           sessionStorage.removeItem(BOOKING_CONFIRM_KEY)
@@ -68,11 +76,6 @@ const ConfirmContent = () => {
       </main>
     )
   }
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('vi-VN').format(price) + ' VND'
-  }
-
-  const totalPrice = 1000000;
 
   const bookingSteps: BookingStep[] = [
     { id: 1, icon: 'ic-reserve', title: t('steps.reserve') },
@@ -126,27 +129,27 @@ const ConfirmContent = () => {
 
                       {/* Service Details for Mobile/Tablet */}
                       <div className='k2_ds hidden-sm hidden-xs'>
-                        {/*{bookingData.booking_details?.map((guest: any, index: number) => (*/}
-                        {/*  <div key={index} className='k2_di'>*/}
-                        {/*    <table>*/}
-                        {/*      <tbody>*/}
-                        {/*        <tr>*/}
-                        {/*          <th colSpan={2}>*/}
-                        {/*            {t('appointmentSummary.guest')} {index + 1}:*/}
-                        {/*          </th>*/}
-                        {/*        </tr>*/}
-                        {/*        /!*{guest.services.map((service: string, serviceIndex: number) => (*!/*/}
-                        {/*        /!*  <tr key={serviceIndex}>*!/*/}
-                        {/*        /!*    <td>{service}</td>*!/*/}
-                        {/*        /!*    <td>{formatPrice(620000)}</td>*!/*/}
-                        {/*        /!*  </tr>*!/*/}
-                        {/*        /!*))}*!/*/}
-                        {/*      </tbody>*/}
-                        {/*    </table>*/}
-                        {/*  </div>*/}
-                        {/*))}*/}
+                        {bookingData.booking_details?.map((services: Product[], index: number) => (
+                          <div key={index} className='k2_di'>
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <th colSpan={2}>
+                                    {t('appointmentSummary.guest')} {index + 1}:
+                                  </th>
+                                </tr>
+                                {services.map((service: Product, serviceIndex: number) => (
+                                  <tr key={serviceIndex}>
+                                    <td>{service.name}</td>
+                                    <td>{formatPrice(service.price)}</td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        ))}
 
-                        {totalPrice > 0 && (
+                        {bookingData.total_price > 0 && (
                           <div className='k2_di'>
                             <table>
                               <tbody>
@@ -155,7 +158,7 @@ const ConfirmContent = () => {
                                     <strong>{t('serviceDetails.totalPrice')}</strong>
                                   </td>
                                   <td>
-                                    <strong>{formatPrice(totalPrice)}</strong>
+                                    <strong>{formatPrice(bookingData.total_price)}</strong>
                                   </td>
                                 </tr>
                               </tbody>
@@ -177,27 +180,27 @@ const ConfirmContent = () => {
                   <div className='k2_h'>{t('serviceDetails.title')}</div>
                   <div className='k2_b'>
                     <div className='k2_ds z16'>
-                      {/*{bookingData.booking_details?.map((guest: any, index: number) => (*/}
-                      {/*  <div key={index} className='k2_di'>*/}
-                      {/*    <table>*/}
-                      {/*      <tbody>*/}
-                      {/*        <tr>*/}
-                      {/*          <th colSpan={2}>*/}
-                      {/*            {t('appointmentSummary.guest')} {index + 1}:*/}
-                      {/*          </th>*/}
-                      {/*        </tr>*/}
-                      {/*        /!*{guest.services.map((service: string, serviceIndex: number) => (*!/*/}
-                      {/*        /!*  <tr key={serviceIndex}>*!/*/}
-                      {/*        /!*    <td>{service}</td>*!/*/}
-                      {/*        /!*    <td>{formatPrice(620000)}</td>*!/*/}
-                      {/*        /!*  </tr>*!/*/}
-                      {/*        /!*))}*!/*/}
-                      {/*      </tbody>*/}
-                      {/*    </table>*/}
-                      {/*  </div>*/}
-                      {/*))}*/}
+                      {bookingData.booking_details?.map((services: Product[], index: number) => (
+                        <div key={index} className='k2_di'>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <th colSpan={2}>
+                                  {t('appointmentSummary.guest')} {index + 1}:
+                                </th>
+                              </tr>
+                              {services.map((service: Product, serviceIndex: number) => (
+                                <tr key={serviceIndex}>
+                                  <td>{service.name}</td>
+                                  <td>{formatPrice(service.price)}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      ))}
 
-                      {totalPrice > 0 && (
+                      {bookingData.total_price > 0 && (
                         <div className='k2_di'>
                           <table>
                             <tbody>
@@ -206,7 +209,7 @@ const ConfirmContent = () => {
                                   <strong>{t('serviceDetails.totalPrice')}</strong>
                                 </td>
                                 <td>
-                                  <strong>{formatPrice(totalPrice)}</strong>
+                                  <strong>{formatPrice(bookingData.total_price)}</strong>
                                 </td>
                               </tr>
                             </tbody>
