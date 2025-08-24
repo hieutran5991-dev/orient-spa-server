@@ -1,64 +1,64 @@
 'use client';
 
-import {useEffect, useState} from 'react';
-import {useRouter} from 'next/navigation';
-import {useTranslations} from 'next-intl';
-import type {NamespaceKeys} from "use-intl";
-import type {BookingData, Product} from "@/types/booking";
-import {formatPrice} from "@/utils/format";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import type { NamespaceKeys } from "use-intl";
+import type { BookingData, Product } from "@/types/booking";
+import { formatPrice } from "@/utils/format";
+import {BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY} from "@/utils/constants";
+import Image from "next/image";
 
 interface BookingContentProps {
     products: Product[];
 }
 
-const BookingContent = ({products}: BookingContentProps) => {
+const BookingContent = ({ products }: BookingContentProps) => {
     const router = useRouter();
     const [bookingData, setBookingData] = useState<BookingData>({});
-    const [guestForms, setGuestForms] = useState<Record<string, any>[]>([]);
+    const [guestForms, setGuestForms] = useState<string[]>([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [error, setError] = useState('');
 
-    const t = useTranslations('booking' as NamespaceKeys<any, any>);
-    const tCommon = useTranslations('common' as NamespaceKeys<any, any>);
+    const t = useTranslations('booking' as NamespaceKeys<string, string>);
 
     useEffect(() => {
-        const savedData = sessionStorage.getItem('booking_form_data');
+        const savedData = sessionStorage.getItem(BOOKING_INIT_KEY);
         if (savedData) {
             try {
                 const parsedData = JSON.parse(savedData);
                 setBookingData(parsedData);
 
                 const numPeople = parseInt(parsedData.people || '1');
-                const initialGuestForms = Array.from({ length: numPeople }, (_, index) => ({
-                    [`guest_${index+1}_services`]: []
-                }));
+                const initialGuestForms = Array.from({ length: numPeople }, (_, index) => `guest_${index + 1}_services`);
                 setGuestForms(initialGuestForms);
-            } catch (error) {
-                console.error('Error parsing booking data:', error);
+            } catch (_err) {
+                sessionStorage.removeItem(BOOKING_INIT_KEY)
+                window.location.href = '/';
             }
         }
     }, []);
 
-    const buildBookingDetails = (formData: any, numberOfGuest: number | string | undefined) => {
-        const bookingDetails: Record<string, string[]> = {};
-        const numGuests = typeof numberOfGuest === 'string' ? parseInt(numberOfGuest) : numberOfGuest;
-        if(!numGuests || isNaN(numGuests) || numGuests < 1) return bookingDetails;
+    const buildBookingDetails = (formData: any) => {
+        if(!guestForms?.length) return {};
 
-        for (let i = 0; i < numGuests; i++) {
-            bookingDetails[`guest_${i + 1}_services`] = formData.getAll(`guest_${i + 1}_services`) as string[];
-        }
-        return bookingDetails;
+        return guestForms.reduce((details, guestKey) => {
+            const services = formData.getAll(guestKey) as string[];
+            if (services.length > 0) {
+                details[guestKey] = services;
+            }
+            return details;
+        }, {} as Record<string, string[]>);
+
     }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsSubmitting(true);
-        setError('');
 
         const form = e.target as HTMLFormElement;
         const formData = new FormData(form);
 
-        const bookingDetails = buildBookingDetails(formData, bookingData.people)
+        const bookingDetails = buildBookingDetails(formData)
 
         const finalBookingData = {
             ...bookingData,
@@ -70,26 +70,22 @@ const BookingContent = ({products}: BookingContentProps) => {
             booking_details: bookingDetails
         };
 
-        try {
-            sessionStorage.setItem('final_booking_data', JSON.stringify(finalBookingData));
-            router.push('/confirm');
-        } catch (error: any) {
+        sessionStorage.setItem(BOOKING_CONFIRM_KEY, JSON.stringify(finalBookingData));
+        router.push('/confirm');
 
-        } finally {
-            setIsSubmitting(false);
-        }
+        setIsSubmitting(false)
     };
 
     const bookingSteps = [
-        { id: 1, icon: "ic-reserve", title: "Reserve", active: true },
-        { id: 2, icon: "ic-select", title: "Select", active: true },
-        { id: 3, icon: "ic-confirm", title: "Confirm!", active: false }
+        { id: 1, icon: "ic-reserve", title: t('stepReserve'), active: true },
+        { id: 2, icon: "ic-select", title: t('stepSelect'), active: true },
+        { id: 3, icon: "ic-confirm", title: t('stepConfirm'), active: false }
     ];
 
     const appointmentSummary = {
         date: bookingData.booking_date || "27 August 2025",
         time: bookingData.booking_time || "10:00",
-        location: bookingData.agency_name || "Orient Spa & Nails",
+        location: bookingData.agency_name || t('defaultSpaName'),
         guests: bookingData.people || "1",
     };
 
@@ -113,19 +109,23 @@ const BookingContent = ({products}: BookingContentProps) => {
                     <div className="k2_w fl">
                         <div className="k2_d">
                             <div className="k2_i">
-                                <div className="k2_h hidden-sm hidden-xs">Appointment summary</div>
+                                <div className="k2_h hidden-sm hidden-xs">{t('appointmentSummary')}</div>
                                 <div className="k2_b">
                                     <div className="k2_da hidden-sm hidden-xs">
-                                        <img src="/images/046489198c91d3feb14289b03064d86f.jpg" alt="Spa" />
+                                        <Image src="/images/046489198c91d3feb14289b03064d86f.jpg"
+                                           alt={t('spaImageAlt')}
+                                           width={600}
+                                           height={400}
+                                        />
                                     </div>
                                     <div className="k2_dc active">
-                                        <div className="k2_dt hidden-lg hidden-md">Appointment summary</div>
+                                        <div className="k2_dt hidden-lg hidden-md">{t('appointmentSummary')}</div>
                                         <div className="k2_dm">
                                             <ul className="k2_dn">
-                                                <li><strong>Date:</strong> {appointmentSummary.date}</li>
-                                                <li><strong>Time:</strong> {appointmentSummary.time}</li>
-                                                <li><strong>Location:</strong> {appointmentSummary.location}</li>
-                                                <li><strong>No. of Guests:</strong> {appointmentSummary.guests}</li>
+                                                <li><strong>{t('date')}</strong> {appointmentSummary.date}</li>
+                                                <li><strong>{t('time')}</strong> {appointmentSummary.time}</li>
+                                                <li><strong>{t('location')}</strong> {appointmentSummary.location}</li>
+                                                <li><strong>{t('numberOfGuests')}</strong> {appointmentSummary.guests}</li>
                                             </ul>
                                             <div className="k2_ds"></div>
                                         </div>
@@ -139,17 +139,17 @@ const BookingContent = ({products}: BookingContentProps) => {
                             <div className="k2_mw">
                                 {guestForms.map((guestForm, guestIndex) => (
                                     <div key={guestIndex} className="k2_i">
-                                        <div className="k2_h">Select treatment for Guest {guestIndex + 1}</div>
+                                        <div className="k2_h">{t('selectTreatmentForGuest')} {guestIndex + 1}</div>
                                         <div className="k2_b">
                                             <div className="form-group has-feedback">
                                                 <span className="form-label k2_l">
-                                                    <i className="ic ic-user"></i>Guest {guestIndex + 1}
+                                                    <i className="ic ic-user"></i>{t('guest')} {guestIndex + 1}
                                                 </span>
-                                                <span className="k2_mt">Treatment</span>
+                                                <span className="k2_mt">{t('treatment')}</span>
                                                 <input
                                                     type="text"
                                                     className="form-control js-guest"
-                                                    placeholder="Select your treatment"
+                                                    placeholder={t('selectYourTreatment')}
                                                     defaultValue=""
                                                     readOnly
                                                 />
@@ -160,7 +160,7 @@ const BookingContent = ({products}: BookingContentProps) => {
                                                 {/* Treatment Options */}
                                                 <div className="k2_s">
                                                     <div className="k2_sh hidden-lg hidden-md">
-                                                        <strong>Select treatment</strong>
+                                                        <strong>{t('selectTreatment')}</strong>
                                                         <span className="k2_sx js-done">
                                                             <i className="ic ic-close"></i>
                                                         </span>
@@ -191,14 +191,14 @@ const BookingContent = ({products}: BookingContentProps) => {
                                                         ))}
                                                     </div>
                                                     <div className="k2_sf hidden-lg hidden-md">
-                                                        <span className="btn btn-block btn-1 js-done">DONE</span>
+                                                        <span className="btn btn-block btn-1 js-done">{t('done')}</span>
                                                     </div>
                                                 </div>
 
                                                 {guestIndex === 0 && (
                                                     <div className="k2_mk">
                                                         <input type="checkbox" name="select" id="all" />
-                                                        <label htmlFor="all">Apply this same treatment for all guests</label>
+                                                        <label htmlFor="all">{t('applySameTreatmentForAll')}</label>
                                                     </div>
                                                 )}
                                             </div>
@@ -207,7 +207,7 @@ const BookingContent = ({products}: BookingContentProps) => {
                                 ))}
 
                                 <div className="k2_i ot">
-                                    <div className="k2_h">Contact info</div>
+                                    <div className="k2_h">{t('contactInfo')}</div>
                                     <div className="k2_b">
                                         <div className="s_g x2">
                                             <div className="s_gc">
@@ -220,7 +220,7 @@ const BookingContent = ({products}: BookingContentProps) => {
                                                         id="id_last_name"
                                                         defaultValue={bookingData.last_name || ''}
                                                     />
-                                                    <span className="k2_v">Last name</span>
+                                                    <span className="k2_v">{t('lastName')}</span>
                                                 </div>
                                             </div>
                                             <div className="s_gc">
@@ -233,7 +233,7 @@ const BookingContent = ({products}: BookingContentProps) => {
                                                         id="id_first_name"
                                                         defaultValue={bookingData.first_name || ''}
                                                     />
-                                                    <span className="k2_v">First name</span>
+                                                    <span className="k2_v">{t('firstName')}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -254,15 +254,15 @@ const BookingContent = ({products}: BookingContentProps) => {
 
                                             <div className="k2_ps">
                                                 <div className="k2_sh hidden-lg hidden-md">
-                                                    <strong>Country code</strong>
+                                                    <strong>{t('countryCode')}</strong>
                                                     <span className="k2_sx k2_px"><i className="ic ic-close"></i></span>
                                                 </div>
                                                 <div className="k2_ph">
-                                                    <strong>Selected</strong>
-                                                    <div className="k2_pc">Vietnam<span>(+84)</span></div>
+                                                    <strong>{t('selected')}</strong>
+                                                    <div className="k2_pc">{t('vietnam')}<span>(+84)</span></div>
                                                 </div>
                                                 <div className="form-group">
-                                                    <input type="text" placeholder="Country or region" className="form-control" id="country_search" />
+                                                    <input type="text" placeholder={t('countryOrRegion')} className="form-control" id="country_search" />
                                                 </div>
                                                 <div className="k2_pb" id="book_phone"></div>
                                             </div>
@@ -271,7 +271,7 @@ const BookingContent = ({products}: BookingContentProps) => {
                                                 type="text"
                                                 name="phone"
                                                 className="form-control"
-                                                placeholder="Phone number"
+                                                placeholder={t('phoneNumber')}
                                                 id="id_phone"
                                                 defaultValue={bookingData.phone || ''}
                                             />
@@ -287,17 +287,17 @@ const BookingContent = ({products}: BookingContentProps) => {
                                                 id="id_email"
                                                 defaultValue={bookingData.email || ''}
                                             />
-                                            <span className="k2_v">Email</span>
+                                            <span className="k2_v">{t('email')}</span>
                                         </div>
 
                                         <div className="form-group">
-                                            <span className="form-label k2_l">Additional Request</span>
+                                            <span className="form-label k2_l">{t('additionalRequest')}</span>
                                             <textarea
                                                 name="content"
                                                 cols={40}
                                                 rows={5}
                                                 className="form-control"
-                                                placeholder="Feel free to let us know if you need assistance or have an additional request so we can help to accommodate you or personalize your spa experience."
+                                                placeholder={t('additionalRequestPlaceholder')}
                                                 id="id_content"
                                             ></textarea>
                                         </div>
@@ -305,30 +305,25 @@ const BookingContent = ({products}: BookingContentProps) => {
                                 </div>
 
                                 <div className="k2_i ot">
-                                    <div className="k2_h">Cancellation policy</div>
+                                    <div className="k2_h">{t('cancellationPolicy')}</div>
                                     <div className="k2_b">
-                                        <p><strong>Please cancel or reschedule at least 24 hours in advance of your reservation time.</strong></p>
-                                        <p>Upon booking, we will send you a confirmation email to confirm whether we can arrange the service for you and in case fully booked, we will inform you the closest time available.</p>
-                                        <p>If you need to make change or make urgent booking please contact out hotline: +84 977 903 499 or email orientspahanoi@gmail.com</p>
-                                        <p>We suggest you to arrive at our spa 10 minutes in advance of the treatment time to relax before the treatment time.</p>
+                                        <p><strong>{t('cancellationPolicyTitle')}</strong></p>
+                                        <p>{t('cancellationPolicyDesc1')}</p>
+                                        <p>{t('cancellationPolicyDesc2')}</p>
+                                        <p>{t('cancellationPolicyDesc3')}</p>
                                     </div>
                                 </div>
 
                                 <input type="hidden" defaultValue="0" id="total" name="total" />
                             </div>
 
-                            {error && (
-                                <div className="error-message" style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>
-                                    {error}
-                                </div>
-                            )}
                             <div className="k2_f fl fl-2">
                                 <button
                                     type="submit"
                                     className="btn btn-1 btn-block k2_u"
                                     disabled={isSubmitting}
                                 >
-                                    {isSubmitting ? 'Processing...' : 'Review Your Booking'} <i className="fa fa-angle-right"></i>
+                                    {isSubmitting ? t('processing') : t('reviewYourBooking')} <i className="fa fa-angle-right"></i>
                                 </button>
                             </div>
                         </form>

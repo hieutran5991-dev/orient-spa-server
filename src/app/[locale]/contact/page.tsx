@@ -1,5 +1,3 @@
-'use client';
-
 import '@/css/contact.css';
 import Layout from '@/components/layout/Layout';
 import ContactContent from '@/components/ContactContent';

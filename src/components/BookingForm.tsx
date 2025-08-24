@@ -5,14 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import type { Locale } from '@/utils/constants';
 import type { NamespaceKeys } from "use-intl";
 import { SpaLocation } from "@/types/api";
-
-interface BookingFormData {
-  agency_name: string;
-  agency_id: string | number;
-  booking_date: string;
-  booking_time: string;
-  people: string
-}
+import { BookingData } from "@/types/booking";
 
 interface BookingFormProps {
   spaLocations: SpaLocation[];
@@ -21,7 +14,7 @@ interface BookingFormProps {
 const BookingForm = ({ spaLocations }: BookingFormProps) => {
   const locale = useLocale() as Locale;
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState<string | null>(null);
   const [selectedSpa, setSelectedSpa] = useState('');
   const [selectedSpaId, setSelectedSpaId] = useState<string | number>('');
   const [showSpaDropdown, setShowSpaDropdown] = useState(false);
@@ -31,12 +24,11 @@ const BookingForm = ({ spaLocations }: BookingFormProps) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setError('');
 
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
 
-    const bookingData: BookingFormData = {
+    const bookingData: BookingData = {
       agency_name: selectedSpa,
       agency_id: selectedSpaId,
       booking_date: formData.get('date') as string,
@@ -48,7 +40,6 @@ const BookingForm = ({ spaLocations }: BookingFormProps) => {
       sessionStorage.setItem('booking_form_data', JSON.stringify(bookingData));
       window.location.href = `/${locale}/booking`;
     } catch (error) {
-      setError('Có lỗi xảy ra. Vui lòng thử lại.');
     } finally {
       setIsSubmitting(false);
     }
@@ -75,10 +66,7 @@ const BookingForm = ({ spaLocations }: BookingFormProps) => {
     ]
   };
 
-  const guestSelection = {
-    maxGuests: 10,
-    guests: Array.from({ length: 10 }, (_, i) => i + 1)
-  };
+  const guestSelection = Array.from({ length: 10 }, (_, i) => i + 1);
 
   const handleSpaSelect = (spaName: string, spaId: string | number) => {
     setSelectedSpa(spaName);
@@ -235,7 +223,7 @@ const BookingForm = ({ spaLocations }: BookingFormProps) => {
                 </div>
                 <div className="s1_sd">
                   <ul className="s1_n">
-                    {guestSelection.guests.map((guestNumber) => (
+                    {guestSelection.map((guestNumber) => (
                       <li key={guestNumber}>{guestNumber}</li>
                     ))}
                   </ul>

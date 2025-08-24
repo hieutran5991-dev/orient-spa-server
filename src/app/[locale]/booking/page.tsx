@@ -3,7 +3,6 @@ import Layout from '@/components/layout/Layout';
 import BookingContent from '@/components/BookingContent';
 import Script from 'next/script';
 import {getListProducts, getListSpa} from "@/api/common";
-import {SpaLocation} from "@/types/api";
 
 export default async function BookingPage() {
   const productRes = await getListProducts();

@@ -2,29 +2,11 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useTranslations, useLocale } from 'next-intl'
-import type { Locale } from '@/utils/constants'
-import { getSpaLocationBySlug } from '@/lib/mockData'
+import { useTranslations } from 'next-intl'
 import type {NamespaceKeys} from "use-intl";
 import {saveBooking} from "@/api/common";
 import {BookingData} from "@/types/booking";
-import {setSocketKeepAlive} from "@smithy/node-http-handler/dist-types/set-socket-keep-alive";
-
-interface BookingFormData {
-  spa?: string
-  date?: string
-  time?: string
-  people?: string
-  first_name?: string
-  last_name?: string
-  phone?: string
-  email?: string
-  content?: string
-  guest_forms?: Array<{
-    services: string[]
-  }>
-}
-
+import {BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY} from "@/utils/constants";
 interface BookingStep {
   id: number
   icon: string
@@ -38,12 +20,10 @@ const ConfirmContent = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [isConfirming, setIsConfirming] = useState(false)
 
-  // Use namespace-based translations
   const t = useTranslations('confirm' as NamespaceKeys<any, any>)
-  const tCommon = useTranslations('common' as NamespaceKeys<any, any>)
 
   useEffect(() => {
-    const savedData = sessionStorage.getItem('final_booking_data')
+    const savedData = sessionStorage.getItem(BOOKING_CONFIRM_KEY)
 
     if (savedData) {
       try {
@@ -67,14 +47,11 @@ const ConfirmContent = () => {
         const result = await saveBooking(bookingData)
 
         if (result) {
-          sessionStorage.removeItem('final_booking_data')
-          sessionStorage.removeItem('booking_form_data')
-
+          sessionStorage.removeItem(BOOKING_CONFIRM_KEY)
+          sessionStorage.removeItem(BOOKING_INIT_KEY)
           router.push('/')
         }
-    } catch (error: any) {
-      sessionStorage.removeItem('final_booking_data')
-      sessionStorage.removeItem('booking_form_data')
+    } catch (error) {
     } finally {
       setIsConfirming(false)
     }
@@ -98,9 +75,9 @@ const ConfirmContent = () => {
   const totalPrice = 1000000;
 
   const bookingSteps: BookingStep[] = [
-    { id: 1, icon: 'ic-reserve', title: t('steps.reserve'), active: true },
-    { id: 2, icon: 'ic-select', title: t('steps.select'), active: true },
-    { id: 3, icon: 'ic-confirm', title: t('steps.confirm'), active: true }
+    { id: 1, icon: 'ic-reserve', title: t('steps.reserve') },
+    { id: 2, icon: 'ic-select', title: t('steps.select') },
+    { id: 3, icon: 'ic-confirm', title: t('steps.confirm') }
   ]
 
   return (
@@ -108,7 +85,7 @@ const ConfirmContent = () => {
       <div className='s k1'>
         <div className='k1_m fl fl-3'>
           {bookingSteps.map((step) => (
-            <div key={step.id} className={`k1_i ${step.active ? 'active' : ''}`}>
+            <div key={step.id} className={`k1_i active`}>
               <div className='k1_a'>
                 <i className={`ic ${step.icon}`}></i>
               </div>

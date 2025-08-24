@@ -41,7 +41,7 @@ export interface BookingData {
     phone?: string;
     email?: string;
     notes?: string;
-    booking_details?: any[];
+    booking_details?: Record<string, string[]>;
 }
 
 export interface Product {

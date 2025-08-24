@@ -35,7 +35,7 @@ const axiosInstance: AxiosInstance = axios.create({
 })
 
 axiosInstance.interceptors.request.use(
-  (config: any) => {
+  (config: AxiosRequestConfig) => {
     const token = getToken();
     if(token) {
         config.headers.Authorization = `Bearer ${token}`
@@ -70,7 +70,7 @@ axiosInstance.interceptors.response.use(
   }
 )
 
-export const getVietnameseErrorMessage = (error: any): string => {
+export const getVietnameseErrorMessage = (error: Record<any, any>): string => {
   if (error.vietnameseMessage) {
     return error.vietnameseMessage
   }

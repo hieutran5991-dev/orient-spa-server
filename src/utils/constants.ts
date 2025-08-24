@@ -3,37 +3,33 @@ export const SUPPORTED_LANGUAGE = ['en', 'vi', 'ja'] as const
 export const DEFAULT_LANGUAGE = 'en' as const
 export type Locale = (typeof SUPPORTED_LANGUAGE)[number]
 
-export const BOOKING_CONFIG = {
-  maxGuests: 10,
-  timeSlots: {
-    morning: ['10:00', '10:30', '11:00', '11:30'],
-    afternoon: [
-      '12:00',
-      '12:30',
-      '13:00',
-      '13:30',
-      '14:00',
-      '14:30',
-      '15:00',
-      '15:30',
-      '16:00',
-      '16:30',
-      '17:00',
-      '17:30',
-      '18:00',
-      '18:30'
-    ]
-  }
+export const BOOKING_INIT_KEY = 'booking_form_data' as string;
+
+export const BOOKING_CONFIRM_KEY = 'booking_confirm_data' as string;
+
+
+export const HTTP_STATUS = {
+  OK: 200,
+  CREATED: 201,
+  ACCEPTED: 202,
+  NO_CONTENT: 204,
+
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404,
+  METHOD_NOT_ALLOWED: 405,
+  REQUEST_TIMEOUT: 408,
+  CONFLICT: 409,
+  UNPROCESSABLE_ENTITY: 422,
+  TOO_MANY_REQUESTS: 429,
+
+  INTERNAL_SERVER_ERROR: 500,
+  NOT_IMPLEMENTED: 501,
+  BAD_GATEWAY: 502,
+  SERVICE_UNAVAILABLE: 503,
+  GATEWAY_TIMEOUT: 504,
+  HTTP_VERSION_NOT_SUPPORTED: 505
 } as const
 
-// Validation Rules
-export const VALIDATION_RULES = {
-  phone: {
-    pattern: /^(\+84|84|0)[0-9]{9}$/,
-    message: 'Please enter a valid Vietnamese phone number'
-  },
-  email: {
-    pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-    message: 'Please enter a valid email address'
-  }
-} as const
+export type HttpStatusCode = (typeof HTTP_STATUS)[keyof typeof HTTP_STATUS]

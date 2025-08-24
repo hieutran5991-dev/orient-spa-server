@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import type { Locale } from '@/utils/constants';
 import type { SpaLocation } from '@/types/api';
 
 interface LayoutProps {

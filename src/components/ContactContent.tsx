@@ -4,13 +4,14 @@ import { useState, FormEvent, ChangeEvent } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import type { Locale } from '@/utils/constants';
 import type { ContactFormData } from '@/types/contact';
+import type {NamespaceKeys} from "use-intl";
 import Link from 'next/link';
 import Image from 'next/image';
 
 const ContactContent = () => {
   const locale = useLocale() as Locale;
-  const t = useTranslations('contact');
-  const tCommon = useTranslations('common');
+  const t = useTranslations('contact' as NamespaceKeys<string, string>);
+  const tCommon = useTranslations('common' as NamespaceKeys<string, string>);
 
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
@@ -59,7 +60,7 @@ const ContactContent = () => {
       <div className="s a2 text-center" data-bis-skin-checked="1">
         <h1 className="a2_t">{t('title')}</h1>
       </div>
-      
+
       <div className="s a3 text-center" data-bis-skin-checked="1">
         <ul className="breadcrumb">
           <li><Link href={`/${locale}`}>{tCommon('navigation.home')}</Link></li>
@@ -79,92 +80,92 @@ const ContactContent = () => {
                 <p className="s_p">{t('emailSection.description')}</p>
               </div>
             </div>
-            
+
             <div className="a5_b fl" data-bis-skin-checked="1">
               <form onSubmit={handleSubmit} className="a5_f" id="fromContact" autoComplete="off" noValidate>
-                
+
                 <div className="form-group" data-bis-skin-checked="1">
                   <span className="form-label">{t('form.fullName')} <span>*</span></span>
-                  <input 
-                    type="text" 
-                    name="name" 
-                    className="form-control" 
-                    id="name" 
-                    placeholder={t('form.fullName')} 
+                  <input
+                    type="text"
+                    name="name"
+                    className="form-control"
+                    id="name"
+                    placeholder={t('form.fullName')}
                     value={formData.name}
                     onChange={handleChange}
-                    required 
+                    required
                   />
                 </div>
-                
+
                 <div className="form-group" data-bis-skin-checked="1">
                   <span className="form-label">{t('form.emailAddress')} <span>*</span></span>
-                  <input 
-                    type="text" 
-                    name="email" 
-                    className="form-control" 
-                    id="email" 
-                    placeholder={t('form.emailAddress')} 
-                    maxLength={320} 
+                  <input
+                    type="text"
+                    name="email"
+                    className="form-control"
+                    id="email"
+                    placeholder={t('form.emailAddress')}
+                    maxLength={320}
                     value={formData.email}
                     onChange={handleChange}
-                    required 
+                    required
                   />
                 </div>
-                
+
                 <div className="form-group" data-bis-skin-checked="1">
                   <span className="form-label">{t('form.title')} <span>*</span></span>
-                  <input 
-                    type="text" 
-                    name="title" 
-                    className="form-control" 
-                    id="title" 
-                    placeholder={t('form.title')} 
+                  <input
+                    type="text"
+                    name="title"
+                    className="form-control"
+                    id="title"
+                    placeholder={t('form.title')}
                     value={formData.title}
                     onChange={handleChange}
-                    required 
+                    required
                   />
                 </div>
-                
+
                 <div className="form-group" data-bis-skin-checked="1">
                   <span className="form-label">{t('form.content')} <span>*</span></span>
-                  <textarea 
-                    name="content" 
-                    cols={40} 
-                    rows={6} 
-                    className="form-control" 
-                    id="content" 
-                    placeholder={t('form.contentPlaceholder')} 
+                  <textarea
+                    name="content"
+                    cols={40}
+                    rows={6}
+                    className="form-control"
+                    id="content"
+                    placeholder={t('form.contentPlaceholder')}
                     value={formData.content}
                     onChange={handleChange}
                     required
                   ></textarea>
                 </div>
-                
+
                 <button type="submit" className="a5_fu btn btn-1" id="btnContact" disabled={loading}>
                   {loading ? 'Sending...' : t('form.send')}
                 </button>
               </form>
-              
+
               {status.message && (
                 <div className={`status-message ${status.type === 'success' ? 'success' : 'error'}`}>
                   {status.message}
                 </div>
               )}
-              
+
               <div className="a5_d" data-bis-skin-checked="1">
                 <div className="a5_k" data-bis-skin-checked="1">
-                  <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.062696923025!2d105.85045640000001!3d21.0301772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab57699de963%3A0x77e981398c403d!2sOrient%20Spa%20%26%20Nails!5e0!3m2!1svi!2s!4v1749461689518!5m2!1svi!2s" 
-                    width="355" 
-                    height="355" 
-                    style={{ border: 0 }} 
-                    allowFullScreen 
-                    loading="lazy" 
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.062696923025!2d105.85045640000001!3d21.0301772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab57699de963%3A0x77e981398c403d!2sOrient%20Spa%20%26%20Nails!5e0!3m2!1svi!2s!4v1749461689518!5m2!1svi!2s"
+                    width="355"
+                    height="355"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
-                
+
                 <div className="a5_e" data-bis-skin-checked="1">
                   <h3 className="a5_et">{t('locations.main.title')}</h3>
                   <ul className="a5_en">
@@ -183,8 +184,8 @@ const ContactContent = () => {
       <section className="s sH s3">
         <div className="container" data-bis-skin-checked="1">
           <div className="s2_f cs" data-bis-skin-checked="1">
-            <Image 
-              src="/static/images/spa-map.jpg" 
+            <Image
+              src="/static/images/spa-map.jpg"
               alt={t('map.alt')}
               width={1200}
               height={600}
@@ -206,7 +207,7 @@ const ContactContent = () => {
                 <p className="s_p">{t('phoneSection.description')}</p>
               </div>
             </div>
-            
+
             <div className="a6_b fl" data-bis-skin-checked="1">
               {/* Orient Spa & Nails */}
               <div className="a6_i" data-bis-skin-checked="1">

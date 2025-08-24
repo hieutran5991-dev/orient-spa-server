@@ -1,5 +1,3 @@
-'use client';
-
 import '@/css/promotion.css';
 import Layout from '@/components/layout/Layout';
 import PromotionsContent from '@/components/PromotionsContent';

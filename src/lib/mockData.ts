@@ -771,6 +771,5 @@ export const getPromotionBySlug = (slug: string): SpaService | undefined => {
   return promotionPackages.find(service => service.slug === slug);
 };
 
-// Backward compatibility aliases
 export const promotionServices = promotionPackages;
 export const getPromotionsByLocale = getPromotionServices;
