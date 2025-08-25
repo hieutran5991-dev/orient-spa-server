@@ -40,39 +40,6 @@ const Footer = ({ spaLocations }: FooterProps) => {
                     </dl>
 
                   ))}
-
-                  <dl>
-                    <dt>Orient Spa Hanoi (Cathedral Branch)</dt>
-                    <dd>
-                      Address: 26 Au Trieu, Hoan Kiem, Hanoi{' '}
-                      <a
-                        href="https://maps.app.goo.gl/b7QLxy5jW13wE3PG6"
-                        target="_blank"
-                        rel="nofollow"
-                      >
-                        {tCommon('footer.viewMap')}
-                      </a>
-                    </dd>
-                    <dd>
-                      <i className="fa fa-phone"></i> +84.977.903.499
-                    </dd>
-                  </dl>
-                  <dl>
-                    <dt>La Flora by Orient (Cathedral Branch)</dt>
-                    <dd>
-                      Address: 22 Au Trieu, Hoan Kiem, Hanoi{' '}
-                      <a
-                        href="https://maps.app.goo.gl/2nkrCJ3krkzKLpKN6"
-                        target="_blank"
-                        rel="nofollow"
-                      >
-                        {tCommon('footer.viewMap')}
-                      </a>
-                    </dd>
-                    <dd>
-                      <i className="fa fa-phone"></i> +84.867.903.499
-                    </dd>
-                  </dl>
                   <p>
                     <strong>KakaoID:</strong> orienthanoi / orientspa72
                   </p>
