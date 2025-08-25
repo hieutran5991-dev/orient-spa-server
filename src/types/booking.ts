@@ -30,7 +30,7 @@ export interface BookingApiResponse {
     error?: string;
 }
 
-export interface BookingData {
+export interface BookingData<T = Array<Product[]>> {
     agency_name?: string;
     agency_id?: string | number;
     booking_date?: string;
@@ -41,9 +41,11 @@ export interface BookingData {
     phone?: string;
     email?: string;
     notes?: string;
-    booking_details?: Array<Product[]>;
-    total_price?: number;
+    booking_details?: T;
+    total_price: number;
 }
+
+export type BookingSubmissionData = BookingData<Record<string, (string | number)[]>>;
 
 export interface Product {
     id: string | number;

@@ -183,8 +183,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
               onSubmit={handleSubmit}
             >
               <div className="k2_mw">
-                {guestForms.map((guestForm, guestIndex) => {
-                    // const isSelected = bookingData?.booking_details?.[guestIndex]?.length > 0;
+                {guestForms.map((_, guestIndex) => {
                   return <div key={guestIndex} className="k2_i">
                     <div className="k2_h">
                       {t("selectTreatmentForGuest")} {guestIndex + 1}
@@ -246,9 +245,8 @@ const BookingContent = ({ products }: BookingContentProps) => {
                                     ]?.some((e) => e.id === service.id)}
                                   />
                                   <label
-                                    htmlFor={`c_${guestIndex + 1}_${
-                                      service.id
-                                    }`}
+                                    htmlFor={`c_${guestIndex + 1}_${service.id
+                                      }`}
                                   ></label>
                                 </div>
                               </div>

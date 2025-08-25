@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import type { Locale } from '@/utils/constants';
+import { BOOKING_INIT_KEY, type Locale } from '@/utils/constants';
 import type { NamespaceKeys } from "use-intl";
 import { SpaLocation } from "@/types/api";
 import { BookingData } from "@/types/booking";
@@ -19,7 +19,7 @@ const BookingForm = ({ spaLocations }: BookingFormProps) => {
   const [selectedSpaId, setSelectedSpaId] = useState<string | number>('');
   const [showSpaDropdown, setShowSpaDropdown] = useState(false);
 
-  const tBooking = useTranslations('booking' as NamespaceKeys<any, any>);
+  const tBooking = useTranslations('booking' as NamespaceKeys<string, string>);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,7 +37,7 @@ const BookingForm = ({ spaLocations }: BookingFormProps) => {
     };
 
     try {
-      sessionStorage.setItem('booking_form_data', JSON.stringify(bookingData));
+      sessionStorage.setItem(BOOKING_INIT_KEY, JSON.stringify(bookingData));
       window.location.href = `/${locale}/booking`;
     } catch (error) {
     } finally {

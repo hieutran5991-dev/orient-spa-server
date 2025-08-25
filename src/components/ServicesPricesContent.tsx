@@ -3,7 +3,7 @@
 import { useTranslations, useLocale, type NamespaceKeys } from "next-intl";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import type { Locale } from "@/utils/constants";
+import { BOOKING_INIT_KEY, type Locale } from "@/utils/constants";
 import { formatPrice } from "@/utils/format";
 import { SpaLocation } from "@/types/api";
 import { getListCategories, getListProducts } from "@/api/common";
@@ -17,8 +17,7 @@ const ServicesPricesContent = ({
   spaLocations,
 }: ServicesPricesContentProps) => {
   const locale = useLocale() as Locale;
-  const t = useTranslations("services" as NamespaceKeys<string, any>);
-  const tCommon = useTranslations("common" as NamespaceKeys<string, any>);
+  const t = useTranslations("services" as NamespaceKeys<string, string>);
   const [activeTab, setActiveTab] = useState(-1);
   const [showBookingModal, setShowBookingModal] = useState(false);
   const [selectedService, setSelectedService] = useState<Product | null>(null);
@@ -128,9 +127,7 @@ const ServicesPricesContent = ({
                 {serviceCategories.map((category) => (
                   <div
                     key={category.id}
-                    className={`tab-content ${
-                      activeTab === category.id ? "active" : ""
-                    }`}
+                    className={`tab-content ${activeTab === category.id ? "active" : ""}`}
                     id={category.id.toString()}
                   >
                     {category.services.map((service: Product) => (
@@ -149,7 +146,7 @@ const ServicesPricesContent = ({
                                       {line}
                                       {index <
                                         service.description.split("\n").length -
-                                          1 && <br />}
+                                        1 && <br />}
                                     </span>
                                   ))}
                               </p>
@@ -238,54 +235,13 @@ const BookingModal = ({
     };
 
     try {
-      sessionStorage.setItem("booking_form_data", JSON.stringify(bookingData));
+      sessionStorage.setItem(BOOKING_INIT_KEY, JSON.stringify(bookingData));
       window.location.href = `/${locale}/booking`;
     } catch (error) {
       setError("Có lỗi xảy ra. Vui lòng thử lại.");
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const timeSlots = {
-    availabilityDate: tBooking("today"),
-    periods: [
-      {
-        id: 1,
-        period: tBooking("morning"),
-        times: ["10:00", "10:30", "11:00", "11:30"],
-      },
-      {
-        id: 2,
-        period: tBooking("afternoon"),
-        times: [
-          "12:00",
-          "12:30",
-          "13:00",
-          "13:30",
-          "14:00",
-          "14:30",
-          "15:00",
-          "15:30",
-          "16:00",
-          "16:30",
-          "17:00",
-          "17:30",
-          "18:00",
-          "18:30",
-        ],
-      },
-      {
-        id: 3,
-        period: tBooking("evening"),
-        times: ["19:00", "19:30", "20:00", "20:30"],
-      },
-    ],
-  };
-
-  const guestSelection = {
-    maxGuests: 10,
-    guests: Array.from({ length: 10 }, (_, i) => i + 1),
   };
 
   const handleSpaSelect = (spaName: string, spaId: string | number) => {
