@@ -23,8 +23,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Create environment file
+        run: |
+          echo "NEXT_PUBLIC_API_BASE_URL=${{ secrets.NEXT_PUBLIC_API_BASE_URL }}" >> .env.production
+          echo "API_TIMEOUT=${{ secrets.API_TIMEOUT }}" >> .env.production
+
       - name: Build application
         run: npm run build
+        env:
+          NEXT_PUBLIC_API_BASE_URL: ${{ secrets.NEXT_PUBLIC_API_BASE_URL }}
+          API_TIMEOUT: ${{ secrets.API_TIMEOUT }}
 
       - name: Create deployment package
         run: |
@@ -34,9 +42,8 @@ jobs:
           cp package.json deployment/
           cp package-lock.json deployment/
           cp next.config.ts deployment/
-          cp -r app deployment/
-          cp -r types deployment/
           cp ecosystem.config.js deployment/
+          cp .env.production deployment/
           tar -czf deployment.tar.gz -C deployment .
 
       - name: Deploy to Alibaba Cloud VPS
@@ -48,14 +55,14 @@ jobs:
           port: ${{ secrets.VPS_PORT }}
           script: |
             # Create application directory if it doesn't exist
-            sudo mkdir -p /var/www/web-29d-admin
-            sudo chown $USER:$USER /var/www/web-29d-admin
+            sudo mkdir -p /var/www/spa
+            sudo chown $USER:$USER /var/www/spa
 
             # Stop the application if it's running with PM2
-            pm2 stop web-29d-admin || true
+            pm2 stop spa || true
 
             # Clean existing deployment but keep node_modules
-            rm -rf /var/www/web-29d-admin/*
+            rm -rf /var/www/spa/*
 
       - name: Copy deployment package to VPS
         uses: appleboy/scp-action@v0.1.7
@@ -65,7 +72,7 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
           source: 'deployment.tar.gz'
-          target: '/var/www/web-29d-admin/'
+          target: '/var/www/spa/'
 
       - name: Extract and setup application on VPS
         uses: appleboy/ssh-action@v1.0.3
@@ -75,15 +82,15 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
           script: |
-            cd /var/www/web-29d-admin
+            cd /var/www/spa
 
             # Extract deployment package
             tar -xzf deployment.tar.gz
             rm deployment.tar.gz
 
             # Set proper permissions
-            sudo chown -R $USER:$USER /var/www/web-29d-admin
-            sudo chmod -R 755 /var/www/web-29d-admin
+            sudo chown -R $USER:$USER /var/www/spa
+            sudo chmod -R 755 /var/www/spa
 
             # Install TypeScript and wait for completion
             echo "Installing TypeScript..."

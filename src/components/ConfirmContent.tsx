@@ -3,11 +3,11 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import type {NamespaceKeys} from "use-intl";
-import {saveBooking} from "@/api/common";
-import {BookingData, Product} from "@/types/booking";
-import {BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY} from "@/utils/constants";
-import {formatPrice} from "@/utils/format";
+import type { NamespaceKeys } from "use-intl";
+import { saveBooking } from "@/api/common";
+import { BookingData, BookingSubmissionData, Product } from "@/types/booking";
+import { BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY } from "@/utils/constants";
+import { formatPrice } from "@/utils/format";
 interface BookingStep {
   id: number
   icon: string
@@ -44,21 +44,21 @@ const ConfirmContent = () => {
     setIsConfirming(true)
 
     try {
-        const submitData = {
-          ...bookingData,
-          booking_details: bookingData.booking_details?.reduce((acc, services, index) => {
-            const guestKey = `guest_${index + 1}_services`;
-            acc[guestKey] = services.map(service => service.id);
-            return acc;
-          }, {} as Record<string, (string | number)[]>)
-        }
-        const result = await saveBooking(submitData)
+      const submitData: BookingSubmissionData = {
+        ...bookingData,
+        booking_details: bookingData.booking_details?.reduce((acc, services, index) => {
+          const guestKey = `guest_${index + 1}_services`;
+          acc[guestKey] = services.map(service => service.id);
+          return acc;
+        }, {} as Record<string, (string | number)[]>)
+      }
+      const result = await saveBooking(submitData)
 
-        if (result) {
-          sessionStorage.removeItem(BOOKING_CONFIRM_KEY)
-          sessionStorage.removeItem(BOOKING_INIT_KEY)
-          router.push('/')
-        }
+      if (result) {
+        sessionStorage.removeItem(BOOKING_CONFIRM_KEY)
+        sessionStorage.removeItem(BOOKING_INIT_KEY)
+        router.push('/')
+      }
     } catch (error) {
     } finally {
       setIsConfirming(false)
