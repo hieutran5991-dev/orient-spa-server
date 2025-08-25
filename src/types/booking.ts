@@ -48,8 +48,9 @@ export interface BookingData<T = Array<Product[]>> {
 export type BookingSubmissionData = BookingData<Record<string, (string | number)[]>>;
 
 export interface Product {
-    id: string | number;
+    id: number;
     name: string
+    category_id: number;
     description: string
     duration: number;
     price: number;

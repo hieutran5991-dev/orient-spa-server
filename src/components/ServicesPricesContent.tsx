@@ -2,58 +2,34 @@
 
 import { useTranslations, useLocale, type NamespaceKeys } from "next-intl";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { BOOKING_INIT_KEY, type Locale } from "@/utils/constants";
 import { formatPrice } from "@/utils/format";
 import { SpaLocation } from "@/types/api";
-import { getListCategories, getListProducts } from "@/api/common";
 import { Category, Product } from "@/types/common";
 
 interface ServicesPricesContentProps {
   spaLocations: SpaLocation[];
+  categories: Category[];
+  products: Product[];
 }
 
 const ServicesPricesContent = ({
   spaLocations,
+  categories,
+  products,
 }: ServicesPricesContentProps) => {
   const locale = useLocale() as Locale;
   const t = useTranslations("services" as NamespaceKeys<string, string>);
-  const [activeTab, setActiveTab] = useState(-1);
+  const [activeTab, setActiveTab] = useState(categories.length ? categories[0].id : 1);
   const [showBookingModal, setShowBookingModal] = useState(false);
   const [selectedService, setSelectedService] = useState<Product | null>(null);
 
-  const [serviceCategories, setServiceCategories] = useState<Category[]>([]);
-
-  const allCategories: Category[] = [];
-  useEffect(() => {
-    getListCategories()
-      .then((res) => {
-        (res.data ?? []).map((category) => {
-          allCategories.push({
-            ...category,
-            services: [],
-          });
-        });
-      })
-      .finally(() => {
-        getListProducts()
-          .then((resP) => {
-            (resP.data ?? []).forEach((product) => {
-              const categoryP = allCategories.findIndex(
-                (category) => category.id === product.category_id
-              );
-
-              if (categoryP !== -1) {
-                allCategories[categoryP].services.push(product);
-              }
-            });
-          })
-          .finally(() => {
-            setServiceCategories(allCategories);
-            setActiveTab(allCategories.length ? allCategories[0].id : 1);
-          });
-      });
-  }, []);
+  
+  const serviceCategories = useMemo(() => categories.map((category) => ({
+    ...category,
+    services: products.filter((product) => product.category_id === category.id),
+  })), [categories, products]);
 
   const handleTabClick = (tabId: number) => {
     setActiveTab(tabId);
@@ -131,9 +107,9 @@ const ServicesPricesContent = ({
                     id={category.id.toString()}
                   >
                     {category.services.map((service: Product) => (
-                      <div key={service.id} className="s8_i">
-                        <div className="s8_c">
-                          <h2 className="s8_l" id={`name${service.id}`}>
+                      <div key={service.id} className='s8_i'>
+                        <div className='s8_c'>
+                          <h2 className='s8_l' id={`name${service.id}`}>
                             {service.name}
                           </h2>
                           {service.description && (

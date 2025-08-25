@@ -184,92 +184,101 @@ const BookingContent = ({ products }: BookingContentProps) => {
             >
               <div className="k2_mw">
                 {guestForms.map((_, guestIndex) => {
-                  return <div key={guestIndex} className="k2_i">
-                    <div className="k2_h">
-                      {t("selectTreatmentForGuest")} {guestIndex + 1}
-                    </div>
-                    <div className="k2_b">
-                      <div className="form-group has-feedback">
-                        <span className="form-label k2_l">
-                          <i className="ic ic-user"></i>
-                          {t("guest")} {guestIndex + 1}
-                        </span>
-                        <span className="k2_mt">{t("treatment")}</span>
-                        <input
-                          type="text"
-                          className="form-control js-guest"
-                          placeholder={t("selectYourTreatment")}
-                          defaultValue=""
-                          value={bookingData?.booking_details?.[guestIndex]
-                            ?.map((e) => e.name)
-                            .join(", ")}
-                          readOnly
-                        />
-                        <span className="fc-feedback">
-                          <i className="fa fa-angle-down"></i>
-                        </span>
+                  const hasSelected =
+                    (bookingData?.booking_details?.[guestIndex]?.length || 0) >
+                    0;
+                  return (
+                    <div key={guestIndex} className="k2_i">
+                      <div className="k2_h">
+                        {t("selectTreatmentForGuest")} {guestIndex + 1}
+                      </div>
+                      <div className="k2_b">
+                        <div
+                          className={`form-group ${
+                            hasSelected ? "done" : "has-feedback"
+                          }`}
+                        >
+                          <span className="form-label k2_l">
+                            <i className="ic ic-user"></i>
+                            {t("guest")} {guestIndex + 1}
+                          </span>
+                          <span className="k2_mt">{t("treatment")}</span>
+                          <input
+                            type="text"
+                            className="form-control js-guest"
+                            placeholder={t("selectYourTreatment")}
+                            value={bookingData?.booking_details?.[guestIndex]
+                              ?.map((e) => e.name)
+                              .join(", ")}
+                            readOnly
+                          />
+                          <span className="fc-feedback">
+                            <i className="fa fa-angle-down"></i>
+                          </span>
 
-                        {/* Treatment Options */}
-                        <div className="k2_s">
-                          <div className="k2_sh hidden-lg hidden-md">
-                            <strong>{t("selectTreatment")}</strong>
-                            <span className="k2_sx js-done">
-                              <i className="ic ic-close"></i>
-                            </span>
-                          </div>
-                          <div className="k2_sb">
-                            {products.map((service) => (
-                              <div key={service.id} className="s8_i">
-                                <div className="s8_c">
-                                  <h3 className="s8_l">{service.name}</h3>
-                                  <div className="s8_p">
-                                    <p style={{ whiteSpace: "pre-line" }}>
-                                      {service.description}
-                                    </p>
+                          {/* Treatment Options */}
+                          <div className="k2_s">
+                            <div className="k2_sh hidden-lg hidden-md">
+                              <strong>{t("selectTreatment")}</strong>
+                              <span className="k2_sx js-done">
+                                <i className="ic ic-close"></i>
+                              </span>
+                            </div>
+                            <div className="k2_sb">
+                              {products.map((service) => (
+                                <div key={service.id} className="s8_i">
+                                  <div className="s8_c">
+                                    <h3 className="s8_l">{service.name}</h3>
+                                    <div className="s8_p">
+                                      <p style={{ whiteSpace: "pre-line" }}>
+                                        {service.description}
+                                      </p>
+                                    </div>
+                                    <div className="s8_d">
+                                      <span>{service.duration}</span>
+                                      <strong>
+                                        {formatPrice(service.price)}
+                                      </strong>
+                                    </div>
                                   </div>
-                                  <div className="s8_d">
-                                    <span>{service.duration}</span>
-                                    <strong>
-                                      {formatPrice(service.price)}
-                                    </strong>
-                                  </div>
-                                </div>
-                                <div className="s8_v">
-                                  <input
-                                    type="checkbox"
-                                    name={`guest_${guestIndex + 1}_services`}
-                                    value={service.id}
-                                    id={`c_${guestIndex + 1}_${service.id}`}
-                                    checked={bookingData?.booking_details?.[
-                                      guestIndex
-                                    ]?.some((e) => e.id === service.id)}
-                                  />
-                                  <label
-                                    htmlFor={`c_${guestIndex + 1}_${service.id
+                                  <div className="s8_v">
+                                    <input
+                                      type="checkbox"
+                                      name={`guest_${guestIndex + 1}_services`}
+                                      value={service.id}
+                                      id={`c_${guestIndex + 1}_${service.id}`}
+                                      checked={bookingData?.booking_details?.[
+                                        guestIndex
+                                      ]?.some((e) => e.id === service.id)}
+                                    />
+                                    <label
+                                      htmlFor={`c_${guestIndex + 1}_${
+                                        service.id
                                       }`}
-                                  ></label>
+                                    ></label>
+                                  </div>
                                 </div>
-                              </div>
-                            ))}
+                              ))}
+                            </div>
+                            <div className="k2_sf hidden-lg hidden-md">
+                              <span className="btn btn-block btn-1 js-done">
+                                {t("done")}
+                              </span>
+                            </div>
                           </div>
-                          <div className="k2_sf hidden-lg hidden-md">
-                            <span className="btn btn-block btn-1 js-done">
-                              {t("done")}
-                            </span>
-                          </div>
-                        </div>
 
-                        {guestIndex === 0 && (
-                          <div className="k2_mk">
-                            <input type="checkbox" name="select" id="all" />
-                            <label htmlFor="all">
-                              {t("applySameTreatmentForAll")}
-                            </label>
-                          </div>
-                        )}
+                          {guestIndex === 0 && (
+                            <div className="k2_mk">
+                              <input type="checkbox" name="select" id="all" />
+                              <label htmlFor="all">
+                                {t("applySameTreatmentForAll")}
+                              </label>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>;
+                  );
                 })}
 
                 <div className="k2_i ot">
