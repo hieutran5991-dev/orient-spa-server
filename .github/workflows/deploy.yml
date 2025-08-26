@@ -1,4 +1,4 @@
-name: Build and Deploy to Alibaba Cloud VPS
+name: Build and Deploy Next to VPS
 
 on:
   push:
