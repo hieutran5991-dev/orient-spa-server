@@ -67,49 +67,7 @@ const ConfirmContent = () => {
     }
   }
 
-  if (isLoading) {
-    return (
-      <main className='main-content'>
-        <div className='s k1'>
-          <div className='container'>
-            <div className='flex flex-col items-center justify-center min-h-[60vh] space-y-6'>
-              {/* Spinning loader */}
-              <div className="relative">
-                <div className="w-16 h-16 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin"></div>
-                <div
-                  className="absolute inset-0 w-16 h-16 border-4 border-transparent border-t-blue-400 rounded-full animate-spin"
-                  style={{ animationDelay: '0.15s' }}
-                ></div>
-              </div>
-
-              {/* Loading text with pulse animation */}
-              <div className="text-center space-y-2">
-                <h3 className="text-lg font-semibold text-gray-700 animate-pulse">
-                  {t('loading.title')}
-                </h3>
-                <p className="text-sm text-gray-500 animate-pulse">
-                  {t('loading.subtitle')}
-                </p>
-              </div>
-
-              {/* Progress dots */}
-              <div className="flex space-x-2">
-                <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"></div>
-                <div
-                  className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"
-                  style={{ animationDelay: '0.2s' }}
-                ></div>
-                <div
-                  className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"
-                  style={{ animationDelay: '0.4s' }}
-                ></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    )
-  }  const bookingSteps: BookingStep[] = [
+  const bookingSteps: BookingStep[] = [
     { id: 1, icon: 'ic-reserve', title: t('steps.reserve') },
     { id: 2, icon: 'ic-select', title: t('steps.select') },
     { id: 3, icon: 'ic-confirm', title: t('steps.confirm') }

@@ -473,7 +473,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #8bab81;
+  color: var(--main-color);
   text-decoration: none;
 }
 a:hover,
@@ -663,21 +663,21 @@ table tr th {
   width: 100%;
 }
 .btn-1 {
-  background-color: #8bab81;
+  background-color: var(--main-color);
   color: #fff;
   text-transform: uppercase;
 }
 .btn-1:hover {
-  background-color: #7d9d75;
+  background-color: var(--hover-color);
   color: #fff;
 }
 .btn-2 {
   background-color: #fff;
-  color: #8bab81;
-  border: 1px solid #8bab81;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
 }
 .btn-2:hover {
-  background-color: #8bab81;
+  background-color: var(--main-color);
   color: #fff;
 }
 .pikaday__container {
@@ -815,7 +815,7 @@ select.form-control {
 }
 .breadcrumb > li a:hover {
   text-decoration: underline;
-  color: #8bab81;
+  color: var(--main-color);
 }
 .pagination {
   list-style: none;
@@ -1227,7 +1227,7 @@ select.form-control {
   font-size: 1.6rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: #8bab81;
+  color: var(--main-color);
 }
 .f_p {
   font-size: 3rem;
@@ -1376,14 +1376,14 @@ select.form-control {
   font-size: 2.2rem;
 }
 .ntc {
-  color: #8bab81;
+  color: var(--main-color);
   width: calc(100% - 30px);
   max-width: 400px;
   text-align: center;
   padding: 30px 20px;
   border-radius: 2px;
   background-color: #fff;
-  border: 1px solid #8bab81;
+  border: 1px solid var(--main-color);
   box-shadow: 0 5px 20px rgba(72, 72, 72, 0.2);
   position: fixed;
   top: 20px;
@@ -1689,7 +1689,7 @@ select.form-control {
   color: rgba(0, 0, 0, 0.5);
 }
 .s1_d li:hover {
-  color: #8bab81;
+  color: var(--main-color);
 }
 .s1_sh {
   display: flex;
@@ -1887,7 +1887,7 @@ select.form-control {
   color: #594a39;
 }
 .s_p a:hover {
-  color: #8bab81;
+  color: var(--main-color);
 }
 .s_g {
   margin-left: -10px;
@@ -2040,7 +2040,7 @@ select.form-control {
   color: inherit;
 }
 .s2_t:hover {
-  color: #8bab81;
+  color: var(--main-color);
 }
 .s2_d {
   color: #999;
@@ -2548,7 +2548,7 @@ select.form-control {
   justify-content: center;
 }
 .is-today .pika-button {
-  color: #8bab81;
+  color: var(--main-color);
   font-weight: 600;
 }
 .is-disabled .pika-button,
@@ -2585,7 +2585,7 @@ select.form-control {
   background-color: #666;
 }
 .a2 {
-  background-color: #594a39;
+  background-color: var(--main-color);
   padding: 36px 15px 25px;
 }
 @media (max-width: 991px) {
@@ -2596,7 +2596,7 @@ select.form-control {
 }
 .a2_t {
   font-size: 4.8rem;
-  color: #eadcc8;
+  color: white;
   margin-bottom: 0;
   font-family: 'MtdValkySemibold';
   font-weight: normal;
@@ -2669,7 +2669,7 @@ select.form-control {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 18px;
-  background-color: #f7f3ef;
+  background-color: var(--main-light-color);
   font-size: 4.8rem;
   color: #594a39;
 }
@@ -2715,7 +2715,7 @@ select.form-control {
 .a5_et {
   font-size: 1.6rem;
   font-weight: 600;
-  color: #8bab81;
+  color: var(--main-color);
   text-transform: uppercase;
   margin-bottom: 0;
 }
@@ -2933,7 +2933,7 @@ select.form-control {
   font-size: 1.6rem;
   font-family: FontAwesome;
   display: inline-block;
-  color: #8bab81;
+  color: var(--main-color);
   margin-right: 7px;
 }
 .mp {
@@ -3044,7 +3044,7 @@ select.form-control {
   color: inherit;
 }
 .k1_t a:hover {
-  color: #8bab81;
+  color: var(--main-color);
 }
 .k1_p {
   margin: 10px 0 0;
@@ -3133,7 +3133,7 @@ select.form-control {
   }
 }
 .k2_dt span {
-  color: #8bab81;
+  color: var(--main-color);
   cursor: pointer;
 }
 .k2_ds {
@@ -3159,7 +3159,7 @@ select.form-control {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: #8bab81;
+  background-color: var(--main-color);
   display: inline-block;
   position: absolute;
   left: 0;
@@ -3459,7 +3459,7 @@ select.form-control {
 }
 .content a {
   text-decoration: underline;
-  color: #8bab81;
+  color: var(--main-color);
 }
 .content a:hover {
   color: #594a39;
@@ -3986,7 +3986,7 @@ select.form-control {
   text-decoration: underline;
 }
 .s8 .a8_c > p > a:hover {
-  color: #8bab81;
+  color: var(--main-color);
 }
 .s8 .a5_sa {
   margin-top: 15px;
@@ -4065,7 +4065,7 @@ select.form-control {
 }
 .s8_nm li.active span,
 .s8_nm li:hover span {
-  color: #8bab81;
+  color: var(--main-color);
   position: relative;
 }
 .s8_nm li.active span:after,
@@ -4074,7 +4074,7 @@ select.form-control {
   display: block;
   width: 100%;
   height: 3px;
-  background-color: #8bab81;
+  background-color: var(--main-color);
   position: absolute;
   left: 0;
   bottom: -1px;

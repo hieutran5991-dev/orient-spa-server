@@ -252,7 +252,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #8bab81;
+  color: var(--main-color);
   text-decoration: none;
 }
 a:hover,
@@ -442,21 +442,21 @@ table tr th {
   width: 100%;
 }
 .btn-1 {
-  background-color: #8bab81;
+  background-color: var(--main-color);
   color: #fff;
   text-transform: uppercase;
 }
 .btn-1:hover {
-  background-color: #7d9d75;
+  background-color: var(--hover-color);
   color: #fff;
 }
 .btn-2 {
   background-color: #fff;
-  color: #8bab81;
-  border: 1px solid #8bab81;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
 }
 .btn-2:hover {
-  background-color: #8bab81;
+  background-color: var(--main-color);
   color: #fff;
 }
 .pikaday__container {
@@ -594,7 +594,7 @@ select.form-control {
 }
 .breadcrumb > li a:hover {
   text-decoration: underline;
-  color: #8bab81;
+  color: var(--main-color);
 }
 .pagination {
   list-style: none;
@@ -993,7 +993,7 @@ select.form-control {
   font-size: 1.6rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: #8bab81;
+  color: var(--main-color);
 }
 .f_s {
   align-items: center;
@@ -1220,7 +1220,7 @@ select.form-control {
   }
 }
 .k1 {
-  background-color: rgba(89, 74, 56, 0.9);
+  background-color: var(--main-color);
 }
 .k1_m {
   max-width: 452px;
@@ -1267,10 +1267,10 @@ select.form-control {
   }
 }
 .k1_i.active {
-  color: var(--main-color);
+  color: white;
 }
 .k1_i.active .k1_a {
-  background-color: #eadcc8;
+  background-color: var(--main-accent-color);
 }
 .k1_i.active .k1_a .ic {
   opacity: 1;
@@ -1364,7 +1364,7 @@ select.form-control {
 }
 .k2_m .form-group.done .form-control {
   padding-top: 20px;
-  background-color: #f3f7f2;
+  background-color: var(--main-light-color);
   font-weight: 600;
 }
 .k2_m .form-group.done .k2_mt {
@@ -1409,7 +1409,7 @@ select.form-control {
   width: 100%;
 }
 .k2_dc {
-  background-color: #fbf9f7;
+  background-color: var(--main-light-color);
   padding: 20px 30px;
 }
 @media (max-width: 991px) {
@@ -1492,7 +1492,7 @@ select.form-control {
   justify-content: center;
   border: 1px solid rgba(153, 153, 153, 0.3);
   background-color: rgba(250, 249, 248, 0.3);
-  color: #8aac7f;
+  color: var(--main-color);
   position: absolute;
   left: 0;
 }
@@ -1534,7 +1534,7 @@ select.form-control {
 }
 .k2_i.ot .form-control:focus,
 .k2_i.ot .form-control:valid {
-  background-color: #f3f7f2;
+  background-color: var(--main-light-color);
   padding-top: 20px;
 }
 .k2_i.ot .form-control:focus ~ .k2_v,
@@ -1612,7 +1612,7 @@ select.form-control {
   color: #999;
 }
 .k2_pc {
-  color: #8bab81;
+  color: var(--main-color);
   padding-top: 6px;
   padding-bottom: 6px;
   padding-right: 25px;
@@ -1651,7 +1651,7 @@ select.form-control {
 .k2_pb dd.active {
   padding-right: 40px;
   position: relative;
-  color: #8bab81;
+  color: var(--main-color);
 }
 .k2_pb dd.active:after {
   content: '\f00c';
@@ -1838,7 +1838,7 @@ select.form-control {
 .s8_v input[type='checkbox']:checked + label:before {
   content: '\f00c';
   font-family: FontAwesome;
-  color: #8aac7f;
+  color: var(--main-color);
 }
 .b5 {
   padding-top: 125px;
@@ -1892,14 +1892,14 @@ select.form-control {
   text-transform: uppercase;
 }
 .ntc {
-  color: #8bab81;
+  color: var(--main-color);
   width: calc(100% - 30px);
   max-width: 400px;
   text-align: center;
   padding: 30px 20px;
   border-radius: 2px;
   background-color: #fff;
-  border: 1px solid #8bab81;
+  border: 1px solid var(--main-color);
   box-shadow: 0 5px 20px rgba(72, 72, 72, 0.2);
   position: fixed;
   top: 20px;

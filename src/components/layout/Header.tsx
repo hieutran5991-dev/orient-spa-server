@@ -32,7 +32,7 @@ const Header = () => {
           </span>
           <div className='h_c w1'>
             <div className='h_a fl fl-2'>
-              <a href={`/${locale}`} className='sm:min-h-[118px] flex items-center'>
+              <a href={`/${locale}`} className='sm:min-h-[118px] min-w-[116px] flex items-center'>
                 <Image
                   src='/images/logo.png'
                   alt='Orient Spa Hanoi'
@@ -58,9 +58,7 @@ const Header = () => {
                 <a href={`/${locale}/promotions`}>{tCommon('navigation.promotions')}</a>
               </li>
             </ul>
-            <div className='h_v hidden-lg hidden-md'>
-
-            </div>
+            <div className='h_v hidden-lg hidden-md'></div>
           </div>
           <div className='h_c w2 h2 hidden-sm hidden-xs'>
             <ul className='h_n n2 fl'>
