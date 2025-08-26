@@ -5147,9 +5147,6 @@ jQuery(document).ready(function ($) {
             $('#date_hide').val(this.getMoment().format('YYYY-MM-D'));
         },
     });
-    // $('.js-v1, .js-v2, .js-v3, .js-v4, .s1_s').on('touchstart click', function (e) {
-    //     e.stopPropagation();
-    // });
     $(".js-v1").click(function () {
         $(".s1_s2, .s1_s3").hide();
         if (ww < 992) {
@@ -5166,7 +5163,6 @@ jQuery(document).ready(function ($) {
         $(".s1_s2").hide();
         $(".js-v2").val($(this).find('strong').text());
         $('#spa_id').val($(this).attr('data-value'));
-        checkDate();
     });
     $(".js-v3").click(function () {
         $(".s1_s1, .s1_s2, .s1_s4").hide();
@@ -5184,9 +5180,6 @@ jQuery(document).ready(function ($) {
             $(".js-v4").val($(this).text());
         });
     });
-    // $('body').on('touchstart click', function (e) {
-    //     $(".s1_s").hide();
-    // });
     $('.js-done').click(function () {
         $('.s1_s').hide();
     });

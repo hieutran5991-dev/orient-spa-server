@@ -278,7 +278,7 @@ a {
 }
 
 a:hover {
-    color: #8bab81;
+    color: var(--main-color);
     text-decoration: none
 }
 
@@ -507,7 +507,7 @@ main {
 }
 
 .booking-container .btn-1 {
-    background-color: #8bab81;
+    background-color: var(--main-color);
     color: #fff;
     text-transform: uppercase;
 }
@@ -519,12 +519,12 @@ main {
 
 .booking-container .btn-2 {
     background-color: #fff;
-    color: #8bab81;
-    border: 1px solid #8bab81;
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
 }
 
 .booking-container .btn-2:hover {
-    background-color: #8bab81;
+    background-color: var(--main-color);
     color: #fff;
 }
 
@@ -689,7 +689,7 @@ main {
 
 .booking-container .breadcrumb>li a:hover {
     text-decoration: underline;
-    color: #8bab81;
+    color: var(--main-color);
 }
 
 .booking-container .pagination {
@@ -1159,7 +1159,7 @@ main {
     font-size: 1.6rem;
     font-weight: 600;
     text-transform: uppercase;
-    color: #8bab81;
+    color: var(--main-color);
 }
 
 .booking-container .f_s {
@@ -1890,7 +1890,7 @@ main {
 }
 
 .booking-container .k2_pc {
-    color: #8bab81;
+    color: var(--main-color);
     padding-top: 6px;
     padding-bottom: 6px;
     padding-right: 25px;
@@ -1937,7 +1937,7 @@ main {
 .booking-container .k2_pb dd.active {
     padding-right: 40px;
     position: relative;
-    color: #8bab81;
+    color: var(--main-color);
 }
 
 .booking-container .k2_pb dd.active:after {
@@ -2218,14 +2218,14 @@ main {
 }
 
 .booking-container .ntc {
-    color: #8bab81;
+    color: var(--main-color);
     width: calc(100% - 30px);
     max-width: 400px;
     text-align: center;
     padding: 30px 20px;
     border-radius: 2px;
     background-color: #fff;
-    border: 1px solid #8bab81;
+    border: 1px solid var(--main-color);
     box-shadow: 0 5px 20px rgba(72, 72, 72, 0.2);
     position: fixed;
     top: 20px;

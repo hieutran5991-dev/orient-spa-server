@@ -1,16 +1,15 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import type { Locale } from '@/utils/constants';
 import type { SpaLocation } from "@/types/api";
+import type {NamespaceKeys} from "use-intl";
 interface FooterProps {
   spaLocations: SpaLocation[];
 }
 
 const Footer = ({ spaLocations }: FooterProps) => {
-  const tCommon = useTranslations('common');
+  const tCommon = useTranslations('common' as NamespaceKeys<string, string>);
   const locale = useLocale() as Locale;
   return (
     <footer className="f">

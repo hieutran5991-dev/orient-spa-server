@@ -5,10 +5,11 @@ import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 import { SUPPORTED_LANGUAGE, type Locale } from '@/utils/constants';
+import type { NamespaceKeys } from "use-intl";
 
 const Header = () => {
-    const tCommon = useTranslations('common');
-    const tBooking = useTranslations('booking');
+    const tCommon = useTranslations('common' as NamespaceKeys<string, string>);
+    const tBooking = useTranslations('booking' as NamespaceKeys<string, string>);
     const locale = useLocale() as Locale;
     const router = useRouter();
     const pathname = usePathname();
@@ -31,8 +32,8 @@ const Header = () => {
                     </span>
                     <div className="h_c w1">
                         <div className="h_a fl fl-2">
-                            <a href={`/${locale}`}>
-                                <Image src="/fonts/orientspahanoi.svg" alt="Orient Spa Hanoi" width={150} height={40} />
+                            <a href={`/${locale}`} className="sm:min-h-[118px] flex items-center" >
+                                <Image src="/images/logo.png" alt="Orient Spa Hanoi" width={250} height={40} className="object-contain" />
                             </a>
                         </div>
                     </div>
@@ -46,9 +47,9 @@ const Header = () => {
                             <li><a href={`/${locale}/promotions`}>{tCommon('navigation.promotions')}</a></li>
                         </ul>
                         <div className="h_v hidden-lg hidden-md">
-                            <Link href={`/${locale}/booking`}>
-                                <span className="btn btn-1 btn-block">{tBooking('makeReservation')}</span>
-                            </Link>
+                            {/*<a href={`/${locale}/booking`}>*/}
+                            {/*    <span className="btn btn-1 btn-block">{tBooking('makeReservation')}</span>*/}
+                            {/*</a>*/}
                         </div>
                     </div>
                     <div className="h_c w2 h2 hidden-sm hidden-xs">

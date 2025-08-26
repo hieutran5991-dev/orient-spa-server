@@ -437,7 +437,7 @@ a {
 }
 
 a:hover {
-    color: #8bab81;
+    color: var(--main-color);
     text-decoration: none
 }
 
@@ -666,7 +666,7 @@ table tr th {
 }
 
 .btn-1 {
-    background-color: #8bab81;
+    background-color: var(--main-color);
     color: #fff;
     text-transform: uppercase
 }
@@ -678,12 +678,12 @@ table tr th {
 
 .btn-2 {
     background-color: #fff;
-    color: #8bab81;
-    border: 1px solid #8bab81
+    color: var(--main-color);
+    border: 1px solid var(--main-color)
 }
 
 .btn-2:hover {
-    background-color: #8bab81;
+    background-color: var(--main-color);
     color: #fff
 }
 
@@ -848,7 +848,7 @@ select.form-control {
 
 .breadcrumb>li a:hover {
     text-decoration: underline;
-    color: #8bab81
+    color: var(--main-color)
 }
 
 .pagination {
@@ -1334,7 +1334,7 @@ select.form-control {
     font-size: 1.6rem;
     font-weight: 600;
     text-transform: uppercase;
-    color: #8bab81
+    color: var(--main-color)
 }
 
 .f_p {
@@ -1508,14 +1508,14 @@ select.form-control {
 }
 
 .ntc {
-    color: #8bab81;
+    color: var(--main-color);
     width: calc(100% - 30px);
     max-width: 400px;
     text-align: center;
     padding: 30px 20px;
     border-radius: 2px;
     background-color: #fff;
-    border: 1px solid #8bab81;
+    border: 1px solid var(--main-color);
     box-shadow: 0 5px 20px rgba(72, 72, 72, 0.2);
     position: fixed;
     top: 20px;
@@ -1870,7 +1870,7 @@ select.form-control {
 }
 
 .s1_d li:hover {
-    color: #8bab81
+    color: var(--main-color)
 }
 
 .s1_sh {
@@ -2104,7 +2104,7 @@ select.form-control {
 }
 
 .s_p a:hover {
-    color: #8bab81
+    color: var(--main-color)
 }
 
 .s_g {
@@ -2289,7 +2289,7 @@ select.form-control {
 }
 
 .s2_t:hover {
-    color: #8bab81
+    color: var(--main-color)
 }
 
 .s2_d {
@@ -2884,7 +2884,7 @@ select.form-control {
 }
 
 .is-today .pika-button {
-    color: #8bab81;
+    color: var(--main-color);
     font-weight: 600
 }
 
@@ -3082,7 +3082,7 @@ select.form-control {
 .a5_et {
     font-size: 1.6rem;
     font-weight: 600;
-    color: #8bab81;
+    color: var(--main-color);
     text-transform: uppercase;
     margin-bottom: 0
 }
@@ -3345,7 +3345,7 @@ select.form-control {
     font-size: 1.6rem;
     font-family: FontAwesome;
     display: inline-block;
-    color: #8bab81;
+    color: var(--main-color);
     margin-right: 7px
 }
 
@@ -3479,7 +3479,7 @@ select.form-control {
 }
 
 .k1_t a:hover {
-    color: #8bab81
+    color: var(--main-color)
 }
 
 .k1_p {
@@ -3586,7 +3586,7 @@ select.form-control {
 }
 
 .k2_dt span {
-    color: #8bab81;
+    color: var(--main-color);
     cursor: pointer
 }
 
@@ -3616,7 +3616,7 @@ select.form-control {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: #8bab81;
+    background-color: var(--main-color);
     display: inline-block;
     position: absolute;
     left: 0;
@@ -3965,7 +3965,7 @@ select.form-control {
 
 .content a {
     text-decoration: underline;
-    color: #8bab81
+    color: var(--main-color)
 }
 
 .content a:hover {
@@ -4602,7 +4602,7 @@ select.form-control {
 }
 
 .s8 .a8_c>p>a:hover {
-    color: #8bab81
+    color: var(--main-color)
 }
 
 .s8 .a5_sa {
@@ -4695,7 +4695,7 @@ select.form-control {
 
 .s8_nm li.active span,
 .s8_nm li:hover span {
-    color: #8bab81;
+    color: var(--main-color);
     position: relative
 }
 
@@ -4705,7 +4705,7 @@ select.form-control {
     display: block;
     width: 100%;
     height: 3px;
-    background-color: #8bab81;
+    background-color: var(--main-color);
     position: absolute;
     left: 0;
     bottom: -1px
