@@ -5,6 +5,7 @@ import type { NamespaceKeys } from 'use-intl'
 import type { SpaLocation } from '@/types/api'
 import BookingForm from './BookingForm'
 import type { Locale } from '@/utils/constants'
+import People from "@/components/home/People";
 
 interface HomeContentProps {
   spaLocations: SpaLocation[]
@@ -273,6 +274,8 @@ const HomeContent = ({ spaLocations }: HomeContentProps) => {
           </div>
         </div>
       </div>
+
+      <People />
 
       {/* Why Choose Us Section */}
       <div className='s sH s7'>
