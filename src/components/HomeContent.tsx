@@ -6,6 +6,7 @@ import type { SpaLocation } from '@/types/api'
 import BookingForm from './BookingForm'
 import type { Locale } from '@/utils/constants'
 import People from "@/components/home/People";
+import Guests from "@/components/home/Guests";
 
 interface HomeContentProps {
   spaLocations: SpaLocation[]
@@ -51,17 +52,17 @@ const HomeContent = ({ spaLocations }: HomeContentProps) => {
     locations:
       spaLocations && spaLocations?.length > 0
         ? spaLocations.map((location) => ({
-            id: location.id,
-            name: location.name,
-            address: location.address,
-            capacity: t('locations.maxCapacity', { count: location.capacity }),
-            phone: location.phone,
-            email: location.email,
-            openTime: location.open_time,
-            closeTime: location.close_time,
-            href: `/spa/${location.name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`,
-            image: '/images/783d5b18e9483d703f24a6f8777c459f.jpg'
-          }))
+          id: location.id,
+          name: location.name,
+          address: location.address,
+          capacity: t('locations.maxCapacity', { count: location.capacity }),
+          phone: location.phone,
+          email: location.email,
+          openTime: location.open_time,
+          closeTime: location.close_time,
+          href: `/spa/${location.name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`,
+          image: '/images/783d5b18e9483d703f24a6f8777c459f.jpg'
+        }))
         : []
   }
 
@@ -276,6 +277,8 @@ const HomeContent = ({ spaLocations }: HomeContentProps) => {
       </div>
 
       <People />
+
+      <Guests />
 
       {/* Why Choose Us Section */}
       <div className='s sH s7'>
