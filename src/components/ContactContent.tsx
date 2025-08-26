@@ -48,7 +48,7 @@ const ContactContent = () => {
       } else {
         setStatus({ type: 'error', message: data.message });
       }
-    } catch (error) {
+    } catch (_) {
       setStatus({ type: 'error', message: 'Network error. Please try again.' });
     } finally {
       setLoading(false);

@@ -1,6 +1,6 @@
 import request from "@/lib/axios";
 import { AxiosResponse } from "axios";
-import { Category, Product as CommonProduct } from "@/types/common";
+import { Category } from "@/types/common";
 import { SpaLocation } from "@/types/api";
 import { BookingSubmissionData, Product } from "@/types/booking";
 
@@ -17,5 +17,5 @@ export const getListProducts: () => Promise<AxiosResponse<Product[] | []>> = asy
 }
 
 export const saveBooking = async (data: BookingSubmissionData) => {
-  return await request.post('api/bookings', JSON.stringify(data));
+  return await request.post('api/bookings', data);
 }

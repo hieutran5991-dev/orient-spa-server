@@ -19,7 +19,6 @@ const ConfirmContent = () => {
   const [bookingData, setBookingData] = useState<BookingData>({})
   const [isLoading, setIsLoading] = useState(true)
   const [isConfirming, setIsConfirming] = useState(false)
-
   const t = useTranslations('confirm' as NamespaceKeys<any, any>)
 
   useEffect(() => {
@@ -28,17 +27,20 @@ const ConfirmContent = () => {
     if (savedData) {
       try {
         const parsedData = JSON.parse(savedData)
-
         setBookingData(parsedData)
-      } catch (error) {
-        router.push('/home')
+      } catch (_) {
+        router.push('/')
       }
     } else {
-      router.push('/home')
+      router.push('/')
     }
 
     setIsLoading(false)
   }, [router])
+
+  const confirmContent = () => {
+    window.location.href = "/booking"
+  }
 
   const handleConfirmBooking = async () => {
     setIsConfirming(true)
@@ -70,14 +72,44 @@ const ConfirmContent = () => {
       <main className='main-content'>
         <div className='s k1'>
           <div className='container'>
-            <div className='text-center'>Loading...</div>
+            <div className='flex flex-col items-center justify-center min-h-[60vh] space-y-6'>
+              {/* Spinning loader */}
+              <div className="relative">
+                <div className="w-16 h-16 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin"></div>
+                <div
+                  className="absolute inset-0 w-16 h-16 border-4 border-transparent border-t-blue-400 rounded-full animate-spin"
+                  style={{ animationDelay: '0.15s' }}
+                ></div>
+              </div>
+
+              {/* Loading text with pulse animation */}
+              <div className="text-center space-y-2">
+                <h3 className="text-lg font-semibold text-gray-700 animate-pulse">
+                  {t('loading.title')}
+                </h3>
+                <p className="text-sm text-gray-500 animate-pulse">
+                  {t('loading.subtitle')}
+                </p>
+              </div>
+
+              {/* Progress dots */}
+              <div className="flex space-x-2">
+                <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"></div>
+                <div
+                  className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"
+                  style={{ animationDelay: '0.2s' }}
+                ></div>
+                <div
+                  className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"
+                  style={{ animationDelay: '0.4s' }}
+                ></div>
+              </div>
+            </div>
           </div>
         </div>
       </main>
     )
-  }
-
-  const bookingSteps: BookingStep[] = [
+  }  const bookingSteps: BookingStep[] = [
     { id: 1, icon: 'ic-reserve', title: t('steps.reserve') },
     { id: 2, icon: 'ic-select', title: t('steps.select') },
     { id: 3, icon: 'ic-confirm', title: t('steps.confirm') }
@@ -149,7 +181,7 @@ const ConfirmContent = () => {
                           </div>
                         ))}
 
-                        {bookingData.total_price > 0 && (
+                        {(bookingData.total_price && bookingData.total_price > 0) && (
                           <div className='k2_di'>
                             <table>
                               <tbody>
@@ -172,10 +204,8 @@ const ConfirmContent = () => {
               </div>
             </div>
 
-            {/* Right Column - Detailed Information */}
             <div className='k2_m'>
               <div className='k2_mw'>
-                {/* Service Details */}
                 <div className='k2_i ot'>
                   <div className='k2_h'>{t('serviceDetails.title')}</div>
                   <div className='k2_b'>
@@ -200,7 +230,7 @@ const ConfirmContent = () => {
                         </div>
                       ))}
 
-                      {bookingData.total_price > 0 && (
+                      {(bookingData.total_price && bookingData.total_price > 0) && (
                         <div className='k2_di'>
                           <table>
                             <tbody>
@@ -220,7 +250,6 @@ const ConfirmContent = () => {
                   </div>
                 </div>
 
-                {/* Contact Information */}
                 <div className='k2_i ot'>
                   <div className='k2_h'>{t('contactInfo.title')}</div>
                   <div className='k2_b'>
@@ -305,7 +334,6 @@ const ConfirmContent = () => {
                 {/*  </div>*/}
                 {/*)}*/}
 
-                {/* Cancellation Policy */}
                 <div className='k2_i ot'>
                   <div className='k2_h'>{t('cancellationPolicy.title')}</div>
                   <div className='k2_b'>
@@ -321,12 +349,19 @@ const ConfirmContent = () => {
 
               {/* Action Buttons */}
               <div className='k2_f fl fl-2'>
-                {/*<button onClick={() => router.push('/booking')} className='btn btn-2' disabled={isConfirming}>*/}
-                {/*  <i className='fa fa-angle-left'></i>*/}
-                {/*  {t('actions.changeService')}*/}
-                {/*</button>*/}
-                <button onClick={handleConfirmBooking} className='btn btn-1' disabled={isConfirming}>
-                  {isConfirming ? 'Processing...' : t('actions.confirm')}
+                <button onClick={() => confirmContent()} className='btn btn-2' disabled={isConfirming}>
+                  <i className='fa fa-angle-left'></i>
+                  {t('actions.changeService')}
+                </button>
+                <button onClick={handleConfirmBooking} className='btn btn-1 relative' disabled={isConfirming}>
+                  {isConfirming ? (
+                    <div className="flex items-center justify-center space-x-2">
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>{t('actions.processing')}</span>
+                    </div>
+                  ) : (
+                    t('actions.confirm')
+                  )}
                 </button>
               </div>
             </div>

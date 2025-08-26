@@ -43,7 +43,6 @@ const BookingForm = ({ spaLocations, children, selectedService }: BookingFormPro
       bookingData.booking_details = Array(parseInt(bookingData.people || '1')).fill([selectedService])
     }
 
-
     try {
       sessionStorage.setItem(BOOKING_INIT_KEY, JSON.stringify(bookingData));
       window.location.href = `/${locale}/booking`;

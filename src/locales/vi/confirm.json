@@ -36,8 +36,13 @@
     "urgent": "Nếu bạn cần thay đổi hoặc đặt lịch khẩn cấp, vui lòng liên hệ hotline: +84 977 903 499 hoặc email orientspahanoi@gmail.com",
     "arrive": "Chúng tôi khuyên bạn nên đến spa trước 10 phút so với thời gian điều trị để thư giãn trước khi bắt đầu."
   },
+  "loading": {
+    "title": "Đang tải thông tin đặt lịch...",
+    "subtitle": "Vui lòng đợi trong khi chúng tôi chuẩn bị xác nhận của bạn"
+  },
   "actions": {
-    "changeService": "Thay Đổi Dịch Vụ",
-    "confirm": "XÁC NHẬN"
+    "changeService": "Thay đổi dịch vụ",
+    "confirm": "XÁC NHẬN",
+    "processing": "Đang xử lý..."
   }
 }

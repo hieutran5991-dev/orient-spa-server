@@ -36,8 +36,13 @@
     "urgent": "If you need to make change or make urgent booking please contact out hotline: +84 977 903 499 or email orientspahanoi@gmail.com",
     "arrive": "We suggest you to arrive at our spa 10 minutes in advance of the treatment time to relax before the treatment time."
   },
+  "loading": {
+    "title": "Loading your booking details...",
+    "subtitle": "Please wait while we prepare your confirmation"
+  },
   "actions": {
     "changeService": "Change Service",
-    "confirm": "CONFIRM"
+    "confirm": "CONFIRM",
+    "processing": "Processing..."
   }
 }

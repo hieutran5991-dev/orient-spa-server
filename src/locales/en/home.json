@@ -1,4 +1,5 @@
 {
+    "title": "Orient Spa Hanoi",
     "hero": {
         "tagline": "A relaxing escape for all your senses",
         "title": "Welcome to orient spa",
@@ -44,5 +45,6 @@
             }
         }
     },
-    "bookNow": "BOOK NOW!"
+    "bookNow": "BOOK NOW!",
+    "makeReservation": "Make Reservation"
 }

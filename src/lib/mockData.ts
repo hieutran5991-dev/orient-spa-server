@@ -563,7 +563,6 @@ export const spaServices: SpaService[] = [
     validUntil: "2024-12-25",
     slug: "couples-spa-package-120min"
   },
-
   {
     id: "1",
     name: {
@@ -615,7 +614,7 @@ export const spaServices: SpaService[] = [
       vi: ["Thư giãn sâu", "Nuôi dưỡng da", "Lợi ích liệu pháp thơm", "Giảm căng thẳng"],
       ja: ["深いリラクゼーション", "肌の栄養補給", "アロマセラピー効果", "ストレス緩和"]
     },
-    isPromotion: false,
+    isPromotion: true,
     slug: "aroma-oil-massage"
   },
   {
@@ -642,7 +641,7 @@ export const spaServices: SpaService[] = [
       vi: ["Thư giãn cơ bắp sâu", "Cải thiện tuần hoàn", "Giảm đau", "Bình tĩnh tinh thần"],
       ja: ["深層筋肉のリラクゼーション", "血行改善", "痛み緩和", "精神の安らぎ"]
     },
-    isPromotion: false,
+    isPromotion: true,
     slug: "hot-stone-massage"
   },
   {
@@ -669,7 +668,7 @@ export const spaServices: SpaService[] = [
       vi: ["Giảm đau chân", "Cải thiện chất lượng giấc ngủ", "Tăng cường năng lượng", "Tăng cường tuần hoàn"],
       ja: ["足の痛み緩和", "睡眠の質向上", "エネルギー向上", "血行促進"]
     },
-    isPromotion: false,
+    isPromotion: true,
     slug: "foot-massage-reflexology"
   },
   {
@@ -751,22 +750,18 @@ export const getSpaServicesByCategory = (category: string, locale: Locale = 'en'
   );
 };
 
-// Get promotion packages
 export const getPromotionServices = (locale: Locale = 'en'): SpaService[] => {
   return promotionPackages;
 };
 
-// Get only regular services (non-promotion)
 export const getRegularServices = (locale: Locale = 'en'): SpaService[] => {
   return spaServices.filter(service => service.isPromotion === false);
 };
 
-// Get hot/featured services
 export const getHotServices = (locale: Locale = 'en'): SpaService[] => {
   return promotionPackages.filter(service => service.isHot === true);
 };
 
-// Get promotion by slug
 export const getPromotionBySlug = (slug: string): SpaService | undefined => {
   return promotionPackages.find(service => service.slug === slug);
 };

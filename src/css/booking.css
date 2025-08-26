@@ -513,7 +513,7 @@ main {
 }
 
 .booking-container .btn-1:hover {
-    background-color: #7d9d75;
+    background-color: var(--hover-color);
     color: #fff;
 }
 
@@ -1747,7 +1747,7 @@ main {
     justify-content: center;
     border: 1px solid rgba(153, 153, 153, 0.3);
     background-color: rgba(250, 249, 248, 0.3);
-    color: #8aac7f;
+    color: var(--main-color);
     position: absolute;
     left: 0;
 }
@@ -2153,7 +2153,7 @@ main {
 .booking-container .s8_v input[type=checkbox]:checked+label:before {
     content: '\f00c';
     font-family: FontAwesome;
-    color: #8aac7f;
+    color: var(--main-color);
 }
 
 .booking-container .b5 {

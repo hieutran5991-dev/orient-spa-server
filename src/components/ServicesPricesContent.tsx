@@ -2,8 +2,8 @@
 
 import { useTranslations, useLocale, type NamespaceKeys } from "next-intl";
 import Link from "next/link";
-import { useState, useEffect, useMemo } from "react";
-import { BOOKING_INIT_KEY, type Locale } from "@/utils/constants";
+import { useState, useMemo } from "react";
+import { type Locale } from "@/utils/constants";
 import { formatPrice } from "@/utils/format";
 import { SpaLocation } from "@/types/api";
 import { Category, Product } from "@/types/common";

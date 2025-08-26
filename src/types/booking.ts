@@ -40,9 +40,9 @@ export interface BookingData<T = Array<Product[]>> {
     last_name?: string;
     phone?: string;
     email?: string;
-    notes?: string;
+    note?: string;
     booking_details?: T;
-    total_price: number;
+    total_price?: number;
 }
 
 export type BookingSubmissionData = BookingData<Record<string, (string | number)[]>>;

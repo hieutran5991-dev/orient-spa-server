@@ -1,15 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import type { NamespaceKeys } from "use-intl";
 import type { SpaLocation } from '@/types/api';
 import BookingForm from './BookingForm';
+import type { Locale } from '@/utils/constants';
 
 interface HomeContentProps {
     spaLocations: SpaLocation[];
 }
 
 const HomeContent = ({ spaLocations }: HomeContentProps) => {
+    const locale = useLocale() as Locale;
     const t = useTranslations('home' as NamespaceKeys<any, any>);
     const tCommon = useTranslations('common' as NamespaceKeys<any, any>);
     const tPromotions = useTranslations('promotions' as NamespaceKeys<any, any>);
@@ -212,8 +214,8 @@ const HomeContent = ({ spaLocations }: HomeContentProps) => {
                                 </div>
                             </div>
                         </div>
-                        <Link href="/reservation" className="btn btn-1 s2_u">
-                            Make Reservation
+                        <Link href={`/${locale}/booking`} className="btn btn-1 s2_u">
+                            {t('makeReservation')}
                         </Link>
                     </div>
                     <div className="s2_f">

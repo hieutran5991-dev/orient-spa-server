@@ -5,13 +5,13 @@ import type { Locale } from '@/utils/constants';
 import { spaServices } from '@/lib/mockData';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { NamespaceKeys } from "use-intl";
 
 const PromotionsContent = () => {
-  const t = useTranslations('promotions');
-  const tCommon = useTranslations('common');
+  const t = useTranslations('promotions' as NamespaceKeys<string, string>);
+  const tCommon = useTranslations('common' as NamespaceKeys<string, string>);
   const locale = useLocale() as Locale;
 
-  // Filter promotion services
   const promotionServices = spaServices.filter(service => service.isPromotion);
 
   return (

@@ -1393,7 +1393,7 @@ table tr th {
 }
 
 .btn-1:hover {
-    background-color: #7d9d75;
+    background-color: var(--hover-color);
     color: #fff
 }
 

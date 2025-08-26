@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import type { NamespaceKeys } from "use-intl";
@@ -22,7 +22,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
   const t = useTranslations("booking" as NamespaceKeys<string, string>);
 
   useEffect(() => {
-    const savedData = sessionStorage.getItem(BOOKING_INIT_KEY);
+    const savedData = sessionStorage.getItem(BOOKING_CONFIRM_KEY) || sessionStorage.getItem(BOOKING_INIT_KEY);
     if (savedData) {
       try {
         const parsedData = JSON.parse(savedData);
@@ -34,14 +34,17 @@ const BookingContent = ({ products }: BookingContentProps) => {
           (_, index) => `guest_${index + 1}_services`
         );
         setGuestForms(initialGuestForms);
-      } catch (_err) {
+      } catch (_) {
         sessionStorage.removeItem(BOOKING_INIT_KEY);
         window.location.href = "/";
       }
     }
   }, []);
 
-  const buildBookingDetails = (formData: FormData) => {
+  const buildBookingDetails = (formData: FormData): {
+    guestServiceInfo: Array<Product[]>;
+    totalPrice: number;
+  } | {} => {
     if (!guestForms?.length) return {};
     let totalPrice = 0;
 
@@ -75,7 +78,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
 
-    const bookingDetails = buildBookingDetails(formData);
+    const bookingDetails = buildBookingDetails(formData as FormData);
 
     const finalBookingData = {
       ...bookingData,
@@ -87,6 +90,8 @@ const BookingContent = ({ products }: BookingContentProps) => {
       booking_details: bookingDetails?.guestServiceInfo,
       total_price: bookingDetails?.totalPrice,
     };
+
+    console.log(finalBookingData);
 
     sessionStorage.setItem(
       BOOKING_CONFIRM_KEY,
@@ -102,13 +107,6 @@ const BookingContent = ({ products }: BookingContentProps) => {
     { id: 2, icon: "ic-select", title: t("stepSelect"), active: true },
     { id: 3, icon: "ic-confirm", title: t("stepConfirm"), active: false },
   ];
-
-  const appointmentSummary = {
-    date: bookingData.booking_date || "27 August 2025",
-    time: bookingData.booking_time || "10:00",
-    location: bookingData.agency_name || t("defaultSpaName"),
-    guests: bookingData.people || "1",
-  };
 
   return (
     <main className="main-content">
@@ -152,18 +150,18 @@ const BookingContent = ({ products }: BookingContentProps) => {
                     <div className="k2_dm">
                       <ul className="k2_dn">
                         <li>
-                          <strong>{t("date")}</strong> {appointmentSummary.date}
+                          <strong>{t("date")}</strong> {bookingData.booking_date}
                         </li>
                         <li>
-                          <strong>{t("time")}</strong> {appointmentSummary.time}
+                          <strong>{t("time")}</strong> {bookingData.booking_time}
                         </li>
                         <li>
                           <strong>{t("location")}</strong>{" "}
-                          {appointmentSummary.location}
+                          {bookingData.agency_name}
                         </li>
                         <li>
                           <strong>{t("numberOfGuests")}</strong>{" "}
-                          {appointmentSummary.guests}
+                          {bookingData.people}
                         </li>
                       </ul>
                       <div className="k2_ds"></div>
@@ -175,9 +173,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
 
             {/* Booking Form */}
             <form
-              action="/api/booking"
               className="k2_m"
-              method="POST"
               id="fromBook"
               autoComplete="off"
               onSubmit={handleSubmit}
@@ -386,7 +382,9 @@ const BookingContent = ({ products }: BookingContentProps) => {
                         className="form-control"
                         placeholder={t("additionalRequestPlaceholder")}
                         id="id_content"
-                      ></textarea>
+                        defaultValue={bookingData.note || ""}
+                      >
+                      </textarea>
                     </div>
                   </div>
                 </div>
