@@ -64,7 +64,7 @@ const testimonials = [
     date: '03 June 2025',
     type: 'Solo',
     rating: 5,
-    image: '/images/fb/95/22/95224d28fc9c65f9879d5fe07728e00b.jpg',
+    image: '/images/fb/95224d28fc9c65f9879d5fe07728e00b.jpg',
     review: '聽同事推薦來的，提前預約比較保險，位置很方便，按摩洗頭很舒服，洗完頭變輕盈的感覺！下次還想體驗其他按摩'
   },
   {
