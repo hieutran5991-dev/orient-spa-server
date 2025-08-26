@@ -1,0 +1,59 @@
+{
+  "title": "Reservation",
+  "breadcrumb": {
+    "home": "Home",
+    "reservation": "Reservation"
+  },
+  "contactByPhone": {
+    "title": "Contact Us by Phone/Wechat/ Kakao Talk / WhatsApp",
+    "locations": {
+      "orientSpa": {
+        "name": "Orient Spa & Nails",
+        "address": "No 18 Bao Khanh, Hoan Kiem, Hanoi",
+        "phone": "(+84) 866 903 499"
+      },
+      "cathedral": {
+        "name": "Orient Spa (Cathedral Branch)",
+        "address": "No 26 Au Trieu, Hoan Kiem, Hanoi",
+        "phone": "(+84) 977 903 499"
+      },
+      "laFlora": {
+        "name": "La Flora Spa",
+        "address": "No 22 Au Trieu, Hoan Kiem, Hanoi",
+        "phone": "(+84) 867 903 499"
+      }
+    }
+  },
+  "welcomeMessage": "We are happy to welcome you to Orient Spa Hanoi! You can make a reservation at our spa by one of the following ways:",
+  "reservationMethods": {
+    "phone": "Calling our phone number",
+    "messaging": "Sending us message on Whatsapp, Kakao, Wechat, Zalo",
+    "online": "Book online on our website and receive instant confirmation"
+  },
+  "onlineBooking": {
+    "title": "Online Booking",
+    "description": "You can book for a maximum of 10 guests at one time on our online booking platform. Simply choose:",
+    "steps": {
+      "location": "Spa location you want to book",
+      "guests": "Number of guests",
+      "datetime": "Date and time",
+      "services": "Services and duration"
+    },
+    "confirmation": "Our staff will send you a confirmation email or message as soon as we receive your booking.",
+    "bookNow": "BOOK NOW!"
+  },
+  "about": {
+    "reservation": {
+      "title": "About reservation",
+      "content": "If you have any pre-existing health conditions such as lower back pain, skin conditions, injuries, pregnancy, etc. please inform us in advance so we can tailor the best service for you."
+    },
+    "changes": {
+      "title": "About change / cancellation of reservation",
+      "content": "Please make changes or cancel at least 24​ hours prior to the appointment.​ This allows us to have enough time to properly receive other guests' booking."
+    },
+    "payment": {
+      "title": "About payment",
+      "content": "Payment can be made in cash or with credit cards. Payment is made after the treatment. Tips are not required but always welcomed."
+    }
+  }
+}

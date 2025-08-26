@@ -1,22 +1,30 @@
-import { getRequestConfig } from 'next-intl/server';
-import { hasLocale } from 'next-intl';
-import { SUPPORTED_LANGUAGE, DEFAULT_LANGUAGE } from '@/utils/constants';
+import { getRequestConfig } from 'next-intl/server'
+import { hasLocale } from 'next-intl'
+import { SUPPORTED_LANGUAGE, DEFAULT_LANGUAGE } from '@/utils/constants'
 
 export default getRequestConfig(async ({ requestLocale }) => {
-  const requested = await requestLocale;
-  const locale = hasLocale(SUPPORTED_LANGUAGE, requested)
-    ? requested
-    : DEFAULT_LANGUAGE
+  const requested = await requestLocale
+  const locale = hasLocale(SUPPORTED_LANGUAGE, requested) ? requested : DEFAULT_LANGUAGE
 
-  const [commonMessages, homeMessages, bookingMessages, servicesMessages, promotionsMessages, contactMessages, confirmMessages] = await Promise.all([
-    import(`../locales/${locale}/common.json`).then(m => m.default),
-    import(`../locales/${locale}/home.json`).then(m => m.default),
-    import(`../locales/${locale}/booking.json`).then(m => m.default),
-    import(`../locales/${locale}/services.json`).then(m => m.default),
-    import(`../locales/${locale}/promotions.json`).then(m => m.default),
-    import(`../locales/${locale}/contact.json`).then(m => m.default),
-    import(`../locales/${locale}/confirm.json`).then(m => m.default)
-  ]);
+  const [
+    commonMessages,
+    homeMessages,
+    bookingMessages,
+    servicesMessages,
+    promotionsMessages,
+    contactMessages,
+    confirmMessages,
+    reservationMessages
+  ] = await Promise.all([
+    import(`../locales/${locale}/common.json`).then((m) => m.default),
+    import(`../locales/${locale}/home.json`).then((m) => m.default),
+    import(`../locales/${locale}/booking.json`).then((m) => m.default),
+    import(`../locales/${locale}/services.json`).then((m) => m.default),
+    import(`../locales/${locale}/promotions.json`).then((m) => m.default),
+    import(`../locales/${locale}/contact.json`).then((m) => m.default),
+    import(`../locales/${locale}/confirm.json`).then((m) => m.default),
+    import(`../locales/${locale}/reservation.json`).then((m) => m.default)
+  ])
 
   // Merge all messages into one object with namespaces
   const messages = {
@@ -26,11 +34,12 @@ export default getRequestConfig(async ({ requestLocale }) => {
     services: servicesMessages,
     promotions: promotionsMessages,
     contact: contactMessages,
-    confirm: confirmMessages
-  };
+    confirm: confirmMessages,
+    reservation: reservationMessages
+  }
 
   return {
     locale,
     messages
-  };
-});
+  }
+})

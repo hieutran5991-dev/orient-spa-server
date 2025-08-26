@@ -185,7 +185,7 @@ const ContactContent = () => {
         <div className="container" data-bis-skin-checked="1">
           <div className="s2_f cs" data-bis-skin-checked="1">
             <Image
-              src="/static/images/spa-map.jpg"
+              src="/images/spa-map.jpg"
               alt={t('map.alt')}
               width={1200}
               height={600}
@@ -213,13 +213,13 @@ const ContactContent = () => {
               <div className="a6_i" data-bis-skin-checked="1">
                 <div className="a6_a" data-bis-skin-checked="1">
                   <div className="a6_ai" data-bis-skin-checked="1">
-                    <Image src="/media/spa/qr/2025/Orient-spa-nails-qr-1_3PWsllg.jpg" alt="Orient Spa & Nails" width={150} height={150} />
+                    <Image src="/images/reservations/Orient-spa-nails-qr-1_3PWsllg.jpg" alt="Orient Spa & Nails" width={150} height={150} />
                   </div>
                   <div className="a6_ai" data-bis-skin-checked="1">
-                    <Image src="/media/spa/qr/2025/Orient-spa-nails-qr-2.jpg" alt="Orient Spa & Nails" width={150} height={150} />
+                    <Image src="/images/reservations/Orient-spa-nails-qr-2.jpg" alt="Orient Spa & Nails" width={150} height={150} />
                   </div>
                   <div className="a6_ai" data-bis-skin-checked="1">
-                    <Image src="/media/spa/qr/2025/Orient-spa-nails-qr-3_uVW9TRR.jpg" alt="Orient Spa & Nails" width={150} height={150} />
+                    <Image src="/images/reservations/Orient-spa-nails-qr-3_uVW9TRR.jpg" alt="Orient Spa & Nails" width={150} height={150} />
                   </div>
                 </div>
                 <div className="a6_c" data-bis-skin-checked="1">
@@ -238,13 +238,13 @@ const ContactContent = () => {
               <div className="a6_i" data-bis-skin-checked="1">
                 <div className="a6_a" data-bis-skin-checked="1">
                   <div className="a6_ai" data-bis-skin-checked="1">
-                    <Image src="/media/spa/qr/2025/Orient-old-quarter-qr-3.jpg" alt="Orient Spa (Cathedral Branch)" width={150} height={150} />
+                    <Image src="/images/reservations/Orient-old-quarter-qr-3.jpg" alt="Orient Spa (Cathedral Branch)" width={150} height={150} />
                   </div>
                   <div className="a6_ai" data-bis-skin-checked="1">
-                    <Image src="/media/spa/qr/2025/Orient-old-quarter-qr-1.jpg" alt="Orient Spa (Cathedral Branch)" width={150} height={150} />
+                    <Image src="/images/reservations/Orient-old-quarter-qr-1.jpg" alt="Orient Spa (Cathedral Branch)" width={150} height={150} />
                   </div>
                   <div className="a6_ai" data-bis-skin-checked="1">
-                    <Image src="/media/spa/qr/2025/Orient-old-quarter-qr-2.jpg" alt="Orient Spa (Cathedral Branch)" width={150} height={150} />
+                    <Image src="/images/reservations/Orient-old-quarter-qr-2.jpg" alt="Orient Spa (Cathedral Branch)" width={150} height={150} />
                   </div>
                 </div>
                 <div className="a6_c" data-bis-skin-checked="1">
@@ -263,13 +263,13 @@ const ContactContent = () => {
               <div className="a6_i" data-bis-skin-checked="1">
                 <div className="a6_a" data-bis-skin-checked="1">
                   <div className="a6_ai" data-bis-skin-checked="1">
-                    <Image src="/media/spa/qr/2025/La-Flora-qr-2.jpg" alt="La Flora Spa" width={150} height={150} />
+                    <Image src="/images/reservations/La-Flora-qr-2.jpg" alt="La Flora Spa" width={150} height={150} />
                   </div>
                   <div className="a6_ai" data-bis-skin-checked="1">
-                    <Image src="/media/spa/qr/2025/La-Flora-qr-5.jpg" alt="La Flora Spa" width={150} height={150} />
+                    <Image src="/images/reservations/La-Flora-qr-5.jpg" alt="La Flora Spa" width={150} height={150} />
                   </div>
                   <div className="a6_ai" data-bis-skin-checked="1">
-                    <Image src="/media/spa/qr/2025/La-Flora-qr-3.jpg" alt="La Flora Spa" width={150} height={150} />
+                    <Image src="/images/reservations/La-Flora-qr-3.jpg" alt="La Flora Spa" width={150} height={150} />
                   </div>
                 </div>
                 <div className="a6_c" data-bis-skin-checked="1">

@@ -4,8 +4,9 @@
     "services": "サービス・料金",
     "promotions": "プロモーション",
     "booking": "予約",
+    "reservation": "ご予約",
     "contact": "お問い合わせ",
-    "about": "会社概要"
+    "about": "私たちについて"
   },
   "common": {
     "showMore": "もっと見る",

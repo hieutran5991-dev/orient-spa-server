@@ -1,9 +1,10 @@
 {
   "navigation": {
     "home": "Trang chủ",
-    "services": "Dịch vụ & Giá cả",
+    "services": "Dịch vụ & Giá",
     "promotions": "Khuyến mãi",
     "booking": "Đặt lịch",
+    "reservation": "Đặt lịch hẹn",
     "contact": "Liên hệ",
     "about": "Giới thiệu"
   },

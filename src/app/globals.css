@@ -1,6 +1,13 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --main-color: #9e2265;
-  --hover-color: #c94a87;
+  --hover-color: #b8286f;
+  --main-light-color: #fdf7fc;
+  --main-accent-color: #f3e8ff;
+
+  --primary-dark: #7a1d52;
+  --primary-light: #d946ef;
+  --text-muted: #6b7280;
+  --text-light: #9ca3af;
 }

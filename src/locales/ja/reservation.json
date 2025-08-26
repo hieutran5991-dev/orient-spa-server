@@ -1,0 +1,59 @@
+{
+  "title": "予約",
+  "breadcrumb": {
+    "home": "ホーム",
+    "reservation": "予約"
+  },
+  "contactByPhone": {
+    "title": "電話/Wechat/Kakao Talk/WhatsAppでお問い合わせ",
+    "locations": {
+      "orientSpa": {
+        "name": "Orient Spa & Nails",
+        "address": "18 Bao Khanh, Hoan Kiem, ハノイ",
+        "phone": "(+84) 866 903 499"
+      },
+      "cathedral": {
+        "name": "Orient Spa (大聖堂支店)",
+        "address": "26 Au Trieu, Hoan Kiem, ハノイ",
+        "phone": "(+84) 977 903 499"
+      },
+      "laFlora": {
+        "name": "La Flora Spa",
+        "address": "22 Au Trieu, Hoan Kiem, ハノイ",
+        "phone": "(+84) 867 903 499"
+      }
+    }
+  },
+  "welcomeMessage": "オリエントスパハノイへようこそ！以下の方法でスパのご予約をいただけます：",
+  "reservationMethods": {
+    "phone": "お電話でのご予約",
+    "messaging": "Whatsapp、Kakao、Wechat、Zaloでのメッセージ",
+    "online": "ウェブサイトでのオンライン予約（即座に確認メールをお送りします）"
+  },
+  "onlineBooking": {
+    "title": "オンライン予約",
+    "description": "オンライン予約プラットフォームでは一度に最大10名様までご予約いただけます。以下をお選びください：",
+    "steps": {
+      "location": "ご希望のスパ店舗",
+      "guests": "ゲスト数",
+      "datetime": "日時",
+      "services": "サービスと時間"
+    },
+    "confirmation": "ご予約を受け取り次第、スタッフより確認のメールまたはメッセージをお送りいたします。",
+    "bookNow": "今すぐ予約！"
+  },
+  "about": {
+    "reservation": {
+      "title": "ご予約について",
+      "content": "腰痛、皮膚の状態、怪我、妊娠などの既往症がある場合は、事前にお知らせください。お客様に最適なサービスを提供いたします。"
+    },
+    "changes": {
+      "title": "予約の変更・キャンセルについて",
+      "content": "予約の変更またはキャンセルは、予約時間の少なくとも24時間前にお願いいたします。これにより、他のお客様のご予約を適切にお受けする時間を確保できます。"
+    },
+    "payment": {
+      "title": "お支払いについて",
+      "content": "お支払いは現金またはクレジットカードで承ります。お支払いはトリートメント後に行います。チップは必須ではありませんが、いつでも歓迎いたします。"
+    }
+  }
+}
