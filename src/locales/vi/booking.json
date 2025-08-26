@@ -1,12 +1,7 @@
 {
     "title": "Đặt lịch trực tuyến",
-    "location": "Địa điểm",
-    "date": "Ngày",
-    "time": "Giờ",
-    "guest": "Khách",
     "guests": "Khách",
     "bookNow": "ĐẶT LỊCH NGAY!",
-    "processing": "Đang xử lý...",
     "selectLocation": "Chọn địa điểm",
     "selectDate": "Chọn ngày",
     "selectTime": "Chọn giờ",

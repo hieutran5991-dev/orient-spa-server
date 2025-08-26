@@ -55,7 +55,7 @@ const HomeContent = ({ spaLocations }: HomeContentProps) => {
             openTime: location.open_time,
             closeTime: location.close_time,
             href: `/spa/${location.name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`,
-            image: "/images/783d5b18e9483d703f24a6f8777c459f.jpg" // Default image, you can add image field to SpaLocation type later
+            image: "/images/783d5b18e9483d703f24a6f8777c459f.jpg"
         })) : []
     };
 
@@ -133,7 +133,15 @@ const HomeContent = ({ spaLocations }: HomeContentProps) => {
                     <p className="a1_cp">{heroContent.subtitle}</p>
                 </div>
 
-                <BookingForm spaLocations={spaLocations} />
+                <div className="s1">
+                    <BookingForm spaLocations={spaLocations}>
+                        <div className="s1_t hidden-lg hidden-md">
+                            <strong>{t('title')}</strong>
+                            <i className="s1_z ic ic-close"></i>
+                        </div>
+                    </BookingForm>
+                </div>
+                <span className="a1_a btn hidden-lg hidden-md">{t('bookNow')}</span>
             </div>
 
             <div className="s sH s2">
