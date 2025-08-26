@@ -45,17 +45,18 @@ const HomeContent = ({ spaLocations }: HomeContentProps) => {
     const locationsSection = {
         title: t('locations.title'),
         subtitle: t('locations.subtitle'),
-        locations: spaLocations && spaLocations?.length > 0 ? spaLocations : [
-            {
-                id: 1,
-                name: "Orient Spa & Nails",
-                address: "No 18 Bao Khanh, Hoan Kiem, Hanoi",
-                capacity: t('locations.maxCapacity', { count: 18 }),
-                phone: "(+84) 866 903 499",
-                href: "/spa/orient-spa-nails",
-                image: "/images/2501a13248def0544df4943d3312fb4b.jpg"
-            }
-        ]
+        locations: spaLocations && spaLocations?.length > 0 ? spaLocations.map(location => ({
+            id: location.id,
+            name: location.name,
+            address: location.address,
+            capacity: t('locations.maxCapacity', { count: location.capacity }),
+            phone: location.phone,
+            email: location.email,
+            openTime: location.open_time,
+            closeTime: location.close_time,
+            href: `/spa/${location.name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`,
+            image: "/images/783d5b18e9483d703f24a6f8777c459f.jpg" // Default image, you can add image field to SpaLocation type later
+        })) : []
     };
 
     const promotionsSection = {
@@ -163,46 +164,43 @@ const HomeContent = ({ spaLocations }: HomeContentProps) => {
                         <div className="s2_mw">
                             <div className="s2_sw swiper js-sw3">
                                 <div className="swiper-wrapper">
-                                    {/* Location 1 */}
-                                    <div className="swiper-slide">
-                                        <div className="s2_i">
-                                            <div className="s3_a">
-                                                <div className="s3i swiper js-s3i">
-                                                    <div className="swiper-wrapper">
-                                                        <div className="swiper-slide">
-                                                            <div className="s3i_a">
-                                                                <Image
-                                                                    src="/images/2501a13248def0544df4943d3312fb4b.jpg"
-                                                                    alt="Orient Spa & Nails"
-                                                                    width={400}
-                                                                    height={300}
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                    {locationsSection.locations.map((location) => (
+                                        <div key={location.id} className="swiper-slide">
+                                            <div className="s2_i">
+                                                <Image
+                                                    src={location.image}
+                                                    alt={location.name}
+                                                    width={400}
+                                                    height={300}
+                                                />
+                                                <div className="s2_b">
+                                                    <h3 className="s2_t">
+                                                        <Link href={location.href}>{location.name}</Link>
+                                                    </h3>
+                                                    <div className="s2_d">{location.address}</div>
+                                                    <ul className="s2_c">
+                                                        <li>{location.capacity}</li>
+                                                        <li>{t('locations.roomTypes')}</li>
+                                                        <li>
+                                                            {t('locations.openHours')} {location.openTime} - {location.closeTime}
+                                                        </li>
+                                                        <li>
+                                                            {t('locations.enquiry')}{' '}
+                                                            <strong className="inline-block">{location.phone}</strong>
+                                                        </li>
+                                                        {location.email && (
+                                                            <li>
+                                                                Email: <strong className="inline-block">{location.email}</strong>
+                                                            </li>
+                                                        )}
+                                                    </ul>
+                                                    <Link href={location.href} className="s2_y">
+                                                        {t('locations.discoverMore')}
+                                                    </Link>
                                                 </div>
                                             </div>
-                                            <div className="s2_b">
-                                                <h3 className="s2_t">
-                                                    <Link href="/spa/orient-spa-nails">Orient Spa &amp; Nails</Link>
-                                                </h3>
-                                                <div className="s2_d">No 18 Bao Khanh, Hoan Kiem, Hanoi</div>
-                                                <ul className="s2_c">
-                                                    <li>{locationsSection.locations[0].capacity}</li>
-                                                    <li>{t('locations.roomTypes')}</li>
-                                                    <li>{t('locations.openHours')}</li>
-                                                    <li>
-                                                        {t('locations.enquiry')}{' '}
-                                                        <strong className="inline-block">(+84) 866 903 499</strong>
-                                                    </li>
-                                                </ul>
-                                                <Link href="/spa/orient-spa-nails" className="s2_y">
-                                                    {t('locations.discoverMore')}
-                                                </Link>
-                                            </div>
                                         </div>
-                                    </div>
-                                    {/* Add more location slides here */}
+                                    ))}
                                 </div>
                             </div>
                         </div>
