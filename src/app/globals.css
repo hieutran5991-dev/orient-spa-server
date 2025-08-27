@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss" important;
 
 :root {
   --main-color: #9e2265;
@@ -10,4 +10,40 @@
   --primary-light: #d946ef;
   --text-muted: #6b7280;
   --text-light: #9ca3af;
+}
+
+.swiper-slide {
+  transition: all 0.3s ease;
+}
+
+.swiper-slide:hover {
+  transform: scale(1.05);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
+}
+
+/* Modal animations */
+.modal-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.modal-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.modal-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
 }

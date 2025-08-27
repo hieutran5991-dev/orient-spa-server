@@ -69,6 +69,7 @@
     "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.Next.js: server-side.executor": "Run",
     "settings.editor.selected.configurable": "settings.javascript.prettier",
     "vue.rearranger.settings.migration": "true"
   },
@@ -89,21 +90,6 @@
       <recent name="$PROJECT_DIR$/public/images/fb" />
       <recent name="$PROJECT_DIR$/public/images/promotions" />
     </key>
-  </component>
-  <component name="RunManager" selected="npm.Next.js: server-side">
-    <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
-      <method v="2" />
-    </configuration>
-    <configuration name="Next.js: server-side" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="dev" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>

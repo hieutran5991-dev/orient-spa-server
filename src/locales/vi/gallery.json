@@ -1,0 +1,11 @@
+{
+    "title": "Những Khoảnh Khắc Hạnh Phúc Của Khách Hàng",
+    "subtitle": "Khám phá niềm vui và sự hài lòng của những khách hàng quý giá thông qua những khoảnh khắc đẹp được ghi lại tại Orient Spa",
+    "viewAllPhotos": "Xem Tất Cả Ảnh",
+    "modal": {
+        "close": "Đóng",
+        "previous": "Trước",
+        "next": "Tiếp",
+        "imageCounter": "Ảnh {current} / {total}"
+    }
+}

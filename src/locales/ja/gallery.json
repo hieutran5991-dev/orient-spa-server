@@ -1,0 +1,11 @@
+{
+    "title": "お客様の幸せな瞬間",
+    "subtitle": "Orient Spaで撮影された美しい瞬間を通じて、大切なお客様の喜びと満足感をご覧ください",
+    "viewAllPhotos": "すべての写真を見る",
+    "modal": {
+        "close": "閉じる",
+        "previous": "前へ",
+        "next": "次へ",
+        "imageCounter": "画像 {current} / {total}"
+    }
+}

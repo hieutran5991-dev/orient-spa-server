@@ -1,0 +1,11 @@
+{
+    "title": "Our Customers' Happy Moments",
+    "subtitle": "Discover the joy and satisfaction of our valued customers through these beautiful moments captured at Orient Spa",
+    "viewAllPhotos": "View All Photos",
+    "modal": {
+        "close": "Close",
+        "previous": "Previous",
+        "next": "Next",
+        "imageCounter": "Image {current} of {total}"
+    }
+}
