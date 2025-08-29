@@ -2401,7 +2401,7 @@ select.form-control {
 .s1 {
   width: 100%;
   position: absolute;
-  bottom: 377px;
+  bottom: 50%;
   left: 0;
   z-index: 99;
   padding-left: 15px;

@@ -24,7 +24,7 @@ const GalleryContent: React.FC = () => {
     return (
         <>
             <div className="min-h-screen font-sans p-5">
-                <div className="max-w-[800px] mx-auto bg-white rounded-lg p-8">
+                <div className="max-w-[1210px] mx-auto bg-white rounded-lg p-8">
                     {/* Header Section */}
                     <div className="text-center mb-10">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl text-gray-800 font-bold">

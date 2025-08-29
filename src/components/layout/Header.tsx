@@ -15,6 +15,32 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false)
 
+  // Helper function to check if a path is active
+  const isActivePath = (path: string) => {
+    if (path === `/${locale}` || path === `/${locale}/`) {
+      return pathname === `/${locale}` || pathname === `/${locale}/` || pathname === '/'
+    }
+    return pathname.startsWith(path)
+  }
+
+  // Helper function to get navigation link classes
+  const getNavLinkClasses = (path: string) => {
+    const baseClasses = "px-3 py-2 text-2xl uppercase tracking-wide transition-colors duration-200"
+    const activeClasses = "text-pink-600 font-semibold"
+    const inactiveClasses = "text-gray-800 hover:text-pink-600"
+
+    return `${baseClasses} ${isActivePath(path) ? activeClasses : inactiveClasses}`
+  }
+
+  // Helper function to get mobile nav link classes
+  const getMobileNavLinkClasses = (path: string) => {
+    const baseClasses = "block text-2xl font-medium transition-colors duration-200 uppercase tracking-wide"
+    const activeClasses = "text-pink-600 font-semibold"
+    const inactiveClasses = "text-gray-900 hover:text-pink-600"
+
+    return `${baseClasses} ${isActivePath(path) ? activeClasses : inactiveClasses}`
+  }
+
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden'
@@ -54,19 +80,19 @@ const Header = () => {
             <nav className="flex items-center">
               <a
                 href={`/${locale}`}
-                className="text-gray-800 hover:text-pink-600 px-3 py-2 text-xl uppercase tracking-wide transition-colors duration-200"
+                className={getNavLinkClasses(`/${locale}`)}
               >
                 {tCommon('navigation.home')}
               </a>
               <a
                 href={`/${locale}/services-prices`}
-                className="text-gray-800 hover:text-pink-600 px-3 py-2 text-xl uppercase tracking-wide transition-colors duration-200"
+                className={getNavLinkClasses(`/${locale}/services-prices`)}
               >
                 {tCommon('navigation.services')}
               </a>
               <a
                 href={`/${locale}/promotions`}
-                className="text-gray-800 hover:text-pink-600 px-3 py-2 text-xl uppercase tracking-wide transition-colors duration-200"
+                className={getNavLinkClasses(`/${locale}/promotions`)}
               >
                 Promotions
               </a>
@@ -89,7 +115,7 @@ const Header = () => {
               {/* About Dropdown */}
               <div className="relative group">
                 <button
-                  className="flex items-center space-x-1 text-gray-800 hover:text-pink-600 px-3 py-2 text-xl uppercase tracking-wide transition-colors duration-200"
+                  className="flex items-center space-x-1 text-gray-800 hover:text-pink-600 px-3 py-2 text-2xl uppercase tracking-wide transition-colors duration-200"
                   onMouseEnter={() => setIsAboutDropdownOpen(true)}
                   onMouseLeave={() => setIsAboutDropdownOpen(false)}
                 >
@@ -144,20 +170,20 @@ const Header = () => {
 
               <a
                 href={`/${locale}/contact`}
-                className="text-gray-800 hover:text-pink-600 px-3 py-2 text-xl uppercase tracking-wide transition-colors duration-200"
+                className={getNavLinkClasses(`/${locale}/contact`)}
               >
                 {tCommon('navigation.contact')}
               </a>
 
               <a
                 href={`/${locale}/reservation`}
-                className="text-gray-800 hover:text-pink-600 px-3 py-2 text-xl uppercase tracking-wide transition-colors duration-200"
+                className={getNavLinkClasses(`/${locale}/reservation`)}
               >
                 Book Online
               </a>
 
               <div className="relative group">
-                <button className="flex items-center space-x-2 text-gray-800 hover:text-pink-600 px-3 py-2 text-base text-xl transition-colors duration-200 cursor-pointer">
+                <button className="flex items-center space-x-2 text-gray-800 hover:text-pink-600 px-3 py-2 text-base text-2xl transition-colors duration-200 cursor-pointer">
                   <div className="relative">
                     <span className="text-lg font-bold">A</span>
                     <span className="absolute -top-1 -right-1 text-xs text-pink-600">文</span>
@@ -255,7 +281,7 @@ const Header = () => {
                 <a
                   href={`/${locale}`}
                   onClick={closeMobileMenu}
-                  className="block text-2xl font-medium text-gray-900 hover:text-pink-600 transition-colors duration-200 uppercase tracking-wide"
+                  className={getMobileNavLinkClasses(`/${locale}`)}
                 >
                   {tCommon('navigation.home')}
                 </a>
@@ -264,7 +290,7 @@ const Header = () => {
                 <a
                   href={`/${locale}/services-prices`}
                   onClick={closeMobileMenu}
-                  className="block text-2xl font-medium text-gray-900 hover:text-pink-600 transition-colors duration-200 uppercase tracking-wide"
+                  className={getMobileNavLinkClasses(`/${locale}/services-prices`)}
                 >
                   {tCommon('navigation.services')}
                 </a>
@@ -273,7 +299,7 @@ const Header = () => {
                 <a
                   href={`/${locale}/promotions`}
                   onClick={closeMobileMenu}
-                  className="block text-2xl font-medium text-gray-900 hover:text-pink-600 transition-colors duration-200 uppercase tracking-wide"
+                  className={getMobileNavLinkClasses(`/${locale}/promotions`)}
                 >
                   Promotions
                 </a>
@@ -291,7 +317,7 @@ const Header = () => {
                 <a
                   href={`/${locale}/contact`}
                   onClick={closeMobileMenu}
-                  className="block text-2xl font-medium text-gray-900 hover:text-pink-600 transition-colors duration-200 uppercase tracking-wide"
+                  className={getMobileNavLinkClasses(`/${locale}/contact`)}
                 >
                   {tCommon('navigation.contact')}
                 </a>
@@ -300,7 +326,7 @@ const Header = () => {
                 <a
                   href={`/${locale}/reservation`}
                   onClick={closeMobileMenu}
-                  className="block text-2xl font-medium text-gray-900 hover:text-pink-600 transition-colors duration-200 uppercase tracking-wide"
+                  className={getMobileNavLinkClasses(`/${locale}/reservation`)}
                 >
                   Book Online
                 </a>
