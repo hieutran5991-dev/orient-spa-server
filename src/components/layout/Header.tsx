@@ -69,8 +69,8 @@ const Header = () => {
     <>
       <header className='hidden lg:block bg-white shadow-sm'>
         <div className='max-w-[1210px] mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='flex md:h-[120px] gap-12 justify-center py-[10px] items-center'>
-            <nav className='flex items-start md:h-[50%] border-b border-gray-200 gap-8'>
+          <div className='flex md:h-[120px] gap-12 justify-center items-center'>
+            <nav className='flex items-start md:h-[50%] border-b border-gray-200 gap-8 w-[40%] justify-end'>
               <a href='/' className={getNavLinkClasses(`/`)}>
                 {tCommon('navigation.home')}
               </a>
@@ -82,7 +82,7 @@ const Header = () => {
               </a>
             </nav>
 
-            <div className='flex items-center space-x-3 h-full'>
+            <div className='flex items-center space-x-3 h-full flex-1'>
               <a href='/' className='flex items-center h-full'>
                 <Image
                   src='/images/logo.jpeg'
@@ -94,7 +94,7 @@ const Header = () => {
               </a>
             </div>
 
-            <nav className='flex items-start md:h-[55%] border-b border-gray-200 gap-12'>
+            <nav className='flex items-start md:h-[55%] border-b border-gray-200 gap-8  w-[40%] justify-start'>
               <div className='relative group'>
                 <button
                   className='flex items-center space-x-1 text-gray-800 hover:text-pink-600 px-3 py-2 text-[1.125em] uppercase tracking-wide transition-colors duration-200'
