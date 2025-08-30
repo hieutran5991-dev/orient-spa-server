@@ -281,7 +281,7 @@ const Header = () => {
                 <a
                   href='/page/about-us.html'
                   onClick={closeMobileMenu}
-                  className='block text-2xl font-medium text-gray-900 hover:text-pink-600 transition-colors duration-200 uppercase tracking-wide'
+                  className='block text-[1.125em] text-gray-900 transition-colors duration-200 uppercase tracking-wide'
                 >
                   {tCommon('navigation.aboutUs')}
                 </a>
