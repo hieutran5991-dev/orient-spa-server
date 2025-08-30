@@ -4,7 +4,7 @@ import { useTranslations, useLocale } from 'next-intl'
 import type { Locale } from '@/utils/constants'
 import type { SpaLocation } from '@/types/api'
 import type { NamespaceKeys } from 'use-intl'
-import {CONFIG} from "@/utils/constants";
+import { CONFIG } from '@/utils/constants'
 interface FooterProps {
   spaLocations: SpaLocation[]
 }
@@ -35,15 +35,12 @@ const Footer = ({ spaLocations }: FooterProps) => {
                       </dd>
                     </dl>
                   ))}
-                  <p>
-                    <strong>KakaoID:</strong> orienthanoi / orientspa72
-                  </p>
                 </div>
               </div>
             </div>
             <div className='f_mi'>
               <div className='f_i'>
-                <h4 className='f_t'>{tCommon('footer.aboutUs')}</h4>
+                <h4 className='f_t'>{CONFIG.SPA_NAME}</h4>
                 <div className='f_c'>
                   <ul className='f_n fl'>
                     <li>

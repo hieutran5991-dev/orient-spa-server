@@ -53,7 +53,7 @@ const ReservationContent = ({ spaLocations }: ReservationContentProps) => {
                   <div className='a6_a'>
                     <div className='a6_ai'>
                       <Image
-                        src='/images/reservations/Orient-spa-nails-qr-1_3PWsllg.jpg'
+                        src='/images/reservations/line.png'
                         alt={t('contactByPhone.locations.orientSpa.name')}
                         width={120}
                         height={120}
@@ -61,7 +61,7 @@ const ReservationContent = ({ spaLocations }: ReservationContentProps) => {
                     </div>
                     <div className='a6_ai'>
                       <Image
-                        src='/images/reservations/Orient-spa-nails-qr-2.jpg'
+                        src='/images/reservations/kk.png'
                         alt={t('contactByPhone.locations.orientSpa.name')}
                         width={120}
                         height={120}
@@ -69,84 +69,8 @@ const ReservationContent = ({ spaLocations }: ReservationContentProps) => {
                     </div>
                     <div className='a6_ai'>
                       <Image
-                        src='/images/reservations/Orient-spa-nails-qr-3_uVW9TRR.jpg'
+                        src='/images/reservations/ws.png'
                         alt={t('contactByPhone.locations.orientSpa.name')}
-                        width={120}
-                        height={120}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className='a6_i'>
-                  <div className='a6_c'>
-                    <div>
-                      {t('contactByPhone.locations.cathedral.name')}:{' '}
-                      <span>{t('contactByPhone.locations.cathedral.address')}</span>
-                    </div>
-                    <div className='a6_p'>
-                      <i className='fa fa-phone'></i> {t('contactByPhone.locations.cathedral.phone')}
-                    </div>
-                  </div>
-                  <div className='a6_a'>
-                    <div className='a6_ai'>
-                      <Image
-                        src='/images/reservations/Orient-old-quarter-qr-3.jpg'
-                        alt={t('contactByPhone.locations.cathedral.name')}
-                        width={120}
-                        height={120}
-                      />
-                    </div>
-                    <div className='a6_ai'>
-                      <Image
-                        src='/images/reservations/Orient-old-quarter-qr-1.jpg'
-                        alt={t('contactByPhone.locations.cathedral.name')}
-                        width={120}
-                        height={120}
-                      />
-                    </div>
-                    <div className='a6_ai'>
-                      <Image
-                        src='/images/reservations/Orient-old-quarter-qr-2.jpg'
-                        alt={t('contactByPhone.locations.cathedral.name')}
-                        width={120}
-                        height={120}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className='a6_i'>
-                  <div className='a6_c'>
-                    <div>
-                      {t('contactByPhone.locations.laFlora.name')}:{' '}
-                      <span>{t('contactByPhone.locations.laFlora.address')}</span>
-                    </div>
-                    <div className='a6_p'>
-                      <i className='fa fa-phone'></i> {t('contactByPhone.locations.laFlora.phone')}
-                    </div>
-                  </div>
-                  <div className='a6_a'>
-                    <div className='a6_ai'>
-                      <Image
-                        src='/images/reservations/La-Flora-qr-2.jpg'
-                        alt={t('contactByPhone.locations.laFlora.name')}
-                        width={120}
-                        height={120}
-                      />
-                    </div>
-                    <div className='a6_ai'>
-                      <Image
-                        src='/images/reservations/La-Flora-qr-5.jpg'
-                        alt={t('contactByPhone.locations.laFlora.name')}
-                        width={120}
-                        height={120}
-                      />
-                    </div>
-                    <div className='a6_ai'>
-                      <Image
-                        src='/images/reservations/La-Flora-qr-3.jpg'
-                        alt={t('contactByPhone.locations.laFlora.name')}
                         width={120}
                         height={120}
                       />

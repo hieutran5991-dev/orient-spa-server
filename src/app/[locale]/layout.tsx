@@ -4,11 +4,11 @@ import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import '../globals.css'
 import Script from 'next/script'
-import { SUPPORTED_LANGUAGE, type Locale } from '@/utils/constants'
+import {SUPPORTED_LANGUAGE, type Locale, CONFIG} from '@/utils/constants'
 
 export const metadata: Metadata = {
-  title: 'Orient Spa Hanoi',
-  description: 'A relaxing escape for all your senses, in the heart of Hanoi.'
+  title: CONFIG.SPA_NAME,
+  description: 'In need of relaxation and pleasant, set foot into Sen Spa Da Nang and feel the stress of the day fly away! Our spa treatments will take care of your body, bring you relaxing hours in a peaceful scent with skillful therapists. Let’s your body talk and we listen!'
 }
 
 export function generateStaticParams() {
