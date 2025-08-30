@@ -9,22 +9,22 @@
     "locations": {
       "orientSpa": {
         "name": "Sen Spa DaNang",
-        "address": "No 18 Bao Khanh, Hoan Kiem, Hanoi",
+        "address": "No 18 Bao Khanh, Hai Chau, DaNang",
         "phone": "(+84) 866 903 499"
       },
       "cathedral": {
-        "name": "Orient Spa (Cathedral Branch)",
-        "address": "No 26 Au Trieu, Hoan Kiem, Hanoi",
+        "name": "Sen Spa DaNang (Cathedral Branch)",
+        "address": "No 26 Au Trieu, Hai Chau, DaNang",
         "phone": "(+84) 977 903 499"
       },
       "laFlora": {
         "name": "La Flora Spa",
-        "address": "No 22 Au Trieu, Hoan Kiem, Hanoi",
+        "address": "No 22 Au Trieu, Hai Chau, DaNang",
         "phone": "(+84) 867 903 499"
       }
     }
   },
-  "welcomeMessage": "We are happy to welcome you to Orient Spa Hanoi! You can make a reservation at our spa by one of the following ways:",
+  "welcomeMessage": "We are happy to welcome you to Sen Spa DaNang! You can make a reservation at our spa by one of the following ways:",
   "reservationMethods": {
     "phone": "Calling our phone number",
     "messaging": "Sending us message on Whatsapp, Kakao, Wechat, Zalo",

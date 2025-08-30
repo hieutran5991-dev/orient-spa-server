@@ -7,6 +7,7 @@ import BookingForm from './BookingForm'
 import type { Locale } from '@/utils/constants'
 import People from "@/components/home/People";
 import Guests from "@/components/home/Guests";
+import {CONFIG} from "@/utils/constants";
 
 interface HomeContentProps {
   spaLocations: SpaLocation[]
@@ -212,18 +213,15 @@ const HomeContent = ({ spaLocations }: HomeContentProps) => {
             </Link>
           </div>
           <div className='s2_f'>
-            <Image
-              src='/images/spa-map.jpg'
-              alt='Spa Location Map'
-              width={600}
-              height={400}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center'
-              }}
-            />
+              <iframe
+                  src={CONFIG.MAP_LOCATION}
+                  width='100%'
+                  height='100%'
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading='lazy'
+                  referrerPolicy='no-referrer-when-downgrade'
+              />
           </div>
         </div>
       </section>

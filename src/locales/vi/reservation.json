@@ -8,23 +8,23 @@
     "title": "Liên Hệ Qua Điện Thoại/Wechat/ Kakao Talk / WhatsApp",
     "locations": {
       "orientSpa": {
-        "name": "Orient Spa & Nails",
-        "address": "Số 18 Bảo Khánh, Hoàn Kiếm, Hà Nội",
+        "name": "Sen Spa DaNang & Nails",
+        "address": "Số 18 Bảo Khánh, Hải Châu, Đà Nẵng",
         "phone": "(+84) 866 903 499"
       },
       "cathedral": {
-        "name": "Orient Spa (Chi nhánh Nhà thờ)",
-        "address": "Số 26 Âu Triệu, Hoàn Kiếm, Hà Nội",
+        "name": "Sen Spa DaNang (Chi nhánh Nhà thờ)",
+        "address": "Số 26 Âu Triệu, Hải Châu, Đà Nẵng",
         "phone": "(+84) 977 903 499"
       },
       "laFlora": {
         "name": "La Flora Spa",
-        "address": "Số 22 Âu Triệu, Hoàn Kiếm, Hà Nội",
+        "address": "Số 22 Âu Triệu, Hải Châu, Đà Nẵng",
         "phone": "(+84) 867 903 499"
       }
     }
   },
-  "welcomeMessage": "Chúng tôi rất vui được chào đón bạn đến Orient Spa Hà Nội! Bạn có thể đặt lịch tại spa của chúng tôi bằng một trong những cách sau:",
+  "welcomeMessage": "Chúng tôi rất vui được chào đón bạn đến Sen Spa DaNang! Bạn có thể đặt lịch tại spa của chúng tôi bằng một trong những cách sau:",
   "reservationMethods": {
     "phone": "Gọi số điện thoại của chúng tôi",
     "messaging": "Gửi tin nhắn cho chúng tôi qua Whatsapp, Kakao, Wechat, Zalo",

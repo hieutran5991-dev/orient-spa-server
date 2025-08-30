@@ -11,10 +11,10 @@
     "aboutUs": "Về chúng tôi",
     "bookOnline": "Đặt lịch Online",
     "aboutDropdown": {
-      "aboutOrientSpa": "Về Orient Spa",
-      "orientAt26AuTrieu": "Orient tại 26 Âu Triều",
-      "orientAt18BaoKhanh": "Orient tại 18 Bảo Khánh",
-      "laFloraAt22AuTrieu": "La Flora tại 22 Âu Triều",
+      "aboutOrientSpa": "Về Sen Spa DaNang",
+      "orientAt26AuTrieu": "Sen Spa DaNang tại 26 Âu Triệu",
+      "orientAt18BaoKhanh": "Sen Spa DaNang tại 18 Bảo Khánh",
+      "laFloraAt22AuTrieu": "La Flora tại 22 Âu Triệu",
       "ourHappyGuests": "Khách hàng hài lòng",
       "blogs": "Tin tức"
     }
@@ -32,24 +32,16 @@
     "address": "Địa chỉ"
   },
   "footer": {
-    "locations": "Các chi nhánh",
-    "aboutUs": "Về Orient Spa",
+    "locations": "Địa điểm của chúng tôi",
+    "aboutUs": "Về Sen Spa DaNang",
     "followUs": "Theo dõi chúng tôi",
     "openingHours": "Giờ mở cửa",
     "paymentMethods": "Phương thức thanh toán",
     "viewMap": "(Xem bản đồ)",
     "openDaily": "Chúng tôi mở cửa hàng ngày từ",
-    "hours": "10:00 sáng - 10:00 tối.",
+    "hours": "10:00 SA - 10:00 CH.",
     "advancedReservation": "Khuyến khích đặt lịch trước.",
-    "copyright": "Bản quyền 2025 © Orientspahanoi. Tất cả quyền được bảo lưu.",
-    "navigation": {
-      "aboutUs": "Giới thiệu",
-      "spaMenu": "Menu Spa",
-      "promotions": "Khuyến mãi",
-      "contactUs": "Liên hệ",
-      "bookOnline": "Đặt lịch trực tuyến",
-      "blogs": "Blog"
-    }
+    "copyright": "Bản quyền 2025 © Sen Spa DaNang. Tất cả quyền được bảo lưu."
   },
   "languages": {
     "en": "English",

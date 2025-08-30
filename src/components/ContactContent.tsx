@@ -58,11 +58,11 @@ const ContactContent = () => {
 
   return (
     <>
-      <div className='s a2 text-center' data-bis-skin-checked='1'>
+      <div className='s a2 text-center' >
         <h1 className='a2_t'>{t('title')}</h1>
       </div>
 
-      <div className='s a3 text-center' data-bis-skin-checked='1'>
+      <div className='s a3 text-center' >
         <ul className='breadcrumb'>
           <li>
             <Link href={`/${locale}`}>{tCommon('navigation.home')}</Link>
@@ -71,22 +71,22 @@ const ContactContent = () => {
         </ul>
       </div>
 
-      <div className='s sH a5' data-bis-skin-checked='1'>
-        <div className='container' data-bis-skin-checked='1'>
-          <div className='a5_m' data-bis-skin-checked='1'>
-            <div className='a5_h text-center' data-bis-skin-checked='1'>
-              <div className='a5_a' data-bis-skin-checked='1'>
+      <div className='s sH a5' >
+        <div className='container' >
+          <div className='a5_m' >
+            <div className='a5_h text-center' >
+              <div className='a5_a' >
                 <i className='fa fa-envelope-o'></i>
               </div>
-              <div className='a5_c' data-bis-skin-checked='1'>
+              <div className='a5_c' >
                 <h2 className='s_t2'>{t('emailSection.title')}</h2>
                 <p className='s_p'>{t('emailSection.description')}</p>
               </div>
             </div>
 
-            <div className='a5_b fl' data-bis-skin-checked='1'>
+            <div className='a5_b fl' >
               <form onSubmit={handleSubmit} className='a5_f' id='fromContact' autoComplete='off' noValidate>
-                <div className='form-group' data-bis-skin-checked='1'>
+                <div className='form-group' >
                   <span className='form-label'>
                     {t('form.fullName')} <span>*</span>
                   </span>
@@ -102,7 +102,7 @@ const ContactContent = () => {
                   />
                 </div>
 
-                <div className='form-group' data-bis-skin-checked='1'>
+                <div className='form-group' >
                   <span className='form-label'>
                     {t('form.emailAddress')} <span>*</span>
                   </span>
@@ -119,7 +119,7 @@ const ContactContent = () => {
                   />
                 </div>
 
-                <div className='form-group' data-bis-skin-checked='1'>
+                <div className='form-group' >
                   <span className='form-label'>
                     {t('form.title')} <span>*</span>
                   </span>
@@ -135,7 +135,7 @@ const ContactContent = () => {
                   />
                 </div>
 
-                <div className='form-group' data-bis-skin-checked='1'>
+                <div className='form-group' >
                   <span className='form-label'>
                     {t('form.content')} <span>*</span>
                   </span>
@@ -163,8 +163,8 @@ const ContactContent = () => {
                 </div>
               )}
 
-              <div className='a5_d' data-bis-skin-checked='1'>
-                <div className='a5_k' data-bis-skin-checked='1'>
+              <div className='a5_d'>
+                <div className='a5_k'>
                   <iframe
                     src={CONFIG.MAP_LOCATION}
                     width='355'
@@ -176,7 +176,7 @@ const ContactContent = () => {
                   />
                 </div>
 
-                <div className='a5_e' data-bis-skin-checked='1'>
+                <div className='a5_e' >
                   <h3 className='a5_et'>{CONFIG.SPA_NAME}</h3>
                   <ul className='a5_en'>
                     <li>
@@ -193,14 +193,14 @@ const ContactContent = () => {
         </div>
       </div>
 
-      <div className='s sH a6 ct' data-bis-skin-checked='1'>
-        <div className='container' data-bis-skin-checked='1'>
-          <div className='a5_m' data-bis-skin-checked='1'>
-            <div className='a5_h text-center' data-bis-skin-checked='1'>
-              <div className='a5_a' data-bis-skin-checked='1'>
+      <div className='s sH a6 ct' >
+        <div className='container' >
+          <div className='a5_m' >
+            <div className='a5_h text-center' >
+              <div className='a5_a' >
                 <i className='fa fa-phone'></i>
               </div>
-              <div className='a5_c' data-bis-skin-checked='1'>
+              <div className='a5_c' >
                 <h2 className='s_t2'>{t('phoneSection.title')}</h2>
                 <p className='s_p'>{t('phoneSection.description')}</p>
               </div>

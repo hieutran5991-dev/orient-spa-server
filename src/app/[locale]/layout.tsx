@@ -8,7 +8,8 @@ import {SUPPORTED_LANGUAGE, type Locale, CONFIG} from '@/utils/constants'
 
 export const metadata: Metadata = {
   title: CONFIG.SPA_NAME,
-  description: 'In need of relaxation and pleasant, set foot into Sen Spa Da Nang and feel the stress of the day fly away! Our spa treatments will take care of your body, bring you relaxing hours in a peaceful scent with skillful therapists. Let’s your body talk and we listen!'
+  description: 'In need of relaxation and pleasant, set foot into Sen Spa Da Nang and feel the stress of the day fly away! Our spa treatments will take care of your body, bring you relaxing hours in a peaceful scent with skillful therapists. Let’s your body talk and we listen!',
+  keywords: 'Sen Spa, Spa Da Nang, Sen Spa Da Nang'
 }
 
 export function generateStaticParams() {

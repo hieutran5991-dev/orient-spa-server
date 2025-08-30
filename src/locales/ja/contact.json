@@ -20,21 +20,21 @@
     "main": {
       "title": "オリエントスパハノイ",
       "email": "メール",
-      "address1": "No 18 Bao Khanh, Hoan Kiem, Hanoi",
+      "address1": "No 18 Bao Khanh, Hai Chau, DaNang",
       "phone1": "電話: (+84) 866 903 499",
-      "address2": "No 26 Au Trieu, Hoan Kiem, Hanoi",
+      "address2": "No 26 Au Trieu, Hai Chau, DaNang",
       "phone2": "電話: (+84) 977 903 499",
-      "address3": "No 22 Au Trieu, Hoan Kiem, Hanoi",
+      "address3": "No 22 Au Trieu, Hai Chau, DaNang",
       "phone3": "電話: (+84) 867 903 499"
     },
     "cathedral": {
       "title": "オリエントスパ（大聖堂支店）",
-      "address": "No 26 Au Trieu, Hoan Kiem, Hanoi",
+      "address": "No 26 Au Trieu, Hai Chau, DaNang",
       "phone": "電話: (+84) 977 903 499"
     },
     "laFlora": {
       "title": "ラ・フローラスパ",
-      "address": "No 22 Au Trieu, Hoan Kiem, Hanoi",
+      "address": "No 22 Au Trieu, Hai Chau, DaNang",
       "phone": "電話: (+84) 867 903 499"
     }
   },
