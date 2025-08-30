@@ -1,12 +1,23 @@
 {
+  "language": "言語",
   "navigation": {
     "home": "ホーム",
     "services": "サービス・料金",
     "promotions": "プロモーション",
     "booking": "予約",
-    "reservation": "ご予約",
+    "reservation": "予約",
     "contact": "お問い合わせ",
-    "about": "私たちについて"
+    "about": "私たちについて",
+    "aboutUs": "私たちについて",
+    "bookOnline": "オンライン予約",
+    "aboutDropdown": {
+      "aboutOrientSpa": "オリエントスパについて",
+      "orientAt26AuTrieu": "26 Au TrieuのOrient",
+      "orientAt18BaoKhanh": "18 Bao KhanhのOrient",
+      "laFloraAt22AuTrieu": "22 Au TrieuのLa Flora",
+      "ourHappyGuests": "お客様の声",
+      "blogs": "ブログ"
+    }
   },
   "common": {
     "showMore": "もっと見る",

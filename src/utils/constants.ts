@@ -1,4 +1,3 @@
-// Locale Configuration
 export const SUPPORTED_LANGUAGE = ['en', 'vi', 'ja'] as const
 export const DEFAULT_LANGUAGE = 'en' as const
 export type Locale = (typeof SUPPORTED_LANGUAGE)[number]
@@ -33,3 +32,7 @@ export const HTTP_STATUS = {
 } as const
 
 export type HttpStatusCode = (typeof HTTP_STATUS)[keyof typeof HTTP_STATUS]
+
+export const CONFIG = {
+    PHONE_NUMBER: '0976591515',
+} as const

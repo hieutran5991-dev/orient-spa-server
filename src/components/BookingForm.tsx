@@ -1,34 +1,34 @@
-'use client';
+'use client'
 
-import React, { useState, useEffect } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
-import { BOOKING_INIT_KEY, type Locale } from '@/utils/constants';
-import type { NamespaceKeys } from "use-intl";
-import { SpaLocation } from "@/types/api";
-import {BookingData, Product} from "@/types/booking";
+import React, { useState, useEffect } from 'react'
+import { useTranslations, useLocale } from 'next-intl'
+import { BOOKING_INIT_KEY, type Locale } from '@/utils/constants'
+import type { NamespaceKeys } from 'use-intl'
+import { SpaLocation } from '@/types/api'
+import { BookingData, Product } from '@/types/booking'
 
 interface BookingFormProps {
-  spaLocations: SpaLocation[];
-  children?: React.ReactNode;
-  selectedService?: Product;
+  spaLocations: SpaLocation[]
+  children?: React.ReactNode
+  selectedService?: Product
 }
 
 const BookingForm = ({ spaLocations, children, selectedService }: BookingFormProps) => {
-  const locale = useLocale() as Locale;
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [selectedSpa, setSelectedSpa] = useState('');
-  const [selectedSpaId, setSelectedSpaId] = useState<string | number>('');
-  const [showSpaDropdown, setShowSpaDropdown] = useState(false);
+  const locale = useLocale() as Locale
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [_error, _setError] = useState<string | null>(null)
+  const [selectedSpa, setSelectedSpa] = useState('')
+  const [selectedSpaId, setSelectedSpaId] = useState<string | number>('')
+  const [showSpaDropdown, setShowSpaDropdown] = useState(false)
 
-  const tBooking = useTranslations('booking' as NamespaceKeys<string, string>);
+  const tBooking = useTranslations('booking' as NamespaceKeys<string, string>)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+    e.preventDefault()
+    setIsSubmitting(true)
 
-    const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
+    const form = e.target as HTMLFormElement
+    const formData = new FormData(form)
 
     const bookingData: BookingData<Array<Product[]>> = {
       total_price: 0,
@@ -37,20 +37,20 @@ const BookingForm = ({ spaLocations, children, selectedService }: BookingFormPro
       booking_date: formData.get('date') as string,
       booking_time: formData.get('time') as string,
       people: formData.get('people') as string
-    };
+    }
 
-    if(selectedService) {
+    if (selectedService) {
       bookingData.booking_details = Array(parseInt(bookingData.people || '1')).fill([selectedService])
     }
 
     try {
-      sessionStorage.setItem(BOOKING_INIT_KEY, JSON.stringify(bookingData));
-      window.location.href = `/${locale}/booking`;
-    } catch (error) {
+      sessionStorage.setItem(BOOKING_INIT_KEY, JSON.stringify(bookingData))
+      window.location.href = `/${locale}/booking`
+    } catch (_error) {
     } finally {
-      setIsSubmitting(false);
+      setIsSubmitting(false)
     }
-  };
+  }
 
   const timeSlots = {
     availabilityDate: tBooking('today'),
@@ -58,157 +58,167 @@ const BookingForm = ({ spaLocations, children, selectedService }: BookingFormPro
       {
         id: 1,
         period: tBooking('morning'),
-        times: ["10:00", "10:30", "11:00", "11:30"]
+        times: ['10:00', '10:30', '11:00', '11:30']
       },
       {
         id: 2,
         period: tBooking('afternoon'),
-        times: ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30"]
+        times: [
+          '12:00',
+          '12:30',
+          '13:00',
+          '13:30',
+          '14:00',
+          '14:30',
+          '15:00',
+          '15:30',
+          '16:00',
+          '16:30',
+          '17:00',
+          '17:30',
+          '18:00',
+          '18:30'
+        ]
       },
       {
         id: 3,
         period: tBooking('evening'),
-        times: ["19:00", "19:30", "20:00", "20:30"]
+        times: ['19:00', '19:30', '20:00', '20:30']
       }
     ]
-  };
+  }
 
-  const guestSelection = Array.from({ length: 10 }, (_, i) => i + 1);
+  const guestSelection = Array.from({ length: 10 }, (_, i) => i + 1)
 
   const handleSpaSelect = (spaName: string, spaId: string | number) => {
-    setSelectedSpa(spaName);
-    setSelectedSpaId(spaId);
-    setShowSpaDropdown(false);
-  };
-
+    setSelectedSpa(spaName)
+    setSelectedSpaId(spaId)
+    setShowSpaDropdown(false)
+  }
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as Element;
+      const target = event.target as Element
       if (!target.closest('.s1_s2') && !target.closest('#f2')) {
-        setShowSpaDropdown(false);
+        setShowSpaDropdown(false)
       }
-    };
+    }
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   return (
     <>
-      <form id="formBookBox" className="s1_f" onSubmit={handleSubmit}>
+      <form id='formBookBox' className='s1_f' onSubmit={handleSubmit}>
         {children}
-        <div className="row">
-          <div className="s1_g">
-            <div className="form-group has-feedback">
+        <div className='row'>
+          <div className='s1_g'>
+            <div className='form-group has-feedback'>
               <input
-                type="text"
-                id="f2"
-                name="spa"
-                className="form-control u1 js-v2"
+                type='text'
+                id='f2'
+                name='spa'
+                className='form-control u1 js-v2'
                 value={selectedSpa}
                 onChange={(e) => setSelectedSpa(e.target.value)}
                 onFocus={() => {
-                  setShowSpaDropdown(true);
+                  setShowSpaDropdown(true)
                 }}
                 required
               />
-              <label htmlFor="f2" className="s1_v">{tBooking('location')}</label>
-              <span className="fc-feedback">
-                <i className="fa fa-angle-down"></i>
+              <label htmlFor='f2' className='s1_v'>
+                {tBooking('location')}
+              </label>
+              <span className='fc-feedback'>
+                <i className='fa fa-angle-down'></i>
               </span>
 
               <div
-                className="s1_s w2 s1_s2"
+                className='s1_s w2 s1_s2'
                 style={{
-                  display: showSpaDropdown ? 'block' : 'none',
+                  display: showSpaDropdown ? 'block' : 'none'
                 }}
               >
-                <div className="s1_sh hidden-lg hidden-md">
-                  <div className="s1_st">{tBooking('selectLocation')}</div>
-                  <span className="s1_x js-done" onClick={() => setShowSpaDropdown(false)}>
-                    <i className="ic ic-close"></i>
+                <div className='s1_sh hidden-lg hidden-md'>
+                  <div className='s1_st'>{tBooking('selectLocation')}</div>
+                  <span className='s1_x js-done' onClick={() => setShowSpaDropdown(false)}>
+                    <i className='ic ic-close'></i>
                   </span>
                 </div>
-                <div className="s1_sd">
-                  <ul className="s1_d">
-                    {spaLocations && spaLocations.map((location) => (
-                      <li
-                        key={location.id}
-                        onClick={() => handleSpaSelect(location.name, location.id)}
-                      >
-                        <strong>{location.name}</strong>
-                        <span>{location.address}</span>
-                      </li>
-                    ))}
+                <div className='s1_sd'>
+                  <ul className='s1_d'>
+                    {spaLocations &&
+                      spaLocations.map((location) => (
+                        <li key={location.id} onClick={() => handleSpaSelect(location.name, location.id)}>
+                          <strong>{location.name}</strong>
+                          <span>{location.address}</span>
+                        </li>
+                      ))}
                   </ul>
                 </div>
 
-                <div className="s1_sf hidden-lg hidden-md">
-                  <span className="s1_su js-done btn btn-1 btn-block" onClick={() => setShowSpaDropdown(false)}>
+                <div className='s1_sf hidden-lg hidden-md'>
+                  <span className='s1_su js-done btn btn-1 btn-block' onClick={() => setShowSpaDropdown(false)}>
                     {tBooking('done')}
                   </span>
                 </div>
               </div>
             </div>
           </div>
-          <div className="s1_g">
-            <div className="form-group has-feedback">
-              <input
-                type="text"
-                id="date"
-                name="date"
-                className="form-control u1 js-v1"
-                required
-              />
-              <label htmlFor="date" className="s1_v">{tBooking('date')}</label>
-              <span className="fc-feedback">
-                <i className="fa fa-calendar"></i>
+          <div className='s1_g'>
+            <div className='form-group has-feedback'>
+              <input type='text' id='date' name='date' className='form-control u1 js-v1' required />
+              <label htmlFor='date' className='s1_v'>
+                {tBooking('date')}
+              </label>
+              <span className='fc-feedback'>
+                <i className='fa fa-calendar'></i>
               </span>
 
-              <div className="s1_s w2 s1_s1">
-                <div className="s1_sh hidden-lg hidden-md">
-                  <div className="s1_st">Select date</div>
-                  <span className="s1_x js-done"><i className="ic ic-close"></i></span>
+              <div className='s1_s w2 s1_s1'>
+                <div className='s1_sh hidden-lg hidden-md'>
+                  <div className='s1_st'>Select date</div>
+                  <span className='s1_x js-done'>
+                    <i className='ic ic-close'></i>
+                  </span>
                 </div>
-                <div className="s1_sd">
-                  <div className="s1_y" id="iDate">
-                    <div className="pika-single">
-
-                    </div>
+                <div className='s1_sd'>
+                  <div className='s1_y' id='iDate'>
+                    <div className='pika-single'></div>
                   </div>
                 </div>
-                <div className="s1_sf hidden-lg hidden-md">
-                  <span className="s1_su js-done btn btn-1 btn-block">Done</span>
+                <div className='s1_sf hidden-lg hidden-md'>
+                  <span className='s1_su js-done btn btn-1 btn-block'>Done</span>
                 </div>
               </div>
             </div>
           </div>
-          <div className="s1_g">
-            <div className="form-group has-feedback">
-              <input
-                type="text"
-                id="f3"
-                name="time"
-                className="form-control u1 js-v3"
-                required
-              />
-              <label htmlFor="f3" className="s1_v">{tBooking('time')}</label>
-              <span className="fc-feedback">
-                <i className="fa fa-angle-down"></i>
+          <div className='s1_g'>
+            <div className='form-group has-feedback'>
+              <input type='text' id='f3' name='time' className='form-control u1 js-v3' required />
+              <label htmlFor='f3' className='s1_v'>
+                {tBooking('time')}
+              </label>
+              <span className='fc-feedback'>
+                <i className='fa fa-angle-down'></i>
               </span>
 
-              <div className="s1_s w2 s1_s3">
-                <div className="s1_sh hidden-lg hidden-md">
-                  <div className="s1_st">{tBooking('selectTime')}</div>
-                  <span className="s1_x js-done"><i className="ic ic-close"></i></span>
+              <div className='s1_s w2 s1_s3'>
+                <div className='s1_sh hidden-lg hidden-md'>
+                  <div className='s1_st'>{tBooking('selectTime')}</div>
+                  <span className='s1_x js-done'>
+                    <i className='ic ic-close'></i>
+                  </span>
                 </div>
-                <div className="s1_sd">
-                  <div className="s1_k" id="listTimes">
-                    <div className="s1_l">{tBooking('availabilityFor')} {timeSlots.availabilityDate}</div>
+                <div className='s1_sd'>
+                  <div className='s1_k' id='listTimes'>
+                    <div className='s1_l'>
+                      {tBooking('availabilityFor')} {timeSlots.availabilityDate}
+                    </div>
 
                     {timeSlots.periods.map((period) => (
-                      <dl key={period.id} className="s1_j">
+                      <dl key={period.id} className='s1_j'>
                         <dt>{period.period}:</dt>
                         {period.times.map((time) => (
                           <dd key={time}>{time}</dd>
@@ -217,61 +227,54 @@ const BookingForm = ({ spaLocations, children, selectedService }: BookingFormPro
                     ))}
                   </div>
                 </div>
-                <div className="s1_sf hidden-lg hidden-md">
-                  <span className="s1_su js-done btn btn-1 btn-block">{tBooking('done')}</span>
+                <div className='s1_sf hidden-lg hidden-md'>
+                  <span className='s1_su js-done btn btn-1 btn-block'>{tBooking('done')}</span>
                 </div>
               </div>
             </div>
           </div>
-          <div className="s1_g">
-            <div className="form-group has-feedback">
-              <input
-                type="text"
-                id="f4"
-                name="people"
-                className="form-control u1 js-v4"
-                required
-              />
-              <label htmlFor="f4" className="s1_v">{tBooking('guest')}</label>
-              <span className="fc-feedback">
-                <i className="fa fa-angle-down"></i>
+          <div className='s1_g'>
+            <div className='form-group has-feedback'>
+              <input type='text' id='f4' name='people' className='form-control u1 js-v4' required />
+              <label htmlFor='f4' className='s1_v'>
+                {tBooking('guest')}
+              </label>
+              <span className='fc-feedback'>
+                <i className='fa fa-angle-down'></i>
               </span>
 
-              <div className="s1_s s1_s4">
-                <div className="s1_sh hidden-lg hidden-md">
-                  <div className="s1_st">{tBooking('selectGuest')}</div>
-                  <span className="s1_x js-done"><i className="ic ic-close"></i></span>
+              <div className='s1_s s1_s4'>
+                <div className='s1_sh hidden-lg hidden-md'>
+                  <div className='s1_st'>{tBooking('selectGuest')}</div>
+                  <span className='s1_x js-done'>
+                    <i className='ic ic-close'></i>
+                  </span>
                 </div>
-                <div className="s1_sd">
-                  <ul className="s1_n">
+                <div className='s1_sd'>
+                  <ul className='s1_n'>
                     {guestSelection.map((guestNumber) => (
                       <li key={guestNumber}>{guestNumber}</li>
                     ))}
                   </ul>
                 </div>
-                <div className="s1_sf hidden-lg hidden-md">
-                  <span className="s1_su js-done btn btn-1 btn-block">{tBooking('done')}</span>
+                <div className='s1_sf hidden-lg hidden-md'>
+                  <span className='s1_su js-done btn btn-1 btn-block'>{tBooking('done')}</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {error && (
-          <div className="error-message"
-            style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>
-            {error}
+        {_error && (
+          <div className='error-message' style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>
+            {_error}
           </div>
         )}
-        <button
-          type="submit"
-          className="btn btn-block btn-1 s1_u booknow"
-          disabled={isSubmitting}
-        >
+        <button type='submit' className='btn btn-block btn-1 s1_u booknow' disabled={isSubmitting}>
           {isSubmitting ? tBooking('processing') : tBooking('bookNow')}
         </button>
       </form>
     </>
-  );
-};
+  )
+}
 
-export default BookingForm;
+export default BookingForm

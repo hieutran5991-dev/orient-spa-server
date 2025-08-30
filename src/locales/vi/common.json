@@ -1,12 +1,23 @@
 {
+  "language": "Ngôn ngữ",
   "navigation": {
     "home": "Trang chủ",
     "services": "Dịch vụ & Giá",
     "promotions": "Khuyến mãi",
     "booking": "Đặt lịch",
-    "reservation": "Đặt lịch hẹn",
+    "reservation": "Đặt chỗ",
     "contact": "Liên hệ",
-    "about": "Giới thiệu"
+    "about": "Giới thiệu",
+    "aboutUs": "Về chúng tôi",
+    "bookOnline": "Đặt lịch Online",
+    "aboutDropdown": {
+      "aboutOrientSpa": "Về Orient Spa",
+      "orientAt26AuTrieu": "Orient tại 26 Âu Triều",
+      "orientAt18BaoKhanh": "Orient tại 18 Bảo Khánh",
+      "laFloraAt22AuTrieu": "La Flora tại 22 Âu Triều",
+      "ourHappyGuests": "Khách hàng hài lòng",
+      "blogs": "Tin tức"
+    }
   },
   "common": {
     "showMore": "Xem thêm",

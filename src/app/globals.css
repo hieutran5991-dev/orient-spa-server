@@ -43,3 +43,27 @@
   transform: scale(0.9);
   transition: opacity 300ms, transform 300ms;
 }
+
+.header-nav-link-active {
+    color: var(--main-color) !important;
+    font-weight: 600;
+}
+
+.header-nav-link:hover {
+    color: var(--main-color) !important;
+}
+
+.header-nav-link {
+    position: relative !important;
+}
+
+.header-nav-link:hover.header-nav-link:after {
+    content: '';
+    height: 2px;
+    background-color: var(--main-color);
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}

@@ -1,4 +1,5 @@
 {
+  "language": "Language",
   "navigation": {
     "home": "Home",
     "services": "Services & Prices",
@@ -6,7 +7,17 @@
     "booking": "Booking",
     "reservation": "Reservation",
     "contact": "Contact",
-    "about": "About"
+    "about": "About",
+    "aboutUs": "About Us",
+    "bookOnline": "Book Online",
+    "aboutDropdown": {
+      "aboutOrientSpa": "About Orient Spa",
+      "orientAt26AuTrieu": "Orient at 26 Au Trieu",
+      "orientAt18BaoKhanh": "Orient at 18 Bao Khanh",
+      "laFloraAt22AuTrieu": "La Flora at 22 Au Trieu",
+      "ourHappyGuests": "Our happy guests",
+      "blogs": "Blogs"
+    }
   },
   "common": {
     "showMore": "Show more",

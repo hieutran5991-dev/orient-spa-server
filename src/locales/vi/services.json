@@ -10,5 +10,9 @@
   "minutes": "phút",
   "note": "Lưu ý:",
   "noteText": "Bạn có thể chọn nhiều liệu pháp trong một lần đến. Đối với nhóm từ 3 người trở lên, vui lòng",
-  "noteEnd": ". Chúng tôi mong được phục vụ bạn!"
+  "noteEnd": ". Chúng tôi mong được phục vụ bạn!",
+  "navigation": {
+    "promotions": "khuyến mãi hàng tháng",
+    "contact": "liên hệ với chúng tôi"
+  }
 }

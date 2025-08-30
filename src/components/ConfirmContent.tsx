@@ -3,11 +3,11 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import type { NamespaceKeys } from "use-intl";
-import { saveBooking } from "@/api/common";
-import { BookingData, BookingSubmissionData, Product } from "@/types/booking";
-import { BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY } from "@/utils/constants";
-import { formatPrice } from "@/utils/format";
+import type { NamespaceKeys } from 'use-intl'
+import { saveBooking } from '@/api/common'
+import { BookingData, BookingSubmissionData, Product } from '@/types/booking'
+import { BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY } from '@/utils/constants'
+import { formatPrice } from '@/utils/format'
 interface BookingStep {
   id: number
   icon: string
@@ -17,7 +17,7 @@ interface BookingStep {
 const ConfirmContent = () => {
   const router = useRouter()
   const [bookingData, setBookingData] = useState<BookingData>({})
-  const [isLoading, setIsLoading] = useState(true)
+  const [_isLoading, setIsLoading] = useState(true)
   const [isConfirming, setIsConfirming] = useState(false)
   const t = useTranslations('confirm' as NamespaceKeys<any, any>)
 
@@ -39,7 +39,7 @@ const ConfirmContent = () => {
   }, [router])
 
   const confirmContent = () => {
-    window.location.href = "/booking"
+    window.location.href = '/booking'
   }
 
   const handleConfirmBooking = async () => {
@@ -49,9 +49,9 @@ const ConfirmContent = () => {
       const submitData: BookingSubmissionData = {
         ...bookingData,
         booking_details: bookingData.booking_details?.reduce((acc, services, index) => {
-          const guestKey = `guest_${index + 1}_services`;
-          acc[guestKey] = services.map(service => service.id);
-          return acc;
+          const guestKey = `guest_${index + 1}_services`
+          acc[guestKey] = services.map((service) => service.id)
+          return acc
         }, {} as Record<string, (string | number)[]>)
       }
       const result = await saveBooking(submitData)
@@ -61,7 +61,7 @@ const ConfirmContent = () => {
         sessionStorage.removeItem(BOOKING_INIT_KEY)
         router.push('/')
       }
-    } catch (error) {
+    } catch (_error) {
     } finally {
       setIsConfirming(false)
     }
@@ -96,8 +96,7 @@ const ConfirmContent = () => {
               <div className='k2_i'>
                 <div className='k2_h hidden-sm hidden-xs'>{t('appointmentSummary.title')}</div>
                 <div className='k2_b'>
-                  <div className='k2_da hidden-sm hidden-xs'>
-                  </div>
+                  <div className='k2_da hidden-sm hidden-xs'></div>
                   <div className='k2_dc active'>
                     <div className='k2_dt hidden-lg hidden-md'>{t('appointmentSummary.title')}</div>
                     <div className='k2_dm'>
@@ -109,8 +108,7 @@ const ConfirmContent = () => {
                           <strong>{t('appointmentSummary.time')}</strong> {bookingData.booking_time}
                         </li>
                         <li>
-                          <strong>{t('appointmentSummary.location')}</strong>{' '}
-                          {bookingData?.agency_name}
+                          <strong>{t('appointmentSummary.location')}</strong> {bookingData?.agency_name}
                         </li>
                         <li>
                           <strong>{t('appointmentSummary.guests')}</strong> {bookingData.people}
@@ -139,7 +137,7 @@ const ConfirmContent = () => {
                           </div>
                         ))}
 
-                        {(bookingData.total_price && bookingData.total_price > 0) && (
+                        {bookingData.total_price && bookingData.total_price > 0 && (
                           <div className='k2_di'>
                             <table>
                               <tbody>
@@ -188,7 +186,7 @@ const ConfirmContent = () => {
                         </div>
                       ))}
 
-                      {(bookingData.total_price && bookingData.total_price > 0) && (
+                      {bookingData.total_price && bookingData.total_price > 0 && (
                         <div className='k2_di'>
                           <table>
                             <tbody>
@@ -313,8 +311,8 @@ const ConfirmContent = () => {
                 </button>
                 <button onClick={handleConfirmBooking} className='btn btn-1 relative' disabled={isConfirming}>
                   {isConfirming ? (
-                    <div className="flex items-center justify-center space-x-2">
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <div className='flex items-center justify-center space-x-2'>
+                      <div className='w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin'></div>
                       <span>{t('actions.processing')}</span>
                     </div>
                   ) : (
