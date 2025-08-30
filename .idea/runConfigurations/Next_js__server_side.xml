@@ -5,7 +5,7 @@
     <scripts>
       <script value="dev" />
     </scripts>
-    <node-interpreter value="$USER_HOME$/.nvm/versions/node/v22.18.0/bin/node" />
+    <node-interpreter value="$USER_HOME$/.nvm/versions/node/v20.19.0/bin/node" />
     <package-manager value="npm" />
     <envs />
     <EXTENSION ID="com.intellij.lang.javascript.buildTools.npm.rc.StartBrowserRunConfigurationExtension">

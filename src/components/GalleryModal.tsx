@@ -56,6 +56,11 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
         };
     }, [isOpen]);
 
+    const closeModal = () => {
+        setThumbsSwiper(null);
+        onClose();
+    }
+
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (!isOpen) return;
@@ -98,7 +103,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
         <div className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-[99999] flex-col">
             <div className="relative max-w-[90%] max-h-[70%] bg-white rounded-lg overflow-hidden modal-enter-active mb-4">
                 <button
-                    onClick={onClose}
+                    onClick={closeModal}
                     className="absolute top-4 right-5 bg-white bg-opacity-90 border-none w-10 h-10 rounded-full cursor-pointer flex items-center justify-center text-xl text-gray-800 hover:bg-white z-[1001]"
                     aria-label={t('modal.close')}
                 >
@@ -151,11 +156,6 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
                     >
                         ›
                     </button>
-                </div>
-
-                {/* Image Counter */}
-                <div className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-black bg-opacity-70 text-white px-4 py-2 rounded-full text-sm">
-                    <span>{activeIndex + 1}</span> / <span>{images.length}</span>
                 </div>
             </div>
 

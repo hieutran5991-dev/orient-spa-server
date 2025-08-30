@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0414ec2c-5753-4986-9de4-d528b0b5a6b3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/home/Guests.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/Guests.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/en/guests.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/en/guests.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/ja/guests.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/ja/guests.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/vi/guests.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/vi/guests.json" afterDir="false" />
-    </list>
+    <list default="true" id="0414ec2c-5753-4986-9de4-d528b0b5a6b3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -117,6 +112,7 @@
       <workItem from="1755936438080" duration="13241000" />
       <workItem from="1755959660062" duration="28501000" />
       <workItem from="1756380058441" duration="4264000" />
+      <workItem from="1756529090474" duration="961000" />
     </task>
     <servers />
   </component>

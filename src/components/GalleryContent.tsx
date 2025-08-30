@@ -19,13 +19,13 @@ const GalleryContent: React.FC = () => {
 
     const closeModal = () => {
         setIsModalOpen(false);
+        setSelectedImageIndex(0)
     };
 
     return (
         <>
             <div className="min-h-screen font-sans p-5">
                 <div className="max-w-[1210px] mx-auto bg-white rounded-lg p-8">
-                    {/* Header Section */}
                     <div className="text-center mb-10">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl text-gray-800 font-bold">
                             {t('title')}
@@ -46,14 +46,6 @@ const GalleryContent: React.FC = () => {
                                     height={300}
                                     className="w-full h-80 object-cover"
                                 />
-                                {/*<div className="p-4 text-center">*/}
-                                {/*    <h3 className="text-gray-800 text-base font-medium mb-2">*/}
-                                {/*        {image.title}*/}
-                                {/*    </h3>*/}
-                                {/*    <p className="text-gray-600 text-sm">*/}
-                                {/*        {image.description}*/}
-                                {/*    </p>*/}
-                                {/*</div>*/}
                             </div>
                         ))}
                     </div>
