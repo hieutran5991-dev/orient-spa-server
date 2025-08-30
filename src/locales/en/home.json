@@ -1,50 +1,50 @@
 {
-    "title": "Sen Spa DaNang",
-    "hero": {
-        "tagline": "A relaxing escape for all your senses",
-        "title": "Welcome to Sen Spa DaNang",
-        "subtitle": "A relaxing escape for all your senses, in the heart of Hanoi."
-    },
-    "about": {
-        "description": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience, \nSen Spa DaNang currently operates 3 spas all in the heart of DaNang Old Quarter.\nWe offer foot and body massage, nails care and shampoo, as well as spa packages.\nOur spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommended especially during weekend."
-    },
-    "locations": {
-        "title": "OUR LOCATIONS",
-        "subtitle": "We currently offer services at the following locations",
-        "maxCapacity": "Max capacity: {count} guests",
-        "roomTypes": "Single/double/triple room available",
-        "openHours": "Open Daily: 10:00am - 10:00pm",
-        "enquiry": "Enquiry by phone or WhatsApp/Kakao:",
-        "discoverMore": "DISCOVER MORE"
-    },
-    "promotions": {
-        "title": "SPECIAL PROMOTIONS",
-        "subtitle": "Discover our exclusive spa packages and special offers",
-        "duration": "{minutes} minutes"
-    },
-    "timePeriods": {
-        "morning": "Morning",
-        "afternoon": "Afternoon",
-        "evening": "Evening"
-    },
-    "whyChooseUs": {
-        "title": "Why Choose Sen Spa DaNang?",
-        "subtitle": "Visit Sen Spa DaNang and take a heavenly break from your daily routine or pamper yourself nicely after a long trip.",
-        "features": {
-            "couples": {
-                "title": "Perfect for couples, groups, and solo travelers",
-                "description": "Whether you're traveling alone, or on a honeymoon, or even with young kids, we always have something to offer."
-            },
-            "location": {
-                "title": "Convenient and central location",
-                "description": "All our spas are just a short walk from major attractions of Hanoi such as Hoan Kiem Lake and Saint Joseph Cathedral."
-            },
-            "service": {
-                "title": "Skilled therapists and attentive receptionists",
-                "description": "Be warmly welcomed and expertly cared for by friendly staff from start to finish."
-            }
-        }
-    },
-    "bookNow": "BOOK NOW!",
-    "makeReservation": "Make Reservation"
+  "title": "Sen Spa DaNang",
+  "hero": {
+    "tagline": "A relaxing escape for all your senses",
+    "title": "Welcome to Sen Spa DaNang",
+    "subtitle": "A relaxing escape for all your senses, in the heart of Hanoi."
+  },
+  "about": {
+    "description": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience, \nSen Spa DaNang currently operates 3 spas all in the heart of DaNang Old Quarter.\nWe offer foot and body massage, nails care and shampoo, as well as spa packages.\nOur spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommended especially during weekend."
+  },
+  "locations": {
+    "title": "OUR LOCATIONS",
+    "subtitle": "We currently offer services at the following locations",
+    "maxCapacity": "Max capacity: {count} guests",
+    "roomTypes": "Single/double/triple room available",
+    "openHours": "Open Daily: 10:00am - 10:00pm",
+    "enquiry": "Enquiry by phone or WhatsApp/Kakao:",
+    "discoverMore": "DISCOVER MORE"
+  },
+  "promotions": {
+    "title": "SPECIAL PROMOTIONS",
+    "subtitle": "Discover our exclusive spa packages and special offers",
+    "duration": "{minutes} minutes"
+  },
+  "timePeriods": {
+    "morning": "Morning",
+    "afternoon": "Afternoon",
+    "evening": "Evening"
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Sen Spa DaNang?",
+    "subtitle": "Visit Sen Spa DaNang and take a heavenly break from your daily routine or pamper yourself nicely after a long trip.",
+    "features": {
+      "couples": {
+        "title": "Perfect for couples, groups, and solo travelers",
+        "description": "Whether you're traveling alone, or on a honeymoon, or even with young kids, we always have something to offer."
+      },
+      "location": {
+        "title": "Convenient and central location",
+        "description": "All our spas are just a short walk from major attractions of Hanoi such as Hoan Kiem Lake and Saint Joseph Cathedral."
+      },
+      "service": {
+        "title": "Skilled therapists and attentive receptionists",
+        "description": "Be warmly welcomed and expertly cared for by friendly staff from start to finish."
+      }
+    }
+  },
+  "bookNow": "BOOK NOW!",
+  "makeReservation": "Make Reservation"
 }
