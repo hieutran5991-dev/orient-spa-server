@@ -23,6 +23,13 @@ const BookingForm = ({ spaLocations, children, selectedService }: BookingFormPro
 
   const tBooking = useTranslations('booking' as NamespaceKeys<string, string>)
 
+  useEffect(() => {
+    if(spaLocations?.length) {
+      setSelectedSpaId(spaLocations[0].id)
+      setSelectedSpa(spaLocations[0].name)
+    }
+  }, [spaLocations])
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)

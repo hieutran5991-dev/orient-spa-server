@@ -57,7 +57,9 @@
     position: relative !important;
 }
 
-.header-nav-link:hover.header-nav-link:after {
+.header-nav-link:hover.header-nav-link:after,
+.header-nav-link-active:after
+{
     content: '';
     height: 2px;
     background-color: var(--main-color);
