@@ -305,7 +305,7 @@ const ConfirmContent = () => {
 
               {/* Action Buttons */}
               <div className='k2_f fl fl-2'>
-                <button onClick={() => confirmContent()} className='btn btn-2' disabled={isConfirming}>
+                <button onClick={() => confirmContent()} className='btn btn-2 mb-8' disabled={isConfirming}>
                   <i className='fa fa-angle-left'></i>
                   {t('actions.changeService')}
                 </button>
