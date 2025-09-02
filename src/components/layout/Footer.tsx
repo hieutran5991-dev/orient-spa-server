@@ -82,26 +82,17 @@ const Footer = ({ spaLocations }: FooterProps) => {
                 <div className='f_c'>
                   <div className='f_s fl'>
                     <span>
-                      <a href='https://www.facebook.com/orientspahanoi' target='_blank' rel='nofollow'>
+                      <a href='https://www.facebook.com/p/Sen-Spa-%C4%90%C3%A0-N%E1%BA%B5ng-61554952904145/' target='_blank' rel='nofollow'>
                         <i className='fa fa-facebook'></i>
                       </a>
                     </span>
                     <span>
                       <a
-                        href='https://www.instagram.com/orientnailspa?igsh=MXNyNjZmZ3Y1bjVpcA=='
+                        href='https://www.instagram.com/senspadanang21'
                         target='_blank'
                         rel='nofollow'
                       >
                         <i className='fa fa-instagram'></i>
-                      </a>
-                    </span>
-                    <span>
-                      <a
-                        href='https://www.tripadvisor.com.vn/Attraction_Review-g293924-d12940258-Reviews-Orient_Spa-Hanoi.html'
-                        target='_blank'
-                        rel='nofollow'
-                      >
-                        <i className='fa fa-tripadvisor'></i>
                       </a>
                     </span>
                   </div>

@@ -22,14 +22,24 @@ const ServicesPricesContent = ({
 }: ServicesPricesContentProps) => {
   const locale = useLocale() as Locale;
   const t = useTranslations("services" as NamespaceKeys<string, string>);
-  const [activeTab, setActiveTab] = useState(categories.length ? categories[0].id : 1);
+  const [activeTab, setActiveTab] = useState(
+    categories.length ? categories[0].id : 1
+  );
   const [showBookingModal, setShowBookingModal] = useState(false);
-  const [selectedService, setSelectedService] = useState<Product | undefined>(undefined);
+  const [selectedService, setSelectedService] = useState<Product | undefined>(
+    undefined
+  );
 
-  const serviceCategories = useMemo(() => categories.map((category) => ({
-    ...category,
-    services: products.filter((product) => product.category_id === category.id),
-  })), [categories, products]);
+  const serviceCategories = useMemo(
+    () =>
+      categories.map((category) => ({
+        ...category,
+        services: products.filter(
+          (product) => product.category_id === category.id
+        ),
+      })),
+    [categories, products]
+  );
 
   const handleTabClick = (tabId: number) => {
     setActiveTab(tabId);
@@ -42,10 +52,19 @@ const ServicesPricesContent = ({
 
   return (
     <>
-      <div className="m8" style={{ display: showBookingModal ? "block" : "none" }}>
-        <BookingForm spaLocations={spaLocations} selectedService={selectedService}>
+      <div
+        className="m8"
+        style={{ display: showBookingModal ? "block" : "none" }}
+      >
+        <BookingForm
+          spaLocations={spaLocations}
+          selectedService={selectedService}
+        >
           <div className="s1_t c2">
-            <span>Spa Booking: <strong id="modal-name">{selectedService?.name}</strong></span>
+            <span>
+              Spa Booking:{" "}
+              <strong id="modal-name">{selectedService?.name}</strong>
+            </span>
             <i className="s1_z ic ic-close"></i>
           </div>
         </BookingForm>
@@ -99,13 +118,15 @@ const ServicesPricesContent = ({
                 {serviceCategories.map((category) => (
                   <div
                     key={category.id}
-                    className={`tab-content ${activeTab === category.id ? "active" : ""}`}
+                    className={`tab-content ${
+                      activeTab === category.id ? "active" : ""
+                    }`}
                     id={category.id.toString()}
                   >
                     {category.services.map((service: Product) => (
-                      <div key={service.id} className='s8_i tw:pr-0'>
-                        <div className='s8_c tw:max-w-[65%]'>
-                          <h2 className='s8_l' id={`name${service.id}`}>
+                      <div key={service.id} className="s8_i tw:pr-0">
+                        <div className="s8_c tw:max-w-[65%]">
+                          <h2 className="s8_l" id={`name${service.id}`}>
                             {service.name}
                           </h2>
                           {service.description && (
@@ -118,22 +139,25 @@ const ServicesPricesContent = ({
                                       {line}
                                       {index <
                                         service.description.split("\n").length -
-                                        1 && <br />}
+                                          1 && <br />}
                                     </span>
                                   ))}
                               </p>
                             </div>
                           )}
                           <div className="s8_d">
-                            <span>
-                              {service.duration} {t("minutes")}
-                            </span>
+                            <span>{service.duration}</span>
                             <strong>{formatPrice(service.price)}</strong>
                           </div>
                         </div>
 
-                        <div onClick={() => handleBookNow(service)} className="tw:ml-auto">
-                          <span className="btn btn-2 tw:md:w-[198px] tw:w-[110px] tw:h-[40px] tw:md:h-[50px]">Book Now</span>
+                        <div
+                          onClick={() => handleBookNow(service)}
+                          className="tw:ml-auto"
+                        >
+                          <span className="btn btn-2 tw:md:w-[198px] tw:w-[110px] tw:h-[40px] tw:md:h-[50px]">
+                            Book Now
+                          </span>
                         </div>
                       </div>
                     ))}
