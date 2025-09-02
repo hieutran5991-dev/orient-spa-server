@@ -6,14 +6,14 @@
     "subtitle": "A relaxing escape for all your senses, in the heart of DaNang."
   },
   "about": {
-    "description": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience, \nSen Spa DaNang currently operates 3 spas all in the heart of DaNang Old Quarter.\nWe offer foot and body massage, nails care and shampoo, as well as spa packages.\nOur spa is open from 10:00am - 10:00pm daily. Advanced reservation is recommended especially during weekend."
+    "description": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience, \nSen Spa DaNang currently operates 3 spas all in the heart of DaNang Old Quarter.\nWe offer foot and body massage, nails care and shampoo, as well as spa packages.\nOur spa is open from 10:00am - 09:00pm daily. Advanced reservation is recommended especially during weekend."
   },
   "locations": {
     "title": "OUR LOCATIONS",
     "subtitle": "We currently offer services at the following locations",
     "maxCapacity": "Max capacity: {count} guests",
     "roomTypes": "Single/double/triple room available",
-    "openHours": "Open Daily: 10:00am - 10:00pm",
+    "openHours": "Open Daily: 10:00am - 09:00pm",
     "enquiry": "Enquiry by phone or WhatsApp/Kakao:",
     "discoverMore": "DISCOVER MORE"
   },
