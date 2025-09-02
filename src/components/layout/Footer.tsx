@@ -43,22 +43,22 @@ const Footer = ({ spaLocations }: FooterProps) => {
                 <h4 className='f_t'>{CONFIG.SPA_NAME}</h4>
                 <div className='f_c'>
                   <ul className='f_n fl'>
-                    <li>
+                    <li className="tw:w-[50%]">
                       <Link href={`/${locale}/page/about-us`}>{tCommon('footer.navigation.aboutUs')}</Link>
                     </li>
-                    <li>
+                    <li className="tw:w-[50%]">
                       <Link href={`/${locale}/services-prices`}>{tCommon('footer.navigation.spaMenu')}</Link>
                     </li>
-                    <li>
+                    <li className="tw:w-[50%]">
                       <Link href={`/${locale}/promotions`}>{tCommon('footer.navigation.promotions')}</Link>
                     </li>
-                    <li>
+                    <li className="tw:w-[50%]">
                       <Link href={`/${locale}/contact`}>{tCommon('footer.navigation.contactUs')}</Link>
                     </li>
-                    <li>
+                    <li className="tw:w-[50%]">
                       <Link href={`/${locale}/booking`}>{tCommon('footer.navigation.bookOnline')}</Link>
                     </li>
-                    <li>
+                    <li className="tw:w-[50%]">
                       <Link href={`/${locale}/blog`}>{tCommon('footer.navigation.blogs')}</Link>
                     </li>
                   </ul>

@@ -1,4 +1,4 @@
-@import "tailwindcss" important;
+@import "tailwindcss" prefix(tw) important;
 
 :root {
   --main-color: #9e2265;

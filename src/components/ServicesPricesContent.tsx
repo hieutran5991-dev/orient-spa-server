@@ -103,8 +103,8 @@ const ServicesPricesContent = ({
                     id={category.id.toString()}
                   >
                     {category.services.map((service: Product) => (
-                      <div key={service.id} className='s8_i'>
-                        <div className='s8_c'>
+                      <div key={service.id} className='s8_i tw:pr-0'>
+                        <div className='s8_c tw:max-w-[65%]'>
                           <h2 className='s8_l' id={`name${service.id}`}>
                             {service.name}
                           </h2>
@@ -131,8 +131,9 @@ const ServicesPricesContent = ({
                             <strong>{formatPrice(service.price)}</strong>
                           </div>
                         </div>
-                        <div onClick={() => handleBookNow(service)}>
-                          <span className="btn btn-2 s8_v js-bk">Book Now</span>
+
+                        <div onClick={() => handleBookNow(service)} className="tw:ml-auto">
+                          <span className="btn btn-2 tw:md:w-[198px] tw:w-[110px] tw:h-[40px] tw:md:h-[50px]">Book Now</span>
                         </div>
                       </div>
                     ))}

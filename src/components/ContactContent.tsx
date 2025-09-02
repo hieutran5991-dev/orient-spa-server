@@ -205,8 +205,8 @@ const ContactContent = () => {
                 <p className='s_p'>{t('phoneSection.description')}</p>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-6">
-              <div className=''>
+            <div className="tw:flex tw:items-center tw:justify-center tw:gap-6">
+              <div>
                 <Image
                   src='/images/reservations/line.png'
                   alt={t('contactByPhone.locations.orientSpa.name')}
@@ -224,7 +224,7 @@ const ContactContent = () => {
                 />
               </div>
 
-              <div className=''>
+              <div>
                 <Image
                   src='/images/reservations/ws.png'
                   alt={t('contactByPhone.locations.orientSpa.name')}

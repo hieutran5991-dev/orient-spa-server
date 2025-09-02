@@ -305,14 +305,14 @@ const ConfirmContent = () => {
 
               {/* Action Buttons */}
               <div className='k2_f fl fl-2'>
-                <button onClick={() => confirmContent()} className='btn btn-2 mb-8' disabled={isConfirming}>
+                <button onClick={() => confirmContent()} className='btn btn-2 tw:mb-8' disabled={isConfirming}>
                   <i className='fa fa-angle-left'></i>
                   {t('actions.changeService')}
                 </button>
-                <button onClick={handleConfirmBooking} className='btn btn-1 relative' disabled={isConfirming}>
+                <button onClick={handleConfirmBooking} className='btn btn-1 tw:relative' disabled={isConfirming}>
                   {isConfirming ? (
-                    <div className='flex items-center justify-center space-x-2'>
-                      <div className='w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin'></div>
+                    <div className='tw:flex tw:items-center tw:justify-center tw:space-x-2'>
+                      <div className='tw:w-4 tw:h-4 tw:border-2 tw:border-white tw:border-t-transparent tw:rounded-full tw:animate-spin'></div>
                       <span>{t('actions.processing')}</span>
                     </div>
                   ) : (

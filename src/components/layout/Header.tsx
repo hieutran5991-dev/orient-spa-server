@@ -1,201 +1,248 @@
-'use client'
+"use client";
 
-import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
-import { useLocale, useTranslations } from 'next-intl'
-import { useRouter, usePathname } from 'next/navigation'
-import { SUPPORTED_LANGUAGE, type Locale } from '@/utils/constants'
-import type { NamespaceKeys } from 'use-intl'
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
+import { useRouter, usePathname } from "next/navigation";
+import { SUPPORTED_LANGUAGE, type Locale } from "@/utils/constants";
+import type { NamespaceKeys } from "use-intl";
 
 const Header = () => {
-  const tCommon = useTranslations('common' as NamespaceKeys<string, string>)
-  const locale = useLocale() as Locale
-  const router = useRouter()
-  const pathname = usePathname()
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [_isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false)
+  const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
+  const locale = useLocale() as Locale;
+  const router = useRouter();
+  const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [_isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
+  const [isMobileLanguageOpen, setIsMobileLanguageOpen] = useState(false);
 
   const isActivePath = (path: string) => {
-    if (!pathname) return false
-    return (pathname.replace(`/${locale}`, '') || '/') === path
-  }
+    if (!pathname) return false;
+    return (pathname.replace(`/${locale}`, "") || "/") === path;
+  };
 
   const getNavLinkClasses = (path: string) => {
     const baseClasses =
-      'px-3 py-2 text-[1.125em] uppercase tracking-wide transition-colors duration-200 h-full header-nav-link'
-    const activeClasses = 'header-nav-link-active font-semibold'
+      "tw:px-3 tw:py-2 tw:text-[1.125em] tw:uppercase tw:tracking-wide tw:transition-colors tw:duration-200 tw:h-full header-nav-link";
+    const activeClasses = "header-nav-link-active tw:font-semibold";
 
-    return `${baseClasses} ${isActivePath(path) ? activeClasses : ''}`
-  }
+    return `${baseClasses} ${isActivePath(path) ? activeClasses : ""}`;
+  };
 
   const getMobileNavLinkClasses = (path: string) => {
-    const baseClasses = 'block text-[1.125em] font-medium transition-colors duration-200 uppercase tracking-wide'
-    const activeClasses = 'header-nav-link-active font-semibold'
-    const inactiveClasses = 'text-gray-900 header-nav-link-active'
+    const baseClasses =
+      "tw:block tw:text-[1.125em] tw:font-medium tw:transition-colors tw:duration-200 tw:uppercase tw:tracking-wide";
+    const activeClasses = "header-nav-link-active tw:font-semibold";
+    const inactiveClasses = "tw:text-gray-900 header-nav-link-active";
 
-    return `${baseClasses} ${isActivePath(path) ? activeClasses : inactiveClasses}`
-  }
+    return `${baseClasses} ${
+      isActivePath(path) ? activeClasses : inactiveClasses
+    }`;
+  };
 
   useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = "unset";
     }
 
     return () => {
-      document.body.style.overflow = 'unset'
-    }
-  }, [isMobileMenuOpen])
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
+  // Close mobile language dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (
+        isMobileLanguageOpen &&
+        !target.closest(".mobile-language-switcher")
+      ) {
+        setIsMobileLanguageOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [isMobileLanguageOpen]);
 
   const handleLanguageChange = (newLocale: Locale) => {
-    const segments = pathname.split('/')
+    const segments = pathname.split("/");
     if (SUPPORTED_LANGUAGE.includes(segments[1] as Locale)) {
-      segments.splice(1, 1)
+      segments.splice(1, 1);
     }
-    const newPath = `/${newLocale}${segments.join('/')}`
-    router.push(newPath)
-  }
+    const newPath = `/${newLocale}${segments.join("/")}`;
+    router.push(newPath);
+  };
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false)
-  }
+    setIsMobileMenuOpen(false);
+  };
+
+  const toggleMobileLanguage = () => {
+    setIsMobileLanguageOpen(!isMobileLanguageOpen);
+  };
+
+  const closeMobileLanguage = () => {
+    setIsMobileLanguageOpen(false);
+  };
 
   return (
     <>
-      <header className='hidden lg:block bg-white shadow-sm'>
-        <div className='max-w-[1210px] mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='flex md:h-[120px] gap-12 justify-center items-center'>
-            <nav className='flex items-start md:h-[50%] border-b border-gray-200 gap-8 w-[40%] justify-end'>
-              <a href='/' className={getNavLinkClasses(`/`)}>
-                {tCommon('navigation.home')}
+      <header className="tw:hidden tw:lg:block tw:bg-white">
+        <div className="tw:max-w-[1210px] tw:mx-auto tw:px-4 sm:tw:px-6 tw:lg:px-8">
+          <div className="tw:flex tw:md:h-[120px] tw:gap-12 tw:justify-center tw:items-center">
+            <nav className="tw:flex tw:items-start tw:md:h-[50%] tw:border-b tw:border-gray-200 tw:gap-8 tw:w-[40%] tw:justify-end">
+              <a href="/" className={getNavLinkClasses(`/`)}>
+                {tCommon("navigation.home")}
               </a>
-              <a href='/services-prices' className={getNavLinkClasses('/services-prices')}>
-                {tCommon('navigation.services')}
+              <a
+                href="/services-prices"
+                className={getNavLinkClasses("/services-prices")}
+              >
+                {tCommon("navigation.services")}
               </a>
-              <a href={`/promotions`} className={getNavLinkClasses(`/promotions`)}>
-                {tCommon('navigation.promotions')}
+              <a
+                href={`/promotions`}
+                className={getNavLinkClasses(`/promotions`)}
+              >
+                {tCommon("navigation.promotions")}
               </a>
             </nav>
 
-            <div className='flex items-center space-x-3 h-full flex-1'>
-              <a href='/' className='flex items-center h-full'>
+            <div className="tw:flex tw:items-center tw:space-x-3 tw:h-full tw:flex-1">
+              <a href="/" className="tw:flex tw:items-center tw:h-full">
                 <Image
-                  src='/images/logo.jpeg'
-                  alt='Orient Spa Hanoi'
+                  src="/images/logo.jpeg"
+                  alt="Orient Spa Hanoi"
                   width={200}
                   height={32}
-                  className='w-auto object-cover max-h-full'
+                  className="tw:w-auto tw:object-cover tw:max-h-full"
                 />
               </a>
             </div>
 
-            <nav className='flex items-start md:h-[55%] border-b border-gray-200 gap-8  w-[40%] justify-start'>
-              <div className='relative group'>
+            <nav className="tw:flex tw:items-start tw:md:h-[55%] tw:border-b tw:border-gray-200 tw:gap-8  tw:w-[40%] tw:justify-start">
+              <div className="tw:relative tw:group">
                 <button
-                  className='flex items-center space-x-1 text-gray-800 hover:text-pink-600 px-3 py-2 text-[1.125em] uppercase tracking-wide transition-colors duration-200'
+                  className="tw:flex tw:items-center tw:space-x-1 tw:text-gray-800 tw:hover:text-pink-600 tw:px-3 tw:py-2 tw:text-[1.125em] tw:uppercase tw:tracking-wide tw:transition-colors tw:duration-200"
                   onMouseEnter={() => setIsAboutDropdownOpen(true)}
                   onMouseLeave={() => setIsAboutDropdownOpen(false)}
                 >
-                  <span>{tCommon('navigation.aboutUs')}</span>
+                  <span>{tCommon("navigation.aboutUs")}</span>
                   <svg
-                    className='w-4 h-4 transition-transform duration-200 group-hover:rotate-180'
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
+                    className="tw:w-4 tw:h-4 tw:transition-transform tw:duration-200 group-tw:hover:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
                   >
-                    <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
 
                 <div
-                  className={`absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50`}
+                  className={`tw:absolute tw:top-full tw:left-0 tw:mt-2 tw:w-64 tw:bg-white tw:rounded-lg tw:shadow-lg tw:border tw:border-gray-200 tw:opacity-0 tw:invisible group-tw:hover:opacity-100 group-tw:hover:visible tw:transition-all tw:duration-200 tw:z-50`}
                   onMouseEnter={() => setIsAboutDropdownOpen(true)}
                   onMouseLeave={() => setIsAboutDropdownOpen(false)}
                 >
-                  <div className='py-2'>
+                  <div className="tw:py-2">
                     <a
-                      href='/page/about-us.html'
-                      className='block px-4 py-2 text-lg text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition-colors duration-150'
+                      href="/page/about-us.html"
+                      className="tw:block tw:px-4 tw:py-2 tw:text-lg tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
                     >
-                      {tCommon('navigation.aboutDropdown.aboutOrientSpa')}
+                      {tCommon("navigation.aboutDropdown.aboutOrientSpa")}
                     </a>
-                    <div className='border-t border-gray-100 my-1'></div>
+                    <div className="tw:border-t tw:border-gray-100 tw:my-1"></div>
                     <a
-                      href='/spa/orient-spa-old-quarter.html'
-                      className='block px-4 py-2 text-lg text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition-colors duration-150'
+                      href="/spa/orient-spa-old-quarter.html"
+                      className="tw:block tw:px-4 tw:py-2 tw:text-lg tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
                     >
-                      {tCommon('navigation.aboutDropdown.orientAt26AuTrieu')}
-                    </a>
-                    <a
-                      href='/spa/orient-spa-nails.html'
-                      className='block px-4 py-2 text-lg text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition-colors duration-150'
-                    >
-                      {tCommon('navigation.aboutDropdown.orientAt18BaoKhanh')}
+                      {tCommon("navigation.aboutDropdown.orientAt26AuTrieu")}
                     </a>
                     <a
-                      href='/spa/la-flora-by-orient.html'
-                      className='block px-4 py-2 text-lg text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition-colors duration-150'
+                      href="/spa/orient-spa-nails.html"
+                      className="tw:block tw:px-4 tw:py-2 tw:text-lg tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
                     >
-                      {tCommon('navigation.aboutDropdown.laFloraAt22AuTrieu')}
+                      {tCommon("navigation.aboutDropdown.orientAt18BaoKhanh")}
                     </a>
-                    <div className='border-t border-gray-100 my-1'></div>
                     <a
-                      href='/blog.html'
-                      className='block px-4 py-2 text-lg text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition-colors duration-150'
+                      href="/spa/la-flora-by-orient.html"
+                      className="tw:block tw:px-4 tw:py-2 tw:text-lg tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
                     >
-                      {tCommon('navigation.aboutDropdown.blogs')}
+                      {tCommon("navigation.aboutDropdown.laFloraAt22AuTrieu")}
+                    </a>
+                    <div className="tw:border-t tw:border-gray-100 tw:my-1"></div>
+                    <a
+                      href="/blog.html"
+                      className="tw:block tw:px-4 tw:py-2 tw:text-lg tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
+                    >
+                      {tCommon("navigation.aboutDropdown.blogs")}
                     </a>
                   </div>
                 </div>
               </div>
 
               <a href={`/contact`} className={getNavLinkClasses(`/contact`)}>
-                {tCommon('navigation.contact')}
+                {tCommon("navigation.contact")}
               </a>
 
-              <a href={`/reservation`} className={getNavLinkClasses(`/reservation`)}>
-                {tCommon('navigation.bookOnline')}
+              <a
+                href={`/reservation`}
+                className={getNavLinkClasses(`/reservation`)}
+              >
+                {tCommon("navigation.bookOnline")}
               </a>
 
-              <div className='relative group'>
-                <button className='flex items-center space-x-2 text-gray-800 hover:text-pink-600 px-3 py-2 text-2xl transition-colors duration-200 cursor-pointer'>
-                  <div className='relative'>
-                    <span className='text-lg font-bold'>A</span>
-                    <span className='absolute -top-1 -right-1 text-xs text-pink-600'>文</span>
+              <div className="tw:relative tw:group">
+                <button className="tw:flex tw:items-center tw:space-x-2 tw:text-gray-800 tw:hover:text-pink-600 tw:px-3 tw:py-2 tw:text-2xl tw:transition-colors tw:duration-200 tw:cursor-pointer">
+                  <div className="tw:relative">
+                    <i className="ic ic-language"></i>
                   </div>
                 </button>
 
                 {/* Language Dropdown */}
-                <div className='absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'>
-                  <div className='py-2'>
+                <div className="tw:absolute tw:top-full tw:right-0 tw:mt-2 tw:w-48 tw:bg-white tw:rounded-lg tw:shadow-lg tw:border tw:border-gray-200 tw:opacity-0 tw:invisible tw:group-hover:opacity-100 tw:group-hover:visible tw:transition-all tw:duration-200 tw:z-50">
+                  <div className="tw:py-2">
                     <button
-                      onClick={() => handleLanguageChange('en')}
-                      className={`w-full text-left px-4 py-2 text-lg transition-colors duration-150 cursor-pointer ${
-                        locale === 'en' ? 'bg-pink-50 text-pink-600 font-medium' : 'text-gray-700 hover:bg-gray-50'
+                      onClick={() => handleLanguageChange("en")}
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "en"
+                          ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
+                          : "tw:text-gray-700 tw:hover:bg-gray-50"
                       }`}
                     >
-                      🇺🇸 {tCommon('languages.en')}
+                      🇺🇸 {tCommon("languages.en")}
                     </button>
                     <button
-                      onClick={() => handleLanguageChange('vi')}
-                      className={`w-full text-left px-4 py-2 text-lg transition-colors duration-150 cursor-pointer ${
-                        locale === 'vi' ? 'bg-pink-50 text-pink-600 font-medium' : 'text-gray-700 hover:bg-gray-50'
+                      onClick={() => handleLanguageChange("vi")}
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "vi"
+                          ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
+                          : "tw:text-gray-700 tw:hover:bg-gray-50"
                       }`}
                     >
-                      🇻🇳 {tCommon('languages.vi')}
+                      🇻🇳 {tCommon("languages.vi")}
                     </button>
                     <button
-                      onClick={() => handleLanguageChange('ja')}
-                      className={`w-full text-left px-4 py-2 text-lg transition-colors duration-150 cursor-pointer ${
-                        locale === 'ja' ? 'bg-pink-50 text-pink-600 font-medium' : 'text-gray-700 hover:bg-gray-50'
+                      onClick={() => handleLanguageChange("ja")}
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "ja"
+                          ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
+                          : "tw:text-gray-700 tw:hover:bg-gray-50"
                       }`}
                     >
-                      🇯🇵 {tCommon('languages.ja')}
+                      🇯🇵 {tCommon("languages.ja")}
                     </button>
                   </div>
                 </div>
@@ -205,67 +252,148 @@ const Header = () => {
         </div>
       </header>
 
-      <header className='lg:hidden bg-white border-b border-gray-200 shadow-sm'>
-        <div className='px-4'>
-          <div className='flex items-center justify-between'>
+      <header className="tw:lg:hidden tw:bg-white tw:border-b tw:border-gray-200 tw:shadow-sm">
+        <div className="tw:px-4">
+          <div className="tw:flex tw:items-center tw:justify-between">
             <button
               onClick={toggleMobileMenu}
-              className='text-pink-600 hover:text-pink-700 p-2 rounded-md transition-colors duration-200 cursor-pointer'
-              aria-label='Open mobile menu'
+              className="tw:text-pink-600 tw:hover:text-pink-700 tw:p-2 tw:rounded-md tw:transition-colors tw:duration-200 tw:cursor-pointer"
+              aria-label="Open mobile menu"
             >
-              <svg className='w-8 h-8' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M4 6h16M4 12h16M4 18h16' />
+              <svg
+                className="tw:w-12 tw:h-12"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             </button>
 
-            <div className='flex flex-col items-center'>
-              <a href={`/${locale}`} className='flex items-center'>
+            <div className="tw:flex tw:flex-col tw:items-center">
+              <a href={`/${locale}`} className="tw:flex tw:items-center">
                 <Image
-                  src='/images/logo.jpeg'
-                  alt='Orient Spa Hanoi'
+                  src="/images/logo.jpeg"
+                  alt="Orient Spa Hanoi"
                   width={200}
                   height={32}
-                  className='h-20 w-auto object-contain'
+                  className="tw:h-20 tw:w-auto tw:object-contain"
                 />
               </a>
             </div>
 
-            <div className='w-10'></div>
+            {/* Mobile Language Switcher */}
+            <div className="mobile-language-switcher tw:relative">
+              <button
+                onClick={toggleMobileLanguage}
+                className="tw:flex tw:items-center tw:space-x-2 tw:text-gray-800 tw:hover:text-pink-600 tw:p-2 tw:text-2xl tw:transition-colors tw:duration-200 tw:cursor-pointer"
+              >
+                <div className="tw:relative">
+                  <i className="ic ic-language"></i>
+                </div>
+              </button>
+
+              {/* Mobile Language Dropdown */}
+              {isMobileLanguageOpen && (
+                <div className="tw:absolute tw:top-full tw:right-0 tw:mt-2 tw:w-48 tw:bg-white tw:rounded-lg tw:shadow-lg tw:border tw:border-gray-200 tw:z-50">
+                  <div className="tw:py-2">
+                    <button
+                      onClick={() => {
+                        handleLanguageChange("en");
+                        closeMobileLanguage();
+                      }}
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "en"
+                          ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
+                          : "tw:text-gray-700 tw:hover:bg-gray-50"
+                      }`}
+                    >
+                      🇺🇸 {tCommon("languages.en")}
+                    </button>
+                    <button
+                      onClick={() => {
+                        handleLanguageChange("vi");
+                        closeMobileLanguage();
+                      }}
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "vi"
+                          ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
+                          : "tw:text-gray-700 tw:hover:bg-gray-50"
+                      }`}
+                    >
+                      🇻🇳 {tCommon("languages.vi")}
+                    </button>
+                    <button
+                      onClick={() => {
+                        handleLanguageChange("ja");
+                        closeMobileLanguage();
+                      }}
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "ja"
+                          ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
+                          : "tw:text-gray-700 tw:hover:bg-gray-50"
+                      }`}
+                    >
+                      🇯🇵 {tCommon("languages.ja")}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className='lg:hidden fixed inset-0 z-50 bg-white'>
+        <div className="tw:lg:hidden tw:fixed tw:inset-0 tw:z-50 tw:bg-white">
           {/* Close Button */}
-          <div className='flex justify-end p-4'>
+          <div className="tw:flex tw:justify-end tw:p-4">
             <button
               onClick={closeMobileMenu}
-              className='text-pink-600 hover:text-pink-700 p-2 rounded-md transition-colors duration-200 cursor-pointer'
-              aria-label='Close mobile menu'
+              className="tw:text-pink-600 tw:hover:text-pink-700 tw:p-2 tw:rounded-md tw:transition-colors tw:duration-200 tw:cursor-pointer"
+              aria-label="Close mobile menu"
             >
-              <svg className='w-8 h-8' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' />
+              <svg
+                className="tw:w-8 tw:h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
 
-          {/* Mobile Navigation */}
-          <nav className='px-4 py-8'>
-            <ul className='space-y-6'>
+          <nav className="tw:px-4 tw:py-8">
+            <ul className="tw:space-y-6">
               <li>
-                <a href={`/${locale}`} onClick={closeMobileMenu} className={getMobileNavLinkClasses(`/${locale}`)}>
-                  {tCommon('navigation.home')}
+                <a
+                  href={`/${locale}`}
+                  onClick={closeMobileMenu}
+                  className={getMobileNavLinkClasses(`/${locale}`)}
+                >
+                  {tCommon("navigation.home")}
                 </a>
               </li>
               <li>
                 <a
                   href={`/${locale}/services-prices`}
                   onClick={closeMobileMenu}
-                  className={getMobileNavLinkClasses(`/${locale}/services-prices`)}
+                  className={getMobileNavLinkClasses(
+                    `/${locale}/services-prices`
+                  )}
                 >
-                  {tCommon('navigation.services')}
+                  {tCommon("navigation.services")}
                 </a>
               </li>
               <li>
@@ -274,16 +402,16 @@ const Header = () => {
                   onClick={closeMobileMenu}
                   className={getMobileNavLinkClasses(`/${locale}/promotions`)}
                 >
-                  {tCommon('navigation.promotions')}
+                  {tCommon("navigation.promotions")}
                 </a>
               </li>
               <li>
                 <a
-                  href='/page/about-us.html'
+                  href="/page/about-us.html"
                   onClick={closeMobileMenu}
-                  className='block text-[1.125em] text-gray-900 transition-colors duration-200 uppercase tracking-wide'
+                  className="tw:block tw:text-[1.125em] tw:text-gray-900 tw:transition-colors tw:duration-200 tw:uppercase tw:tracking-wide"
                 >
-                  {tCommon('navigation.aboutUs')}
+                  {tCommon("navigation.aboutUs")}
                 </a>
               </li>
               <li>
@@ -292,7 +420,7 @@ const Header = () => {
                   onClick={closeMobileMenu}
                   className={getMobileNavLinkClasses(`/${locale}/contact`)}
                 >
-                  {tCommon('navigation.contact')}
+                  {tCommon("navigation.contact")}
                 </a>
               </li>
               <li>
@@ -301,59 +429,15 @@ const Header = () => {
                   onClick={closeMobileMenu}
                   className={getMobileNavLinkClasses(`/${locale}/reservation`)}
                 >
-                  {tCommon('navigation.bookOnline')}
+                  {tCommon("navigation.bookOnline")}
                 </a>
-              </li>
-
-              {/* Mobile Language Switcher */}
-              <li className='pt-4 border-t border-gray-200'>
-                <div className='space-y-3'>
-                  <p className='text-lg font-medium text-gray-700'>{tCommon('language')}</p>
-                  <div className='space-y-2'>
-                    <button
-                      onClick={() => {
-                        handleLanguageChange('en')
-                        closeMobileMenu()
-                      }}
-                      className={`w-full text-left px-4 py-3 rounded-lg text-lg transition-colors duration-200 cursor-pointer ${
-                        locale === 'en' ? 'bg-pink-50 text-pink-600 font-medium' : 'text-gray-700 hover:bg-gray-50'
-                      }`}
-                    >
-                      🇺🇸 {tCommon('languages.en')}
-                    </button>
-                    <button
-                      onClick={() => {
-                        handleLanguageChange('vi')
-                        closeMobileMenu()
-                      }}
-                      className={`w-full text-left px-4 py-3 rounded-lg text-lg transition-colors duration-200 cursor-pointer ${
-                        locale === 'vi' ? 'bg-pink-50 text-pink-600 font-medium' : 'text-gray-700 hover:bg-gray-50'
-                      }`}
-                    >
-                      🇻🇳 {tCommon('languages.vi')}
-                    </button>
-                    <button
-                      onClick={() => {
-                        handleLanguageChange('ja')
-                        closeMobileMenu()
-                      }}
-                      className={`w-full text-left px-4 py-3 rounded-lg text-lg transition-colors duration-200 cursor-pointer ${
-                        locale === 'ja'
-                          ? 'bg-pink-50 text-pink-600 font-medium'
-                          : 'text-gray-700 hover:text-pink-600 font-medium'
-                      }`}
-                    >
-                      🇯🇵 {tCommon('languages.ja')}
-                    </button>
-                  </div>
-                </div>
               </li>
             </ul>
           </nav>
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
