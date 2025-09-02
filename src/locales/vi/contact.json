@@ -16,28 +16,6 @@
       "button": "Nhấp để bắt đầu xác minh"
     }
   },
-  "locations": {
-    "main": {
-      "title": "Sen Spa DaNang",
-      "email": "Email",
-      "address1": "Số 18 Bảo Khánh, Hoàn Kiếm, Hà Nội",
-      "phone1": "Điện thoại: (+84) 866 903 499",
-      "address2": "Số 26 Ấu Triệu, Hoàn Kiếm, Hà Nội",
-      "phone2": "Điện thoại: (+84) 977 903 499",
-      "address3": "Số 22 Ấu Triệu, Hoàn Kiếm, Hà Nội",
-      "phone3": "Điện thoại: (+84) 867 903 499"
-    },
-    "cathedral": {
-      "title": "Sen Spa DaNang (Chi nhánh Nhà thờ)",
-      "address": "Số 26 Ấu Triệu, Hoàn Kiếm, Hà Nội",
-      "phone": "Điện thoại: (+84) 977 903 499"
-    },
-    "laFlora": {
-      "title": "La Flora Spa",
-      "address": "Số 22 Ấu Triệu, Hoàn Kiếm, Hà Nội",
-      "phone": "Điện thoại: (+84) 867 903 499"
-    }
-  },
   "phoneSection": {
     "title": "Liên hệ với chúng tôi qua điện thoại",
     "description": "Quét mã QR này để bắt đầu cuộc trò chuyện WhatsApp hoặc Kakao Talk với chúng tôi"

@@ -1,117 +1,128 @@
-'use client'
+"use client";
 
-import { useState, FormEvent, ChangeEvent } from 'react'
-import { useTranslations, useLocale } from 'next-intl'
-import type { Locale } from '@/utils/constants'
-import type { ContactFormData } from '@/types/contact'
-import type { NamespaceKeys } from 'use-intl'
-import Link from 'next/link'
-import Image from 'next/image'
-import { CONFIG } from '@/utils/constants'
+import { useState, FormEvent, ChangeEvent } from "react";
+import { useTranslations, useLocale } from "next-intl";
+import type { Locale } from "@/utils/constants";
+import type { ContactFormData } from "@/types/contact";
+import type { NamespaceKeys } from "use-intl";
+import Link from "next/link";
+import Image from "next/image";
+import { CONFIG } from "@/utils/constants";
 
 const ContactContent = () => {
-  const locale = useLocale() as Locale
-  const t = useTranslations('contact' as NamespaceKeys<string, string>)
-  const tCommon = useTranslations('common' as NamespaceKeys<string, string>)
+  const locale = useLocale() as Locale;
+  const t = useTranslations("contact" as NamespaceKeys<string, string>);
+  const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
 
   const [formData, setFormData] = useState<ContactFormData>({
-    name: '',
-    email: '',
-    title: '',
-    content: ''
-  })
+    name: "",
+    email: "",
+    title: "",
+    content: "",
+  });
 
-  const [loading, setLoading] = useState(false)
-  const [status, setStatus] = useState<{ type: 'success' | 'error' | ''; message: string }>({ type: '', message: '' })
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | "";
+    message: string;
+  }>({ type: "", message: "" });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setLoading(true)
-    setStatus({ type: '', message: '' })
+    e.preventDefault();
+    setLoading(true);
+    setStatus({ type: "", message: "" });
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      })
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-      const data = await response.json()
+      const data = await response.json();
 
       if (data.success) {
-        setStatus({ type: 'success', message: data.message })
-        setFormData({ name: '', email: '', title: '', content: '' })
+        setStatus({ type: "success", message: data.message });
+        setFormData({ name: "", email: "", title: "", content: "" });
       } else {
-        setStatus({ type: 'error', message: data.message })
+        setStatus({ type: "error", message: data.message });
       }
     } catch (_) {
-      setStatus({ type: 'error', message: 'Network error. Please try again.' })
+      setStatus({ type: "error", message: "Network error. Please try again." });
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <>
-      <div className='s a2 text-center' >
-        <h1 className='a2_t'>{t('title')}</h1>
+      <div className="s a2 text-center">
+        <h1 className="a2_t">{t("title")}</h1>
       </div>
 
-      <div className='s a3 text-center' >
-        <ul className='breadcrumb'>
+      <div className="s a3 text-center">
+        <ul className="breadcrumb">
           <li>
-            <Link href={`/${locale}`}>{tCommon('navigation.home')}</Link>
+            <Link href={`/${locale}`}>{tCommon("navigation.home")}</Link>
           </li>
-          <li className='active'>{t('title')}</li>
+          <li className="active">{t("title")}</li>
         </ul>
       </div>
 
-      <div className='s sH a5' >
-        <div className='container' >
-          <div className='a5_m' >
-            <div className='a5_h text-center' >
-              <div className='a5_a' >
-                <i className='fa fa-envelope-o'></i>
+      <div className="s sH a5">
+        <div className="container">
+          <div className="a5_m">
+            <div className="a5_h text-center">
+              <div className="a5_a">
+                <i className="fa fa-envelope-o"></i>
               </div>
-              <div className='a5_c' >
-                <h2 className='s_t2'>{t('emailSection.title')}</h2>
-                <p className='s_p'>{t('emailSection.description')}</p>
+              <div className="a5_c">
+                <h2 className="s_t2">{t("emailSection.title")}</h2>
+                <p className="s_p">{t("emailSection.description")}</p>
               </div>
             </div>
 
-            <div className='a5_b fl' >
-              <form onSubmit={handleSubmit} className='a5_f' id='fromContact' autoComplete='off' noValidate>
-                <div className='form-group' >
-                  <span className='form-label'>
-                    {t('form.fullName')} <span>*</span>
+            <div className="a5_b fl">
+              <form
+                onSubmit={handleSubmit}
+                className="a5_f"
+                id="fromContact"
+                autoComplete="off"
+                noValidate
+              >
+                <div className="form-group">
+                  <span className="form-label">
+                    {t("form.fullName")} <span>*</span>
                   </span>
                   <input
-                    type='text'
-                    name='name'
-                    className='form-control'
-                    id='name'
-                    placeholder={t('form.fullName')}
+                    type="text"
+                    name="name"
+                    className="form-control"
+                    id="name"
+                    placeholder={t("form.fullName")}
                     value={formData.name}
                     onChange={handleChange}
                     required
                   />
                 </div>
 
-                <div className='form-group' >
-                  <span className='form-label'>
-                    {t('form.emailAddress')} <span>*</span>
+                <div className="form-group">
+                  <span className="form-label">
+                    {t("form.emailAddress")} <span>*</span>
                   </span>
                   <input
-                    type='text'
-                    name='email'
-                    className='form-control'
-                    id='email'
-                    placeholder={t('form.emailAddress')}
+                    type="text"
+                    name="email"
+                    className="form-control"
+                    id="email"
+                    placeholder={t("form.emailAddress")}
                     maxLength={320}
                     value={formData.email}
                     onChange={handleChange}
@@ -119,71 +130,82 @@ const ContactContent = () => {
                   />
                 </div>
 
-                <div className='form-group' >
-                  <span className='form-label'>
-                    {t('form.title')} <span>*</span>
+                <div className="form-group">
+                  <span className="form-label">
+                    {t("form.title")} <span>*</span>
                   </span>
                   <input
-                    type='text'
-                    name='title'
-                    className='form-control'
-                    id='title'
-                    placeholder={t('form.title')}
+                    type="text"
+                    name="title"
+                    className="form-control"
+                    id="title"
+                    placeholder={t("form.title")}
                     value={formData.title}
                     onChange={handleChange}
                     required
                   />
                 </div>
 
-                <div className='form-group' >
-                  <span className='form-label'>
-                    {t('form.content')} <span>*</span>
+                <div className="form-group">
+                  <span className="form-label">
+                    {t("form.content")} <span>*</span>
                   </span>
                   <textarea
-                    name='content'
+                    name="content"
                     cols={40}
                     rows={6}
-                    className='form-control'
-                    id='content'
-                    placeholder={t('form.contentPlaceholder')}
+                    className="form-control"
+                    id="content"
+                    placeholder={t("form.contentPlaceholder")}
                     value={formData.content}
                     onChange={handleChange}
                     required
                   ></textarea>
                 </div>
 
-                <button type='submit' className='a5_fu btn btn-1' id='btnContact' disabled={loading}>
-                  {loading ? 'Sending...' : t('form.send')}
+                <button
+                  type="submit"
+                  className="a5_fu btn btn-1"
+                  id="btnContact"
+                  disabled={loading}
+                >
+                  {loading ? "Sending..." : t("form.send")}
                 </button>
               </form>
 
               {status.message && (
-                <div className={`status-message ${status.type === 'success' ? 'success' : 'error'}`}>
+                <div
+                  className={`status-message ${
+                    status.type === "success" ? "success" : "error"
+                  }`}
+                >
                   {status.message}
                 </div>
               )}
 
-              <div className='a5_d'>
-                <div className='a5_k'>
+              <div className="a5_d">
+                <div className="a5_k">
                   <iframe
                     src={CONFIG.MAP_LOCATION}
-                    width='355'
-                    height='355'
+                    width="100%"
+                    height="355"
                     style={{ border: 0 }}
                     allowFullScreen
-                    loading='lazy'
-                    referrerPolicy='no-referrer-when-downgrade'
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
 
-                <div className='a5_e' >
-                  <h3 className='a5_et'>{CONFIG.SPA_NAME}</h3>
-                  <ul className='a5_en'>
+                <div className="a5_e">
+                  <h3 className="a5_et">{CONFIG.SPA_NAME}</h3>
+                  <ul className="a5_en">
                     <li>
-                      <i className='fa fa-envelope-o'></i> {t('locations.main.email')}: {CONFIG.MAIL}
+                      <i className="fa fa-envelope-o"></i>{" "}
+                      {t("locations.main.email")}: {CONFIG.MAIL}
                     </li>
                     <li>
-                      <i className='fa fa-phone'></i> {CONFIG.SPA_LOCATION} - {CONFIG.PHONE_NUMBER}
+                      <i className="fa fa-phone"></i> {CONFIG.SPA_LOCATION} -{" "}
+                      {CONFIG.PHONE_NUMBER}
                     </li>
                   </ul>
                 </div>
@@ -193,23 +215,23 @@ const ContactContent = () => {
         </div>
       </div>
 
-      <div className='s sH a6 ct' >
-        <div className='container' >
-          <div className='a5_m' >
-            <div className='a5_h text-center' >
-              <div className='a5_a' >
-                <i className='fa fa-phone'></i>
+      <div className="s sH a6 ct">
+        <div className="container">
+          <div className="a5_m">
+            <div className="a5_h text-center">
+              <div className="a5_a">
+                <i className="fa fa-phone"></i>
               </div>
-              <div className='a5_c' >
-                <h2 className='s_t2'>{t('phoneSection.title')}</h2>
-                <p className='s_p'>{t('phoneSection.description')}</p>
+              <div className="a5_c">
+                <h2 className="s_t2">{t("phoneSection.title")}</h2>
+                <p className="s_p">{t("phoneSection.description")}</p>
               </div>
             </div>
             <div className="tw:flex tw:items-center tw:justify-center tw:gap-6">
               <div>
                 <Image
-                  src='/images/reservations/line.png'
-                  alt={t('contactByPhone.locations.orientSpa.name')}
+                  src="/images/reservations/line.png"
+                  alt={t("contactByPhone.locations.orientSpa.name")}
                   width={200}
                   height={200}
                 />
@@ -217,8 +239,8 @@ const ContactContent = () => {
 
               <div>
                 <Image
-                  src='/images/reservations/kk.png'
-                  alt={t('contactByPhone.locations.orientSpa.name')}
+                  src="/images/reservations/kk.png"
+                  alt={t("contactByPhone.locations.orientSpa.name")}
                   width={200}
                   height={200}
                 />
@@ -226,8 +248,8 @@ const ContactContent = () => {
 
               <div>
                 <Image
-                  src='/images/reservations/ws.png'
-                  alt={t('contactByPhone.locations.orientSpa.name')}
+                  src="/images/reservations/ws.png"
+                  alt={t("contactByPhone.locations.orientSpa.name")}
                   width={200}
                   height={200}
                 />
@@ -237,7 +259,7 @@ const ContactContent = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ContactContent
+export default ContactContent;
