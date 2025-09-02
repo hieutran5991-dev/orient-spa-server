@@ -134,7 +134,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
               </div>
             </div>
           </div>
-          <div className="sP">
+          <div className="sP" id="footer_tool">
             <div className="sP_i" id="toTop" data-bis-skin-checked="1">
               <span>
                 <i className="fa fa-angle-up"></i>

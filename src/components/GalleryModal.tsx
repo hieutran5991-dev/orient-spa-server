@@ -101,17 +101,15 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
 
   return (
     <div className="tw:fixed tw:inset-0 tw:bg-black tw:bg-opacity-90 tw:flex tw:justify-center tw:items-center tw:z-[99999] tw:flex-col">
-      <div className="tw:relative tw:max-w-[90%] tw:max-h-[70%] tw:bg-white tw:rounded-lg tw:overflow-hidden modal-enter-active tw:mb-4">
-        <button
-          onClick={closeModal}
-          className="tw:absolute tw:top-4 tw:right-5 tw:bg-white tw:bg-opacity-90 tw:border-none tw:w-10 tw:h-10 tw:rounded-full tw:cursor-pointer tw:flex tw:items-center tw:justify-center tw:text-xl tw:text-gray-800 hover:tw:bg-white tw:z-[1001]"
-          aria-label={t("modal.close")}
-        >
-          ×
-        </button>
-
-        {/* Main Image Swiper */}
-        <div className="tw:w-full tw:max-w-3xl tw:h-auto">
+      <button
+        onClick={closeModal}
+        className="tw:absolute tw:top-4 tw:right-5 tw:bg-white tw:bg-opacity-90 tw:border-none tw:w-10 tw:h-10 tw:rounded-full tw:cursor-pointer tw:flex tw:items-center tw:justify-center tw:text-xl tw:text-gray-800 hover:tw:bg-white tw:z-[1001]"
+        aria-label={t("modal.close")}
+      >
+        ×
+      </button>
+      <div className="tw:relative tw:max-w-[90%] tw:max-h-[80%] tw:rounded-lg tw:overflow-hidden modal-enter-active tw:mb-4 tw:h-[90%]">
+        <div className="tw:w-full tw:h-full">
           <Swiper
             modules={[Navigation, Thumbs, Controller]}
             spaceBetween={0}
@@ -126,7 +124,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
             onSwiper={(swiper) => {
               mainSwiperRef.current = swiper;
             }}
-            className="main-swiper"
+            className="tw:h-full"
           >
             {images.map((image, index) => (
               <SwiperSlide key={image.id}>
@@ -134,15 +132,14 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
                   src={image.src}
                   alt={image.alt}
                   width={800}
-                  height={600}
-                  className="tw:w-full tw:h-auto"
+                  height={400}
+                  className="tw:max-w-full tw:object-cover tw:max-h-full tw:mx-auto"
                   priority={index === initialIndex}
                 />
               </SwiperSlide>
             ))}
           </Swiper>
 
-          {/* Custom Navigation Buttons */}
           <button
             className="swiper-button-prev-custom tw:absolute tw:top-1/2 tw:-translate-y-1/2 tw:left-5 tw:bg-white tw:bg-opacity-90 tw:border-none tw:w-12 tw:h-12 tw:rounded-full tw:cursor-pointer tw:flex tw:items-center tw:justify-center tw:text-2xl tw:text-gray-800 hover:tw:bg-white tw:z-[1001]"
             aria-label={t("modal.previous")}
@@ -159,7 +156,6 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
         </div>
       </div>
 
-      {/* Thumbnail Swiper */}
       <div className="tw:w-full tw:max-w-4xl tw:px-4">
         <Swiper
           modules={[Navigation, FreeMode]}
@@ -172,10 +168,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
           className="thumbnail-swiper !tw:w-full"
         >
           {images.map((image, index) => (
-            <SwiperSlide
-              key={`thumb-${image.id}`}
-              className="tw:w-16 tw:h-16"
-            >
+            <SwiperSlide key={`thumb-${image.id}`} className="tw:w-16 tw:h-16">
               <button
                 onClick={() => handleThumbnailClick(index)}
                 className={`tw:w-full tw:h-full tw:border-2 tw:transition-all tw:cursor-pointer tw:rounded-md tw:overflow-hidden ${

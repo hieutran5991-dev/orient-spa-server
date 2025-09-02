@@ -3,10 +3,10 @@
   "hero": {
     "tagline": "Một nơi thư giãn cho tất cả các giác quan của bạn",
     "title": "Chào mừng đến với Sen Spa DaNang",
-    "subtitle": "Một nơi thư giãn cho tất cả các giác quan của bạn, ngay trung tâm Hà Nội."
+    "subtitle": "Một nơi thư giãn cho tất cả các giác quan của bạn, ngay trung tâm Đà Nẵng."
   },
   "about": {
-    "description": "Thành lập năm 2017 với mục tiêu mang đến cho du khách và người dân địa phương trải nghiệm spa thư giãn, \nSen Spa DaNang Hà Nội hiện đang vận hành 3 spa tại trung tâm Phố cổ Hà Nội.\nChúng tôi cung cấp massage chân và toàn thân, chăm sóc móng tay và gội đầu, cũng như các gói spa.\nSpa của chúng tôi mở cửa từ 10:00 sáng - 10:00 tối hàng ngày. Khuyến khích đặt lịch trước, đặc biệt vào cuối tuần."
+    "description": "Thành lập năm 2017 với mục tiêu mang đến cho du khách và người dân địa phương trải nghiệm spa thư giãn, \nSen Spa DaNang hiện đang vận hành 3 spa tại trung tâm Phố cổ Đà Nẵng.\nChúng tôi cung cấp massage chân và toàn thân, chăm sóc móng tay và gội đầu, cũng như các gói spa.\nSpa của chúng tôi mở cửa từ 10:00 sáng - 09:00 tối hàng ngày. Khuyến khích đặt lịch trước, đặc biệt vào cuối tuần."
   },
   "locations": {
     "title": "CÁC CHI NHÁNH",
@@ -28,8 +28,8 @@
     "evening": "Tối"
   },
   "whyChooseUs": {
-    "title": "Tại sao chọn Sen Spa DaNang Hà Nội?",
-    "subtitle": "Ghé thăm Sen Spa DaNang Hà Nội và tận hưởng khoảng nghỉ tuyệt vời khỏi thói quen hàng ngày hoặc tự chiều chuộng bản thân sau một chuyến đi dài.",
+    "title": "Tại sao chọn Sen Spa DaNang?",
+    "subtitle": "Ghé thăm Sen Spa DaNang và tận hưởng khoảng nghỉ tuyệt vời khỏi thói quen hàng ngày hoặc tự chiều chuộng bản thân sau một chuyến đi dài.",
     "features": {
       "couples": {
         "title": "Hoàn hảo cho các cặp đôi, nhóm bạn và du khách đơn lẻ",

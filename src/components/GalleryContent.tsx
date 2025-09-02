@@ -15,11 +15,15 @@ const GalleryContent: React.FC = () => {
   const handleImageClick = (index: number) => {
     setSelectedImageIndex(index);
     setIsModalOpen(true);
+
+    (document.getElementById("footer_tool") as HTMLElement).style.zIndex = "-1";
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedImageIndex(0);
+    (document.getElementById("footer_tool") as HTMLElement).style.zIndex =
+      "9999";
   };
 
   return (
@@ -43,8 +47,8 @@ const GalleryContent: React.FC = () => {
                   src={image.src}
                   alt={image.alt}
                   width={600}
-                  height={300}
-                  className="tw:w-full tw:h-80 tw:object-cover"
+                  height={400}
+                  className="tw:w-full tw:h-90 tw:object-cover"
                 />
               </div>
             ))}

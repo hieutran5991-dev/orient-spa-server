@@ -9,35 +9,35 @@ export interface GalleryImage {
 export const galleryImages: GalleryImage[] = [
     {
         id: 1,
-        src: '/images/37f88d202b6673c7856ab3e5b274fce9.jpg',
-        alt: 'Happy guest at Orient Spa',
+        src: '/images/galleries/1.jpg',
+        alt: 'Happy guest at Sen Spa DaNang',
         title: 'Relaxed Customer',
         description: 'A satisfied customer enjoying our premium spa treatment'
     },
     {
         id: 2,
-        src: '/images/1e7ee92c458392f5eab7dc3e5d87d364.jpg',
+        src: '/images/galleries/2.jpg',
         alt: 'Guest enjoying spa treatment',
         title: 'Spa Treatment',
         description: 'Professional spa treatment in our relaxing environment'
     },
     {
         id: 3,
-        src: '/images/188a3c349926d04d742c40dfed4b1590.jpg',
+        src: '/images/galleries/3.jpg',
         alt: 'Relaxed guest after massage',
         title: 'Post-Massage Bliss',
         description: 'Complete relaxation after a therapeutic massage session'
     },
     {
         id: 4,
-        src: '/images/837df7fd667c8f3f78fd2fa833a919b8.jpg',
+        src: '/images/galleries/4.jpg',
         alt: 'Guest with facial treatment',
         title: 'Facial Care',
         description: 'Revitalizing facial treatment for glowing skin'
     },
     {
         id: 5,
-        src: '/images/10bd2e10764a565775b50a50c94fbd1d.jpg',
+        src: '/images/galleries/5.jpg',
         alt: 'Happy couple at spa',
         title: 'Couple Experience',
         description: 'Romantic spa experience for couples'
