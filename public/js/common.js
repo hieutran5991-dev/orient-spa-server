@@ -10123,6 +10123,12 @@ jQuery(document).ready(function ($) {
             $(".js-v4").val($(this).text());
         });
     });
+    $('.js-v1, .js-v2, .js-v3, .js-v4, .s1_s').on('touchstart click', function(e) {
+        e.stopPropagation();
+    });
+    $('body').on('touchstart click', function(e) {
+        $(".s1_s").hide();
+    });
     $('.js-done').click(function () {
         $('.s1_s').hide();
     });

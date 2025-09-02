@@ -28,11 +28,11 @@ const PromotionDetailContent = ({ slug }: PromotionDetailContentProps) => {
 
   return (
     <>
-      <div className="s a2 text-center" data-bis-skin-checked="1">
+      <div className="s a2 text-center" >
         <h1 className="a2_t">{t('title')}</h1>
       </div>
 
-      <div className="s a3 text-center" data-bis-skin-checked="1">
+      <div className="s a3 text-center" >
         <ul className="breadcrumb">
           <li><Link href={`/${locale}`}>{tCommon('navigation.home')}</Link></li>
           <li><Link href={`/${locale}/promotions`}>{t('title')}</Link></li>
@@ -40,13 +40,13 @@ const PromotionDetailContent = ({ slug }: PromotionDetailContentProps) => {
         </ul>
       </div>
 
-      <div className="s sH s2" data-bis-skin-checked="1">
+      <div className="s sH s2" >
         <div className="container">
           <div className="s_h">
             <h1 className="s_t3">{promotion.name[locale]}</h1>
           </div>
 
-          <div className="k2_p" data-bis-skin-checked="1">
+          <div className="k2_p" >
             <Image
               src={promotion.image || '/images/default-promotion.jpg'}
               alt={promotion.name[locale]}
@@ -56,8 +56,8 @@ const PromotionDetailContent = ({ slug }: PromotionDetailContentProps) => {
             />
           </div>
 
-          <div className="k2_c" data-bis-skin-checked="1">
-            <div className="k2_cm content" data-bis-skin-checked="1">
+          <div className="k2_c" >
+            <div className="k2_cm content" >
               <p>{promotion.description[locale]}</p>
 
               <p><strong>{t('whatsIncluded')}:</strong></p>
@@ -82,17 +82,17 @@ const PromotionDetailContent = ({ slug }: PromotionDetailContentProps) => {
 
       {/* Other Promotions Section */}
       {otherPromotions.length > 0 && (
-        <div className="s sH s3" data-bis-skin-checked="1">
+        <div className="s sH s3" >
           <div className="container">
             <div className="s_h">
               <h2 className="s_t">{t('otherPromotions')}</h2>
             </div>
 
-            <div className="k3_m" data-bis-skin-checked="1">
-              <div className="s_g x3" data-bis-skin-checked="1">
+            <div className="k3_m" >
+              <div className="s_g x3" >
                 {otherPromotions.map((otherPromotion) => (
-                  <div key={otherPromotion.id} className="s_gc" data-bis-skin-checked="1">
-                    <div className="k1_i" data-bis-skin-checked="1">
+                  <div key={otherPromotion.id} className="s_gc" >
+                    <div className="k1_i" >
                       <Link
                         href={`/${locale}/promotions/${otherPromotion.slug}`}
                         className="k1_a"
@@ -108,7 +108,7 @@ const PromotionDetailContent = ({ slug }: PromotionDetailContentProps) => {
                       </Link>
                     </div>
 
-                    <div className="k1_b" data-bis-skin-checked="1">
+                    <div className="k1_b" >
                       <h3 className="k1_t">
                         <Link href={`/${locale}/promotions/${otherPromotion.slug}`}>
                           {otherPromotion.name[locale]}
