@@ -28,13 +28,10 @@ const ReservationContent = ({ spaLocations }: ReservationContentProps) => {
             <li>{t('breadcrumb.reservation')}</li>
           </ul>
         </div>
-        <div className='s sH a6 res'>
+        <div className='s a6 res'>
           <div className='container'>
             <div className='a5_m'>
               <div className='a5_h text-center'>
-                <div className='a5_a'>
-                  <i className='fa fa-phone'></i>
-                </div>
                 <div className='a5_c'>
                   <h2 className='s_t2'>{t('contactByPhone.title')}</h2>
                 </div>

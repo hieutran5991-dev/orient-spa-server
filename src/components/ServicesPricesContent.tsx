@@ -2,7 +2,7 @@
 
 import { useTranslations, useLocale, type NamespaceKeys } from "next-intl";
 import Link from "next/link";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { type Locale } from "@/utils/constants";
 import { formatPrice } from "@/utils/format";
 import { SpaLocation } from "@/types/api";
@@ -29,6 +29,10 @@ const ServicesPricesContent = ({
   const [selectedService, setSelectedService] = useState<Product | undefined>(
     undefined
   );
+  const [isSticky, setIsSticky] = useState(false);
+  const tabsRef = useRef<HTMLUListElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const endContentRef = useRef<HTMLDivElement>(null);
 
   const serviceCategories = useMemo(
     () =>
@@ -41,6 +45,31 @@ const ServicesPricesContent = ({
     [categories, products]
   );
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (tabsRef.current && containerRef.current && endContentRef.current) {
+        const tabsRect = tabsRef.current.getBoundingClientRect();
+        const containerRect = containerRef.current.getBoundingClientRect();
+        const endContentRect = endContentRef.current.getBoundingClientRect();
+
+        const shouldBeSticky = tabsRect.top <= 0 && containerRect.bottom > 0;
+
+        const isAtTop = window.scrollY <= 100;
+
+        const isPastEndContent = endContentRect.top <= window.innerHeight * 0.3;
+
+        setIsSticky(shouldBeSticky && !isAtTop && !isPastEndContent);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const handleTabClick = (tabId: number) => {
     setActiveTab(tabId);
   };
@@ -49,6 +78,11 @@ const ServicesPricesContent = ({
     setSelectedService(service);
     setShowBookingModal(true);
   };
+
+    const closeModal = () => {
+      setShowBookingModal(false);
+      setSelectedService(undefined);
+    };
 
   return (
     <>
@@ -65,7 +99,7 @@ const ServicesPricesContent = ({
               Spa Booking:{" "}
               <strong id="modal-name">{selectedService?.name}</strong>
             </span>
-            <i className="s1_z ic ic-close"></i>
+            <i className="s1_z ic ic-close" onClick={closeModal}></i>
           </div>
         </BookingForm>
       </div>
@@ -73,33 +107,24 @@ const ServicesPricesContent = ({
         <h1 className="a2_t">{t("title")}</h1>
       </div>
 
-      <div className="s sH s8">
+      <div className="s sH s8" ref={containerRef}>
         <div className="container">
-          <div className="a8_c text-center">
-            <p>
-              {t("subtitle")}{" "}
-              <Link href={`/${locale}/promotions`}>
-                {t("navigation.promotions")}
-              </Link>
-              . <span dangerouslySetInnerHTML={{ __html: t("hotlineText") }} />
-            </p>
-            <a
-              href="/static/images/Orient-Spa-Menu-2024_2025.pdf"
-              download
-              className="btn btn-1 btn-block a5_sa"
-            >
-              {t("downloadMenu")}
-            </a>
-          </div>
-
-          <div className="s8_m">
+          <div className="s8_m tw:mb-[80px]">
             <div className="s_h">
               <h1 className="s_t2">{t("treatmentMenu")}</h1>
             </div>
 
             <div className="s8_b">
               <div className="s8_n">
-                <ul className="tabs s8_nm">
+                {/* Placeholder to maintain layout when tabs are sticky */}
+                {isSticky && <div className="tw:h-[60px]"></div>}
+                <ul
+                  ref={tabsRef}
+                  className={`tabs s8_nm ${isSticky ? 'tw:fixed tw:top-0 tw:left-0 tw:right-0 tw:z-50 tw:bg-white tw:shadow-md tw:px-4 tw:py-2' : ''}`}
+                  style={isSticky ? {
+                    left: '50%',
+                  } : {}}
+                >
                   {serviceCategories.map((category) => (
                     <li
                       key={category.id}
@@ -146,7 +171,7 @@ const ServicesPricesContent = ({
                             </div>
                           )}
                           <div className="s8_d">
-                            <span>{service.duration}</span>
+                            <span>{service.duration} {t('minutes')}</span>
                             <strong>{formatPrice(service.price)}</strong>
                           </div>
                         </div>
@@ -155,7 +180,7 @@ const ServicesPricesContent = ({
                           onClick={() => handleBookNow(service)}
                           className="tw:ml-auto"
                         >
-                          <span className="btn btn-2 tw:md:w-[198px] tw:w-[110px] tw:h-[40px] tw:md:h-[50px]">
+                          <span className="btn tw:bg-[var(--main-color)] tw:text-white tw:hover:bg-[var(--hover-color)] tw:text-xl tw:md:text-2xl tw:md:w-[198px] tw:w-[110px] tw:h-[40px] tw:md:h-[50px]">
                             Book Now
                           </span>
                         </div>
@@ -166,7 +191,7 @@ const ServicesPricesContent = ({
               </div>
             </div>
 
-            <div className="s8_f">
+            <div className="s8_f" ref={endContentRef}>
               <div className="a8_c text-center">
                 <p>
                   <strong>{t("note")}</strong> {t("noteText")}{" "}
@@ -177,6 +202,23 @@ const ServicesPricesContent = ({
                 </p>
               </div>
             </div>
+          </div>
+
+          <div className="a8_c text-center">
+            <p>
+              {t("subtitle")}{" "}
+              <Link href={`/${locale}/promotions`}>
+                {t("navigation.promotions")}
+              </Link>
+              . <span dangerouslySetInnerHTML={{ __html: t("hotlineText") }} />
+            </p>
+            <a
+                href="/static/images/Orient-Spa-Menu-2024_2025.pdf"
+                download
+                className="btn btn-1 btn-block a5_sa"
+            >
+              {t("downloadMenu")}
+            </a>
           </div>
         </div>
       </div>
