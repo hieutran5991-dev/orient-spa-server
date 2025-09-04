@@ -13,7 +13,6 @@ const Header = () => {
   const router = useRouter();
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [_isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const [isMobileLanguageOpen, setIsMobileLanguageOpen] = useState(false);
 
   const isActivePath = (path: string) => {
@@ -128,16 +127,14 @@ const Header = () => {
               </a>
             </div>
 
-            <nav className="tw:flex tw:items-start tw:md:h-[55%] tw:border-b tw:border-gray-200 tw:gap-8  tw:w-[40%] tw:justify-start">
+            <nav className="tw:flex tw:items-start tw:md:h-[55%] tw:border-b tw:border-gray-200 tw:gap-8 tw:w-[40%] tw:justify-start">
               <div className="tw:relative tw:group">
                 <button
-                  className="tw:flex tw:items-center tw:space-x-1 tw:text-gray-800 tw:hover:text-pink-600 tw:px-3 tw:py-2 tw:text-[1.125em] tw:uppercase tw:tracking-wide tw:transition-colors tw:duration-200"
-                  onMouseEnter={() => setIsAboutDropdownOpen(true)}
-                  onMouseLeave={() => setIsAboutDropdownOpen(false)}
+                  className="tw:flex tw:items-center tw:space-x-1 tw:text-gray-800 tw:hover:text-pink-600 tw:px-3 tw:py-2 tw:text-[1.125em] tw:uppercase tw:tracking-wide tw:transition-colors tw:duration-200 tw:cursor-pointer"
                 >
                   <span>{tCommon("navigation.aboutUs")}</span>
                   <svg
-                    className="tw:w-4 tw:h-4 tw:transition-transform tw:duration-200 group-tw:hover:rotate-180"
+                    className="tw:w-4 tw:h-4 tw:transition-transform tw:duration-200 tw:group-hover:rotate-180"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -152,9 +149,7 @@ const Header = () => {
                 </button>
 
                 <div
-                  className={`tw:absolute tw:top-full tw:left-0 tw:mt-2 tw:w-64 tw:bg-white tw:rounded-lg tw:shadow-lg tw:border tw:border-gray-200 tw:opacity-0 tw:invisible group-tw:hover:opacity-100 group-tw:hover:visible tw:transition-all tw:duration-200 tw:z-50`}
-                  onMouseEnter={() => setIsAboutDropdownOpen(true)}
-                  onMouseLeave={() => setIsAboutDropdownOpen(false)}
+                  className={`tw:absolute tw:top-full tw:left-0 tw:mt-2 tw:w-64 tw:bg-white tw:rounded-lg tw:shadow-lg tw:border tw:border-gray-200 tw:opacity-0 tw:invisible tw:group-hover:opacity-100 tw:group-hover:visible tw:transition-all tw:duration-200 tw:z-50`}
                 >
                   <div className="tw:py-2">
                     <a
@@ -162,25 +157,6 @@ const Header = () => {
                       className="tw:block tw:px-4 tw:py-2 tw:text-lg tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
                     >
                       {tCommon("navigation.aboutDropdown.aboutOrientSpa")}
-                    </a>
-                    <div className="tw:border-t tw:border-gray-100 tw:my-1"></div>
-                    <a
-                      href="/spa/orient-spa-old-quarter.html"
-                      className="tw:block tw:px-4 tw:py-2 tw:text-lg tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
-                    >
-                      {tCommon("navigation.aboutDropdown.orientAt26AuTrieu")}
-                    </a>
-                    <a
-                      href="/spa/orient-spa-nails.html"
-                      className="tw:block tw:px-4 tw:py-2 tw:text-lg tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
-                    >
-                      {tCommon("navigation.aboutDropdown.orientAt18BaoKhanh")}
-                    </a>
-                    <a
-                      href="/spa/la-flora-by-orient.html"
-                      className="tw:block tw:px-4 tw:py-2 tw:text-lg tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
-                    >
-                      {tCommon("navigation.aboutDropdown.laFloraAt22AuTrieu")}
                     </a>
                     <div className="tw:border-t tw:border-gray-100 tw:my-1"></div>
                     <a
