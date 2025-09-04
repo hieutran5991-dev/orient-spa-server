@@ -39,7 +39,9 @@ export default async function LocaleLayout({
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
-        <Script src='/js/lib.js' strategy='afterInteractive' />
+        <Script src='/js/lib.js' strategy='afterInteractive'/>
+
+        <div className="ntc"></div>
       </body>
     </html>
   )
