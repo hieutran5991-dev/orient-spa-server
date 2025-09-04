@@ -8,11 +8,7 @@ import { saveBooking } from "@/api/common";
 import { BookingData, BookingSubmissionData, Product } from "@/types/booking";
 import { BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY } from "@/utils/constants";
 import { formatPrice } from "@/utils/format";
-interface BookingStep {
-  id: number;
-  icon: string;
-  title: string;
-}
+import BookingSteps from "@/components/BookingSteps";
 
 const ConfirmContent = () => {
   const router = useRouter();
@@ -62,7 +58,7 @@ const ConfirmContent = () => {
       if (result) {
         sessionStorage.removeItem(BOOKING_CONFIRM_KEY);
         sessionStorage.removeItem(BOOKING_INIT_KEY);
-        router.push("/");
+        window.location.href = "/thanks";
       }
     } catch (_error) {
     } finally {
@@ -70,25 +66,10 @@ const ConfirmContent = () => {
     }
   };
 
-  const bookingSteps: BookingStep[] = [
-    { id: 1, icon: "ic-reserve", title: t("steps.reserve") },
-    { id: 2, icon: "ic-select", title: t("steps.select") },
-    { id: 3, icon: "ic-confirm", title: t("steps.confirm") },
-  ];
-
   return (
     <main className="main-content">
       <div className="s k1">
-        <div className="k1_m fl fl-3">
-          {bookingSteps.map((step) => (
-            <div key={step.id} className={`k1_i active`}>
-              <div className="k1_a">
-                <i className={`ic ${step.icon}`}></i>
-              </div>
-              <div className="k1_c">{step.title}</div>
-            </div>
-          ))}
-        </div>
+        <BookingSteps currentStep={3} />
       </div>
 
       {/* Main Content */}

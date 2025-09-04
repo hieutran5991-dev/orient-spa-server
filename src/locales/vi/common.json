@@ -28,6 +28,11 @@
     "email": "Email",
     "address": "Địa chỉ"
   },
+  "booking": {
+    "stepReserve": "Đặt chỗ",
+    "stepSelect": "Chọn",
+    "stepConfirm": "Xác nhận!"
+  },
   "footer": {
     "locations": "Địa điểm của chúng tôi",
     "aboutUs": "Về Sen Spa DaNang",

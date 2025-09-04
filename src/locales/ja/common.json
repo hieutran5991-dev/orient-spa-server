@@ -28,6 +28,11 @@
     "email": "メール",
     "address": "住所"
   },
+  "booking": {
+    "stepReserve": "予約",
+    "stepSelect": "選択",
+    "stepConfirm": "確認！"
+  },
   "footer": {
     "locations": "店舗一覧",
     "aboutUs": "オリエントスパについて",

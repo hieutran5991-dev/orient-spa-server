@@ -1,0 +1,16 @@
+{
+  "stepReserve": "Reserve",
+  "stepSelect": "Select",
+  "stepConfirm": "Confirm!",
+  "title": "Thank you for booking service at Sen Spa DaNang!",
+  "subtitle": "We have received your reservation.",
+  "thankYouIconAlt": "Thank you icon",
+  "emailConfirmation": {
+    "text1": "Please make sure your email address is",
+    "correct": "CORRECT",
+    "text2": ", otherwise, we have no mean of communicating with you. We will send you a confirmation email shortly. In case you need to change time or treatment you can always",
+    "contactUs": "contact us",
+    "text3": "."
+  },
+  "backToHomePage": "BACK TO HOME PAGE"
+}

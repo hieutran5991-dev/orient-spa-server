@@ -8,6 +8,7 @@ import type { BookingData, Product } from "@/types/booking";
 import { formatPrice } from "@/utils/format";
 import { BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY } from "@/utils/constants";
 import Image from "next/image";
+import BookingSteps from "@/components/BookingSteps";
 
 interface BookingContentProps {
   products: Product[];
@@ -121,28 +122,10 @@ const BookingContent = ({ products }: BookingContentProps) => {
     setIsSubmitting(false);
   };
 
-  const bookingSteps = [
-    { id: 1, icon: "ic-reserve", title: t("stepReserve"), active: true },
-    { id: 2, icon: "ic-select", title: t("stepSelect"), active: true },
-    { id: 3, icon: "ic-confirm", title: t("stepConfirm"), active: false },
-  ];
-
   return (
     <main className="main-content">
       <div className="s k1">
-        <div className="k1_m fl fl-3">
-          {bookingSteps.map((step) => (
-            <div
-              key={step.id}
-              className={`k1_i ${step.active ? "active" : ""}`}
-            >
-              <div className="k1_a">
-                <i className={`ic ${step.icon}`}></i>
-              </div>
-              <div className="k1_c">{step.title}</div>
-            </div>
-          ))}
-        </div>
+        <BookingSteps currentStep={2} />
       </div>
 
       <div className="s k2">

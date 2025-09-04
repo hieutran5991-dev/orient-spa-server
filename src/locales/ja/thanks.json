@@ -1,0 +1,16 @@
+{
+  "stepReserve": "予約",
+  "stepSelect": "選択",
+  "stepConfirm": "確認!",
+  "title": "Sen Spa DaNangでのサービス予約をありがとうございます！",
+  "subtitle": "ご予約を受け付けました。",
+  "thankYouIconAlt": "ありがとうアイコン",
+  "emailConfirmation": {
+    "text1": "メールアドレスが",
+    "correct": "正確",
+    "text2": "であることをご確認ください。そうでなければ、お客様と連絡を取る手段がございません。間もなく確認メールをお送りいたします。時間やトリートメントを変更する必要がある場合は、いつでも",
+    "contactUs": "お問い合わせ",
+    "text3": "ください。"
+  },
+  "backToHomePage": "ホームページに戻る"
+}

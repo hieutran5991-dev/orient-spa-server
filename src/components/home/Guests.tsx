@@ -12,7 +12,7 @@ const guestPhotos = [
 	{
 		id: 1,
 		image: '/images/37f88d202b6673c7856ab3e5b274fce9.jpg',
-		alt: 'Happy guest at Orient Spa',
+		alt: 'Happy guest at Sen Spa DaNang',
 		instagramUrl: 'https://instagram.com/orientspahanoi'
 	},
 	{

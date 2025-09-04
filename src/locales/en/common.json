@@ -28,6 +28,11 @@
     "email": "Email",
     "address": "Address"
   },
+  "booking": {
+    "stepReserve": "Reserve",
+    "stepSelect": "Select",
+    "stepConfirm": "Confirm!"
+  },
   "footer": {
     "locations": "Our locations",
     "aboutUs": "About Sen Spa DaNang",

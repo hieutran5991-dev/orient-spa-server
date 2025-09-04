@@ -46,5 +46,6 @@
   "stepConfirm": "Xác nhận!",
   "additionalRequestPlaceholder": "Hãy cho chúng tôi biết nếu bạn cần hỗ trợ hoặc có yêu cầu bổ sung để chúng tôi có thể giúp bạn hoặc cá nhân hóa trải nghiệm spa của bạn.",
   "spaImageAlt": "Spa",
-  "defaultSpaName": "Sen Spa DaNang & Nails"
+  "defaultSpaName": "Sen Spa DaNang & Nails",
+  "guestMustSelectService": "Khách hàng phải chọn ít nhất một dịch vụ."
 }

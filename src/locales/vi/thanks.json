@@ -1,0 +1,16 @@
+{
+  "stepReserve": "Đặt chỗ",
+  "stepSelect": "Chọn",
+  "stepConfirm": "Xác nhận!",
+  "title": "Cảm ơn bạn đã đặt dịch vụ tại Sen Spa DaNang!",
+  "subtitle": "Chúng tôi đã nhận được đặt chỗ của bạn.",
+  "thankYouIconAlt": "Biểu tượng cảm ơn",
+  "emailConfirmation": {
+    "text1": "Vui lòng đảm bảo địa chỉ email của bạn là",
+    "correct": "CHÍNH XÁC",
+    "text2": ", nếu không, chúng tôi không có cách nào liên lạc với bạn. Chúng tôi sẽ gửi email xác nhận cho bạn trong thời gian ngắn. Trong trường hợp bạn cần thay đổi thời gian hoặc liệu pháp, bạn luôn có thể",
+    "contactUs": "liên hệ với chúng tôi",
+    "text3": "."
+  },
+  "backToHomePage": "QUAY VỀ TRANG CHỦ"
+}

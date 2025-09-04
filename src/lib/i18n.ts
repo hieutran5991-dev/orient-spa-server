@@ -16,7 +16,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
     confirmMessages,
     reservationMessages,
     guestsMessages,
-    galleryMessages
+    galleryMessages,
+    thankMessages
   ] = await Promise.all([
     import(`../locales/${locale}/common.json`).then((m) => m.default),
     import(`../locales/${locale}/home.json`).then((m) => m.default),
@@ -27,7 +28,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
     import(`../locales/${locale}/confirm.json`).then((m) => m.default),
     import(`../locales/${locale}/reservation.json`).then((m) => m.default),
     import(`../locales/${locale}/guests.json`).then((m) => m.default),
-    import(`../locales/${locale}/gallery.json`).then((m) => m.default)
+    import(`../locales/${locale}/gallery.json`).then((m) => m.default),
+    import(`../locales/${locale}/thanks.json`).then((m) => m.default)
   ])
 
   // Merge all messages into one object with namespaces
@@ -41,7 +43,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
     confirm: confirmMessages,
     reservation: reservationMessages,
     guests: guestsMessages,
-    gallery: galleryMessages
+    gallery: galleryMessages,
+    thanks: thankMessages
   }
 
   return {
