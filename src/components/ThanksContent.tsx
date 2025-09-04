@@ -4,7 +4,7 @@ import { useTranslations, useLocale } from "next-intl";
 import type { NamespaceKeys } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
-import BookingSteps from "@/components/BookingSteps";
+import BookingSteps from "@/components/booking/BookingSteps";
 
 const ThanksContent = () => {
   const locale = useLocale();
@@ -31,15 +31,22 @@ const ThanksContent = () => {
             </div>
 
             <div>
-              <h1 className="tw:text-4xl tw:text-gray-800 tw:mb-4 tw:font-semibold tw:leading-tight tw:md:text-3xl">{t("title")}</h1>
-              <p className="tw:text-xl tw:text-gray-600 tw:mb-8 tw:md:text-lg">{t("subtitle")}</p>
+              <h1 className="tw:text-4xl tw:text-gray-800 tw:mb-4 tw:font-semibold tw:leading-tight tw:md:text-3xl">
+                {t("title")}
+              </h1>
+              <p className="tw:text-xl tw:text-gray-600 tw:mb-8 tw:md:text-lg">
+                {t("subtitle")}
+              </p>
 
               <div className="tw:bg-gray-50 tw:p-6 tw:rounded-lg tw:mb-10 tw:border-l-4 tw:border-[var(--main-color)] tw:md:p-5 tw:mx-auto tw:md:max-w-[80%] tw:md:text-2xl">
                 <p className="tw:m-0 tw:text-gray-700 tw:leading-relaxed">
                   {t("emailConfirmation.text1")}{" "}
                   <strong>{t("emailConfirmation.correct")}</strong>
                   {t("emailConfirmation.text2")}{" "}
-                  <Link href={`/${locale}/contact`} className="tw:text-[var(--main-color)] tw:no-underline tw:font-medium tw:hover:underline">
+                  <Link
+                    href={`/${locale}/contact`}
+                    className="tw:text-[var(--main-color)] tw:no-underline tw:font-medium tw:hover:underline"
+                  >
                     {t("emailConfirmation.contactUs")}
                   </Link>
                   {t("emailConfirmation.text3")}

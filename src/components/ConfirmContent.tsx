@@ -8,7 +8,7 @@ import { saveBooking } from "@/api/common";
 import { BookingData, BookingSubmissionData, Product } from "@/types/booking";
 import { BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY } from "@/utils/constants";
 import { formatPrice } from "@/utils/format";
-import BookingSteps from "@/components/BookingSteps";
+import BookingSteps from "@/components/booking/BookingSteps";
 
 const ConfirmContent = () => {
   const router = useRouter();

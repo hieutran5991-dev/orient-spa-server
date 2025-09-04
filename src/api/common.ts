@@ -18,9 +18,7 @@ export const getListCategories: () => Promise<
   return await request.get("api/categories", { params: { lang } });
 };
 
-export const getListProducts: () => Promise<
-  AxiosResponse<Product[] | []>
-> = async (params: Record<string, any> = {}) => {
+export const getListProducts: (params: Record<any, any> | null) => Promise<AxiosResponse<Product[] | []>> = async (params = {}) => {
   const lang = await getLocale();
   return await request.get("api/products", { params: { lang, ...params } });
 };

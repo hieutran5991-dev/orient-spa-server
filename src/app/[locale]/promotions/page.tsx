@@ -1,13 +1,13 @@
 import '@/css/promotion.css';
 import Layout from '@/components/layout/Layout';
 import PromotionsContent from '@/components/PromotionsContent';
+import { getListProducts } from "@/api/common";
+export default async function PromotionsPage() {
+  const productRes = await getListProducts({is_promoted: true});
 
-export default function PromotionsPage() {
   return (
     <Layout>
-      <main className="main-content">
-        <PromotionsContent />
-      </main>
+        <PromotionsContent products={productRes?.data || []}/>
     </Layout>
   );
 }
