@@ -10093,6 +10093,7 @@ jQuery(document).ready(function ($) {
         onSelect: function () {
             $(".js-v3").val('');
             $('#date_hide').val(this.getMoment().format('YYYY-MM-D'));
+            $('.s1_s').hide();
         },
     });
     $(".js-v1").click(function () {

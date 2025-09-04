@@ -1,48 +1,57 @@
 {
-    "navigation": {
-        "home": "홈",
-        "services": "서비스 및 가격",
-        "promotions": "프로모션",
-        "booking": "예약",
-        "contact": "연락처",
-        "about": "소개"
-    },
-    "common": {
-        "showMore": "더 보기",
-        "viewAll": "전체 보기",
-        "learnMore": "자세히 알아보기",
-        "getStarted": "시작하기",
-        "contactUs": "문의하기",
-        "bookNow": "지금 예약",
-        "currency": "VND",
-        "phone": "전화",
-        "email": "이메일",
-        "address": "주소"
-    },
-    "footer": {
-        "locations": "매장 위치",
-        "aboutUs": "오리엔트 스파 소개",
-        "followUs": "팔로우하기",
-        "openingHours": "영업시간",
-        "paymentMethods": "결제 방법",
-        "viewMap": "(지도 보기)",
-        "openDaily": "매일 영업",
-        "hours": "오전 10:00 - 오후 10:00",
-        "advancedReservation": "사전 예약을 권장합니다.",
-        "copyright": "Copyright 2025 © SenSpaDaNang. All Rights Reserved.",
-        "navigation": {
-            "aboutUs": "회사 소개",
-            "spaMenu": "스파 메뉴",
-            "promotions": "프로모션",
-            "contactUs": "문의하기",
-            "bookOnline": "온라인 예약",
-            "blogs": "블로그"
-        }
-    },
-    "languages": {
-        "en": "English",
-        "vi": "Tiếng Việt",
-        "ja": "日本語",
-        "ko": "한국어"
+  "language": "언어",
+  "navigation": {
+    "home": "홈",
+    "services": "서비스 및 가격",
+    "promotions": "프로모션",
+    "booking": "예약",
+    "reservation": "예약",
+    "contact": "연락처",
+    "about": "소개",
+    "aboutUs": "회사 소개",
+    "bookOnline": "온라인 예약",
+    "aboutDropdown": {
+      "aboutOrientSpa": "센 스파 다낭 소개",
+      "ourHappyGuests": "만족한 고객들",
+      "blogs": "블로그"
     }
+  },
+  "common": {
+    "showMore": "더 보기",
+    "viewAll": "전체 보기",
+    "learnMore": "자세히 알아보기",
+    "getStarted": "시작하기",
+    "contactUs": "문의하기",
+    "bookNow": "지금 예약",
+    "currency": "VND",
+    "phone": "전화",
+    "email": "이메일",
+    "address": "주소"
+  },
+  "footer": {
+    "locations": "매장 위치",
+    "aboutUs": "센 스파 다낭 소개",
+    "followUs": "팔로우하기",
+    "openingHours": "영업시간",
+    "paymentMethods": "결제 방법",
+    "viewMap": "(지도 보기)",
+    "openDaily": "매일 영업시간:",
+    "hours": "오전 10:00 - 오후 10:00",
+    "advancedReservation": "사전 예약을 권장합니다.",
+    "copyright": "저작권 2025 © 센 스파 다낭. 모든 권리 보유.",
+    "navigation": {
+      "aboutUs": "회사 소개",
+      "spaMenu": "스파 메뉴",
+      "promotions": "프로모션",
+      "contactUs": "문의하기",
+      "bookOnline": "온라인 예약",
+      "blogs": "블로그"
+    }
+  },
+  "languages": {
+    "en": "English",
+    "vi": "Tiếng Việt",
+    "ja": "日本語",
+    "ko": "한국어"
+  }
 }

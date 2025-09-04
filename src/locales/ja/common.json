@@ -12,9 +12,6 @@
     "bookOnline": "オンライン予約",
     "aboutDropdown": {
       "aboutOrientSpa": "Sen Spa DaNangについて",
-      "orientAt26AuTrieu": "26 Au TrieuのSen Spa DaNang",
-      "orientAt18BaoKhanh": "18 Bao KhanhのSen Spa DaNang",
-      "laFloraAt22AuTrieu": "22 Au TrieuのLa Flora",
       "ourHappyGuests": "お客様の声",
       "blogs": "ブログ"
     }
@@ -53,7 +50,6 @@
   },
   "languages": {
     "en": "English",
-    "vi": "Tiếng Việt",
     "ja": "日本語",
     "ko": "한국어"
   }

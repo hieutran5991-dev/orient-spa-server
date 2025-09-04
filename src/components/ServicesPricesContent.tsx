@@ -62,11 +62,11 @@ const ServicesPricesContent = ({
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     handleScroll();
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -79,10 +79,10 @@ const ServicesPricesContent = ({
     setShowBookingModal(true);
   };
 
-    const closeModal = () => {
-      setShowBookingModal(false);
-      setSelectedService(undefined);
-    };
+  const closeModal = () => {
+    setShowBookingModal(false);
+    setSelectedService(undefined);
+  };
 
   return (
     <>
@@ -120,10 +120,18 @@ const ServicesPricesContent = ({
                 {isSticky && <div className="tw:h-[60px]"></div>}
                 <ul
                   ref={tabsRef}
-                  className={`tabs s8_nm ${isSticky ? 'tw:fixed tw:top-0 tw:left-0 tw:right-0 tw:z-50 tw:bg-white tw:shadow-md tw:px-4 tw:py-2' : ''}`}
-                  style={isSticky ? {
-                    left: '50%',
-                  } : {}}
+                  className={`tabs s8_nm ${
+                    isSticky
+                      ? "tw:fixed tw:top-0 tw:left-0 tw:right-0 tw:z-50 tw:bg-white tw:shadow-md tw:px-4 tw:py-2"
+                      : ""
+                  }`}
+                  style={
+                    isSticky
+                      ? {
+                          left: "50%",
+                        }
+                      : {}
+                  }
                 >
                   {serviceCategories.map((category) => (
                     <li
@@ -171,7 +179,9 @@ const ServicesPricesContent = ({
                             </div>
                           )}
                           <div className="s8_d">
-                            <span>{service.duration} {t('minutes')}</span>
+                            <span>
+                              {service.duration} {t("minutes")}
+                            </span>
                             <strong>{formatPrice(service.price)}</strong>
                           </div>
                         </div>
@@ -213,9 +223,9 @@ const ServicesPricesContent = ({
               . <span dangerouslySetInnerHTML={{ __html: t("hotlineText") }} />
             </p>
             <a
-                href="/static/images/Orient-Spa-Menu-2024_2025.pdf"
-                download
-                className="btn btn-1 btn-block a5_sa"
+              href="/static/images/Orient-Spa-Menu-2024_2025.pdf"
+              download
+              className="btn btn-1 btn-block a5_sa"
             >
               {t("downloadMenu")}
             </a>

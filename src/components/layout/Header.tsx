@@ -200,15 +200,6 @@ const Header = () => {
                       🇺🇸 {tCommon("languages.en")}
                     </button>
                     <button
-                      onClick={() => handleLanguageChange("vi")}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "vi"
-                          ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
-                          : "tw:text-gray-700 tw:hover:bg-gray-50"
-                        }`}
-                    >
-                      🇻🇳 {tCommon("languages.vi")}
-                    </button>
-                    <button
                       onClick={() => handleLanguageChange("ja")}
                       className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ja"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
@@ -295,18 +286,6 @@ const Header = () => {
                         }`}
                     >
                       🇺🇸 {tCommon("languages.en")}
-                    </button>
-                    <button
-                      onClick={() => {
-                        handleLanguageChange("vi");
-                        closeMobileLanguage();
-                      }}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "vi"
-                          ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
-                          : "tw:text-gray-700 tw:hover:bg-gray-50"
-                        }`}
-                    >
-                      🇻🇳 {tCommon("languages.vi")}
                     </button>
                     <button
                       onClick={() => {
