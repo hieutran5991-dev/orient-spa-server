@@ -35,9 +35,8 @@ const Header = () => {
     const activeClasses = "header-nav-link-active tw:font-semibold";
     const inactiveClasses = "tw:text-gray-900 header-nav-link-active";
 
-    return `${baseClasses} ${
-      isActivePath(path) ? activeClasses : inactiveClasses
-    }`;
+    return `${baseClasses} ${isActivePath(path) ? activeClasses : inactiveClasses
+      }`;
   };
 
   useEffect(() => {
@@ -74,7 +73,8 @@ const Header = () => {
       segments.splice(1, 1);
     }
     const newPath = `/${newLocale}${segments.join("/")}`;
-    router.push(newPath);
+    // Force page reload to reinitialize event listeners
+    window.location.href = newPath;
   };
 
   const toggleMobileMenu = () => {
@@ -216,33 +216,39 @@ const Header = () => {
                   <div className="tw:py-2">
                     <button
                       onClick={() => handleLanguageChange("en")}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
-                        locale === "en"
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "en"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                      }`}
+                        }`}
                     >
                       🇺🇸 {tCommon("languages.en")}
                     </button>
                     <button
                       onClick={() => handleLanguageChange("vi")}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
-                        locale === "vi"
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "vi"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                      }`}
+                        }`}
                     >
                       🇻🇳 {tCommon("languages.vi")}
                     </button>
                     <button
                       onClick={() => handleLanguageChange("ja")}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
-                        locale === "ja"
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ja"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                      }`}
+                        }`}
                     >
                       🇯🇵 {tCommon("languages.ja")}
+                    </button>
+                    <button
+                      onClick={() => handleLanguageChange("ko")}
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ko"
+                          ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
+                          : "tw:text-gray-700 tw:hover:bg-gray-50"
+                        }`}
+                    >
+                      🇰🇷 {tCommon("languages.ko")}
                     </button>
                   </div>
                 </div>
@@ -307,11 +313,10 @@ const Header = () => {
                         handleLanguageChange("en");
                         closeMobileLanguage();
                       }}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
-                        locale === "en"
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "en"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                      }`}
+                        }`}
                     >
                       🇺🇸 {tCommon("languages.en")}
                     </button>
@@ -320,11 +325,10 @@ const Header = () => {
                         handleLanguageChange("vi");
                         closeMobileLanguage();
                       }}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
-                        locale === "vi"
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "vi"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                      }`}
+                        }`}
                     >
                       🇻🇳 {tCommon("languages.vi")}
                     </button>
@@ -333,13 +337,24 @@ const Header = () => {
                         handleLanguageChange("ja");
                         closeMobileLanguage();
                       }}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
-                        locale === "ja"
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ja"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                      }`}
+                        }`}
                     >
                       🇯🇵 {tCommon("languages.ja")}
+                    </button>
+                    <button
+                      onClick={() => {
+                        handleLanguageChange("ko");
+                        closeMobileLanguage();
+                      }}
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ko"
+                          ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
+                          : "tw:text-gray-700 tw:hover:bg-gray-50"
+                        }`}
+                    >
+                      🇰🇷 {tCommon("languages.ko")}
                     </button>
                   </div>
                 </div>

@@ -194,9 +194,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
       </div>
 
       <div className="f_e">
-        <div className="container">
-          <div>{tCommon("footer.copyright")}</div>
-        </div>
+        <div className="text-center">{tCommon("footer.copyright")}</div>
       </div>
     </footer>
   );

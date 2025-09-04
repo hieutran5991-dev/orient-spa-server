@@ -7,7 +7,7 @@ import BookingForm from './BookingForm'
 import type { Locale } from '@/utils/constants'
 import People from "@/components/home/People";
 import Guests from "@/components/home/Guests";
-import {CONFIG} from "@/utils/constants";
+import { CONFIG } from "@/utils/constants";
 
 interface HomeContentProps {
   spaLocations: SpaLocation[]
@@ -163,68 +163,6 @@ const HomeContent = ({ spaLocations }: HomeContentProps) => {
           </div>
         </div>
       </div>
-
-      <section className='s sH s3'>
-        <div className='container'>
-          <div className='s_h'>
-            <h2 className='s_t'>{locationsSection.title}</h2>
-            <p className='s_p'>{locationsSection.subtitle}</p>
-          </div>
-          <div className='s2_m'>
-            <div className='s2_mw'>
-              <div className='s2_sw swiper js-sw3'>
-                <div className='swiper-wrapper'>
-                  {locationsSection.locations.map((location) => (
-                    <div key={location.id} className='swiper-slide'>
-                      <div className='s2_i'>
-                        <Image src={location.image} alt={location.name} width={400} height={300} />
-                        <div className='s2_b'>
-                          <h3 className='s2_t'>
-                            <Link href={location.href}>{location.name}</Link>
-                          </h3>
-                          <div className='s2_d'>{location.address}</div>
-                          <ul className='s2_c'>
-                            <li>{location.capacity}</li>
-                            <li>{t('locations.roomTypes')}</li>
-                            <li>
-                              {t('locations.openHours')} {location.openTime} - {location.closeTime}
-                            </li>
-                            <li>
-                              {t('locations.enquiry')} <strong className='inline-block'>{location.phone}</strong>
-                            </li>
-                            {location.email && (
-                              <li>
-                                Email: <strong className='inline-block'>{location.email}</strong>
-                              </li>
-                            )}
-                          </ul>
-                          <Link href={location.href} className='s2_y'>
-                            {t('locations.discoverMore')}
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <Link href={`/${locale}/reservation`} className='btn btn-1 s2_u'>
-              {t('makeReservation')}
-            </Link>
-          </div>
-          <div className='s2_f'>
-              <iframe
-                  src={CONFIG.MAP_LOCATION}
-                  width='100%'
-                  height='100%'
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading='lazy'
-                  referrerPolicy='no-referrer-when-downgrade'
-              />
-          </div>
-        </div>
-      </section>
 
       <div className='s sH s4'>
         <div className='container'>
