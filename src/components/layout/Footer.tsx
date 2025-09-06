@@ -80,17 +80,6 @@ const Footer = ({ spaLocations }: FooterProps) => {
                   </ul>
                 </div>
               </div>
-              <div className="f_i">
-                <h4 className="f_t">{tCommon("footer.openingHours")}</h4>
-                <div className="f_c">
-                  <p className="f_o">
-                    {tCommon("footer.openDaily")}{" "}
-                    <strong>{tCommon("footer.hours")}</strong>
-                    <br />
-                    {tCommon("footer.advancedReservation")}
-                  </p>
-                </div>
-              </div>
             </div>
 
             <div className="f_mi">
@@ -135,7 +124,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
             </div>
           </div>
           <div className="sP" id="footer_tool">
-            <div className="sP_i" id="toTop" data-bis-skin-checked="1">
+            <div className="sP_i" id="toTop">
               <span>
                 <i className="fa fa-angle-up"></i>
               </span>
@@ -182,8 +171,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
             </a>
             <a
               href={`tel:${CONFIG.PHONE_NUMBER}`}
-              className="sP_i"
-              data-title={CONFIG.PHONE_NUMBER}
+              className="sP_i tw:after:hidden"
             >
               <span>
                 <i className="ic ic-phone"></i>

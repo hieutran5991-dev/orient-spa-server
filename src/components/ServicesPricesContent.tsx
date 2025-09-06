@@ -109,11 +109,7 @@ const ServicesPricesContent = ({
 
       <div className="s sH s8" ref={containerRef}>
         <div className="container">
-          <div className="s8_m tw:mb-[80px]">
-            <div className="s_h">
-              <h1 className="s_t2">{t("treatmentMenu")}</h1>
-            </div>
-
+          <div className="s8_m">
             <div className="s8_b">
               <div className="s8_n">
                 {/* Placeholder to maintain layout when tabs are sticky */}

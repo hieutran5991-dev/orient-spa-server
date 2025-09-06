@@ -16,7 +16,6 @@ const ThanksContent = () => {
         <BookingSteps currentStep={3} />
       </div>
 
-      {/* Thank You Content */}
       <div className="tw:py-15 tw:bg-gray-50 tw:min-h-[70vh] tw:flex tw:items-center">
         <div className="container">
           <div className="tw:text-center tw:max-w-[800px] tw:mx-auto tw:bg-white tw:py-[20px] tw:px-10 tw:rounded-xl tw:shadow-xl md:tw:mx-4 tw:md:py-15 tw:md:px-5">
