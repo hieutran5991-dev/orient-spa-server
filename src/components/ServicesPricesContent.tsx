@@ -52,7 +52,7 @@ const ServicesPricesContent = ({
         const containerRect = containerRef.current.getBoundingClientRect();
         const endContentRect = endContentRef.current.getBoundingClientRect();
 
-        const shouldBeSticky = tabsRect.top <= 0 && containerRect.bottom > 0;
+        const shouldBeSticky = tabsRect.top <= 10 && containerRect.bottom > 10;
 
         const isAtTop = window.scrollY <= 100;
 
