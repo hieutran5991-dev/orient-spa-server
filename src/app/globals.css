@@ -77,3 +77,12 @@
 .fa-map:before {
     content: '\f279';
 }
+
+.fa-angle-up:before {
+    content: "\f106"
+}
+
+a:hover {
+    color: var(--main-color) !important;
+    text-decoration: none !important;
+}

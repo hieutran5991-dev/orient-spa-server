@@ -72,7 +72,6 @@ const ConfirmContent = () => {
         <BookingSteps currentStep={3} />
       </div>
 
-      {/* Main Content */}
       <div className="s k2">
         <div className="container">
           <div className="k2_w fl">
