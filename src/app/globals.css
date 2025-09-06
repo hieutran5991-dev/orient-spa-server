@@ -73,3 +73,7 @@
 .box-hidden {
     overflow: hidden !important;
 }
+
+.fa-map:before {
+    content: '\f279';
+}

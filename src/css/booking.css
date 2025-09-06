@@ -159,12 +159,6 @@ table {
 .fa-angle-up:before {
   content: '\f106';
 }
-.ic {
-  display: inline-block;
-  vertical-align: middle;
-  background-image: url(/static/images/icons.svg?2dad3fa3a09c);
-  background-repeat: no-repeat;
-}
 .ic-language {
   width: 21px;
   height: 19px;

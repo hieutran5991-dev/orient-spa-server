@@ -25,17 +25,21 @@ const Footer = ({ spaLocations }: FooterProps) => {
                     <dl key={location.id}>
                       <dt>{location.name}</dt>
                       <dd>
-                        Address: {location.address}{" "}
+
                         <a
                           href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
                           target="_blank"
                           rel="nofollow"
                         >
-                          {tCommon("footer.viewMap")}
+                          <i className="fa fa-map tw:w-8"></i>
+                          {location.address}
                         </a>
                       </dd>
-                      <dd>
-                        <i className="fa fa-phone"></i> {location.phone}
+                      <dd className="tw:flex tw:items-center tw:gap-2">
+                        <a href={`tel:${location.phone}`}>
+                          <i className="fa fa-phone tw:w-8"></i>
+                          {location.phone}
+                        </a>
                       </dd>
                     </dl>
                   ))}
@@ -183,12 +187,8 @@ const Footer = ({ spaLocations }: FooterProps) => {
 
       <div className="f_e">
         <div className="tw:text-center tw:md:flex tw:justify-center tw:items-center tw:gap-2">
-          <div>
-            {tCommon("footer.copyrightLine1")}
-          </div>
-          <div>
-            {tCommon("footer.copyrightLine2")}
-          </div>
+          <div>{tCommon("footer.copyrightLine1")}</div>
+          <div>{tCommon("footer.copyrightLine2")}</div>
         </div>
       </div>
     </footer>

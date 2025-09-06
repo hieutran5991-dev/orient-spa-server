@@ -39,7 +39,7 @@ const PromotionsContent = ({ products }: PromotionsPageProps) => {
             >
               {tCommon("navigation.home")}
             </a>
-            <span className="tw:text-gray-400"> {'>'} </span>
+            <span className="tw:text-gray-400"> {">"} </span>
             <span className="tw:text-gray-800 tw:font-medium">
               {t("title")}
             </span>

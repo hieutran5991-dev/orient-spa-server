@@ -34,7 +34,7 @@ export const HTTP_STATUS = {
 export type HttpStatusCode = (typeof HTTP_STATUS)[keyof typeof HTTP_STATUS]
 
 export const CONFIG = {
-  SPA_NAME: 'SEN SPA DANANG',
+  SPA_NAME: 'SEN SPA DA NANG',
   SPA_LOCATION: '21 Thai Phien Street, Phuoc Ninh Ward, Hai Chau District, Da Nang',
   PHONE_NUMBER: '0976591515',
   MAIL: 'senspa.dn@gmail.com',
