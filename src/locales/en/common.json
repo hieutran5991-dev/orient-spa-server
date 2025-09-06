@@ -11,7 +11,7 @@
     "aboutUs": "About Us",
     "bookOnline": "Book Online",
     "aboutDropdown": {
-      "aboutOrientSpa": "About Sen Spa DaNang",
+      "aboutOrientSpa": "About SEN SPA Da Nang",
       "ourHappyGuests": "Our happy guests",
       "blogs": "Blogs"
     }
@@ -35,7 +35,7 @@
   },
   "footer": {
     "locations": "Our locations",
-    "aboutUs": "About Sen Spa DaNang",
+    "aboutUs": "About SEN SPA Da Nang",
     "followUs": "Follow us",
     "openingHours": "Opening Hours",
     "paymentMethods": "Payment Methods",
@@ -43,7 +43,8 @@
     "openDaily": "We are open daily from",
     "hours": "10:00AM - 09:00PM.",
     "advancedReservation": "Advanced reservation is recommended.",
-    "copyright": "Copyright 2025 © Sen Spa DaNang. All Rights Reserved.",
+    "copyrightLine1": "Copyright 2025 © SEN SPA Da Nang.",
+    "copyrightLine2": "All Rights Reserved.",
     "navigation": {
       "aboutUs": "About Us",
       "spaMenu": "Spa Menu",

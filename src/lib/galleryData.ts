@@ -10,7 +10,7 @@ export const galleryImages: GalleryImage[] = [
     {
         id: 1,
         src: '/images/galleries/1.jpg',
-        alt: 'Happy guest at Sen Spa DaNang',
+        alt: 'Happy guest at SEN SPA Da Nang',
         title: 'Relaxed Customer',
         description: 'A satisfied customer enjoying our premium spa treatment'
     },

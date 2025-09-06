@@ -8,13 +8,13 @@
     "title": "Contact Us by Phone/Wechat/ Kakao Talk / WhatsApp",
     "locations": {
       "orientSpa": {
-        "name": "Sen Spa DaNang",
+        "name": "SEN SPA Da Nang",
         "address": "21 Thai Phien Street, Phuoc Ninh Ward, Hai Chau District, Da Nang",
         "phone": "(+84) 976 591 515"
       }
     }
   },
-  "welcomeMessage": "We are happy to welcome you to Sen Spa DaNang! You can make a reservation at our spa by one of the following ways:",
+  "welcomeMessage": "We are happy to welcome you to SEN SPA Da Nang! You can make a reservation at our spa by one of the following ways:",
   "reservationMethods": {
     "phone": "Calling our phone number",
     "messaging": "Sending us message on Whatsapp, Kakao, Wechat, Zalo",

@@ -2,7 +2,7 @@
   "title": "Contact us",
   "emailSection": {
     "title": "Contact us by email",
-    "description": "Let us pamper you with our unique treatments. We look forward to seeing you at Sen Spa DaNang."
+    "description": "Let us pamper you with our unique treatments. We look forward to seeing you at SEN SPA Da Nang."
   },
   "form": {
     "fullName": "Full name",
@@ -21,6 +21,6 @@
     "description": "Scan this code to start a WhatsApp or Kakao Talk chat with us"
   },
   "map": {
-    "alt": "Spa map showing Sen Spa DaNang locations in Hanoi"
+    "alt": "Spa map showing SEN SPA Da Nang locations in Hanoi"
   }
 }

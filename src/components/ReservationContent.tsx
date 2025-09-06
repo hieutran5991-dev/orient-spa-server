@@ -77,7 +77,7 @@ const ReservationContent = ({ spaLocations }: ReservationContentProps) => {
               </div>
               <div className='a6_f text-center'>
                 <p>{t('welcomeMessage')}</p>
-                <ul>
+                <ul className="tw:text-left tw:md:pl-[8em] tw:pl-[1em]">
                   <li>{t('reservationMethods.phone')}</li>
                   <li>{t('reservationMethods.messaging')}</li>
                   <li>{t('reservationMethods.online')}</li>
@@ -86,27 +86,25 @@ const ReservationContent = ({ spaLocations }: ReservationContentProps) => {
             </div>
           </div>
         </div>
+
         <div className='s sH a5 res'>
           <div className='container'>
             <div className='a5_m'>
               <div className='a5_h text-center'>
-                <div className='a5_a'>
-                  <i className='fa fa-calendar'></i>
-                </div>
+                <span className='a5_sa btn btn-block btn-1 js-bk tw:mb-[24px]'>{t('onlineBooking.bookNow')}</span>
+
                 <div className='a5_c'>
-                  <h2 className='s_t2'>{t('onlineBooking.title')}</h2>
-                  <p className='s_p'>{t('onlineBooking.description')}</p>
-                  <ul>
+                  <div className=''>{t('onlineBooking.description')}</div>
+                  <div className='tw:mb-8'>{t('onlineBooking.confirmation')}</div>
+                  <ul className='tw:md:pl-[8em] tw:pl-[1em] tw:text-left'>
                     <li>{t('onlineBooking.steps.location')}</li>
                     <li>{t('onlineBooking.steps.guests')}</li>
                     <li>{t('onlineBooking.steps.datetime')}</li>
                     <li>{t('onlineBooking.steps.services')}</li>
                   </ul>
-                  <p className='s_p'>{t('onlineBooking.confirmation')}</p>
                 </div>
               </div>
-              <div className='a5_s text-center'>
-                <span className='a5_sa btn btn-block btn-1 js-bk'>{t('onlineBooking.bookNow')}</span>
+              <div className='a5_s'>
                 <div className='a5_sw'>
                   <div className='a5_si'>
                     <h3>{t('about.reservation.title')}</h3>
@@ -129,7 +127,7 @@ const ReservationContent = ({ spaLocations }: ReservationContentProps) => {
 
       <div className='m8'>
         <BookingForm spaLocations={spaLocations}>
-          <div className='s1_t hidden-lg hidden-md'>
+          <div className='s1_t'>
             <strong>{t('title')}</strong>
             <i className='s1_z ic ic-close'></i>
           </div>

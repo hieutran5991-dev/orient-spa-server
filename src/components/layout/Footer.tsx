@@ -182,7 +182,14 @@ const Footer = ({ spaLocations }: FooterProps) => {
       </div>
 
       <div className="f_e">
-        <div className="text-center">{tCommon("footer.copyright")}</div>
+        <div className="tw:text-center tw:md:flex tw:justify-center tw:items-center tw:gap-2">
+          <div>
+            {tCommon("footer.copyrightLine1")}
+          </div>
+          <div>
+            {tCommon("footer.copyrightLine2")}
+          </div>
+        </div>
       </div>
     </footer>
   );

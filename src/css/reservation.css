@@ -2641,7 +2641,7 @@ select.form-control {
   content: '\f003';
 }
 .a5 {
-  padding-top: 45px;
+  padding-top: 14px;
 }
 @media (max-width: 991px) {
   .a5 {
@@ -2745,7 +2745,7 @@ select.form-control {
   padding-bottom: 55px;
 }
 .a5.res .a5_h {
-  max-width: 755px;
+  max-width: 800px;
 }
 .a5.res .s_p {
   margin-top: 10px;

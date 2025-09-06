@@ -50,7 +50,7 @@ const testimonials = [
     rating: 5,
     image: "/images/fb/fe42e6cb8d1b84ffdfd97167e988aaa9.jpg",
     review:
-      "I visited Sen Spa DaNang on my final evening in Hanoi for their signature 4-in-1 full body massage. The reservation process was smooth, they accept card, speak both English and Korean, and overall were very kind and made me feel very comfortable. Massage was great and I'm very satisfied with the experience. I'll be back if I visit Hanoi again! :)",
+      "I visited SEN SPA Da Nang on my final evening in Hanoi for their signature 4-in-1 full body massage. The reservation process was smooth, they accept card, speak both English and Korean, and overall were very kind and made me feel very comfortable. Massage was great and I'm very satisfied with the experience. I'll be back if I visit Hanoi again! :)",
   },
   {
     id: 5,
@@ -119,7 +119,7 @@ const People: React.FC = () => {
           <h2 className="s_t">What Guests are saying...</h2>
           <p className="s_p">
             We hope you enjoy reading our guests&apos; reviews as much as ours.
-            To all of us at Sen Spa DaNang, this means more than anything else.
+            To all of us at SEN SPA Da Nang, this means more than anything else.
           </p>
         </div>
 

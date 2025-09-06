@@ -119,7 +119,7 @@ const Header = () => {
               <a href="/" className="tw:flex tw:items-center tw:h-full">
                 <Image
                   src="/images/logo.jpeg"
-                  alt="Sen Spa DaNang"
+                  alt="SEN SPA Da Nang"
                   width={200}
                   height={32}
                   className="tw:w-auto tw:object-cover tw:max-h-full"
@@ -252,7 +252,7 @@ const Header = () => {
               <a href={`/${locale}`} className="tw:flex tw:items-center">
                 <Image
                   src="/images/logo.jpeg"
-                  alt="Sen Spa DaNang"
+                  alt="SEN SPA Da Nang"
                   width={200}
                   height={32}
                   className="tw:h-20 tw:w-auto tw:object-contain"
