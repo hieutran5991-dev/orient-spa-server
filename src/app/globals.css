@@ -82,6 +82,22 @@
     content: "\f106"
 }
 
+.fa-clock-o:before {
+  content: '\f017';
+}
+
+.fa-map-marker:before {
+  content: '\f041';
+}
+
+.fa-envelope-o:before {
+  content: '\f003';
+}
+
+.fa-phone:before {
+  content: '\f095';
+}
+
 a:hover {
     color: var(--main-color) !important;
     text-decoration: none !important;
