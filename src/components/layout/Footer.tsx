@@ -22,26 +22,69 @@ const Footer = ({ spaLocations }: FooterProps) => {
                 <h4 className="f_t">{tCommon("footer.locations")}</h4>
                 <div className="f_c">
                   {spaLocations.map((location) => (
-                    <dl key={location.id}>
-                      <dt>{location.name}</dt>
-                      <dd>
+                    <div key={location.id}>
+                      {/* Operating Hours */}
+                      <div className="footer-contact-item">
+                        <div className="footer-contact-icon">
+                          <i
+                            className="fa fa-clock-o"
+                            style={{ color: "white", fontSize: "17px" }}
+                          ></i>
+                        </div>
+                        <span style={{ fontSize: "14px", color: "#333" }}>
+                          Open daily from {`${location.open_time} - ${location.close_time}`}
+                        </span>
+                      </div>
 
-                        <a
-                          href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
-                          target="_blank"
-                          rel="nofollow"
-                        >
-                          <i className="fa fa-map tw:w-8"></i>
-                          {location.address}
-                        </a>
-                      </dd>
-                      <dd className="tw:flex tw:items-center tw:gap-2">
-                        <a href={`tel:${location.phone}`}>
-                          <i className="fa fa-phone tw:w-8"></i>
-                          {location.phone}
-                        </a>
-                      </dd>
-                    </dl>
+                      {/* Address */}
+                      <div className="footer-contact-item">
+                        <div className="footer-contact-icon">
+                          <i
+                            className="fa fa-map-marker"
+                            style={{ color: "white", fontSize: "17px" }}
+                          ></i>
+                        </div>
+                        <span style={{ fontSize: "14px", color: "#333" }}>
+                          <a
+                            href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
+                            target="_blank"
+                            rel="nofollow"
+                          >
+                            <i className="fa fa-map tw:w-8"></i>
+                            {location.address}
+                          </a>
+                        </span>
+                      </div>
+
+                      {/* Email */}
+                      <div className="footer-contact-item">
+                        <div className="footer-contact-icon">
+                          <i
+                            className="fa fa-envelope-o"
+                            style={{ color: "white", fontSize: "17px" }}
+                          ></i>
+                        </div>
+                        <span style={{ fontSize: "14px", color: "#333" }}>
+                          {CONFIG.MAIL}
+                        </span>
+                      </div>
+
+                      {/* Phone */}
+                      <div className="footer-contact-item">
+                        <div className="footer-contact-icon">
+                          <i
+                            className="fa fa-phone"
+                            style={{ color: "white", fontSize: "17px" }}
+                          ></i>
+                        </div>
+                        <span style={{ fontSize: "14px", color: "#333" }}>
+                          <a href={`tel:${location.phone}`}>
+                            <i className="fa fa-phone tw:w-8"></i>
+                            {location.phone}
+                          </a>
+                        </span>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>

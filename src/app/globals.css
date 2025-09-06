@@ -86,3 +86,21 @@ a:hover {
     color: var(--main-color) !important;
     text-decoration: none !important;
 }
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.footer-contact-icon {
+  width: 35px;
+  height: 35px;
+  border-radius  : 50%;
+  background-color: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
