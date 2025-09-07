@@ -1,4 +1,4 @@
-@import "tailwindcss" prefix(tw) important;
+@import 'tailwindcss' prefix(tw) important;
 
 :root {
   --main-color: #9e2265;
@@ -45,41 +45,40 @@
 }
 
 .header-nav-link-active {
-    color: var(--main-color) !important;
-    font-weight: 600;
+  color: var(--main-color) !important;
+  font-weight: 600;
 }
 
 .header-nav-link:hover {
-    color: var(--main-color) !important;
+  color: var(--main-color) !important;
 }
 
 .header-nav-link {
-    position: relative !important;
+  position: relative !important;
 }
 
 .header-nav-link:hover.header-nav-link:after,
-.header-nav-link-active:after
-{
-    content: '';
-    height: 3px;
-    background-color: var(--main-color);
-    display: block;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
+.header-nav-link-active:after {
+  content: '';
+  height: 3px;
+  background-color: var(--main-color);
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
 }
 
 .box-hidden {
-    overflow: hidden !important;
+  overflow: hidden !important;
 }
 
 .fa-map:before {
-    content: '\f279';
+  content: '\f279';
 }
 
 .fa-angle-up:before {
-    content: "\f106"
+  content: '\f106';
 }
 
 .fa-clock-o:before {
@@ -113,10 +112,16 @@
 .footer-contact-icon {
   width: 35px;
   height: 35px;
-  border-radius  : 50%;
+  border-radius: 50%;
   background-color: var(--main-color);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+.thumb-swiper .swiper-slide-thumb-active {
+  opacity: 1 !important;
+  border: 2px solid #9e2265 !important;
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(158, 34, 101, 0.3);
 }
