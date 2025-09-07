@@ -157,7 +157,7 @@ const Header = () => {
                     {CONFIG.SPA_LOCATION}
                   </span>
                   <span className="tw:block tw:md:hidden" style={{ fontSize: "14px", color: "#333" }}>
-                    {tCommon("footer.viewMap")}
+                    {tCommon("footer.findUs")}
                   </span>
                 </div>
               </a>
