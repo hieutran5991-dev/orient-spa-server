@@ -147,6 +147,7 @@ const Header = () => {
               <a
                 href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
                 target="_blank"
+                rel="nofollow"
               >
                 {CONFIG.SPA_LOCATION}
               </a>

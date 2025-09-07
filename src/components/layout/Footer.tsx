@@ -68,6 +68,8 @@ const Footer = ({ spaLocations }: FooterProps) => {
                         <span style={{ fontSize: "14px", color: "#333" }}>
                           <Link
                             href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
+                            rel="nofollow"
+                            target="_blank"
                             className="hoverable-link"
                           >
                             {location.address}
