@@ -3114,11 +3114,6 @@ jQuery(document).ready(function ($) {
             $(".h_s.w2").hide();
         });
     }
-    $('#toTop').click(function () {
-        $('body,html').animate({
-            scrollTop: 0
-        }, 800);
-    });
     $('ul.tabs li').click(function () {
         var tab_id = $(this).attr('data-tab');
         $('ul.tabs li').removeClass('active');

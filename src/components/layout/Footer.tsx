@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
+import { useEffect } from "react";
 import type { Locale } from "@/utils/constants";
 import type { SpaLocation } from "@/types/api";
 import type { NamespaceKeys } from "use-intl";
@@ -12,6 +15,23 @@ interface FooterProps {
 const Footer = ({ spaLocations }: FooterProps) => {
   const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
   const locale = useLocale() as Locale;
+
+  useEffect(() => {
+    const handleScrollToTop = () => {
+      const toTopButton = document.getElementById('toTop');
+      if (toTopButton) {
+        toTopButton.addEventListener('click', function() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
+    };
+
+    handleScrollToTop();
+  }, []);
+
   return (
     <footer className="f">
       <div className="f_m">
