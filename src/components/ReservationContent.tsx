@@ -46,22 +46,22 @@ const ReservationContent = ({ spaLocations }: ReservationContentProps) => {
                         target="_blank"
                         rel="nofollow"
                       >
-                        {t("contactByPhone.locations.orientSpa.name")}:{" "}
+                        {t("contactByPhone.locations.spa.name")}:{" "}
                         <span>
-                          {t("contactByPhone.locations.orientSpa.address")}
+                          {t("contactByPhone.locations.spa.address")}
                         </span>
                       </a>
                     </div>
                     <a className="a6_p" href={`tel:${CONFIG.PHONE_NUMBER}`}>
                       <i className="fa fa-phone"></i>{" "}
-                      {t("contactByPhone.locations.orientSpa.phone")}
+                      {t("contactByPhone.locations.spa.phone")}
                     </a>
                   </div>
                   <div className="a6_a">
                     <div className="a6_ai">
                       <Image
                         src="/images/reservations/line.png"
-                        alt={t("contactByPhone.locations.orientSpa.name")}
+                        alt={t("contactByPhone.locations.spa.name")}
                         width={120}
                         height={120}
                       />
@@ -69,7 +69,7 @@ const ReservationContent = ({ spaLocations }: ReservationContentProps) => {
                     <div className="a6_ai">
                       <Image
                         src="/images/reservations/kk.png"
-                        alt={t("contactByPhone.locations.orientSpa.name")}
+                        alt={t("contactByPhone.locations.spa.name")}
                         width={120}
                         height={120}
                       />
@@ -77,7 +77,7 @@ const ReservationContent = ({ spaLocations }: ReservationContentProps) => {
                     <div className="a6_ai">
                       <Image
                         src="/images/reservations/ws.png"
-                        alt={t("contactByPhone.locations.orientSpa.name")}
+                        alt={t("contactByPhone.locations.spa.name")}
                         width={120}
                         height={120}
                       />

@@ -68,7 +68,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
                         <span style={{ fontSize: "14px", color: "#333" }}>
                           <Link
                             href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
-                            className="footer-link"
+                            className="hoverable-link"
                           >
                             <i className="fa fa-map tw:w-8"></i>
                             {location.address}
@@ -98,7 +98,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
                           ></i>
                         </div>
                         <span style={{ fontSize: "14px", color: "#333" }}>
-                          <Link href={`tel:${location.phone}`} className="footer-link">
+                          <Link href={`tel:${location.phone}`} className="hoverable-link">
                             <i className="fa fa-phone tw:w-8"></i>
                             {location.phone}
                           </Link>
@@ -115,32 +115,32 @@ const Footer = ({ spaLocations }: FooterProps) => {
                 <div className="f_c">
                   <ul className="f_n fl">
                     <li className="tw:w-[50%]">
-                      <Link href={`/${locale}/page/about-us`} className="footer-link">
+                      <Link href={`/${locale}/page/about-us`} className="hoverable-link">
                         {tCommon("footer.navigation.aboutUs")}
                       </Link>
                     </li>
                     <li className="tw:w-[50%]">
-                      <Link href={`/${locale}/services-prices`} className="footer-link">
+                      <Link href={`/${locale}/services-prices`} className="hoverable-link">
                         {tCommon("footer.navigation.spaMenu")}
                       </Link>
                     </li>
                     <li className="tw:w-[50%]">
-                      <Link href={`/${locale}/promotions`} className="footer-link">
+                      <Link href={`/${locale}/promotions`} className="hoverable-link">
                         {tCommon("footer.navigation.promotions")}
                       </Link>
                     </li>
                     <li className="tw:w-[50%]">
-                      <Link href={`/${locale}/contact`} className="footer-link">
+                      <Link href={`/${locale}/contact`} className="hoverable-link">
                         {tCommon("footer.navigation.contactUs")}
                       </Link>
                     </li>
                     <li className="tw:w-[50%]">
-                      <Link href={`/${locale}/booking`} className="footer-link">
+                      <Link href={`/${locale}/booking`} className="hoverable-link">
                         {tCommon("footer.navigation.bookOnline")}
                       </Link>
                     </li>
                     <li className="tw:w-[50%]">
-                      <Link href={`/${locale}/blog`} className="footer-link">
+                      <Link href={`/${locale}/blog`} className="hoverable-link">
                         {tCommon("footer.navigation.blogs")}
                       </Link>
                     </li>

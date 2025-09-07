@@ -22,5 +22,8 @@
   },
   "map": {
     "alt": "Spa map showing SEN SPA Da Nang locations in Hanoi"
+  },
+  "qr": {
+    "contact": "Contact us by QR code"
   }
 }

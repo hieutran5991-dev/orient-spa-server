@@ -98,7 +98,7 @@
   content: '\f095';
 }
 
-.footer-link:hover {
+.hoverable-link:hover {
   color: var(--main-color) !important;
   text-decoration: none !important;
 }

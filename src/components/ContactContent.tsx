@@ -200,12 +200,20 @@ const ContactContent = () => {
                   <h3 className="a5_et">{CONFIG.SPA_NAME}</h3>
                   <ul className="a5_en">
                     <li>
-                      <i className="fa fa-envelope-o"></i>{" "}
-                      {t("locations.main.email")}: {CONFIG.MAIL}
+                      <i className="fa fa-envelope-o tw:w-8"></i> {CONFIG.MAIL}
                     </li>
                     <li>
-                      <i className="fa fa-phone"></i> {CONFIG.SPA_LOCATION} -{" "}
-                      {CONFIG.PHONE_NUMBER}
+                      <Link
+                        href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
+                        className="hoverable-link"
+                      >
+                        <i className="fa fa-map-marker tw:w-8"></i> {CONFIG.SPA_LOCATION}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href={`tel:${CONFIG.PHONE_NUMBER}`} className="hoverable-link">
+                        <i className="fa fa-phone tw:w-8"></i> {CONFIG.PHONE_NUMBER}
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -231,7 +239,7 @@ const ContactContent = () => {
               <div>
                 <Image
                   src="/images/reservations/line.png"
-                  alt={t("contactByPhone.locations.orientSpa.name")}
+                  alt={t("qr.contact")}
                   width={200}
                   height={200}
                 />
@@ -240,7 +248,7 @@ const ContactContent = () => {
               <div>
                 <Image
                   src="/images/reservations/kk.png"
-                  alt={t("contactByPhone.locations.orientSpa.name")}
+                  alt={t("qr.contact")}
                   width={200}
                   height={200}
                 />
@@ -249,7 +257,7 @@ const ContactContent = () => {
               <div>
                 <Image
                   src="/images/reservations/ws.png"
-                  alt={t("contactByPhone.locations.orientSpa.name")}
+                  alt={t("qr.contact")}
                   width={200}
                   height={200}
                 />
