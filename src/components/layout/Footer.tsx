@@ -135,7 +135,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
                       </a>
                     </li>
                     <li className="tw:w-[50%]">
-                      <a href={`/${locale}/booking`} className="hoverable-link">
+                      <a href={`/${locale}/reservation`} className="hoverable-link">
                         {tCommon("footer.navigation.bookOnline")}
                       </a>
                     </li>

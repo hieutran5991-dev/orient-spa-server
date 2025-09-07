@@ -95,7 +95,7 @@ const Header = () => {
     <>
       {isPromotionVisible && (
         <div className="tw:bg-gradient-to-r tw:from-[#9e2265] tw:via-[#b12876] tw:to-[#c42e87] tw:text-white tw:py-4 tw:relative">
-          <div className="tw:text-center">
+          <div className="tw:text-center tw:px-4">
             <span className="tw:text-white tw:font-medium">
               {tCommon("promotion.happyHour")}
             </span>
@@ -134,7 +134,7 @@ const Header = () => {
               </span>
             </div>
 
-            <div className="tw:flex tw:items-center tw:gap-2">
+            <div className="tw:hidden tw:md:flex tw:items-center tw:gap-2">
               <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
                 <i className="fa fa-envelope-o tw:text-white tw:text-[17px]" />
               </div>
@@ -143,13 +143,23 @@ const Header = () => {
               </span>
             </div>
 
-            <div className="tw:ml-auto tw:hidden tw:md:block">
+            <div className="tw:ml-auto">
               <a
                 href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
                 target="_blank"
                 rel="nofollow"
               >
-                {CONFIG.SPA_LOCATION}
+                <div className="tw:flex tw:items-center tw:gap-2">
+                  <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
+                    <i className="fa fa-map-marker tw:text-white tw:text-[17px]" />
+                  </div>
+                  <span className="tw:hidden tw:md:block" style={{ fontSize: "14px", color: "#333" }}>
+                    {CONFIG.SPA_LOCATION}
+                  </span>
+                  <span className="tw:block tw:md:hidden" style={{ fontSize: "14px", color: "#333" }}>
+                    {tCommon("footer.viewMap")}
+                  </span>
+                </div>
               </a>
             </div>
           </div>
