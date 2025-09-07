@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
-import { BOOKING_INIT_KEY, type Locale } from '@/utils/constants'
+import {BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY, type Locale} from '@/utils/constants'
 import type { NamespaceKeys } from 'use-intl'
 import { SpaLocation } from '@/types/api'
 import { BookingData, Product } from '@/types/booking'
@@ -52,6 +52,7 @@ const BookingForm = ({ spaLocations, children, selectedService }: BookingFormPro
 
     try {
       sessionStorage.setItem(BOOKING_INIT_KEY, JSON.stringify(bookingData))
+      sessionStorage.removeItem(BOOKING_CONFIRM_KEY)
       window.location.href = `/${locale}/booking`
     } catch (_error) {
     } finally {

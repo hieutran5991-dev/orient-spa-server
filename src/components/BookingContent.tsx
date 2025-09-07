@@ -94,6 +94,8 @@ const BookingContent = ({ products }: BookingContentProps) => {
       const guestServices = formData.getAll(`guest_${i + 1}_services`);
       if (guestServices.length === 0) {
         valid = false;
+        const query = `input[name='guest_${i + 1}_services_input']`;
+        (document.querySelector(query) as HTMLElement)?.focus();
         break;
       }
     }
@@ -200,7 +202,8 @@ const BookingContent = ({ products }: BookingContentProps) => {
                           <span className="k2_mt">{t("treatment")}</span>
                           <input
                             type="text"
-                            className="form-control js-guest"
+                            className="form-control js-guest tw:focus:border-[var(--main-color)]"
+                            name={`guest_${guestIndex + 1}_services_input`}
                             placeholder={t("selectYourTreatment")}
                             value={bookingData?.booking_details?.[guestIndex]
                               ?.map((e) => e.name)
