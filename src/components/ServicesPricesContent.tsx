@@ -129,7 +129,7 @@ const ServicesPricesContent = ({
                   ref={tabsRef}
                   className={`tabs s8_nm ${
                     isSticky
-                      ? "tw:fixed tw:top-0 tw:left-0 tw:right-0 tw:z-50 tw:bg-white tw:shadow-md tw:px-4 tw:py-2"
+                      ? "tw:fixed tw:top-0 tw:left-0 tw:right-0 tw:z-50 tw:bg-white tw:shadow-md tw:px-4"
                       : ""
                   }`}
                   style={

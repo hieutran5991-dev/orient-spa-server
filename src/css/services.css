@@ -4690,6 +4690,18 @@ select.form-control {
   position: relative;
 }
 
+.s8_nm li.active span:after,
+.s8_nm li:hover span:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--main-color);
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+}
+
 .s8_i {
   border-bottom: 1px solid rgba(34, 34, 34, 0.1);
   padding-top: 42px;
