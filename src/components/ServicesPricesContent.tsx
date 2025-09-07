@@ -230,8 +230,8 @@ const ServicesPricesContent = ({
               . <span dangerouslySetInnerHTML={{ __html: t("hotlineText") }} />
             </p>
             <a
-              href="/static/images/Orient-Spa-Menu-2024_2025.pdf"
-              download
+              href="/pdf/Menu_SenSpa_Danang_2025.pdf"
+              download="Menu_SenSpa_Danang_2025.pdf"
               className="btn btn-1 btn-block a5_sa"
             >
               {t("downloadMenu")}
