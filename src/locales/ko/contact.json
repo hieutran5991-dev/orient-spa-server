@@ -35,5 +35,8 @@
     "mapSection": {
         "title": "위치",
         "address": "18 Bao Khanh, Hoan Kiem, Hanoi, Vietnam"
+    },
+    "qr": {
+        "contact": "QR 코드로 문의하기"
     }
 }

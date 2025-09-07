@@ -128,11 +128,11 @@ const Header = () => {
             </div>
 
             <nav className="tw:flex tw:items-start tw:md:h-[55%] tw:border-b tw:border-gray-200 tw:gap-8 tw:w-[40%] tw:justify-start">
-              <div className="tw:relative tw:group">
+              <div className="tw:h-full tw:relative tw:group header-nav-link">
                 <button
                   className="tw:flex tw:items-center tw:space-x-1 tw:text-gray-800 tw:hover:text-pink-600 tw:px-3 tw:py-2 tw:text-[1.125em] tw:uppercase tw:tracking-wide tw:transition-colors tw:duration-200 tw:cursor-pointer"
                 >
-                  <span>{tCommon("navigation.aboutUs")}</span>
+                  <span className="tw:self-start">{tCommon("navigation.aboutUs")}</span>
                   <svg
                     className="tw:w-4 tw:h-4 tw:transition-transform tw:duration-200 tw:group-hover:rotate-180"
                     fill="none"
@@ -147,21 +147,27 @@ const Header = () => {
                     />
                   </svg>
                 </button>
-
                 <div
-                  className={`tw:absolute tw:top-full tw:left-0 tw:mt-2 tw:w-64 tw:bg-white tw:rounded-lg tw:shadow-lg tw:border tw:border-gray-200 tw:opacity-0 tw:invisible tw:group-hover:opacity-100 tw:group-hover:visible tw:transition-all tw:duration-200 tw:z-50`}
+                  className={`tw:absolute tw:top-full tw:left-0 tw:mt-1 tw:w-83 tw:bg-white tw:rounded-lg tw:shadow-lg tw:border tw:border-gray-200 tw:opacity-0 tw:invisible tw:group-hover:opacity-100 tw:group-hover:visible tw:transition-all tw:duration-200 tw:z-50`}
                 >
                   <div className="tw:py-2">
                     <a
-                      href="/page/about-us.html"
-                      className="tw:block tw:px-4 tw:py-2 tw:text-lg tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
+                      href="/about-us"
+                      className="tw:block tw:px-6 tw:py-4 tw:text-14 tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
                     >
-                      {tCommon("navigation.aboutDropdown.aboutOrientSpa")}
+                      {tCommon("navigation.aboutDropdown.aboutSpa")}
                     </a>
                     <div className="tw:border-t tw:border-gray-100 tw:my-1"></div>
                     <a
-                      href="/blog.html"
-                      className="tw:block tw:px-4 tw:py-2 tw:text-lg tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
+                      href="/gallery"
+                      className="tw:block tw:px-6 tw:py-4 tw:text-14 tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
+                    >
+                      {tCommon("navigation.aboutDropdown.ourHappyGuests")}
+                    </a>
+                    <div className="tw:border-t tw:border-gray-100 tw:my-1"></div>
+                    <a
+                      href="/blogs"
+                      className="tw:block tw:px-6 tw:py-4 tw:text-14 tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
                     >
                       {tCommon("navigation.aboutDropdown.blogs")}
                     </a>
@@ -180,19 +186,19 @@ const Header = () => {
                 {tCommon("navigation.bookOnline")}
               </a>
 
-              <div className="tw:relative tw:group">
-                <button className="tw:flex tw:items-center tw:space-x-2 tw:text-gray-800 tw:hover:text-pink-600 tw:px-3 tw:py-2 tw:text-2xl tw:transition-colors tw:duration-200 tw:cursor-pointer">
+              <div className="tw:h-full tw:relative tw:group header-nav-link">
+                <button className="tw:flex tw:items-start tw:space-x-2 tw:text-gray-800 tw:hover:text-pink-600 tw:px-3 tw:py-2 tw:text-2xl tw:transition-colors tw:duration-200 tw:cursor-pointer">
                   <div className="tw:relative">
                     <i className="ic ic-language"></i>
                   </div>
                 </button>
 
                 {/* Language Dropdown */}
-                <div className="tw:absolute tw:top-full tw:right-0 tw:mt-2 tw:w-48 tw:bg-white tw:rounded-lg tw:shadow-lg tw:border tw:border-gray-200 tw:opacity-0 tw:invisible tw:group-hover:opacity-100 tw:group-hover:visible tw:transition-all tw:duration-200 tw:z-50">
+                <div className="tw:absolute tw:top-full tw:right-0 tw:mt-1 tw:w-80 tw:bg-white tw:rounded-lg tw:shadow-lg tw:border tw:border-gray-200 tw:opacity-0 tw:invisible tw:group-hover:opacity-100 tw:group-hover:visible tw:transition-all tw:duration-200 tw:z-50">
                   <div className="tw:py-2">
                     <button
                       onClick={() => handleLanguageChange("en")}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "en"
+                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "en"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
                         }`}
@@ -201,7 +207,7 @@ const Header = () => {
                     </button>
                     <button
                       onClick={() => handleLanguageChange("ja")}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ja"
+                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ja"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
                         }`}
@@ -210,7 +216,7 @@ const Header = () => {
                     </button>
                     <button
                       onClick={() => handleLanguageChange("ko")}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ko"
+                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ko"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
                         }`}
