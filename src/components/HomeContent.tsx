@@ -22,18 +22,28 @@ const HomeContent = ({ spaLocations }: HomeContentProps) => {
   const heroBanners = [
     {
       id: 1,
-      src: '/images/Home-banner-update.jpg',
+      src: '/images/home-swiper/Swiper.jpg',
       alt: 'Orient Spa Banner'
     },
     {
       id: 2,
-      src: '/images/Home-banner-2.png',
+      src: '/images/home-swiper/Swiper-1.jpg',
       alt: 'Orient Spa Banner 2'
     },
     {
       id: 3,
-      src: '/images/Home-banner-3.png',
+      src: '/images/home-swiper/Swiper-2.jpg',
       alt: 'Orient Spa Banner 3'
+    },
+    {
+      id: 4,
+      src: '/images/home-swiper/Swiper-3.jpg',
+      alt: 'Orient Spa Banner 4'
+    },
+    {
+      id: 5,
+      src: '/images/home-swiper/Swiper-4.jpg',
+      alt: 'Orient Spa Banner 5'
     }
   ]
 

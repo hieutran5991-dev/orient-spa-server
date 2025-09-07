@@ -98,9 +98,9 @@
   content: '\f095';
 }
 
-a:hover {
-    color: var(--main-color) !important;
-    text-decoration: none !important;
+.footer-link:hover {
+  color: var(--main-color) !important;
+  text-decoration: none !important;
 }
 
 .footer-contact-item {
@@ -119,4 +119,14 @@ a:hover {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+
+.category-bar {
+  padding-bottom: 90px;
+}
+
+@media (max-width: 991px) {
+  .category-bar {
+    padding-bottom: 55px;
+  }
 }

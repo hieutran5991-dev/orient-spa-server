@@ -52,7 +52,8 @@ const Footer = ({ spaLocations }: FooterProps) => {
                           ></i>
                         </div>
                         <span style={{ fontSize: "14px", color: "#333" }}>
-                          Open daily from {`${location.open_time} - ${location.close_time}`}
+                          {/* Open daily from {`${location.open_time} - ${location.close_time}`} */}
+                          Open daily from 10:0AM - 09:00PM
                         </span>
                       </div>
 
@@ -65,14 +66,13 @@ const Footer = ({ spaLocations }: FooterProps) => {
                           ></i>
                         </div>
                         <span style={{ fontSize: "14px", color: "#333" }}>
-                          <a
+                          <Link
                             href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
-                            target="_blank"
-                            rel="nofollow"
+                            className="footer-link"
                           >
                             <i className="fa fa-map tw:w-8"></i>
                             {location.address}
-                          </a>
+                          </Link>
                         </span>
                       </div>
 
@@ -98,10 +98,10 @@ const Footer = ({ spaLocations }: FooterProps) => {
                           ></i>
                         </div>
                         <span style={{ fontSize: "14px", color: "#333" }}>
-                          <a href={`tel:${location.phone}`}>
+                          <Link href={`tel:${location.phone}`} className="footer-link">
                             <i className="fa fa-phone tw:w-8"></i>
                             {location.phone}
-                          </a>
+                          </Link>
                         </span>
                       </div>
                     </div>
@@ -115,32 +115,32 @@ const Footer = ({ spaLocations }: FooterProps) => {
                 <div className="f_c">
                   <ul className="f_n fl">
                     <li className="tw:w-[50%]">
-                      <Link href={`/${locale}/page/about-us`}>
+                      <Link href={`/${locale}/page/about-us`} className="footer-link">
                         {tCommon("footer.navigation.aboutUs")}
                       </Link>
                     </li>
                     <li className="tw:w-[50%]">
-                      <Link href={`/${locale}/services-prices`}>
+                      <Link href={`/${locale}/services-prices`} className="footer-link">
                         {tCommon("footer.navigation.spaMenu")}
                       </Link>
                     </li>
                     <li className="tw:w-[50%]">
-                      <Link href={`/${locale}/promotions`}>
+                      <Link href={`/${locale}/promotions`} className="footer-link">
                         {tCommon("footer.navigation.promotions")}
                       </Link>
                     </li>
                     <li className="tw:w-[50%]">
-                      <Link href={`/${locale}/contact`}>
+                      <Link href={`/${locale}/contact`} className="footer-link">
                         {tCommon("footer.navigation.contactUs")}
                       </Link>
                     </li>
                     <li className="tw:w-[50%]">
-                      <Link href={`/${locale}/booking`}>
+                      <Link href={`/${locale}/booking`} className="footer-link">
                         {tCommon("footer.navigation.bookOnline")}
                       </Link>
                     </li>
                     <li className="tw:w-[50%]">
-                      <Link href={`/${locale}/blog`}>
+                      <Link href={`/${locale}/blog`} className="footer-link">
                         {tCommon("footer.navigation.blogs")}
                       </Link>
                     </li>

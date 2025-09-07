@@ -71,7 +71,18 @@ const ServicesPricesContent = ({
   }, []);
 
   const handleTabClick = (tabId: number) => {
-    setActiveTab(tabId);
+    if (tabId !== activeTab) {
+      setActiveTab(tabId);
+      
+      setTimeout(() => {
+        if (isSticky) {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    }
   };
 
   const handleBookNow = (service: Product) => {
@@ -107,7 +118,7 @@ const ServicesPricesContent = ({
         <h1 className="a2_t">{t("title")}</h1>
       </div>
 
-      <div className="s sH s8" ref={containerRef}>
+      <div className="s category-bar" ref={containerRef}>
         <div className="container">
           <div className="s8_m">
             <div className="s8_b">
