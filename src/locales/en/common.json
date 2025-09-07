@@ -57,6 +57,20 @@
   "promotion": {
     "happyHour": "Promotion! 10% off for happy hour from 10am - 13pm"
   },
+  "aboutUs": {
+    "title": "About Sen Spa",
+    "welcomeTitle": "Welcome to Sen Spa Da Nang",
+    "content": "Indulge at our Sen Spa, a hidden relaxing oasis of Thai Phien street. \"Sen Spa\" represents the purity of body, mind, and spirit. Our name is inspired by images of lotus, maintaining a sense of tranquility within the vibrancy of Da Nang. Let your body be pampered, our therapists are trained in the use of different modalities to heal the body, nurture the mind and nourish the soul. Your eyes linger on the unique setting, taste buds tingle with warm herbal teas and your body is treated by the most professional of masseuses. We strive to provide service and product excellence, because we only give you what we would like to be served ourselves. Rest assured, this will be an extraordinary experience that will leave you longing to return time and time again.",
+    "feature1": "Professional therapists trained in various healing modalities",
+    "feature2": "Unique tranquil setting inspired by lotus imagery",
+    "feature3": "Premium herbal teas and exceptional massage treatments",
+    "stats": {
+      "experience": "Years Experience",
+      "happyClients": "Happy Clients",
+      "services": "Premium Services",
+      "satisfaction": "Satisfaction"
+    }
+  },
   "languages": {
     "en": "English",
     "ja": "日本語",

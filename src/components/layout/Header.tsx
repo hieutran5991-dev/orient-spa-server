@@ -131,26 +131,24 @@ const Header = () => {
           <div className="tw:flex tw:items-center tw:justify-center tw:md:justify-start tw:space-x-6 tw:w-full">
             <div className="tw:flex tw:items-center tw:gap-2 tw:mr-12">
               <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
-                <i className="fa fa-envelope-o tw:text-white tw:text-[17px]"/>
+                <i className="fa fa-envelope-o tw:text-white tw:text-[17px]" />
               </div>
               <span style={{ fontSize: "14px", color: "#333" }}>
-                { CONFIG.MAIL }
+                {CONFIG.MAIL}
               </span>
             </div>
 
             <div className="tw:flex tw:items-center tw:gap-2">
               <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
-                <i className="fa fa-phone tw:text-white tw:text-[17px]"/>
+                <i className="fa fa-phone tw:text-white tw:text-[17px]" />
               </div>
               <span style={{ fontSize: "14px", color: "#333" }}>
-                <a href={`tel:${CONFIG.PHONE_NUMBER}`}>
-                  { CONFIG.PHONE_NUMBER }
-                </a>
+                <a href={`tel:${CONFIG.PHONE_NUMBER}`}>{CONFIG.PHONE_NUMBER}</a>
               </span>
             </div>
 
             <div className="tw:ml-auto tw:hidden tw:md:block">
-              { CONFIG.SPA_LOCATION }
+              {CONFIG.SPA_LOCATION}
             </div>
           </div>
         </div>
@@ -191,10 +189,10 @@ const Header = () => {
 
             <nav className="tw:flex tw:items-start tw:md:h-[55%] tw:border-b tw:border-gray-200 tw:gap-8 tw:w-[40%] tw:justify-start">
               <div className="tw:h-full tw:relative tw:group header-nav-link">
-                <button
-                  className="tw:flex tw:items-center tw:space-x-1 tw:text-gray-800 tw:hover:text-pink-600 tw:px-3 tw:py-2 tw:text-[1.125em] tw:uppercase tw:tracking-wide tw:transition-colors tw:duration-200 tw:cursor-pointer"
-                >
-                  <span className="tw:self-start">{tCommon("navigation.aboutUs")}</span>
+                <button className="tw:flex tw:items-center tw:space-x-1 tw:text-gray-800 tw:hover:text-pink-600 tw:px-3 tw:py-2 tw:text-[1.125em] tw:uppercase tw:tracking-wide tw:transition-colors tw:duration-200 tw:cursor-pointer">
+                  <span className="tw:self-start">
+                    {tCommon("navigation.aboutUs")}
+                  </span>
                   <svg
                     className="tw:w-4 tw:h-4 tw:transition-transform tw:duration-200 tw:group-hover:rotate-180"
                     fill="none"
@@ -260,28 +258,31 @@ const Header = () => {
                   <div className="tw:py-2">
                     <button
                       onClick={() => handleLanguageChange("en")}
-                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "en"
+                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "en"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                        }`}
+                      }`}
                     >
                       🇺🇸 {tCommon("languages.en")}
                     </button>
                     <button
                       onClick={() => handleLanguageChange("ja")}
-                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ja"
+                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "ja"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                        }`}
+                      }`}
                     >
                       🇯🇵 {tCommon("languages.ja")}
                     </button>
                     <button
                       onClick={() => handleLanguageChange("ko")}
-                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ko"
+                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "ko"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                        }`}
+                      }`}
                     >
                       🇰🇷 {tCommon("languages.ko")}
                     </button>
@@ -448,7 +449,7 @@ const Header = () => {
               </li>
               <li>
                 <a
-                  href="/page/about-us.html"
+                  href={`/${locale}/about-us`}
                   onClick={closeMobileMenu}
                   className="tw:block tw:text-[1.125em] tw:text-gray-900 tw:transition-colors tw:duration-200 tw:uppercase tw:tracking-wide"
                 >
