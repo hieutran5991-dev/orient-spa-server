@@ -2,7 +2,7 @@
 
 import { useTranslations, useLocale, type NamespaceKeys } from "next-intl";
 import Link from "next/link";
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useRef } from "react";
 import { type Locale } from "@/utils/constants";
 import { formatPrice } from "@/utils/format";
 import { SpaLocation } from "@/types/api";
@@ -29,10 +29,7 @@ const ServicesPricesContent = ({
   const [selectedService, setSelectedService] = useState<Product | undefined>(
     undefined
   );
-  const [isSticky, setIsSticky] = useState(false);
-  const tabsRef = useRef<HTMLUListElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const endContentRef = useRef<HTMLDivElement>(null);
 
   const serviceCategories = useMemo(
     () =>
@@ -45,38 +42,14 @@ const ServicesPricesContent = ({
     [categories, products]
   );
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (tabsRef.current && containerRef.current && endContentRef.current) {
-        const tabsRect = tabsRef.current.getBoundingClientRect();
-        const containerRect = containerRef.current.getBoundingClientRect();
-        const endContentRect = endContentRef.current.getBoundingClientRect();
-
-        const shouldBeSticky = tabsRect.top <= 10 && containerRect.bottom > 10;
-
-        const isAtTop = window.scrollY <= 100;
-
-        const isPastEndContent = endContentRect.top <= window.innerHeight * 0.3;
-
-        setIsSticky(shouldBeSticky && !isAtTop && !isPastEndContent);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   const handleTabClick = (tabId: number) => {
     if (tabId !== activeTab) {
       setActiveTab(tabId);
 
+      const needScroll = (containerRef.current?.getBoundingClientRect().top ?? -1) < 0;
       const activeTabContent = document.querySelector('.container');
 
-      if(activeTabContent && isSticky) {
+      if(activeTabContent && needScroll) {
         activeTabContent.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
@@ -122,24 +95,8 @@ const ServicesPricesContent = ({
         <div className="container">
           <div className="s8_m">
             <div className="s8_b">
-              <div className="s8_n">
-                {/* Placeholder to maintain layout when tabs are sticky */}
-                {isSticky && <div className="tw:h-[60px]"></div>}
-                <ul
-                  ref={tabsRef}
-                  className={`tabs s8_nm ${
-                    isSticky
-                      ? "tw:fixed tw:top-0 tw:left-0 tw:right-0 tw:z-50 tw:bg-white tw:shadow-md tw:px-4"
-                      : ""
-                  }`}
-                  style={
-                    isSticky
-                      ? {
-                          left: "50%",
-                        }
-                      : {}
-                  }
-                >
+              <div className="s8_n tw:sticky tw:top-0 tw:left-0 tw:right-0 tw:z-51 tw:bg-white">
+                <ul className={"tabs s8_nm"}>
                   {serviceCategories.map((category) => (
                     <li
                       key={category.id}
@@ -208,7 +165,7 @@ const ServicesPricesContent = ({
               </div>
             </div>
 
-            <div className="s8_f" ref={endContentRef}>
+            <div className="s8_f">
               <div className="a8_c text-center">
                 <p>
                   <strong>{t("note")}</strong> {t("noteText")}{" "}
