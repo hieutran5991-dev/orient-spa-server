@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { NamespaceKeys } from "use-intl";
 import type { Product } from "@/types/booking";
+import React from "react";
 
 interface PromotionsPageProps {
   products: Product[];
@@ -18,36 +19,12 @@ const PromotionsContent = ({ products }: PromotionsPageProps) => {
 
   return (
     <main className="tw:bg-white tw:min-h-screen">
-      {/* Header Section */}
-      <div className="tw:bg-gradient-to-r tw:from-pink-50 tw:to-purple-50 tw:py-10 tw:text-center">
-        <div className="tw:container tw:mx-auto tw:px-4">
-          <p className="tw:text-4xl tw:font-bold tw:text-gray-800 tw:mb-4">
-            {t("specialTitle")}
-          </p>
-          <p className="tw:text-2xl tw:text-gray-600 tw:mx-auto">
-            {t("specialSubtitle")}
-          </p>
+      <div className="tw:bg-[var(--main-color)] tw:font-[MtdValkySemibold] tw:text-white tw:py-[30px]">
+        <div className="tw:max-w-6xl tw:mx-auto tw:px-4 tw:text-center tw:text-4xl tw:md:text-[4.8rem] tw:uppercase">
+          {t("specialTitle")}
         </div>
       </div>
 
-      <div className="tw:py-4">
-        <div className="tw:container tw:mx-auto tw:px-4">
-          <nav className="tw:flex tw:items-center tw:space-x-2 tw:text-xl tw:justify-center">
-            <a
-              href={`/${locale}`}
-              className="tw:text-gray-600 hover:tw:text-gray-800 tw:transition-colors"
-            >
-              {tCommon("navigation.home")}
-            </a>
-            <span className="tw:text-gray-400"> {">"} </span>
-            <span className="tw:text-gray-800 tw:font-medium">
-              {t("title")}
-            </span>
-          </nav>
-        </div>
-      </div>
-
-      {/* Promotions Grid */}
       <div className="tw:py-16">
         <div className="tw:container tw:mx-auto tw:px-4">
           <div className="tw:grid tw:grid-cols-1 tw:md:grid-cols-2 tw:lg:grid-cols-3 tw:gap-8">
