@@ -1,0 +1,17 @@
+{
+  "title": "ブログ",
+  "subtitle": "健康情報とセン・スパ・ダナンご訪問ガイド",
+  "readMore": "続きを読む",
+  "loadMore": "記事をもっと読む",
+  "categories": {
+    "travelGuide": "旅行ガイド",
+    "foodCulture": "食文化",
+    "localDiscovery": "地元発見",
+    "healthWellness": "健康とウェルネス",
+    "spaTreatments": "スパトリートメント"
+  },
+  "featured": {
+    "title": "注目記事",
+    "subtitle": "最新の洞察をお見逃しなく"
+  }
+}

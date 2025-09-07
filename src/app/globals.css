@@ -120,13 +120,3 @@
   justify-content: center;
   flex-shrink: 0;
 }
-
-.category-bar {
-  padding-bottom: 90px;
-}
-
-@media (max-width: 991px) {
-  .category-bar {
-    padding-bottom: 55px;
-  }
-}

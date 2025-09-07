@@ -1,6 +1,7 @@
 import { getRequestConfig } from 'next-intl/server'
 import { hasLocale } from 'next-intl'
 import { SUPPORTED_LANGUAGE, DEFAULT_LANGUAGE } from '@/utils/constants'
+import blogsContent from "@/components/BlogsContent";
 
 export default getRequestConfig(async ({ requestLocale }) => {
   const requested = await requestLocale
@@ -17,7 +18,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
     reservationMessages,
     guestsMessages,
     galleryMessages,
-    thankMessages
+    thankMessages,
+    blogsMessages
   ] = await Promise.all([
     import(`../locales/${locale}/common.json`).then((m) => m.default),
     import(`../locales/${locale}/home.json`).then((m) => m.default),
@@ -29,7 +31,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
     import(`../locales/${locale}/reservation.json`).then((m) => m.default),
     import(`../locales/${locale}/guests.json`).then((m) => m.default),
     import(`../locales/${locale}/gallery.json`).then((m) => m.default),
-    import(`../locales/${locale}/thanks.json`).then((m) => m.default)
+    import(`../locales/${locale}/thanks.json`).then((m) => m.default),
+    import(`../locales/${locale}/blogs.json`).then((m) => m.default)
   ])
 
   // Merge all messages into one object with namespaces
@@ -44,7 +47,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
     reservation: reservationMessages,
     guests: guestsMessages,
     gallery: galleryMessages,
-    thanks: thankMessages
+    thanks: thankMessages,
+    blogs: blogsMessages
   }
 
   return {

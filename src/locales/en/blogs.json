@@ -1,0 +1,17 @@
+{
+  "title": "Blogs",
+  "subtitle": "Health Tips & Visiting Sen Spa Da Nang",
+  "readMore": "Read More",
+  "loadMore": "Load More Articles",
+  "categories": {
+    "travelGuide": "Travel Guide",
+    "foodCulture": "Food & Culture",
+    "localDiscovery": "Local Discovery",
+    "healthWellness": "Health & Wellness",
+    "spaeTreatments": "Spa Treatments"
+  },
+  "featured": {
+    "title": "Featured Article",
+    "subtitle": "Don't miss our latest insights"
+  }
+}

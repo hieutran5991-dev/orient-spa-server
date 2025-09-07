@@ -1,17 +1,15 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import { useRouter, usePathname } from "next/navigation";
-import { SUPPORTED_LANGUAGE, type Locale, CONFIG } from "@/utils/constants";
+import { usePathname } from "next/navigation";
+import { CONFIG, type Locale, SUPPORTED_LANGUAGE } from "@/utils/constants";
 import type { NamespaceKeys } from "use-intl";
-import Link from "next/link";
 
 const Header = () => {
   const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
   const locale = useLocale() as Locale;
-  const router = useRouter();
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileLanguageOpen, setIsMobileLanguageOpen] = useState(false);
@@ -74,9 +72,7 @@ const Header = () => {
     if (SUPPORTED_LANGUAGE.includes(segments[1] as Locale)) {
       segments.splice(1, 1);
     }
-    const newPath = `/${newLocale}${segments.join("/")}`;
-    // Force page reload to reinitialize event listeners
-    window.location.href = newPath;
+    window.location.href = `/${newLocale}${segments.join("/")}`;
   };
 
   const toggleMobileMenu = () => {
@@ -131,15 +127,6 @@ const Header = () => {
           <div className="tw:flex tw:items-center tw:justify-center tw:md:justify-start tw:space-x-6 tw:w-full">
             <div className="tw:flex tw:items-center tw:gap-2 tw:mr-12">
               <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
-                <i className="fa fa-envelope-o tw:text-white tw:text-[17px]" />
-              </div>
-              <span style={{ fontSize: "14px", color: "#333" }}>
-                {CONFIG.MAIL}
-              </span>
-            </div>
-
-            <div className="tw:flex tw:items-center tw:gap-2">
-              <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
                 <i className="fa fa-phone tw:text-white tw:text-[17px]" />
               </div>
               <span style={{ fontSize: "14px", color: "#333" }}>
@@ -147,8 +134,22 @@ const Header = () => {
               </span>
             </div>
 
+            <div className="tw:flex tw:items-center tw:gap-2">
+              <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
+                <i className="fa fa-envelope-o tw:text-white tw:text-[17px]" />
+              </div>
+              <span style={{ fontSize: "14px", color: "#333" }}>
+                {CONFIG.MAIL}
+              </span>
+            </div>
+
             <div className="tw:ml-auto tw:hidden tw:md:block">
-              {CONFIG.SPA_LOCATION}
+              <a
+                href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
+                target="_blank"
+              >
+                {CONFIG.SPA_LOCATION}
+              </a>
             </div>
           </div>
         </div>
@@ -226,7 +227,7 @@ const Header = () => {
                     </a>
                     <div className="tw:border-t tw:border-gray-100 tw:my-1"></div>
                     <a
-                      href="/blogs"
+                      href={`/${locale}/blogs`}
                       className="tw:block tw:px-6 tw:py-4 tw:text-14 tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
                     >
                       {tCommon("navigation.aboutDropdown.blogs")}

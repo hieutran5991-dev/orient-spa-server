@@ -73,15 +73,15 @@ const ServicesPricesContent = ({
   const handleTabClick = (tabId: number) => {
     if (tabId !== activeTab) {
       setActiveTab(tabId);
-      
-      setTimeout(() => {
-        if (isSticky) {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-        }
-      }, 100);
+
+      const activeTabContent = document.querySelector('.container');
+
+      if(activeTabContent && isSticky) {
+        activeTabContent.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      }
     }
   };
 
@@ -118,7 +118,7 @@ const ServicesPricesContent = ({
         <h1 className="a2_t">{t("title")}</h1>
       </div>
 
-      <div className="s category-bar" ref={containerRef}>
+      <div className="s category-bar tw:mb-[40px]" ref={containerRef}>
         <div className="container">
           <div className="s8_m">
             <div className="s8_b">
@@ -222,7 +222,7 @@ const ServicesPricesContent = ({
           </div>
 
           <div className="a8_c text-center">
-            <p>
+            <p className="tw:mb-0">
               {t("subtitle")}{" "}
               <Link href={`/${locale}/promotions`}>
                 {t("navigation.promotions")}
@@ -232,7 +232,7 @@ const ServicesPricesContent = ({
             <a
               href="/pdf/Menu_SenSpa_Danang_2025.pdf"
               download="Menu_SenSpa_Danang_2025.pdf"
-              className="btn btn-1 btn-block a5_sa"
+              className="btn btn-1 btn-block a5_sa tw:mt-[32px]"
             >
               {t("downloadMenu")}
             </a>

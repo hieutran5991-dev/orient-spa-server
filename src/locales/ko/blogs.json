@@ -1,0 +1,17 @@
+{
+  "title": "블로그",
+  "subtitle": "건강 팁 및 센 스파 다낭 방문 가이드",
+  "readMore": "더 읽기",
+  "loadMore": "더 많은 기사 불러오기",
+  "categories": {
+    "travelGuide": "여행 가이드",
+    "foodCulture": "음식 문화",
+    "localDiscovery": "지역 탐방",
+    "healthWellness": "건강 및 웰빙",
+    "spaTreatments": "스파 트리트먼트"
+  },
+  "featured": {
+    "title": "주요 기사",
+    "subtitle": "최신 인사이트를 놓치지 마세요"
+  }
+}
