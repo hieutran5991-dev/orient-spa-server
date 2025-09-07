@@ -49,6 +49,9 @@
       "blogs": "블로그"
     }
   },
+  "promotion": {
+    "happyHour": "프로모션! 해피아워 오전 10시 - 오후 1시 10% 할인"
+  },
   "languages": {
     "en": "English",
     "ja": "日本語",

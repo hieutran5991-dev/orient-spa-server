@@ -4,8 +4,9 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
-import { SUPPORTED_LANGUAGE, type Locale } from "@/utils/constants";
+import { SUPPORTED_LANGUAGE, type Locale, CONFIG } from "@/utils/constants";
 import type { NamespaceKeys } from "use-intl";
+import Link from "next/link";
 
 const Header = () => {
   const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
@@ -14,6 +15,7 @@ const Header = () => {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileLanguageOpen, setIsMobileLanguageOpen] = useState(false);
+  const [isPromotionVisible, setIsPromotionVisible] = useState(true);
 
   const isActivePath = (path: string) => {
     if (!pathname) return false;
@@ -34,8 +36,9 @@ const Header = () => {
     const activeClasses = "header-nav-link-active tw:font-semibold";
     const inactiveClasses = "tw:text-gray-900 header-nav-link-active";
 
-    return `${baseClasses} ${isActivePath(path) ? activeClasses : inactiveClasses
-      }`;
+    return `${baseClasses} ${
+      isActivePath(path) ? activeClasses : inactiveClasses
+    }`;
   };
 
   useEffect(() => {
@@ -94,6 +97,65 @@ const Header = () => {
 
   return (
     <>
+      {isPromotionVisible && (
+        <div className="tw:bg-gradient-to-r tw:from-[#9e2265] tw:via-[#b12876] tw:to-[#c42e87] tw:text-white tw:py-4 tw:relative">
+          <div className="tw:text-center">
+            <span className="tw:text-white tw:font-medium">
+              {tCommon("promotion.happyHour")}
+            </span>
+          </div>
+
+          <button
+            onClick={() => setIsPromotionVisible(false)}
+            className="tw:absolute tw:right-4 tw:top-1/2 tw:transform tw:-translate-y-1/2 tw:text-white tw:hover:text-gray-200 tw:cursor-pointer"
+          >
+            <svg
+              className="tw:w-6 tw:h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+      )}
+
+      <div className="tw:bg-white tw:border-b tw:border-gray-200 tw:py-6">
+        <div className="tw:max-w-[1200px] tw:px-4 tw:flex tw:items-center tw:mx-auto tw:text-2xl">
+          <div className="tw:flex tw:items-center tw:justify-center tw:md:justify-start tw:space-x-6 tw:w-full">
+            <div className="tw:flex tw:items-center tw:gap-2 tw:mr-12">
+              <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
+                <i className="fa fa-envelope-o tw:text-white tw:text-[17px]"/>
+              </div>
+              <span style={{ fontSize: "14px", color: "#333" }}>
+                { CONFIG.MAIL }
+              </span>
+            </div>
+
+            <div className="tw:flex tw:items-center tw:gap-2">
+              <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
+                <i className="fa fa-phone tw:text-white tw:text-[17px]"/>
+              </div>
+              <span style={{ fontSize: "14px", color: "#333" }}>
+                <a href={`tel:${CONFIG.PHONE_NUMBER}`}>
+                  { CONFIG.PHONE_NUMBER }
+                </a>
+              </span>
+            </div>
+
+            <div className="tw:ml-auto tw:hidden tw:md:block">
+              { CONFIG.SPA_LOCATION }
+            </div>
+          </div>
+        </div>
+      </div>
+
       <header className="tw:hidden tw:lg:block tw:bg-white">
         <div className="tw:max-w-[1210px] tw:mx-auto tw:px-4 sm:tw:px-6 tw:lg:px-8">
           <div className="tw:flex tw:md:h-[120px] tw:gap-12 tw:justify-center tw:items-center">
@@ -286,10 +348,11 @@ const Header = () => {
                         handleLanguageChange("en");
                         closeMobileLanguage();
                       }}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "en"
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "en"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                        }`}
+                      }`}
                     >
                       🇺🇸 {tCommon("languages.en")}
                     </button>
@@ -298,10 +361,11 @@ const Header = () => {
                         handleLanguageChange("ja");
                         closeMobileLanguage();
                       }}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ja"
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "ja"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                        }`}
+                      }`}
                     >
                       🇯🇵 {tCommon("languages.ja")}
                     </button>
@@ -310,10 +374,11 @@ const Header = () => {
                         handleLanguageChange("ko");
                         closeMobileLanguage();
                       }}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ko"
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "ko"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                        }`}
+                      }`}
                     >
                       🇰🇷 {tCommon("languages.ko")}
                     </button>

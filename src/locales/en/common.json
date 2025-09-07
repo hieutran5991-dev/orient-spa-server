@@ -54,6 +54,9 @@
       "blogs": "Blogs"
     }
   },
+  "promotion": {
+    "happyHour": "Promotion! 10% off for happy hour from 10am - 13pm"
+  },
   "languages": {
     "en": "English",
     "ja": "日本語",

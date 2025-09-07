@@ -54,6 +54,9 @@
       "blogs": "ブログ"
     }
   },
+  "promotion": {
+    "happyHour": "プロモーション！ハッピーアワー午前10時〜午後1時は10％オフ"
+  },
   "languages": {
     "en": "English",
     "ja": "日本語",
