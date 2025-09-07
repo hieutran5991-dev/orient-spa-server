@@ -75,7 +75,7 @@ const ConfirmContent = () => {
       <div className="s k2">
         <div className="container">
           <div className="k2_w fl">
-            <div className="k2_d">
+            <div className="k2_d tw:md:sticky tw:md:top-2 tw:md:self-start">
               <div className="k2_i">
                 <div className="k2_h hidden-sm hidden-xs">
                   {t("appointmentSummary.title")}
@@ -256,52 +256,6 @@ const ConfirmContent = () => {
                   </div>
                 </div>
 
-                {/*{spaLocation && (*/}
-                {/*  <div className='k2_i ot'>*/}
-                {/*    <div className='k2_h'>{t('spaLocation.title')}</div>*/}
-                {/*    <div className='k2_b'>*/}
-                {/*      <div className='k2_ds z16'>*/}
-                {/*        <div className='k2_di'>*/}
-                {/*          <table>*/}
-                {/*            <tbody>*/}
-                {/*              <tr>*/}
-                {/*                <td>{t('spaLocation.spaName')}</td>*/}
-                {/*                <td>*/}
-                {/*                  <strong>{spaLocation.name[locale]}</strong>*/}
-                {/*                </td>*/}
-                {/*              </tr>*/}
-                {/*              <tr>*/}
-                {/*                <td>{t('spaLocation.location')}</td>*/}
-                {/*                <td>*/}
-                {/*                  <strong>{spaLocation.address[locale]}</strong>*/}
-                {/*                </td>*/}
-                {/*              </tr>*/}
-                {/*              <tr>*/}
-                {/*                <td>{t('spaLocation.contact')}</td>*/}
-                {/*                <td>*/}
-                {/*                  <strong>{spaLocation.phone}</strong>*/}
-                {/*                </td>*/}
-                {/*              </tr>*/}
-                {/*            </tbody>*/}
-                {/*          </table>*/}
-                {/*        </div>*/}
-                {/*      </div>*/}
-                {/*      /!* Google Maps *!/*/}
-                {/*      <div className='k2_q'>*/}
-                {/*        <iframe*/}
-                {/*          src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0928037602653!2d105.84613287548966!3d21.028972380620434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab957915febd%3A0xc774f301415168bd!2sOrient%20Spa!5e0!3m2!1svi!2s!4v1749634302120!5m2!1svi!2s'*/}
-                {/*          width='100%'*/}
-                {/*          height='400'*/}
-                {/*          style={{ border: 0 }}*/}
-                {/*          allowFullScreen*/}
-                {/*          loading='lazy'*/}
-                {/*          referrerPolicy='no-referrer-when-downgrade'*/}
-                {/*        ></iframe>*/}
-                {/*      </div>*/}
-                {/*    </div>*/}
-                {/*  </div>*/}
-                {/*)}*/}
-
                 <div className="k2_i ot">
                   <div className="k2_h">{t("cancellationPolicy.title")}</div>
                   <div className="k2_b">
@@ -315,7 +269,6 @@ const ConfirmContent = () => {
                 </div>
               </div>
 
-              {/* Action Buttons */}
               <div className="k2_f fl fl-2">
                 <button
                   onClick={() => confirmContent()}

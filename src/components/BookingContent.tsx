@@ -26,21 +26,25 @@ const BookingContent = ({ products }: BookingContentProps) => {
     const savedData =
       sessionStorage.getItem(BOOKING_CONFIRM_KEY) ||
       sessionStorage.getItem(BOOKING_INIT_KEY);
-    if (savedData) {
-      try {
-        const parsedData = JSON.parse(savedData);
-        setBookingData(parsedData);
-
-        const numPeople = parseInt(parsedData.people || "1");
-        const initialGuestForms = Array.from(
-          { length: numPeople },
-          (_, index) => `guest_${index + 1}_services`
-        );
-        setGuestForms(initialGuestForms);
-      } catch (_) {
-        sessionStorage.removeItem(BOOKING_INIT_KEY);
+    if(!savedData) {
         window.location.href = "/";
-      }
+        return
+    }
+
+    try {
+      const parsedData = JSON.parse(savedData);
+      setBookingData(parsedData);
+
+      const numPeople = parseInt(parsedData.people || "1");
+      const initialGuestForms = Array.from(
+        { length: numPeople },
+        (_, index) => `guest_${index + 1}_services`
+      );
+      setGuestForms(initialGuestForms);
+      return
+    } catch (_) {
+      sessionStorage.removeItem(BOOKING_INIT_KEY);
+      window.location.href = "/";
     }
   }, []);
 
@@ -85,7 +89,6 @@ const BookingContent = ({ products }: BookingContentProps) => {
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
 
-    // Validate that each guest has at least one service selected
     let valid = true;
     for (let i = 0; i < guestForms.length; i++) {
       const guestServices = formData.getAll(`guest_${i + 1}_services`);
@@ -131,20 +134,12 @@ const BookingContent = ({ products }: BookingContentProps) => {
       <div className="s k2">
         <div className="container">
           <div className="k2_w fl">
-            <div className="k2_d">
+            <div className="k2_d tw:md:sticky tw:md:top-2 tw:md:self-start">
               <div className="k2_i">
                 <div className="k2_h hidden-sm hidden-xs">
                   {t("appointmentSummary")}
                 </div>
                 <div className="k2_b">
-                  <div className="k2_da hidden-sm hidden-xs">
-                    <Image
-                      src="/images/046489198c91d3feb14289b03064d86f.jpg"
-                      alt={t("spaImageAlt")}
-                      width={600}
-                      height={400}
-                    />
-                  </div>
                   <div className="k2_dc active">
                     <div className="k2_dt hidden-lg hidden-md">
                       {t("appointmentSummary")}
