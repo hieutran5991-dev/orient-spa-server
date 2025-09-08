@@ -3,7 +3,7 @@
   "navigation": {
     "home": "Home",
     "services": "Services & Prices",
-    "promotions": "Promotions",
+    "featuredProducts": "Featured Products",
     "booking": "Booking",
     "reservation": "Reservation",
     "contact": "Contact",
@@ -49,7 +49,7 @@
     "navigation": {
       "aboutUs": "About Us",
       "spaMenu": "Spa Menu",
-      "promotions": "Promotions",
+      "featuredProducts": "Featured Products",
       "contactUs": "Contact Us",
       "bookOnline": "Book Online",
       "blogs": "Blogs"

@@ -3147,7 +3147,7 @@ select.form-control {
 
   .s4_sw .swiper-slide {
     padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 5px;
     width: 25%;
   }
 }
@@ -3171,13 +3171,22 @@ select.form-control {
   padding-top: 100%;
   background-repeat: no-repeat;
   background-position: center;
-  -webkit-background-size: cover;
-  background-size: cover;
+  -webkit-background-size: contain;
+  background-size: contain;
 }
 
 .s4_a img {
   display: none;
 }
+
+/* .s4_a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  position: relative;
+  padding-top: 10px;
+} */
 
 .s4_ac {
   position: absolute;

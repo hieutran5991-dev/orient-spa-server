@@ -17,10 +17,14 @@
         "enquiry": "電話またはWhatsApp/Kakaoでお問い合わせ：",
         "discoverMore": "詳細を見る"
     },
-    "promotions": {
-        "title": "特別プロモーション",
+    "featuredProducts": {
+        "title": "おすすめ商品",
         "subtitle": "独占的なスパパッケージと特別オファーをご覧ください",
-        "duration": "{minutes}分"
+        "duration": "所要時間",
+        "price": "料金",
+        "minutes": "{minutes}分",
+        "readMore": "続きを読む",
+        "viewSpaMenu": "スパメニューを見る"
     },
     "timePeriods": {
         "morning": "午前",

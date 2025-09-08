@@ -1,6 +1,6 @@
 {
   "title": "Spa Menu & Prices",
-  "subtitle": "Discover our relaxing spa treatments and wellness services",
+  "subtitle": "Discover our relaxing spa treatments and wellness",
   "bookTreatment": "Book Your Treatment",
   "duration": "Duration",
   "price": "Price",
@@ -12,7 +12,7 @@
   "noteText": "You can choose multiple treatments in one visit. For groups of 3 or more people, please",
   "noteEnd": ". We look forward to serving you!",
   "navigation": {
-    "promotions": "monthly promotions",
+    "featuredProducts": "monthly featured products",
     "contact": "contact us"
   }
 }

@@ -17,10 +17,14 @@
         "enquiry": "전화 또는 WhatsApp/Kakao로 문의:",
         "discoverMore": "더 알아보기"
     },
-    "promotions": {
-        "title": "특별 프로모션",
+    "featuredProducts": {
+        "title": "추천 상품",
         "subtitle": "독점 스파 패키지와 특별 할인을 만나보세요",
-        "duration": "{minutes}분"
+        "duration": "소요 시간",
+        "price": "가격",
+        "minutes": "{minutes}분",
+        "readMore": "더 읽기",
+        "viewSpaMenu": "스파 메뉴 보기"
     },
     "timePeriods": {
         "morning": "오전",

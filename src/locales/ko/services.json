@@ -4,7 +4,7 @@
     "bookTreatment": "트리트먼트 예약하기",
     "duration": "소요 시간",
     "price": "가격",
-    "hotlineText": "상담 및 예약은 핫라인 0977 903 499로 전화주세요.",
+    "hotlineText": "상담 및 예약은 핫라인 0976 591 515로 전화주세요.",
     "downloadMenu": "PDF 메뉴 다운로드",
     "treatmentMenu": "트리트먼트 메뉴",
     "minutes": "분",
@@ -12,7 +12,7 @@
     "noteText": "한 번의 방문으로 여러 트리트먼트를 선택할 수 있습니다. 3명 이상의 그룹의 경우",
     "noteEnd": "해주세요. 고객님을 모실 수 있기를 기대합니다!",
     "navigation": {
-        "promotions": "월간 프로모션",
+        "featuredProducts": "특집 제품",
         "contact": "문의하기"
     }
 }

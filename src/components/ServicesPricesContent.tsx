@@ -181,8 +181,8 @@ const ServicesPricesContent = ({
           <div className="a8_c text-center">
             <p className="tw:mb-0">
               {t("subtitle")}{" "}
-              <Link href={`/${locale}/promotions`}>
-                {t("navigation.promotions")}
+              <Link href={`/${locale}/featured-products`}>
+                {t("navigation.featuredProducts")}
               </Link>
               . <span dangerouslySetInnerHTML={{ __html: t("hotlineText") }} />
             </p>

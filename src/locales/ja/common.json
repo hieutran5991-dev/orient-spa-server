@@ -3,7 +3,7 @@
   "navigation": {
     "home": "ホーム",
     "services": "サービス・料金",
-    "promotions": "プロモーション",
+    "featuredProducts": "注目の製品",
     "booking": "予約",
     "reservation": "予約",
     "contact": "お問い合わせ",
@@ -49,7 +49,7 @@
     "navigation": {
       "aboutUs": "会社概要",
       "spaMenu": "スパメニュー",
-      "promotions": "プロモーション",
+      "featuredProducts": "注目の製品",
       "contactUs": "お問い合わせ",
       "bookOnline": "オンライン予約",
       "blogs": "ブログ"

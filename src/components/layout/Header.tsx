@@ -153,10 +153,10 @@ const Header = () => {
                   <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
                     <i className="fa fa-map-marker tw:text-white tw:text-[17px]" />
                   </div>
-                  <span className="tw:hidden tw:md:block" style={{ fontSize: "14px", color: "#333" }}>
+                  <span className="tw:hidden tw:md:block hoverable-link" style={{ fontSize: "14px", color: "#333" }}>
                     {CONFIG.SPA_LOCATION}
                   </span>
-                  <span className="tw:block tw:md:hidden" style={{ fontSize: "14px", color: "#333" }}>
+                  <span className="tw:block tw:md:hidden hoverable-link" style={{ fontSize: "14px", color: "#333" }}>
                     {tCommon("footer.findUs")}
                   </span>
                 </div>
@@ -180,10 +180,10 @@ const Header = () => {
                 {tCommon("navigation.services")}
               </a>
               <a
-                href={`/promotions`}
-                className={getNavLinkClasses(`/promotions`)}
+                href={`/featured-products`}
+                className={getNavLinkClasses(`/featured-products`)}
               >
-                {tCommon("navigation.promotions")}
+                {tCommon("navigation.featuredProducts")}
               </a>
             </nav>
 
@@ -452,11 +452,11 @@ const Header = () => {
               </li>
               <li>
                 <a
-                  href={`/${locale}/promotions`}
+                  href={`/${locale}/featured-products`}
                   onClick={closeMobileMenu}
-                  className={getMobileNavLinkClasses(`/${locale}/promotions`)}
+                  className={getMobileNavLinkClasses(`/${locale}/featured-products`)}
                 >
-                  {tCommon("navigation.promotions")}
+                  {tCommon("navigation.featuredProducts")}
                 </a>
               </li>
               <li>

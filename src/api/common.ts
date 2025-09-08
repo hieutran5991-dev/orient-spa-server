@@ -2,8 +2,9 @@ import request from "@/lib/axios";
 import { AxiosResponse } from "axios";
 import { Category } from "@/types/common";
 import { SpaLocation } from "@/types/api";
-import { BookingSubmissionData, Product } from "@/types/booking";
+import { BookingSubmissionData } from "@/types/booking";
 import { getLocale } from "next-intl/server";
+import { Product } from "@/types/common";
 
 export const getListSpa: () => Promise<
   AxiosResponse<SpaLocation[] | undefined>
