@@ -155,7 +155,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
                       </a>
                     </li>
                     <li className="tw:w-[50%]">
-                      <a href={`/${locale}/blog`} className="hoverable-link">
+                      <a href={`/${locale}/blogs`} className="hoverable-link">
                         {tCommon("footer.navigation.blogs")}
                       </a>
                     </li>
