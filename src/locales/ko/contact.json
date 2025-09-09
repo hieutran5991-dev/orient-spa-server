@@ -23,9 +23,9 @@
     },
     "contactInfo": {
         "title": "연락처 정보",
-        "phone": "전화: +84 977 903 499",
-        "email": "이메일: orientspahanoi@gmail.com",
-        "hours": "영업시간: 매일 오전 10:00 - 오후 10:00"
+        "phone": "전화: +84 976 591 515",
+        "email": "이메일: senspa.dn@gmail.com",
+        "hours": "영업시간: 매일 오전 10:00 - 오후 09:00"
     },
     "qrSection": {
         "title": "QR 코드로 빠른 연결",
@@ -34,7 +34,7 @@
     },
     "mapSection": {
         "title": "위치",
-        "address": "18 Bao Khanh, Hoan Kiem, Hanoi, Vietnam"
+        "address": "21 Thai Phien Street, Phuoc Ninh Ward, Hai Chau District, Da Nang"
     },
     "qr": {
         "contact": "QR 코드로 문의하기"

@@ -3,7 +3,7 @@
   "navigation": {
     "home": "Home",
     "services": "Services & Prices",
-    "promotions": "Promotions",
+    "featuredProducts": "Featured Products",
     "booking": "Booking",
     "reservation": "Reservation",
     "contact": "Contact",
@@ -39,7 +39,8 @@
     "followUs": "Follow us",
     "openingHours": "Opening Hours",
     "paymentMethods": "Payment Methods",
-    "viewMap": "(View map)",
+    "viewMap": "View map",
+    "findUs": "Find us on Google Maps",
     "openDaily": "We are open daily from",
     "hours": "10:00AM - 09:00PM.",
     "advancedReservation": "Advanced reservation is recommended.",
@@ -48,7 +49,7 @@
     "navigation": {
       "aboutUs": "About Us",
       "spaMenu": "Spa Menu",
-      "promotions": "Promotions",
+      "featuredProducts": "Featured Products",
       "contactUs": "Contact Us",
       "bookOnline": "Book Online",
       "blogs": "Blogs"

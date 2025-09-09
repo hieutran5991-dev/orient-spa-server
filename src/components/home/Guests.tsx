@@ -11,33 +11,33 @@ import type {NamespaceKeys} from "use-intl";
 const guestPhotos = [
 	{
 		id: 1,
-		image: '/images/37f88d202b6673c7856ab3e5b274fce9.jpg',
+		image: '/images/home-reviews/review-1.png',
 		alt: 'Happy guest at SEN SPA Da Nang',
-		instagramUrl: 'https://instagram.com/orientspahanoi'
+		instagramUrl: 'https://www.instagram.com/senspadanang21/#'
 	},
 	{
 		id: 2,
-		image: '/images/1e7ee92c458392f5eab7dc3e5d87d364.jpg',
+		image: '/images/home-reviews/review-2.png',
 		alt: 'Guest enjoying spa treatment',
-		instagramUrl: 'https://instagram.com/orientspahanoi'
+		instagramUrl: 'https://www.instagram.com/senspadanang21/#'
 	},
 	{
 		id: 3,
-		image: '/images/188a3c349926d04d742c40dfed4b1590.jpg',
+		image: '/images/home-reviews/review-3.png',
 		alt: 'Relaxed guest after massage',
-		instagramUrl: 'https://instagram.com/orientspahanoi'
+		instagramUrl: 'https://www.instagram.com/senspadanang21/#'
 	},
 	{
 		id: 4,
-		image: '/images/837df7fd667c8f3f78fd2fa833a919b8.jpg',
-		alt: 'Guest with facial treatment',
-		instagramUrl: 'https://instagram.com/orientspahanoi'
+		image: '/images/home-reviews/review-4.png',
+		alt: 'Happy friends at spa',
+		instagramUrl: 'https://www.instagram.com/senspadanang21/#'
 	},
 	{
 		id: 5,
-		image: '/images/10bd2e10764a565775b50a50c94fbd1d.jpg',
-		alt: 'Happy couple at spa',
-		instagramUrl: 'https://instagram.com/orientspahanoi'
+		image: '/images/home-reviews/review-5.png',
+		alt: 'Happy experience at spa',
+		instagramUrl: 'https://www.instagram.com/senspadanang21/#'
 	}
 ];
 
@@ -55,12 +55,12 @@ const Guests: React.FC = () => {
 
 				<div className="s6_m">
 					{guestPhotos.map((photo) => (
-						<a
+						<Link
 							key={photo.id}
 							href={photo.instagramUrl}
 							className="s6_i"
 							target="_blank"
-							rel="noopener noreferrer"
+							rel="nofollow"
 						>
 							<Image
 								src={photo.image}
@@ -70,13 +70,18 @@ const Guests: React.FC = () => {
 								className="guest-photo"
 							/>
 							<span className="s6_a fa fa-instagram"></span>
-						</a>
+						</Link>
 					))}
 				</div>
 
 				<div className="s6_f fl fl-2">
-					<Link href={`/${locale}/gallery`} className="btn btn-2 s6_fa">
-						{t('viewAllPhotos')}
+					<Link
+						className="btn btn-2 s6_fa"
+						href="https://www.google.com/maps/place/SEN+SPA+Da+Nang/@16.0622069,108.1608071,14509m/data=!3m1!1e3!4m8!3m7!1s0x314219ab5d9436d3:0x3a78e723f58964c7!8m2!3d16.0648855!4d108.2230748!9m1!1b1!16s%2Fg%2F11vpd2vhbm?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D" 
+						rel="nofollow"
+						target="_blank"
+					>
+						{t('seeMoreReview')}
 					</Link>
 				</div>
 			</div>

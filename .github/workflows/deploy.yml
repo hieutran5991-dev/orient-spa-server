@@ -27,12 +27,16 @@ jobs:
         run: |
           echo "NEXT_PUBLIC_API_BASE_URL=${{ secrets.NEXT_PUBLIC_API_BASE_URL }}" >> .env.production
           echo "API_TIMEOUT=${{ secrets.API_TIMEOUT }}" >> .env.production
+          echo "NEXT_STORAGE_HOST=${{ secrets.NEXT_STORAGE_HOST }}" >> .env.production
+          echo "NEXT_STORAGE_PORT=${{ secrets.NEXT_STORAGE_PORT }}" >> .env.production
 
       - name: Build application
         run: npm run build
         env:
           NEXT_PUBLIC_API_BASE_URL: ${{ secrets.NEXT_PUBLIC_API_BASE_URL }}
           API_TIMEOUT: ${{ secrets.API_TIMEOUT }}
+          NEXT_STORAGE_HOST: ${{ secrets.NEXT_STORAGE_HOST }}
+          NEXT_STORAGE_PORT: ${{ secrets.NEXT_STORAGE_PORT }}
 
       - name: Create deployment package
         run: |

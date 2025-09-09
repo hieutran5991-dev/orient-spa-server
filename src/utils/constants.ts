@@ -1,4 +1,4 @@
-export const SUPPORTED_LANGUAGE = ['en', 'vi', 'ja', 'ko'] as const
+export const SUPPORTED_LANGUAGE = ['en', 'ja', 'ko'] as const
 export const DEFAULT_LANGUAGE = 'en' as const
 export type Locale = (typeof SUPPORTED_LANGUAGE)[number]
 

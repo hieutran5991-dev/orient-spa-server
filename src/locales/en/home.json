@@ -17,10 +17,14 @@
     "enquiry": "Enquiry by phone or WhatsApp/Kakao:",
     "discoverMore": "DISCOVER MORE"
   },
-  "promotions": {
-    "title": "SPECIAL PROMOTIONS",
+  "featuredProducts": {
+    "title": "FEATURED PRODUCTS",
     "subtitle": "Discover our exclusive spa packages and special offers",
-    "duration": "{minutes} minutes"
+    "duration": "Duration",
+    "price": "Price",
+    "minutes": "{minutes} minutes",
+    "readMore": "READ MORE",
+    "viewSpaMenu": "View Spa Menu"
   },
   "timePeriods": {
     "morning": "Morning",
