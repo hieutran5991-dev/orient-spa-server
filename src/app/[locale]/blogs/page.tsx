@@ -1,5 +1,4 @@
 import Layout from "@/components/layout/Layout";
-import AboutUsContent from "@/components/AboutUsContent";
 import "@/css/booking.css";
 import { getListSpa } from "@/api/common";
 import BlogsContent from "@/components/BlogsContent";

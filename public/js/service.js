@@ -5104,11 +5104,6 @@ jQuery(document).ready(function ($) {
     var bd = true;
     if (ww < 992) {
         bd = false;
-        $('.a1_a').click(function () {
-            $('body').addClass('box-hidden');
-            $('.main-content, .a1').addClass('zf');
-            $('.s1').show();
-        });
         $('.s1_z').click(function () {
             $('body').removeClass('box-hidden');
             $('.main-content, .a1').removeClass('zf');

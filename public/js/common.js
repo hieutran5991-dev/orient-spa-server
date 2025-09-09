@@ -10052,11 +10052,6 @@ jQuery(document).ready(function ($) {
     var bd = true;
     if (ww < 992) {
         bd = false;
-        $('.a1_a').click(function () {
-            $('body').addClass('box-hidden');
-            $('.main-content, .a1').addClass('zf');
-            $('.s1').show();
-        });
         $('.s1_z').click(function () {
             $('body').removeClass('box-hidden');
             $('.main-content, .a1').removeClass('zf');
@@ -10119,10 +10114,10 @@ jQuery(document).ready(function ($) {
             $(".js-v4").val($(this).text());
         });
     });
-    $('.js-v1, .js-v2, .js-v3, .js-v4, .s1_s').on('touchstart click', function(e) {
+    $('.js-v1, .js-v2, .js-v3, .js-v4, .s1_s').on('touchstart click', function (e) {
         e.stopPropagation();
     });
-    $('body').on('touchstart click', function(e) {
+    $('body').on('touchstart click', function (e) {
         $(".s1_s").hide();
     });
     $('.js-done').click(function () {

@@ -36,9 +36,8 @@ const Header = () => {
     const activeClasses = "header-nav-link-active tw:font-semibold";
     const inactiveClasses = "tw:text-gray-900 header-nav-link-active";
 
-    return `${baseClasses} ${
-      isActivePath(path) ? activeClasses : inactiveClasses
-    }`;
+    return `${baseClasses} ${isActivePath(path) ? activeClasses : inactiveClasses
+      }`;
   };
 
   useEffect(() => {
@@ -354,31 +353,28 @@ const Header = () => {
                   <div className="tw:py-2">
                     <button
                       onClick={() => handleLanguageChange("en")}
-                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${
-                        locale === "en"
+                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "en"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                      }`}
+                        }`}
                     >
                       🇺🇸 {tCommon("languages.en")}
                     </button>
                     <button
                       onClick={() => handleLanguageChange("ja")}
-                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${
-                        locale === "ja"
+                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ja"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                      }`}
+                        }`}
                     >
                       🇯🇵 {tCommon("languages.ja")}
                     </button>
                     <button
                       onClick={() => handleLanguageChange("ko")}
-                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${
-                        locale === "ko"
+                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ko"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                      }`}
+                        }`}
                     >
                       🇰🇷 {tCommon("languages.ko")}
                     </button>
@@ -420,7 +416,7 @@ const Header = () => {
                   alt="SEN SPA Da Nang"
                   width={200}
                   height={32}
-                  className="tw:h-20 tw:w-auto tw:object-contain"
+                  className="tw:h-25 md:tw:h-20 tw:w-auto tw:object-contain"
                 />
               </a>
             </div>
@@ -445,11 +441,10 @@ const Header = () => {
                         handleLanguageChange("en");
                         closeMobileLanguage();
                       }}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
-                        locale === "en"
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "en"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                      }`}
+                        }`}
                     >
                       🇺🇸 {tCommon("languages.en")}
                     </button>
@@ -458,11 +453,10 @@ const Header = () => {
                         handleLanguageChange("ja");
                         closeMobileLanguage();
                       }}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
-                        locale === "ja"
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ja"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                      }`}
+                        }`}
                     >
                       🇯🇵 {tCommon("languages.ja")}
                     </button>
@@ -471,11 +465,10 @@ const Header = () => {
                         handleLanguageChange("ko");
                         closeMobileLanguage();
                       }}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
-                        locale === "ko"
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ko"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                      }`}
+                        }`}
                     >
                       🇰🇷 {tCommon("languages.ko")}
                     </button>
