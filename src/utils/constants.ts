@@ -41,3 +41,36 @@ export const CONFIG = {
   MAIL: 'senspa.dn@gmail.com',
   MAP_LOCATION: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d30673.47556294559!2d108.1911715!3d16.0559157!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219ab5d9436d3%3A0x3a78e723f58964c7!2sSen%20Spa%20Danang!5e0!3m2!1svi!2s!4v1704420079487!5m2!1svi!2s'
 } as const
+
+export const ABOUT_US_IMAGES = [
+  {
+    id: 1,
+    src: "/images/galleries/gallery-4.jpg",
+    alt: "Spa Reception Area",
+    title: "Welcome to Orient Spa & Nails",
+  },
+  {
+    id: 2,
+    src: "/images/galleries/gallery-2.jpg",
+    alt: "Relaxation Lounge",
+    title: "Comfortable Relaxation Space",
+  },
+  {
+    id: 3,
+    src: "/images/galleries/gallery-3.jpg",
+    alt: "Treatment Room",
+    title: "Professional Treatment Rooms",
+  },
+  {
+    id: 4,
+    src: "/images/galleries/gallery-1.jpg",
+    alt: "Spa Entrance",
+    title: "Modern Spa Facilities",
+  },
+  {
+    id: 5,
+    src: "/images/galleries/gallery-5.jpg",
+    alt: "Spa Entrance",
+    title: "Modern Spa Facilities",
+  },
+];

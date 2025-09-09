@@ -6,15 +6,13 @@ import type { NamespaceKeys } from "use-intl";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
-import { ABOUT_US_IMAGES } from "@/constants/aboutUs";
-import { MAP_CONFIG } from "@/constants/map";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import Image from "next/image";
+import {ABOUT_US_IMAGES, CONFIG} from "@/utils/constants";
 
 const AboutUsContent = () => {
   const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
@@ -22,8 +20,7 @@ const AboutUsContent = () => {
 
   return (
     <>
-      <div className="tw:min-h-screen tw:bg-gray-50">
-        {/* Hero Section with Title */}
+      <div className="tw:min-h-screen">
         <div className="tw:bg-[var(--main-color)] tw:font-[MtdValkySemibold] tw:text-white tw:py-[30px]">
           <div className="tw:mx-auto tw:px-4 tw:text-center tw:text-4xl tw:md:text-[4.8rem] tw:uppercase">
             {tCommon("aboutUs.title")}
@@ -31,17 +28,25 @@ const AboutUsContent = () => {
         </div>
 
         <section className="tw:max-w-[1210px] tw:mx-auto">
-          <h2 className="tw:text-[2em] tw:font-bold tw:text-[var(--main-color)]">
+          <h2 className="tw:text-[3rem] tw:font-bold tw:text-center tw:pt-[2em]">
             {tCommon("aboutUs.welcomeTitle")}
           </h2>
 
-          <div className="tw:px-4 tw:py-16">
+          <div className="tw:px-4 tw:py-8">
+            <p className="tw:text-[16px] tw:leading-relaxed tw:text-gray-800 tw:text-justify tw:space-y-6 tw:mb-12">
+              {tCommon("aboutUs.introText")}
+            </p>
+
             <div className="tw:w-full">
-              {/* Main Slider */}
               <Swiper
                 spaceBetween={10}
                 navigation={true}
-                thumbs={{swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null}}
+                thumbs={{
+                  swiper:
+                    thumbsSwiper && !thumbsSwiper.destroyed
+                      ? thumbsSwiper
+                      : null,
+                }}
                 modules={[FreeMode, Navigation, Thumbs]}
                 className="tw:rounded-lg tw:overflow-hidden tw:md:h-[600px] tw:h-[40vh] tw:mb-4"
               >
@@ -50,8 +55,8 @@ const AboutUsContent = () => {
                     <Image
                       src={image.src}
                       alt={image.alt}
-                      width={400}
-                      height={400}
+                      width={1200}
+                      height={800}
                       className="tw:w-full tw:h-full tw:object-cover"
                     />
                   </SwiperSlide>
@@ -77,7 +82,7 @@ const AboutUsContent = () => {
                       <Image
                         src={image.src}
                         alt={image.alt}
-                        width={100}
+                        width={200}
                         height={200}
                         className="tw:w-full tw:h-full tw:object-cover tw:rounded tw:cursor-pointer tw:hover:opacity-100 tw:transition-all tw:duration-300 tw:border-2 tw:border-transparent"
                       />
@@ -116,96 +121,80 @@ const AboutUsContent = () => {
             </div>
           </div>
 
-          <div className="tw:px-4 tw:pb-16">
+          <div className="tw:px-4 tw:pb-4">
             <div className="tw:text-center tw:space-y-6">
               <p className="tw:text-[16px] tw:leading-relaxed tw:text-gray-800 tw:text-justify">
                 {tCommon("aboutUs.mission")}
               </p>
-
-              <div className="tw:mt-8">
-                <a
-                  href="/reservation"
-                  className="btn tw:bg-[var(--main-color)] tw:text-white tw:hover:bg-[var(--hover-color)] tw:text-xl tw:px-8 tw:py-3 tw:rounded-lg tw:inline-block tw:transition-colors"
-                >
-                  {tCommon("common.bookNow")}
-                </a>
-              </div>
             </div>
           </div>
 
-          <div className="tw:bg-white tw:py-16">
-            <div className="tw:max-w-6xl tw:mx-auto tw:px-4">
-              {/* Map */}
-              <div className="tw:h-[400px] tw:rounded-lg tw:overflow-hidden tw:shadow-lg tw:w-full tw:mb-8">
+          <div className="tw:bg-white tw:pt-8 tw:border-b tw:border-[#f7f3ef]">
+            <div className="tw:mx-auto tw:px-4">
+              <div className="tw:rounded-lg tw:overflow-hidden tw:shadow-lg tw:w-full tw:mb-8">
                 <iframe
-                  src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.1234567890123!2d${MAP_CONFIG.center.lng}!3d${MAP_CONFIG.center.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTbCsDAzJzE2LjAiTiAxMDjCsDEyJzA4LjAiRQ!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s`}
+                  src={CONFIG.MAP_LOCATION}
                   width="100%"
-                  height="100%"
+                  height="400"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Orient Spa & Nails Location"
                 />
               </div>
 
-              {/* Business Info - Horizontal Layout */}
-              <div className="tw:flex tw:flex-wrap tw:justify-center tw:items-center tw:gap-4 tw:md:tw:gap-8 tw:text-center tw:text-sm tw:text-gray-600">
-                <div className="tw:flex tw:items-center tw:gap-2 tw:whitespace-nowrap">
-                  <svg
-                    className="tw:w-4 tw:h-4 tw:text-[#9e2265] tw:flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="tw:text-xs tw:md:tw:text-sm">
-                  {tCommon("aboutUs.businessInfo.address")}
-                </span>
+              <div className="tw:flex tw:md:items-center tw:gap-4 tw:md:tw:gap-8 tw:text-gray-600 tw:flex-col tw:md:flex-row tw:md:justify-between tw:py-8">
+                <div>
                   <a
-                    href="#"
-                    className="tw:text-[#9e2265] tw:underline tw:text-xs tw:md:tw:text-sm"
+                    href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
+                    target="_blank"
+                    rel="nofollow"
                   >
-                    {tCommon("aboutUs.businessInfo.showOnMap")}
+                    <div className="tw:flex tw:items-center tw:gap-2">
+                      <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
+                        <i className="fa fa-map-marker tw:text-white tw:text-[17px]" />
+                      </div>
+                      <span
+                        className="hoverable-link"
+                        style={{ fontSize: "14px", color: "#333" }}
+                      >
+                        {CONFIG.SPA_LOCATION}
+                      </span>
+                    </div>
                   </a>
                 </div>
 
-                <div className="tw:flex tw:items-center tw:gap-2 tw:whitespace-nowrap">
-                  <svg
-                    className="tw:w-4 tw:h-4 tw:text-[#9e2265] tw:flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="tw:text-xs tw:md:tw:text-sm">
-                  {tCommon("aboutUs.businessInfo.hours")}
-                </span>
+                <div className="tw:flex tw:items-center tw:gap-2">
+                  <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
+                    <i className="fa fa-clock-o tw:text-white tw:text-[17px]" />
+                  </div>
+                  <span className="">
+                    {tCommon("aboutUs.businessInfo.hours")}
+                  </span>
                 </div>
 
-                <div className="tw:flex tw:items-center tw:gap-2 tw:whitespace-nowrap">
-                  <svg
-                    className="tw:w-4 tw:h-4 tw:text-[#9e2265] tw:flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                  </svg>
-                  <span className="tw:text-xs tw:md:tw:text-sm">
-                  {tCommon("aboutUs.businessInfo.enquiry")}{" "}
-                    {tCommon("aboutUs.businessInfo.phone")}
-                </span>
+                <div className="tw:flex tw:items-center tw:gap-2">
+                  <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
+                    <i className="fa fa-phone tw:text-white tw:text-[17px]" />
+                  </div>
+                  <span style={{ fontSize: "14px", color: "#333" }}>
+                    {tCommon('aboutUs.businessInfo.enquiry')} {" "}
+                    <a href={`tel:${CONFIG.PHONE_WITH_COUNTRY_CODE}`}>
+                      {CONFIG.PHONE_NUMBER}
+                    </a>
+                  </span>
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="tw:mt-14 tw:mb-18 tw:text-center">
+            <a
+              href="/reservation"
+              className="btn tw:bg-[var(--main-color)] tw:text-white tw:hover:bg-[var(--hover-color)] tw:text-2xl tw:md:text-3xl tw:md:w-[300px] tw:w-[220px] tw:h-[50px] tw:md:h-[60px]"
+            >
+              {tCommon("common.bookNow")}
+            </a>
           </div>
         </section>
       </div>
