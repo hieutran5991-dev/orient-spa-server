@@ -73,10 +73,7 @@ const Header = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element;
-      if (
-        isAboutDropdownOpen &&
-        !target.closest(".about-dropdown-container")
-      ) {
+      if (isAboutDropdownOpen && !target.closest(".about-dropdown-container")) {
         setIsAboutDropdownOpen(false);
       }
       if (
@@ -149,7 +146,8 @@ const Header = () => {
     <>
       {isPromotionVisible && (
         <div className="tw:bg-gradient-to-r tw:from-[#9e2265] tw:via-[#b12876] tw:to-[#c42e87] tw:text-white tw:py-4 tw:relative">
-          <div className="tw:text-center tw:px-4">
+          <div className="tw:text-center tw:pl-1 tw:pr-11 tw:md:px-4 tw:lg:px-6">
+            <strong style={{ color: "#f3f900" }}>HOT⚡</strong>
             <span className="tw:text-white tw:font-medium">
               {tCommon("promotion.happyHour")}
             </span>
@@ -207,10 +205,16 @@ const Header = () => {
                   <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
                     <i className="fa fa-map-marker tw:text-white tw:text-[17px]" />
                   </div>
-                  <span className="tw:hidden tw:md:block hoverable-link" style={{ fontSize: "14px", color: "#333" }}>
+                  <span
+                    className="tw:hidden tw:md:block hoverable-link"
+                    style={{ fontSize: "14px", color: "#333" }}
+                  >
                     {CONFIG.SPA_LOCATION}
                   </span>
-                  <span className="tw:block tw:md:hidden hoverable-link" style={{ fontSize: "14px", color: "#333" }}>
+                  <span
+                    className="tw:block tw:md:hidden hoverable-link"
+                    style={{ fontSize: "14px", color: "#333" }}
+                  >
                     {tCommon("footer.findUs")}
                   </span>
                 </div>
@@ -254,11 +258,11 @@ const Header = () => {
             </div>
 
             <nav className="tw:flex tw:items-start tw:md:h-[55%] tw:border-b tw:border-gray-200 tw:gap-8 tw:w-[40%] tw:justify-start">
-              <div 
+              <div
                 className="tw:h-full tw:relative tw:group header-nav-link about-dropdown-container"
                 onMouseLeave={handleAboutMouseLeave}
               >
-                <button 
+                <button
                   onClick={toggleAboutDropdown}
                   className="tw:flex tw:items-center tw:space-x-1 tw:text-gray-800 tw:hover:text-pink-600 tw:px-3 tw:py-2 tw:text-[1.125em] tw:uppercase tw:tracking-wide tw:transition-colors tw:duration-200 tw:cursor-pointer"
                 >
@@ -267,7 +271,9 @@ const Header = () => {
                   </span>
                   <svg
                     className={`tw:w-4 tw:h-4 tw:transition-transform tw:duration-200 ${
-                      isAboutDropdownOpen ? 'tw:rotate-180' : 'tw:group-hover:rotate-180'
+                      isAboutDropdownOpen
+                        ? "tw:rotate-180"
+                        : "tw:group-hover:rotate-180"
                     }`}
                     fill="none"
                     stroke="currentColor"
@@ -283,9 +289,9 @@ const Header = () => {
                 </button>
                 <div
                   className={`tw:absolute tw:top-full tw:left-0 tw:mt-1 tw:w-83 tw:bg-white tw:rounded-lg tw:shadow-lg tw:border tw:border-gray-200 tw:transition-all tw:duration-200 tw:z-50 ${
-                    isAboutDropdownOpen 
-                      ? 'tw:opacity-100 tw:visible' 
-                      : 'tw:opacity-0 tw:invisible tw:group-hover:opacity-100 tw:group-hover:visible'
+                    isAboutDropdownOpen
+                      ? "tw:opacity-100 tw:visible"
+                      : "tw:opacity-0 tw:invisible tw:group-hover:opacity-100 tw:group-hover:visible"
                   }`}
                 >
                   <div className="tw:py-2">
@@ -324,11 +330,11 @@ const Header = () => {
                 {tCommon("navigation.bookOnline")}
               </a>
 
-              <div 
+              <div
                 className="tw:h-full tw:relative tw:group header-nav-link language-dropdown-container"
                 onMouseLeave={handleLanguageMouseLeave}
               >
-                <button 
+                <button
                   onClick={toggleLanguageDropdown}
                   className="tw:flex tw:items-start tw:space-x-2 tw:text-gray-800 tw:hover:text-pink-600 tw:px-3 tw:py-2 tw:text-2xl tw:transition-colors tw:duration-200 tw:cursor-pointer"
                 >
@@ -338,11 +344,13 @@ const Header = () => {
                 </button>
 
                 {/* Language Dropdown */}
-                <div className={`tw:absolute tw:top-full tw:right-0 tw:mt-1 tw:w-80 tw:bg-white tw:rounded-lg tw:shadow-lg tw:border tw:border-gray-200 tw:transition-all tw:duration-200 tw:z-50 ${
-                  isLanguageDropdownOpen 
-                    ? 'tw:opacity-100 tw:visible' 
-                    : 'tw:opacity-0 tw:invisible tw:group-hover:opacity-100 tw:group-hover:visible'
-                }`}>
+                <div
+                  className={`tw:absolute tw:top-full tw:right-0 tw:mt-1 tw:w-80 tw:bg-white tw:rounded-lg tw:shadow-lg tw:border tw:border-gray-200 tw:transition-all tw:duration-200 tw:z-50 ${
+                    isLanguageDropdownOpen
+                      ? "tw:opacity-100 tw:visible"
+                      : "tw:opacity-0 tw:invisible tw:group-hover:opacity-100 tw:group-hover:visible"
+                  }`}
+                >
                   <div className="tw:py-2">
                     <button
                       onClick={() => handleLanguageChange("en")}
@@ -530,7 +538,9 @@ const Header = () => {
                 <a
                   href={`/${locale}/featured-products`}
                   onClick={closeMobileMenu}
-                  className={getMobileNavLinkClasses(`/${locale}/featured-products`)}
+                  className={getMobileNavLinkClasses(
+                    `/${locale}/featured-products`
+                  )}
                 >
                   {tCommon("navigation.featuredProducts")}
                 </a>
