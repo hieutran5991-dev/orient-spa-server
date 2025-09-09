@@ -302,10 +302,16 @@ const Header = () => {
                     </a>
                     <div className="tw:border-t tw:border-gray-100 tw:my-1"></div>
                     <a
-                      href="/gallery"
+                      href="/customer-moment"
                       className="tw:block tw:px-6 tw:py-4 tw:text-14 tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
                     >
                       {tCommon("navigation.aboutDropdown.ourHappyGuests")}
+                    </a>
+                    <a
+                        href="/gallery"
+                        className="tw:block tw:px-6 tw:py-4 tw:text-14 tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
+                    >
+                      {tCommon("navigation.aboutDropdown.gallery")}
                     </a>
                     <div className="tw:border-t tw:border-gray-100 tw:my-1"></div>
                     <a

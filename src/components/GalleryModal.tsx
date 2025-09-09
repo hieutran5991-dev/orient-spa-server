@@ -103,7 +103,8 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
     <div className="tw:fixed tw:inset-0 tw:bg-black tw:bg-opacity-90 tw:flex tw:justify-center tw:items-center tw:z-[99999] tw:flex-col">
       <button
         onClick={closeModal}
-        className="tw:absolute tw:top-4 tw:right-5 tw:bg-white tw:bg-opacity-90 tw:border-none tw:w-10 tw:h-10 tw:rounded-full tw:cursor-pointer tw:flex tw:items-center tw:justify-center tw:text-xl tw:text-gray-800 hover:tw:bg-white tw:z-[1001]"
+        className="tw:absolute tw:top-8 tw:right-6 tw:bg-white tw:bg-opacity-90 tw:border-none
+          tw:w-12 tw:h-12 tw:rounded-full tw:cursor-pointer tw:flex tw:items-center tw:justify-center tw:text-3xl tw:text-gray-800 tw:hover:text-[var(--main-color)] tw:z-[1001]"
         aria-label={t("modal.close")}
       >
         ×
@@ -133,7 +134,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
                   alt={image.alt}
                   width={800}
                   height={400}
-                  className="tw:max-w-full tw:object-cover tw:max-h-full tw:mx-auto"
+                  className="tw:max-w-full tw:object-contain tw:h-full tw:mx-auto"
                   priority={index === initialIndex}
                 />
               </SwiperSlide>
@@ -141,14 +142,14 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
           </Swiper>
 
           <button
-            className="swiper-button-prev-custom tw:absolute tw:top-1/2 tw:-translate-y-1/2 tw:left-5 tw:bg-white tw:bg-opacity-90 tw:border-none tw:w-12 tw:h-12 tw:rounded-full tw:cursor-pointer tw:flex tw:items-center tw:justify-center tw:text-2xl tw:text-gray-800 hover:tw:bg-white tw:z-[1001]"
+            className="swiper-button-prev-custom tw:absolute tw:top-1/2 tw:-translate-y-1/2 tw:left-5 tw:bg-white tw:bg-opacity-90 tw:border-none tw:w-12 tw:h-12 tw:rounded-full tw:cursor-pointer tw:flex tw:items-center tw:justify-center tw:text-4xl tw:text-gray-800 tw:hover:text-[var(--main-color)] tw:z-[1001]"
             aria-label={t("modal.previous")}
           >
             ‹
           </button>
 
           <button
-            className="swiper-button-next-custom tw:absolute tw:top-1/2 tw:-translate-y-1/2 tw:right-5 tw:bg-white tw:bg-opacity-90 tw:border-none tw:w-12 tw:h-12 tw:rounded-full tw:cursor-pointer tw:flex tw:items-center tw:justify-center tw:text-2xl tw:text-gray-800 hover:tw:bg-white tw:z-[1001]"
+            className="swiper-button-next-custom tw:absolute tw:top-1/2 tw:-translate-y-1/2 tw:right-5 tw:bg-white tw:bg-opacity-90 tw:border-none tw:w-12 tw:h-12 tw:rounded-full tw:cursor-pointer tw:flex tw:items-center tw:justify-center tw:text-4xl tw:text-gray-800 tw:hover:text-[var(--main-color)] tw:z-[1001]"
             aria-label={t("modal.next")}
           >
             ›
@@ -156,7 +157,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
         </div>
       </div>
 
-      <div className="tw:w-full tw:max-w-4xl tw:px-4">
+      <div className="tw:w-full tw:px-12 tw:max-w-[90%]">
         <Swiper
           modules={[Navigation, FreeMode]}
           spaceBetween={8}
@@ -168,7 +169,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
           className="thumbnail-swiper !tw:w-full"
         >
           {images.map((image, index) => (
-            <SwiperSlide key={`thumb-${image.id}`} className="tw:w-16 tw:h-16">
+            <SwiperSlide key={`thumb-${image.id}`} className="tw:md:w-36 tw:md:h-36">
               <button
                 onClick={() => handleThumbnailClick(index)}
                 className={`tw:w-full tw:h-full tw:border-2 tw:transition-all tw:cursor-pointer tw:rounded-md tw:overflow-hidden ${
@@ -182,9 +183,9 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
                 <Image
                   src={image.src}
                   alt={image.alt}
-                  width={64}
-                  height={64}
-                  className="tw:w-full tw:h-full tw:object-cover"
+                  width={120}
+                  height={120}
+                  className="tw:w-full tw:h-full tw:object-contain"
                 />
               </button>
             </SwiperSlide>

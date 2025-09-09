@@ -7,7 +7,6 @@ import type { NamespaceKeys } from "use-intl";
 import type { BookingData, Product } from "@/types/booking";
 import { formatPrice } from "@/utils/format";
 import { BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY } from "@/utils/constants";
-import Image from "next/image";
 import BookingSteps from "@/components/booking/BookingSteps";
 
 interface BookingContentProps {

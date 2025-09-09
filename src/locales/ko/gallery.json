@@ -1,11 +1,11 @@
 {
   "title": "고객들의 행복한 순간들",
+  "gallery": "갤러리",
   "subtitle": "센 스파 다낭에서 포착된 아름다운 순간들을 통해 소중한 고객들의 기쁨과 만족을 만나보세요",
   "viewAllPhotos": "모든 사진 보기",
   "modal": {
     "close": "닫기",
     "previous": "이전",
-    "next": "다음",
-    "imageCounter": "이미지 {current} / {total}"
+    "next": "다음"
   }
 }

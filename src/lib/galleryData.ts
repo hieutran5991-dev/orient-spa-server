@@ -9,28 +9,35 @@ export interface GalleryImage {
 export const galleryImages: GalleryImage[] = [
     {
         id: 1,
-        src: '/images/galleries/gallery-1.jpg',
+        src: '/images/galleries/gallery-4.jpg',
         alt: 'Happy guest at SEN SPA Da Nang',
         title: 'Relaxed Customer',
         description: 'A satisfied customer enjoying our premium spa treatment'
     },
     {
         id: 2,
-        src: '/images/galleries/gallery-2.jpg',
+        src: '/images/galleries/gallery-3.jpg',
         alt: 'Guest enjoying spa treatment',
         title: 'Spa Treatment',
         description: 'Professional spa treatment in our relaxing environment'
     },
     {
         id: 3,
-        src: '/images/galleries/gallery-3.jpg',
+        src: '/images/galleries/gallery-12.jpg',
+        alt: 'Relaxed guest after massage',
+        title: 'Post-Massage Bliss',
+        description: 'Complete relaxation after a therapeutic massage session'
+    },
+    {
+        id: 14,
+        src: '/images/galleries/gallery-lobby-3.jpg',
         alt: 'Relaxed guest after massage',
         title: 'Post-Massage Bliss',
         description: 'Complete relaxation after a therapeutic massage session'
     },
     {
         id: 4,
-        src: '/images/galleries/gallery-4.jpg',
+        src: '/images/galleries/gallery-1.jpg',
         alt: 'Guest with facial treatment',
         title: 'Facial Care',
         description: 'Revitalizing facial treatment for glowing skin'
@@ -65,7 +72,7 @@ export const galleryImages: GalleryImage[] = [
     },
     {
         id: 9,
-        src: '/images/galleries/gallery-9.jpg',
+        src: '/images/galleries/gallery-2.jpg',
         alt: 'Wellness services',
         title: 'Wellness Experience',
         description: 'Comprehensive wellness services for body and mind'
@@ -86,9 +93,26 @@ export const galleryImages: GalleryImage[] = [
     },
     {
         id: 12,
-        src: '/images/galleries/gallery-12.jpg',
+        src: '/images/galleries/gallery-9.jpg',
         alt: 'Premium spa experience',
         title: 'Luxury Experience',
         description: 'Premium spa services delivered with exceptional care and attention'
     },
+    {
+        id: 13,
+        src: '/images/galleries/gallery-13.jpg',
+        alt: 'Premium spa experience',
+        title: 'Luxury Experience',
+        description: 'Premium spa services delivered with exceptional care and attention'
+    },
+];
+
+export const customerMoments: GalleryImage[] = [
+    {
+        id: 1,
+        src: '/images/galleries/gallery-4.jpg',
+        alt: 'Happy guest at SEN SPA Da Nang',
+        title: 'Relaxed Customer',
+        description: 'A satisfied customer enjoying our premium spa treatment'
+    }
 ];
