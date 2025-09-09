@@ -14,7 +14,7 @@ const testimonials = [
     location: "USA",
     date: "May 2025",
     rating: 5,
-    image: "/images/fb/1.jpg",
+    image: "/images/fb/1.png",
     review:
       "This was such an amazing experience from start to finish. Massage quality is great with the perfect pressure applied. Very good location and there is a discount of 10% during mornings. Highly recommended for rejuvenation and Vietnamese hospitality",
     reviewLink: "https://maps.app.goo.gl/LMHV3hnKKM3Hh9VY9",
@@ -25,7 +25,7 @@ const testimonials = [
     location: "Seoul, South Korea",
     date: "May 2025",
     rating: 5,
-    image: "/images/fb/2.jpg",
+    image: "/images/fb/2.png",
     review:
       "I booked 90-minute body massages for me and my friends. It was lovely, and they released our tension, and we all managed to relax and even doze off during the session. We were greeted with warm towels to freshen up and brought to our room for the massage. The room is very clean and we had a wonderful time. The location is near Han market, which makes it attractive to pop by after your shopping. Price is attractive, too. I'm definitely recommending this place!",
     reviewLink: "https://maps.app.goo.gl/5WERh37HPrRgZDJZ9",
@@ -36,7 +36,7 @@ const testimonials = [
     location: "Philippines",
     date: "May 2025",
     rating: 5,
-    image: "/images/fb/3.jpg",
+    image: "/images/fb/3.png",
     review:
       "We went to this spa to relax while waiting for our evening flight in Da Nang. This is near our hotel and the ambiance looks really nice. The staffs are all nice, providing some tea and snacks while we wait and also after our massage. We feel so relaxed and great afterwards. I highly recommend this spa.",
     reviewLink: "https://maps.app.goo.gl/cmY3bjjSwLfyPcqc9",
@@ -47,7 +47,7 @@ const testimonials = [
     location: "Australia",
     date: "May 2025",
     rating: 5,
-    image: "/images/fb/4.jpg",
+    image: "/images/fb/4.png",
     review:
       'The best massage in Vietnam!! Super friendly, great English and was a beautiful facilities. Would highly recommend!! A++ (thank you to the therapist "Van" you were amazing)) :-)',
     reviewLink: "https://maps.app.goo.gl/zLVPDDhgXcDBaPh27",
@@ -58,7 +58,7 @@ const testimonials = [
     location: "Hamburg, Germany",
     date: "February 2025",
     rating: 5,
-    image: "/images/fb/5.jpg",
+    image: "/images/fb/5.png",
     review:
       "Wonderful Experience at Sen Spa! I had the Back and Shoulder Therapy at Sen Spa in Da Nang, and it was amazing! The staff were warm and professional, and the atmosphere was incredibly relaxing. The massage was perfect—great pressure, skilled techniques, and total relaxation. A lovely touch was the delicious tea served before and after the treatment. I left feeling refreshed and completely tension-free. Highly recommend! I will definitely be back.",
     reviewLink: "https://maps.app.goo.gl/choVqM7vZFqVufLb8",
@@ -69,7 +69,7 @@ const testimonials = [
     location: "Hong Kong",
     date: "March 2025",
     rating: 5,
-    image: "/images/fb/6.jpg",
+    image: "/images/fb/6.png",
     review:
       "The experience was amazing! Therapist was great and the foot massage we had was refreshing! Highly recommend to those we want to relax after a whole day walk.",
     reviewLink: "https://maps.app.goo.gl/rAhcbrVqRH9m5yis6",
@@ -80,7 +80,7 @@ const testimonials = [
     location: "Peru",
     date: "March 2025",
     rating: 5,
-    image: "/images/fb/7.jpg",
+    image: "/images/fb/7.png",
     review:
       "It was such a nice time spent there... I was warmly welcome and could think what I need and want with a nice tea in my hand. Then the lady who did the massage was paying attention to everything I've noted at my massage request and the pressure was just perfect! I needed to feel so cared for.. and after the massage I'm brand new person 😁",
     reviewLink: "https://maps.app.goo.gl/bYv3C9uhMHtk3ff39",
@@ -91,7 +91,7 @@ const testimonials = [
     location: "United Kingdom",
     date: "March 2025",
     rating: 5,
-    image: "/images/fb/8.jpg",
+    image: "/images/fb/8.png",
     review:
       "What a great spa experience at Da Nang. Friendly and accommodating receptionist. The massage is just so comfortable. I really enjoyed it a lot.",
     reviewLink: "https://maps.app.goo.gl/CahN7DkRvb1RL9Rp6",
@@ -102,7 +102,7 @@ const testimonials = [
     location: "Australia",
     date: "December 2024",
     rating: 5,
-    image: "/images/fb/9.jpg",
+    image: "/images/fb/9.png",
     review:
       "The ladies at the front desk were very attentive and helpful! Booking our massage packages over the phone and through WhatsApp was easy. They responded very promptly and also spoke fluent English. The place was very clean and relaxing. Massage was lovely and the massage therapists checked in frequently to make sure we were happy with the pressure. We felt very comfortable and enjoyed coming here 😊",
     reviewLink: "https://maps.app.goo.gl/AaBA4Qq6nAPpWVXn8",
@@ -113,7 +113,7 @@ const testimonials = [
     location: "United Kingdom",
     date: "December 2024",
     rating: 5,
-    image: "/images/fb/10.jpg",
+    image: "/images/fb/10.png",
     review:
       "Really enjoyed the experience. Very friendly and warm reception served with tea and cookies. Later the 30 minutes head and foot massage were heavenly after a long tiring day. Prices were justified with the quality of service we get there. Highly recommend.",
     reviewLink: "https://maps.app.goo.gl/sY4Uq1BbiYp9txfx6",

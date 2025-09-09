@@ -49,9 +49,8 @@ const FeaturedProducts = ({ products }: { products: Product[] }) => {
                     <div
                       className="s4_a"
                       style={{
-                        backgroundImage: `url(${
-                          featuredProduct.image_url || "/images/logo.jpeg"
-                        })`,
+                        backgroundImage: `url(${featuredProduct.image_url || "/images/logo.jpeg"
+                          })`,
                       }}
                     >
                       {/* <Image
@@ -76,7 +75,7 @@ const FeaturedProducts = ({ products }: { products: Product[] }) => {
                     <div className="s2_b">
                       <h3 className="s2_t">
                         {/* <Link href={`/featured-products`}> */}
-                          {featuredProduct.name}
+                        {featuredProduct.name}
                         {/* </Link> */}
                       </h3>
                       <ul className="s2_c">
@@ -106,9 +105,9 @@ const FeaturedProducts = ({ products }: { products: Product[] }) => {
             </Swiper>
           </div>
           <div className="s6_f fl fl-2">
-            <Link href="/services-prices" className="btn btn-2 s6_fa">
+            <a href="/services-prices" className="btn btn-2 s6_fa">
               {t("featuredProducts.viewSpaMenu")}
-            </Link>
+            </a>
           </div>
         </div>
       </div>
