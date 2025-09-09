@@ -9,7 +9,7 @@ export default async function FeaturedProductsPage() {
 
   return (
     <>
-      <Layout>
+      <Layout spaLocations={spaLocationRes?.data || []}>
         <FeaturedProductsContent
           spaLocations={spaLocationRes?.data || []}
           products={productRes?.data || []}
