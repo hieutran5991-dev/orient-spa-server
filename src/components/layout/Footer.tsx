@@ -237,6 +237,21 @@ const Footer = ({ spaLocations }: FooterProps) => {
               </span>
             </a>
             <a
+              href="https://line.me/ti/p/lgR6MK5ug3"
+              rel="nofollow"
+              target="_blank"
+              className="sP_i"
+            >
+              <span>
+                <Image
+                  src="/fonts/line-logo.svg"
+                  alt="Zalo"
+                  width={24}
+                  height={24}
+                />
+              </span>
+            </a>
+            <a
               href={`https://zalo.me/${CONFIG.PHONE_NUMBER}`}
               rel="nofollow"
               target="_blank"
