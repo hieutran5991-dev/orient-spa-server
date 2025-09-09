@@ -122,7 +122,7 @@ const FeaturedProductsContent = ({
                 <div className="tw:mt-8 tw:mb-5 tw:flex tw:justify-center">
                   <button
                     onClick={() => handleBookNow(product)}
-                    className="tw:block tw:w-1/2 tw:bg-[var(--main-color)] tw:hover:bg-[var(--hover-color)] tw:text-white tw:px-6 tw:py-4 tw:uppercase tw:text-2xl tw:tracking-wide tw:text-center"
+                    className="tw:block tw:w-1/2 tw:bg-[var(--main-color)] tw:hover:bg-[var(--hover-color)] tw:cursor-pointer tw:text-white tw:px-6 tw:py-4 tw:uppercase tw:text-2xl tw:tracking-wide tw:text-center"
                   >
                     {t("bookNow")}
                   </button>

@@ -147,7 +147,7 @@ const Header = () => {
         <div className="tw:bg-gradient-to-r tw:from-[#9e2265] tw:via-[#b12876] tw:to-[#c42e87] tw:text-white tw:py-4 tw:relative">
           <div className="tw:text-center tw:pl-1 tw:pr-11 tw:md:px-4 tw:lg:px-6">
             <strong style={{ color: "#f3f900" }}>HOT⚡</strong>
-            <span className="tw:text-white tw:font-medium">
+            <span className="tw:text-white tw:font-medium">{" "}
               {tCommon("promotion.happyHour")}
             </span>
           </div>
