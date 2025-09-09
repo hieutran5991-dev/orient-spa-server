@@ -2,7 +2,7 @@
   "language": "Language",
   "navigation": {
     "home": "Home",
-    "services": "Services & Prices",
+    "services": "Menu & Prices",
     "featuredProducts": "Featured Products",
     "booking": "Booking",
     "reservation": "Reservation",
@@ -56,19 +56,11 @@
     }
   },
   "promotion": {
-    "happyHour": "10% off for happy hour from 10am - 13pm"
+    "happyHour": "Get 10% off instantly when you book online!"
   },
-  "aboutUs": {
-    "title": "About Us",
-    "welcomeTitle": "Orient Spa (Cathedral Branch)",
-    "mission": "As the very first Orient Spa, our Cathedral branch was established in 2016, featuring an oriental space with a truly nostalgic and peaceful ambiance. After soaking in the vibrant energy of Hanoi's 36 bustling streets or capturing the coolest photos with the massive Hanoi Cathedral, step into our spa and instantly feel the slow pace of life with utmost tranquility.",
-    "businessInfo": {
-      "address": "No 18 Bao Khanh, Hoan Kiem, Hanoi",
-      "phone": "(+84) 968 903 499",
-      "hours": "Open Daily: 10:00am - 10:00pm",
-      "enquiry": "Enquiry by phone or WhatsApp/Kakao:",
-      "showOnMap": "Show on map"
-    }
+  "testimonials": {
+    "title": "What Guests are saying...",
+    "description": "We hope you enjoy reading our guests' reviews as much as ours. To all of us at SEN SPA Da Nang, this means more than anything else."
   },
   "languages": {
     "en": "English",

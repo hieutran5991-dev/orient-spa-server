@@ -1,9 +1,8 @@
 {
-  "language": "언어",
   "navigation": {
     "home": "홈",
-    "services": "서비스 및 가격",
-    "featuredProducts": "주요 제품",
+    "services": "메뉴 & 가격",
+    "featuredProducts": "추천 상품",
     "booking": "예약",
     "reservation": "예약",
     "contact": "연락처",
@@ -51,7 +50,7 @@
     }
   },
   "promotion": {
-    "happyHour": "해피아워 오전 10시 - 오후 1시 10% 할인"
+    "happyHour": "온라인 예약시 즉시 10% 할인!"
   },
   "aboutUs": {
     "title": "회사 소개",
@@ -65,6 +64,10 @@
       "enquiry": "전화 또는 왓츠앱/카카오 문의:",
       "showOnMap": "지도에서 보기"
     }
+  },
+  "testimonials": {
+    "title": "고객 후기...",
+    "description": "저희와 마찬가지로 고객님들의 리뷰를 즐겁게 읽어보시길 바랍니다. SEN SPA Da Nang의 저희 모든 직원에게 이것은 무엇보다도 소중한 일입니다."
   },
   "languages": {
     "en": "English",

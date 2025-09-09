@@ -4,6 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
+import { useTranslations } from "next-intl";
+import type { NamespaceKeys } from "use-intl";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -145,14 +147,15 @@ const swiperConfig = {
 };
 
 const People: React.FC = () => {
+  const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
+
   return (
     <div className="s sH s5">
       <div className="container">
         <div className="s_h">
-          <h2 className="s_t">What Guests are saying...</h2>
+          <h2 className="s_t">{tCommon("testimonials.title")}</h2>
           <p className="s_p">
-            We hope you enjoy reading our guests&apos; reviews as much as ours.
-            To all of us at SEN SPA Da Nang, this means more than anything else.
+            {tCommon("testimonials.description")}
           </p>
         </div>
 

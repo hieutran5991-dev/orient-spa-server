@@ -18,12 +18,12 @@ const Footer = ({ spaLocations }: FooterProps) => {
 
   useEffect(() => {
     const handleScrollToTop = () => {
-      const toTopButton = document.getElementById('toTop');
+      const toTopButton = document.getElementById("toTop");
       if (toTopButton) {
-        toTopButton.addEventListener('click', function() {
+        toTopButton.addEventListener("click", function () {
           window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: "smooth",
           });
         });
       }
@@ -99,7 +99,10 @@ const Footer = ({ spaLocations }: FooterProps) => {
                           ></i>
                         </div>
                         <span style={{ fontSize: "14px", color: "#333" }}>
-                          <Link href={`tel:${location.phone}`} className="hoverable-link">
+                          <Link
+                            href={`tel:${location.phone}`}
+                            className="hoverable-link"
+                          >
                             {location.phone}
                           </Link>
                         </span>
@@ -115,17 +118,26 @@ const Footer = ({ spaLocations }: FooterProps) => {
                 <div className="f_c">
                   <ul className="f_n fl">
                     <li className="tw:w-[50%]">
-                      <a href={`/${locale}/page/about-us`} className="hoverable-link">
+                      <a
+                        href={`/${locale}/page/about-us`}
+                        className="hoverable-link"
+                      >
                         {tCommon("footer.navigation.aboutUs")}
                       </a>
                     </li>
                     <li className="tw:w-[50%]">
-                      <a href={`/${locale}/services-prices`} className="hoverable-link">
+                      <a
+                        href={`/${locale}/services-prices`}
+                        className="hoverable-link"
+                      >
                         {tCommon("footer.navigation.spaMenu")}
                       </a>
                     </li>
                     <li className="tw:w-[50%]">
-                      <a href={`/${locale}/featured-products`} className="hoverable-link">
+                      <a
+                        href={`/${locale}/featured-products`}
+                        className="hoverable-link"
+                      >
                         {tCommon("footer.navigation.featuredProducts")}
                       </a>
                     </li>
@@ -135,7 +147,10 @@ const Footer = ({ spaLocations }: FooterProps) => {
                       </a>
                     </li>
                     <li className="tw:w-[50%]">
-                      <a href={`/${locale}/reservation`} className="hoverable-link">
+                      <a
+                        href={`/${locale}/reservation`}
+                        className="hoverable-link"
+                      >
                         {tCommon("footer.navigation.bookOnline")}
                       </a>
                     </li>
@@ -207,7 +222,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
               </span>
             </a>
             <a
-              href={`'https://wa.me/${CONFIG.PHONE_NUMBER}`}
+              href={`https://wa.me/${CONFIG.PHONE_NUMBER}`}
               rel="nofollow"
               target="_blank"
               className="sP_i"

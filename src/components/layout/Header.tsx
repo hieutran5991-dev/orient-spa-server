@@ -36,8 +36,9 @@ const Header = () => {
     const activeClasses = "header-nav-link-active tw:font-semibold";
     const inactiveClasses = "tw:text-gray-900 header-nav-link-active";
 
-    return `${baseClasses} ${isActivePath(path) ? activeClasses : inactiveClasses
-      }`;
+    return `${baseClasses} ${
+      isActivePath(path) ? activeClasses : inactiveClasses
+    }`;
   };
 
   useEffect(() => {
@@ -119,7 +120,6 @@ const Header = () => {
 
   const handleAboutMouseLeave = () => {
     if (isAboutDropdownOpen) {
-      // Add a small delay to prevent flickering when moving between button and dropdown
       setTimeout(() => {
         setIsAboutDropdownOpen(false);
       }, 100);
@@ -134,7 +134,6 @@ const Header = () => {
 
   const handleLanguageMouseLeave = () => {
     if (isLanguageDropdownOpen) {
-      // Add a small delay to prevent flickering when moving between button and dropdown
       setTimeout(() => {
         setIsLanguageDropdownOpen(false);
       }, 100);
@@ -147,7 +146,8 @@ const Header = () => {
         <div className="tw:bg-gradient-to-r tw:from-[#9e2265] tw:via-[#b12876] tw:to-[#c42e87] tw:text-white tw:py-4 tw:relative">
           <div className="tw:text-center tw:pl-1 tw:pr-11 tw:md:px-4 tw:lg:px-6">
             <strong style={{ color: "#f3f900" }}>HOT⚡</strong>
-            <span className="tw:text-white tw:font-medium">{" "}
+            <span className="tw:text-white tw:font-medium">
+              {" "}
               {tCommon("promotion.happyHour")}
             </span>
           </div>
@@ -287,7 +287,7 @@ const Header = () => {
                   </svg>
                 </button>
                 <div
-                  className={`tw:absolute tw:top-full tw:left-0 tw:mt-1 tw:w-83 tw:bg-white tw:rounded-lg tw:shadow-lg tw:border tw:border-gray-200 tw:transition-all tw:duration-200 tw:z-50 ${
+                  className={`tw:absolute tw:top-full tw:left-0 tw:w-83 tw:bg-white tw:shadow-lg tw:border tw:border-gray-200 tw:transition-all tw:duration-200 tw:z-50 ${
                     isAboutDropdownOpen
                       ? "tw:opacity-100 tw:visible"
                       : "tw:opacity-0 tw:invisible tw:group-hover:opacity-100 tw:group-hover:visible"
@@ -353,28 +353,31 @@ const Header = () => {
                   <div className="tw:py-2">
                     <button
                       onClick={() => handleLanguageChange("en")}
-                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "en"
+                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "en"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                        }`}
+                      }`}
                     >
                       🇺🇸 {tCommon("languages.en")}
                     </button>
                     <button
                       onClick={() => handleLanguageChange("ja")}
-                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ja"
+                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "ja"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                        }`}
+                      }`}
                     >
                       🇯🇵 {tCommon("languages.ja")}
                     </button>
                     <button
                       onClick={() => handleLanguageChange("ko")}
-                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ko"
+                      className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "ko"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                        }`}
+                      }`}
                     >
                       🇰🇷 {tCommon("languages.ko")}
                     </button>
@@ -441,10 +444,11 @@ const Header = () => {
                         handleLanguageChange("en");
                         closeMobileLanguage();
                       }}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "en"
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "en"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                        }`}
+                      }`}
                     >
                       🇺🇸 {tCommon("languages.en")}
                     </button>
@@ -453,10 +457,11 @@ const Header = () => {
                         handleLanguageChange("ja");
                         closeMobileLanguage();
                       }}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ja"
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "ja"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                        }`}
+                      }`}
                     >
                       🇯🇵 {tCommon("languages.ja")}
                     </button>
@@ -465,10 +470,11 @@ const Header = () => {
                         handleLanguageChange("ko");
                         closeMobileLanguage();
                       }}
-                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${locale === "ko"
+                      className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
+                        locale === "ko"
                           ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
-                        }`}
+                      }`}
                     >
                       🇰🇷 {tCommon("languages.ko")}
                     </button>

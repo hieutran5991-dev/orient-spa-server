@@ -2,7 +2,7 @@
   "language": "言語",
   "navigation": {
     "home": "ホーム",
-    "services": "サービス・料金",
+    "services": "メニュー・料金",
     "featuredProducts": "注目の製品",
     "booking": "予約",
     "reservation": "予約",
@@ -56,7 +56,7 @@
     }
   },
   "promotion": {
-    "happyHour": "ハッピーアワー午前10時〜午後1時は10％オフ"
+    "happyHour": "オンライン予約で今すぐ10%オフ！"
   },
   "aboutUs": {
     "title": "私たちについて",
@@ -70,6 +70,10 @@
       "enquiry": "電話またはWhatsApp/Kakaoでのお問い合わせ：",
       "showOnMap": "地図で表示"
     }
+  },
+  "testimonials": {
+    "title": "お客様の声...",
+    "description": "お客様のレビューを私たちと同じようにお楽しみいただけることを願っています。SEN SPA Da Nangの私たち全員にとって、これは何よりも重要なことです。"
   },
   "languages": {
     "en": "English",
