@@ -76,13 +76,10 @@ const ContactContent = () => {
         </ul>
       </div>
 
-      <div className="s sH a5">
+      <div className="s sH">
         <div className="container">
           <div className="a5_m">
             <div className="a5_h text-center">
-              <div className="a5_a">
-                <i className="fa fa-envelope-o"></i>
-              </div>
               <div className="a5_c">
                 <h2 className="s_t2">{t("emailSection.title")}</h2>
                 <p className="s_p">{t("emailSection.description")}</p>
@@ -227,9 +224,6 @@ const ContactContent = () => {
         <div className="container">
           <div className="a5_m">
             <div className="a5_h text-center">
-              <div className="a5_a">
-                <i className="fa fa-phone"></i>
-              </div>
               <div className="a5_c">
                 <h2 className="s_t2">{t("phoneSection.title")}</h2>
                 <p className="s_p">{t("phoneSection.description")}</p>

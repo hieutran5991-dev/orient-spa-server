@@ -1798,13 +1798,11 @@ select.form-control {
 }
 
 .sH {
-  padding-top: 38px;
   padding-bottom: 38px;
 }
 
 @media (max-width: 991px) {
   .sH {
-    padding-top: 28px;
     padding-bottom: 28px;
   }
 }
@@ -2699,7 +2697,7 @@ select.form-control {
 
 @media (max-width: 991px) {
   .a3 {
-    padding-top: 11px;
+    padding-top: 25px;
     padding-bottom: 10px;
   }
 }
@@ -2734,21 +2732,11 @@ select.form-control {
   content: '\f003';
 }
 
-.a5 {
-  padding-top: 45px;
-}
-
-@media (max-width: 991px) {
-  .a5 {
-    padding-top: 35px;
-  }
-}
-
 .a5_h {
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
 }
 
 @media (max-width: 991px) {
@@ -2918,7 +2906,7 @@ select.form-control {
 }
 
 .a6 {
-  padding-bottom: 90px;
+  padding-bottom: 25px;
 }
 
 .a6_b {
