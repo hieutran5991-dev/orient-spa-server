@@ -1177,7 +1177,7 @@ select.form-control {
   background-color: #eadcc6;
 }
 
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
   .sP_i:nth-child(5):after {
     content: attr(data-title);
     font-weight: 600;
@@ -1196,7 +1196,7 @@ select.form-control {
     padding-right: 42px;
     box-shadow: 0 0 12px rgba(153, 153, 153, 0.7);
   }
-}
+} */
 
 .sP_i span {
   z-index: 9;
