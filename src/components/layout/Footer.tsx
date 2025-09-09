@@ -99,12 +99,12 @@ const Footer = ({ spaLocations }: FooterProps) => {
                           ></i>
                         </div>
                         <span style={{ fontSize: "14px", color: "#333" }}>
-                          <Link
+                          <a
                             href={`tel:${location.phone}`}
                             className="hoverable-link"
                           >
                             {location.phone}
-                          </Link>
+                          </a>
                         </span>
                       </div>
                     </div>
@@ -267,7 +267,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
               </span>
             </a>
             <a
-              href={`tel:${CONFIG.PHONE_NUMBER}`}
+              href={`tel:${CONFIG.PHONE_WITH_COUNTRY_CODE}`}
               className="sP_i tw:after:hidden"
             >
               <span>

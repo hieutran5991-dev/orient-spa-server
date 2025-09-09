@@ -37,6 +37,7 @@ export const CONFIG = {
   SPA_NAME: 'SEN SPA DA NANG',
   SPA_LOCATION: '21 Thai Phien Street, Phuoc Ninh Ward, Hai Chau District, Da Nang',
   PHONE_NUMBER: '0976591515',
+  PHONE_WITH_COUNTRY_CODE: '+84976591515',
   MAIL: 'senspa.dn@gmail.com',
   MAP_LOCATION: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d30673.47556294559!2d108.1911715!3d16.0559157!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219ab5d9436d3%3A0x3a78e723f58964c7!2sSen%20Spa%20Danang!5e0!3m2!1svi!2s!4v1704420079487!5m2!1svi!2s'
 } as const

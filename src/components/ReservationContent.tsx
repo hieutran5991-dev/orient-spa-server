@@ -52,7 +52,7 @@ const ReservationContent = ({ spaLocations }: ReservationContentProps) => {
                         </span>
                       </a>
                     </div>
-                    <a className="a6_p" href={`tel:${CONFIG.PHONE_NUMBER}`}>
+                    <a className="a6_p" href={`tel:${CONFIG.PHONE_WITH_COUNTRY_CODE}`}>
                       <i className="fa fa-phone"></i>{" "}
                       {t("contactByPhone.locations.spa.phone")}
                     </a>

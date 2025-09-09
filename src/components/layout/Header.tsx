@@ -181,7 +181,7 @@ const Header = () => {
                 <i className="fa fa-phone tw:text-white tw:text-[17px]" />
               </div>
               <span style={{ fontSize: "14px", color: "#333" }}>
-                <a href={`tel:${CONFIG.PHONE_NUMBER}`}>{CONFIG.PHONE_NUMBER}</a>
+                <a href={`tel:${CONFIG.PHONE_WITH_COUNTRY_CODE}`}>{CONFIG.PHONE_NUMBER}</a>
               </span>
             </div>
 
