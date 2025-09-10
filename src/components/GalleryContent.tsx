@@ -12,7 +12,7 @@ interface GalleryContentProps {
     isGallery?: boolean;
 }
 
-const GalleryContent: React.FC = ({ images, isGallery }: GalleryContentProps) => {
+const GalleryContent: React.FC<GalleryContentProps> = ({ images, isGallery }) => {
     const t = useTranslations("gallery" as NamespaceKeys<string, string>);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -33,14 +33,11 @@ const GalleryContent: React.FC = ({ images, isGallery }: GalleryContentProps) =>
 
     return (
         <>
-            <div className="tw:min-h-screen tw:font-sans tw:p-5">
+            <div className="tw:min-h-screen tw:font-sans">
+                <div className="title-container text-center">
+                    <h1 className="title-text">{isGallery ? t("gallery") : t("title")}</h1>
+                </div>
                 <div className="tw:max-w-[1210px] tw:mx-auto tw:bg-white tw:rounded-lg tw:p-8">
-                    <div className="tw:text-center tw:mb-10">
-                        <h1 className="tw:text-4xl tw:md:text-5xl tw:lg:text-6xl tw:text-gray-800 tw:font-bold">
-                            {isGallery ? t("gallery") : t("title")}
-                        </h1>
-                    </div>
-
                     <div
                         className="tw:grid tw:grid-cols-1 tw:sm:grid-cols-2 tw:lg:grid-cols-3 tw:xl:grid-cols-4 tw:gap-5">
                         {images.map((image, index) => (

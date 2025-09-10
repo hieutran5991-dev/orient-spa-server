@@ -16,9 +16,14 @@ const Header = () => {
   const [isPromotionVisible, setIsPromotionVisible] = useState(true);
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const [isMobileAboutSubmenuOpen, setIsMobileAboutSubmenuOpen] = useState(['/about-us', '/customer-moment', '/gallery', '/blogs'].includes(pathname));
 
   const isActivePath = (path: string) => {
     if (!pathname) return false;
+    if (path === "/about-us") {
+      return ["/about-us", "/customer-moment", "/gallery", "/blogs"].includes(pathname);
+    }
+
     return (pathname.replace(`/${locale}`, "") || "/") === path;
   };
 
@@ -30,6 +35,12 @@ const Header = () => {
     return `${baseClasses} ${isActivePath(path) ? activeClasses : ""}`;
   };
 
+  const getDropdownActiveClasses = (path: string) => {
+    const baseClasses = "tw:block tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150";
+    const activeClasses = "tw:bg-pink-50 tw:text-[var(--main-color)] tw:font-medium";
+    return `${baseClasses} ${(pathname.replace(`/${locale}`, "") || "/") === path ? activeClasses : "tw:text-gray-700 tw:hover:bg-gray-50"}`;
+  };
+
   const getMobileNavLinkClasses = (path: string) => {
     const baseClasses =
       "tw:block tw:text-[1.125em] tw:font-medium tw:transition-colors tw:duration-200 tw:uppercase tw:tracking-wide";
@@ -38,6 +49,17 @@ const Header = () => {
 
     return `${baseClasses} ${
       isActivePath(path) ? activeClasses : inactiveClasses
+    }`;
+  };
+
+  const getMobileNavSubmenuLinkClasses = (path: string) => {
+    const baseClasses =
+      "tw:block tw:text-[1.025em] tw:transition-colors tw:duration-200 tw:tracking-wide";
+    const activeClasses = "tw:text-[var(--main-color)] tw:font-semibold";
+    const inactiveClasses = "tw:text-gray-900";
+
+    return `${baseClasses} ${
+      (pathname.replace(`/${locale}`, "") || "/") === path ? activeClasses : inactiveClasses
     }`;
   };
 
@@ -102,6 +124,7 @@ const Header = () => {
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
+    setIsMobileAboutSubmenuOpen(false);
   };
 
   const toggleMobileLanguage = () => {
@@ -110,6 +133,10 @@ const Header = () => {
 
   const closeMobileLanguage = () => {
     setIsMobileLanguageOpen(false);
+  };
+
+  const toggleMobileAboutSubmenu = () => {
+    setIsMobileAboutSubmenuOpen(!isMobileAboutSubmenuOpen);
   };
 
   const toggleAboutDropdown = () => {
@@ -258,14 +285,14 @@ const Header = () => {
 
             <nav className="tw:flex tw:items-start tw:md:h-[55%] tw:border-b tw:border-gray-200 tw:gap-8 tw:w-[40%] tw:justify-start">
               <div
-                className="tw:h-full tw:relative tw:group header-nav-link about-dropdown-container"
+                className={`tw:h-full tw:relative tw:group about-dropdown-container ${isActivePath('/about-us') ? 'header-nav-link-active' : 'header-nav-link'}`}
                 onMouseLeave={handleAboutMouseLeave}
               >
                 <button
                   onClick={toggleAboutDropdown}
                   className="tw:flex tw:items-center tw:space-x-1 tw:text-gray-800 tw:hover:text-pink-600 tw:px-3 tw:py-2 tw:text-[1.125em] tw:uppercase tw:tracking-wide tw:transition-colors tw:duration-200 tw:cursor-pointer"
                 >
-                  <span className="tw:self-start">
+                  <span className={`tw:self-start ${isActivePath('/about-us') ? 'tw:text-[var(--main-color)]' : ''}`}>
                     {tCommon("navigation.aboutUs")}
                   </span>
                   <svg
@@ -273,7 +300,7 @@ const Header = () => {
                       isAboutDropdownOpen
                         ? "tw:rotate-180"
                         : "tw:group-hover:rotate-180"
-                    }`}
+                    } ${isActivePath('/about-us') ? 'tw:text-[var(--main-color)]' : ''}`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -287,38 +314,36 @@ const Header = () => {
                   </svg>
                 </button>
                 <div
-                  className={`tw:absolute tw:top-full tw:left-0 tw:w-83 tw:bg-white tw:shadow-lg tw:border tw:border-gray-200 tw:transition-all tw:duration-200 tw:z-50 ${
+                  className={`tw:absolute tw:top-full tw:py-2 tw:left-0 tw:w-83 tw:bg-white tw:shadow-lg tw:border tw:border-gray-200 tw:transition-all tw:duration-200 tw:z-50 ${
                     isAboutDropdownOpen
                       ? "tw:opacity-100 tw:visible"
                       : "tw:opacity-0 tw:invisible tw:group-hover:opacity-100 tw:group-hover:visible"
                   }`}
                 >
-                  <div className="tw:py-2 tw:px-2">
-                    <a
-                      href="/about-us"
-                      className="tw:block tw:px-6 tw:py-4 tw:text-14 tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
-                    >
-                      {tCommon("navigation.aboutDropdown.aboutSpa")}
-                    </a>
-                    <a
-                      href="/customer-moment"
-                      className="tw:block tw:px-6 tw:py-4 tw:text-14 tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
-                    >
-                      {tCommon("navigation.aboutDropdown.ourHappyGuests")}
-                    </a>
-                    <a
-                        href="/gallery"
-                        className="tw:block tw:px-6 tw:py-4 tw:text-14 tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
-                    >
-                      {tCommon("navigation.aboutDropdown.gallery")}
-                    </a>
-                    <a
-                      href={`/${locale}/blogs`}
-                      className="tw:block tw:px-6 tw:py-4 tw:text-14 tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
-                    >
-                      {tCommon("navigation.aboutDropdown.blogs")}
-                    </a>
-                  </div>
+                  <a
+                    href="/about-us"
+                    className={getDropdownActiveClasses('/about-us')}
+                  >
+                    {tCommon("navigation.aboutDropdown.aboutSpa")}
+                  </a>
+                  <a
+                    href="/customer-moment"
+                    className={getDropdownActiveClasses('/customer-moment')}
+                  >
+                    {tCommon("navigation.aboutDropdown.ourHappyGuests")}
+                  </a>
+                  <a
+                    href="/gallery"
+                    className={getDropdownActiveClasses('/gallery')}
+                  >
+                    {tCommon("navigation.aboutDropdown.gallery")}
+                  </a>
+                  <a
+                    href="/blogs"
+                    className={getDropdownActiveClasses('/blogs')}
+                  >
+                    {tCommon("navigation.aboutDropdown.blogs")}
+                  </a>
                 </div>
               </div>
 
@@ -358,7 +383,7 @@ const Header = () => {
                       onClick={() => handleLanguageChange("en")}
                       className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${
                         locale === "en"
-                          ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
+                          ? "tw:bg-pink-50 tw:text-[var(--main-color)] tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
                       }`}
                     >
@@ -368,7 +393,7 @@ const Header = () => {
                       onClick={() => handleLanguageChange("ja")}
                       className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${
                         locale === "ja"
-                          ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
+                          ? "tw:bg-pink-50 tw:text-[var(--main-color)] tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
                       }`}
                     >
@@ -378,7 +403,7 @@ const Header = () => {
                       onClick={() => handleLanguageChange("ko")}
                       className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${
                         locale === "ko"
-                          ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
+                          ? "tw:bg-pink-50 tw:text-[var(--main-color)] tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
                       }`}
                     >
@@ -397,7 +422,7 @@ const Header = () => {
           <div className="tw:flex tw:items-center tw:justify-between">
             <button
               onClick={toggleMobileMenu}
-              className="tw:text-pink-600 tw:hover:text-pink-700 tw:p-2 tw:rounded-md tw:transition-colors tw:duration-200 tw:cursor-pointer"
+              className="tw:text-[var(--main-color)] tw:hover:text-pink-700 tw:p-2 tw:rounded-md tw:transition-colors tw:duration-200 tw:cursor-pointer"
               aria-label="Open mobile menu"
             >
               <svg
@@ -449,7 +474,7 @@ const Header = () => {
                       }}
                       className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
                         locale === "en"
-                          ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
+                          ? "tw:bg-pink-50 tw:text-[var(--main-color)] tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
                       }`}
                     >
@@ -462,7 +487,7 @@ const Header = () => {
                       }}
                       className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
                         locale === "ja"
-                          ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
+                          ? "tw:bg-pink-50 tw:text-[var(--main-color)] tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
                       }`}
                     >
@@ -475,7 +500,7 @@ const Header = () => {
                       }}
                       className={`tw:w-full tw:text-left tw:px-4 tw:py-2 tw:text-lg tw:transition-colors tw:duration-150 tw:cursor-pointer ${
                         locale === "ko"
-                          ? "tw:bg-pink-50 tw:text-pink-600 tw:font-medium"
+                          ? "tw:bg-pink-50 tw:text-[var(--main-color)] tw:font-medium"
                           : "tw:text-gray-700 tw:hover:bg-gray-50"
                       }`}
                     >
@@ -495,11 +520,11 @@ const Header = () => {
           <div className="tw:flex tw:justify-end tw:p-4">
             <button
               onClick={closeMobileMenu}
-              className="tw:text-pink-600 tw:hover:text-pink-700 tw:p-2 tw:rounded-md tw:transition-colors tw:duration-200 tw:cursor-pointer"
+              className="tw:text-[var(--main-color)] tw:hover:text-pink-700 tw:p-2 tw:rounded-md tw:transition-colors tw:duration-200 tw:cursor-pointer"
               aria-label="Close mobile menu"
             >
               <svg
-                className="tw:w-8 tw:h-8"
+                className="tw:w-9 tw:h-9"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -507,30 +532,30 @@ const Header = () => {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
+                  strokeWidth={3}
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
             </button>
           </div>
 
-          <nav className="tw:px-4 tw:py-8">
+          <nav className="tw:px-11 tw:py-8">
             <ul className="tw:space-y-6">
               <li>
                 <a
-                  href={`/${locale}`}
+                  href="/"
                   onClick={closeMobileMenu}
-                  className={getMobileNavLinkClasses(`/${locale}`)}
+                  className={getMobileNavLinkClasses('/')}
                 >
                   {tCommon("navigation.home")}
                 </a>
               </li>
               <li>
                 <a
-                  href={`/${locale}/menu-prices`}
+                  href="/menu-prices"
                   onClick={closeMobileMenu}
                   className={getMobileNavLinkClasses(
-                    `/${locale}/menu-prices`
+                    '/menu-prices'
                   )}
                 >
                   {tCommon("navigation.services")}
@@ -538,38 +563,98 @@ const Header = () => {
               </li>
               <li>
                 <a
-                  href={`/${locale}/featured-products`}
+                  href="/featured-products"
                   onClick={closeMobileMenu}
                   className={getMobileNavLinkClasses(
-                    `/${locale}/featured-products`
+                    '/featured-products'
                   )}
                 >
                   {tCommon("navigation.featuredProducts")}
                 </a>
               </li>
               <li>
-                <a
-                  href={`/${locale}/about-us`}
-                  onClick={closeMobileMenu}
-                  className="tw:block tw:text-[1.125em] tw:text-gray-900 tw:transition-colors tw:duration-200 tw:uppercase tw:tracking-wide"
+                <div 
+                  className="tw:flex tw:items-center tw:justify-between"
+                  onClick={toggleMobileAboutSubmenu}
                 >
-                  {tCommon("navigation.aboutUs")}
-                </a>
+                  <span className={getMobileNavLinkClasses(
+                    '/about-us'
+                  )}>
+                    {tCommon("navigation.aboutUs")}
+                  </span>
+                  <svg
+                    className={`tw:w-4 tw:h-4 tw:transition-transform tw:duration-200 ${
+                      isMobileAboutSubmenuOpen
+                        ? "tw:rotate-180"
+                        : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+                {isMobileAboutSubmenuOpen && (
+                  <ul className="tw:mt-4 tw:ml-4 tw:space-y-3">
+                    <li>
+                      <a
+                        href="/about-us"
+                        onClick={closeMobileMenu}
+                        className={getMobileNavSubmenuLinkClasses('/about-us')}
+                      >
+                        {tCommon("navigation.aboutDropdown.aboutSpa")}
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/customer-moment"
+                        onClick={closeMobileMenu}
+                        className={getMobileNavSubmenuLinkClasses(`/customer-moment`)}
+                      >
+                        {tCommon("navigation.aboutDropdown.ourHappyGuests")}
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/gallery"
+                        onClick={closeMobileMenu}
+                        className={getMobileNavSubmenuLinkClasses('/gallery')}
+                      >
+                        {tCommon("navigation.aboutDropdown.gallery")}
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/blogs"
+                        onClick={closeMobileMenu}
+                        className={getMobileNavSubmenuLinkClasses('/blogs')}
+                      >
+                        {tCommon("navigation.aboutDropdown.blogs")}
+                      </a>
+                    </li>
+                  </ul>
+                )}
               </li>
               <li>
                 <a
-                  href={`/${locale}/contact`}
+                  href="/contact"
                   onClick={closeMobileMenu}
-                  className={getMobileNavLinkClasses(`/${locale}/contact`)}
+                  className={getMobileNavLinkClasses('/contact')}
                 >
                   {tCommon("navigation.contact")}
                 </a>
               </li>
               <li>
                 <a
-                  href={`/${locale}/reservation`}
+                  href="/reservation"
                   onClick={closeMobileMenu}
-                  className={getMobileNavLinkClasses(`/${locale}/reservation`)}
+                  className={getMobileNavLinkClasses('/reservation')}
                 >
                   {tCommon("navigation.bookOnline")}
                 </a>
