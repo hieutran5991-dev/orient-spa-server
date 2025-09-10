@@ -222,7 +222,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
               </span>
             </a>
             <a
-              href={`https://wa.me/${CONFIG.PHONE_NUMBER}`}
+              href={`https://wa.me/${CONFIG.PHONE_WITH_COUNTRY_CODE}`}
               rel="nofollow"
               target="_blank"
               className="sP_i"
