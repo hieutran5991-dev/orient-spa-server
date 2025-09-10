@@ -231,8 +231,8 @@ const Header = () => {
                 {tCommon("navigation.home")}
               </a>
               <a
-                href="/services-prices"
-                className={getNavLinkClasses("/services-prices")}
+                href="/menu-prices"
+                className={getNavLinkClasses("/menu-prices")}
               >
                 {tCommon("navigation.services")}
               </a>
@@ -293,14 +293,13 @@ const Header = () => {
                       : "tw:opacity-0 tw:invisible tw:group-hover:opacity-100 tw:group-hover:visible"
                   }`}
                 >
-                  <div className="tw:py-2">
+                  <div className="tw:py-2 tw:px-2">
                     <a
                       href="/about-us"
                       className="tw:block tw:px-6 tw:py-4 tw:text-14 tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
                     >
                       {tCommon("navigation.aboutDropdown.aboutSpa")}
                     </a>
-                    <div className="tw:border-t tw:border-gray-100 tw:my-1"></div>
                     <a
                       href="/customer-moment"
                       className="tw:block tw:px-6 tw:py-4 tw:text-14 tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
@@ -313,7 +312,6 @@ const Header = () => {
                     >
                       {tCommon("navigation.aboutDropdown.gallery")}
                     </a>
-                    <div className="tw:border-t tw:border-gray-100 tw:my-1"></div>
                     <a
                       href={`/${locale}/blogs`}
                       className="tw:block tw:px-6 tw:py-4 tw:text-14 tw:text-gray-700 tw:hover:bg-pink-50 tw:hover:text-pink-600 tw:transition-colors tw:duration-150"
@@ -348,9 +346,8 @@ const Header = () => {
                   </div>
                 </button>
 
-                {/* Language Dropdown */}
                 <div
-                  className={`tw:absolute tw:top-full tw:right-0 tw:mt-1 tw:w-80 tw:bg-white tw:rounded-lg tw:shadow-lg tw:border tw:border-gray-200 tw:transition-all tw:duration-200 tw:z-50 ${
+                  className={`tw:absolute tw:top-full tw:right-0 tw:w-80 tw:bg-white tw:shadow-lg tw:border tw:border-gray-200 tw:transition-all tw:duration-200 tw:z-50 ${
                     isLanguageDropdownOpen
                       ? "tw:opacity-100 tw:visible"
                       : "tw:opacity-0 tw:invisible tw:group-hover:opacity-100 tw:group-hover:visible"
@@ -425,7 +422,7 @@ const Header = () => {
                   alt="SEN SPA Da Nang"
                   width={200}
                   height={32}
-                  className="tw:h-25 md:tw:h-20 tw:w-auto tw:object-contain"
+                  className="tw:h-30 md:tw:h-20 tw:w-auto tw:object-contain"
                 />
               </a>
             </div>
@@ -530,10 +527,10 @@ const Header = () => {
               </li>
               <li>
                 <a
-                  href={`/${locale}/services-prices`}
+                  href={`/${locale}/menu-prices`}
                   onClick={closeMobileMenu}
                   className={getMobileNavLinkClasses(
-                    `/${locale}/services-prices`
+                    `/${locale}/menu-prices`
                   )}
                 >
                   {tCommon("navigation.services")}

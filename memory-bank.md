@@ -35,7 +35,7 @@
 - **Implementation:** Created locale-aware pages:
   - `/[locale]/booking/page.tsx`
   - `/[locale]/contact/page.tsx`
-  - `/[locale]/services-prices/page.tsx`
+  - `/[locale]/menu-prices/page.tsx`
   - `/[locale]/promotions/page.tsx`
   - `/[locale]/promotions/[slug]/page.tsx`
 

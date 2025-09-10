@@ -61,11 +61,17 @@ const ServicesPricesContent = ({
   const handleBookNow = (service: Product) => {
     setSelectedService(service);
     setShowBookingModal(true);
+
+    (document.getElementById("footer_tool") as HTMLElement).style.zIndex = "-1";
+    document.body.classList.add('box-hidden');
   };
 
   const closeModal = () => {
     setShowBookingModal(false);
     setSelectedService(undefined);
+
+    (document.getElementById("footer_tool") as HTMLElement).style.zIndex = "9999";
+    document.body.classList.remove('box-hidden');
   };
 
   return (

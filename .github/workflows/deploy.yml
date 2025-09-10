@@ -29,6 +29,7 @@ jobs:
           echo "API_TIMEOUT=${{ secrets.API_TIMEOUT }}" >> .env.production
           echo "NEXT_STORAGE_HOST=${{ secrets.NEXT_STORAGE_HOST }}" >> .env.production
           echo "NEXT_STORAGE_PORT=${{ secrets.NEXT_STORAGE_PORT }}" >> .env.production
+          echo "NEXT_PUBLIC_DOMAIN_URL=${{ secrets.NEXT_PUBLIC_DOMAIN_URL }}" >> .env.production
 
       - name: Build application
         run: npm run build
@@ -37,6 +38,7 @@ jobs:
           API_TIMEOUT: ${{ secrets.API_TIMEOUT }}
           NEXT_STORAGE_HOST: ${{ secrets.NEXT_STORAGE_HOST }}
           NEXT_STORAGE_PORT: ${{ secrets.NEXT_STORAGE_PORT }}
+          NEXT_PUBLIC_DOMAIN_URL: ${{ secrets.NEXT_PUBLIC_DOMAIN_URL }}
 
       - name: Create deployment package
         run: |

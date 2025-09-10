@@ -12,13 +12,13 @@ export const metadata: Metadata = {
   keywords: "best spa da nang, da nang massage, spa menu, spa prices da nang, couple massage da nang, aroma massage da nang, hot stone da nang",
   robots: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   alternates: {
-    canonical: `${DOMAIN_URL}/services-prices`,
+    canonical: `${DOMAIN_URL}/menu-prices`,
   },
   openGraph: {
     title: "Massage Menu & Prices | SEN SPA Da Nang – Best Spa Da Nang",
     description: "Explore our full spa menu and prices in Da Nang: aroma, hot stone, Thai stretch, foot massage, couple massage. Book now.",
     type: "website",
-    url: `${DOMAIN_URL}/services-prices`,
+    url: `${DOMAIN_URL}/menu-prices`,
     images: [
       {
         url: `${DOMAIN_URL}/images/seo/menu.jpeg`,
@@ -68,7 +68,7 @@ export default async function ServicesPage() {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Services & Prices",
-                "item": `${DOMAIN_URL}/services-prices`
+                "item": `${DOMAIN_URL}/menu-prices`
               }
             ]
           })
@@ -124,7 +124,7 @@ export default async function ServicesPage() {
             "@context": "https://schema.org",
             "@type": "ItemList",
             "name": "SEN SPA Da Nang – Services & Prices",
-            "url": `${DOMAIN_URL}/services-prices`,
+            "url": `${DOMAIN_URL}/menu-prices`,
             "itemListElement": [
               {
                 "@type": "ListItem",
@@ -140,7 +140,7 @@ export default async function ServicesPage() {
                     "priceCurrency": "VND",
                     "price": "XXX000",
                     "availability": "https://schema.org/InStock",
-                    "url": `${DOMAIN_URL}/services-prices`
+                    "url": `${DOMAIN_URL}/menu-prices`
                   }
                 }
               },
@@ -158,7 +158,7 @@ export default async function ServicesPage() {
                     "priceCurrency": "VND",
                     "price": "XXX000",
                     "availability": "https://schema.org/InStock",
-                    "url": `${DOMAIN_URL}/services-prices`
+                    "url": `${DOMAIN_URL}/menu-prices`
                   }
                 }
               },
@@ -176,7 +176,7 @@ export default async function ServicesPage() {
                     "priceCurrency": "VND",
                     "price": "XXX000",
                     "availability": "https://schema.org/InStock",
-                    "url": `${DOMAIN_URL}/services-prices`
+                    "url": `${DOMAIN_URL}/menu-prices`
                   }
                 }
               },
@@ -194,7 +194,7 @@ export default async function ServicesPage() {
                     "priceCurrency": "VND",
                     "price": "XXX000",
                     "availability": "https://schema.org/InStock",
-                    "url": `${DOMAIN_URL}/services-prices`
+                    "url": `${DOMAIN_URL}/menu-prices`
                   }
                 }
               },
@@ -212,7 +212,7 @@ export default async function ServicesPage() {
                     "priceCurrency": "VND",
                     "price": "XXX000",
                     "availability": "https://schema.org/InStock",
-                    "url": `${DOMAIN_URL}/services-prices`
+                    "url": `${DOMAIN_URL}/menu-prices`
                   }
                 }
               },
@@ -230,7 +230,7 @@ export default async function ServicesPage() {
                     "priceCurrency": "VND",
                     "price": "XXX000",
                     "availability": "https://schema.org/InStock",
-                    "url": `${DOMAIN_URL}/services-prices`
+                    "url": `${DOMAIN_URL}/menu-prices`
                   }
                 }
               }
@@ -248,7 +248,7 @@ export default async function ServicesPage() {
             "@context": "https://schema.org",
             "@type": "WebPage",
             "name": "Services & Prices | SEN SPA Da Nang",
-            "url": `${DOMAIN_URL}/services-prices`,
+            "url": `${DOMAIN_URL}/menu-prices`,
             "description": "Browse the full massage & spa menu with transparent prices at SEN SPA Da Nang.",
             "isPartOf": {
               "@type": "WebSite",

@@ -113,7 +113,7 @@ const HomeContent = ({ spaLocations, products }: HomeContentProps) => {
             </div>
           </BookingForm>
         </div>
-        <a className='a1_a btn hidden-lg hidden-md tw:hover:text-white' href="/services-prices">{t('bookNow')}</a>
+        <a className='a1_a btn hidden-lg hidden-md tw:hover:text-white' href="/menu-prices">{t('bookNow')}</a>
       </div>
 
       <div className='s sH s2'>

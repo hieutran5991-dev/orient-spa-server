@@ -105,7 +105,7 @@ const FeaturedProducts = ({ products }: { products: Product[] }) => {
             </Swiper>
           </div>
           <div className="s6_f fl fl-2">
-            <a href="/services-prices" className="btn btn-2 s6_fa">
+            <a href="/menu-prices" className="btn btn-2 s6_fa">
               {t("featuredProducts.viewSpaMenu")}
             </a>
           </div>

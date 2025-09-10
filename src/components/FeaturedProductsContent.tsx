@@ -95,7 +95,7 @@ const FeaturedProductsContent = ({
               {/* Content */}
               <div className="tw:p-6 tw:flex tw:flex-col tw:flex-grow">
                 <div
-                  // href={`/services-prices`}  This is an a tag to product detail page
+                  // href={`/menu-prices`}  This is an a tag to product detail page
                   className="tw:text-3xl tw:font-[600] tw:mb-2 hoverable-link tw:cursor-pointer"
                   onClick={() => handleBookNow(product)}
                 >
