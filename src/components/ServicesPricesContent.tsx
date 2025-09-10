@@ -93,8 +93,8 @@ const ServicesPricesContent = ({
           </div>
         </BookingForm>
       </div>
-      <div className="s a2 text-center">
-        <h1 className="a2_t">{t("title")}</h1>
+      <div className="title-container text-center">
+        <h1 className="title-text">{t("title")}</h1>
       </div>
 
       <div className="s category-bar tw:mb-[40px]" ref={containerRef}>

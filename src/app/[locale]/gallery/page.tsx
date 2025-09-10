@@ -10,7 +10,7 @@ export default async function GalleryPage() {
 
     return (
         <Layout className="contact-container" spaLocations={spaLocationRes?.data || []}>
-            <GalleryContent images={galleryImages} />
+            <GalleryContent images={galleryImages} isGallery/>
         </Layout>
     )
 }

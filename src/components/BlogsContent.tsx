@@ -79,10 +79,8 @@ const BlogsContent = () => {
 
   return (
     <main className="tw:bg-white tw:min-h-screen">
-      <div className="tw:bg-[var(--main-color)] tw:font-[MtdValkySemibold] tw:text-white tw:py-[30px]">
-        <div className="tw:max-w-6xl tw:mx-auto tw:px-4 tw:text-center tw:text-4xl tw:md:text-[4.8rem] tw:uppercase">
-          {t("title")}
-        </div>
+      <div className="title-container text-center">
+        <h1 className="title-text">{t("title")}</h1>
       </div>
 
 

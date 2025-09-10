@@ -3,7 +3,7 @@ import Layout from '@/components/layout/Layout';
 import BookingContent from '@/components/BookingContent';
 import Script from 'next/script';
 import { getListProducts, getListSpa } from "@/api/common";
-import { CONFIG, DOMAIN_URL } from '@/utils/constants';
+import { DOMAIN_URL } from '@/utils/constants';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

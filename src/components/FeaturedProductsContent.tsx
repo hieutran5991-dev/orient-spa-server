@@ -58,11 +58,9 @@ const FeaturedProductsContent = ({
         </BookingForm>
       </div>
       <main className="tw:bg-white tw:min-h-screen">
-        <div className="tw:bg-[var(--main-color)] tw:font-[MtdValkySemibold] tw:text-white tw:py-[30px]">
-          <div className="tw:mx-auto tw:px-4 tw:text-center tw:text-4xl tw:md:text-[4.8rem] tw:uppercase">
-            {t("featuredProducts")}
-          </div>
-        </div>
+      <div className="title-container text-center">
+        <h1 className="title-text">{t("featuredProducts")}</h1>
+      </div>
 
         <div className="tw:grid tw:grid-cols-1 tw:md:grid-cols-2 tw:lg:grid-cols-3 tw:gap-x-8 tw:gap-y-20 tw:mx-auto tw:px-10 tw:py-16 tw:max-w-[1250px]">
           {products.map((product) => (
