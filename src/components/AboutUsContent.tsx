@@ -188,7 +188,7 @@ const AboutUsContent = () => {
 
           <div className="tw:mt-14 tw:mb-18 tw:text-center">
             <a
-              href="/services-price"
+              href="/menu-prices"
               className="btn tw:bg-[var(--main-color)] tw:text-white tw:hover:bg-[var(--hover-color)] tw:text-2xl tw:md:text-3xl tw:md:w-[300px] tw:w-[220px] tw:h-[50px] tw:md:h-[60px]"
             >
               {tCommon("common.bookNow")}

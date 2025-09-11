@@ -119,7 +119,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
                   <ul className="f_n fl">
                     <li className="tw:w-[50%]">
                       <a
-                        href={`/${locale}/page/about-us`}
+                        href={`/${locale}/about-us`}
                         className="hoverable-link"
                       >
                         {tCommon("footer.navigation.aboutUs")}
