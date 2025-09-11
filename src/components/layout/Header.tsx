@@ -320,30 +320,32 @@ const Header = () => {
                       : "tw:opacity-0 tw:invisible tw:group-hover:opacity-100 tw:group-hover:visible"
                   }`}
                 >
-                  <a
-                    href="/about-us"
-                    className={getDropdownActiveClasses('/about-us')}
-                  >
-                    {tCommon("navigation.aboutDropdown.aboutSpa")}
-                  </a>
-                  <a
-                    href="/customer-moment"
-                    className={getDropdownActiveClasses('/customer-moment')}
-                  >
-                    {tCommon("navigation.aboutDropdown.ourHappyGuests")}
-                  </a>
-                  <a
-                    href="/gallery"
-                    className={getDropdownActiveClasses('/gallery')}
-                  >
-                    {tCommon("navigation.aboutDropdown.gallery")}
-                  </a>
-                  <a
-                    href="/blogs"
-                    className={getDropdownActiveClasses('/blogs')}
-                  >
-                    {tCommon("navigation.aboutDropdown.blogs")}
-                  </a>
+                  <div className="tw:px-3 tw:py-2">
+                    <a
+                      href="/about-us"
+                      className={getDropdownActiveClasses('/about-us')}
+                    >
+                      {tCommon("navigation.aboutDropdown.aboutSpa")}
+                    </a>
+                    <a
+                      href="/customer-moment"
+                      className={getDropdownActiveClasses('/customer-moment')}
+                    >
+                      {tCommon("navigation.aboutDropdown.ourHappyGuests")}
+                    </a>
+                    <a
+                      href="/gallery"
+                      className={getDropdownActiveClasses('/gallery')}
+                    >
+                      {tCommon("navigation.aboutDropdown.gallery")}
+                    </a>
+                    <a
+                      href="/blogs"
+                      className={getDropdownActiveClasses('/blogs')}
+                    >
+                      {tCommon("navigation.aboutDropdown.blogs")}
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -372,13 +374,13 @@ const Header = () => {
                 </button>
 
                 <div
-                  className={`tw:absolute tw:top-full tw:right-0 tw:w-80 tw:bg-white tw:shadow-lg tw:border tw:border-gray-200 tw:transition-all tw:duration-200 tw:z-50 ${
+                  className={`tw:absolute tw:py-2 tw:top-full tw:right-0 tw:w-80 tw:bg-white tw:shadow-lg tw:border tw:border-gray-200 tw:transition-all tw:duration-200 tw:z-50 ${
                     isLanguageDropdownOpen
                       ? "tw:opacity-100 tw:visible"
                       : "tw:opacity-0 tw:invisible tw:group-hover:opacity-100 tw:group-hover:visible"
                   }`}
                 >
-                  <div className="tw:py-2">
+                  <div className="tw:px-3 tw:py-2">
                     <button
                       onClick={() => handleLanguageChange("en")}
                       className={`tw:w-full tw:text-left tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150 tw:cursor-pointer ${
