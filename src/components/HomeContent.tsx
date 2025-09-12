@@ -23,27 +23,27 @@ const HomeContent = ({ spaLocations, products }: HomeContentProps) => {
     {
       id: 1,
       src: '/images/home-swiper/Swiper.jpg',
-      alt: 'SEN Spa Da Nang Banner'
+      alt: 'SEN SPA Da Nang Banner'
     },
     {
       id: 2,
       src: '/images/home-swiper/Swiper-1.jpg',
-      alt: 'SEN Spa Da Nang Banner 2'
+      alt: 'SEN SPA Da Nang Banner 2'
     },
     {
       id: 3,
       src: '/images/home-swiper/Swiper-2.jpg',
-      alt: 'SEN Spa Da Nang Banner 3'
+      alt: 'SEN SPA Da Nang Banner 3'
     },
     {
       id: 4,
       src: '/images/home-swiper/Swiper-3.jpg',
-      alt: 'SEN Spa Da Nang Banner 4'
+      alt: 'SEN SPA Da Nang Banner 4'
     },
     {
       id: 5,
       src: '/images/home-swiper/Swiper-4.jpg',
-      alt: 'SEN Spa Da Nang Banner 5'
+      alt: 'SEN SPA Da Nang Banner 5'
     }
   ]
 

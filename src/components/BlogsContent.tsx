@@ -42,7 +42,7 @@ const blogPosts = [
   },
   {
     id: 4,
-    title: "Health Tips & Wellness from Sen Spa Da Nang",
+    title: "Health Tips & Wellness from SEN SPA Da Nang",
     excerpt:
       "Discover essential wellness tips and health practices that will enhance your spa experience and promote overall well-being.",
     image: "/images/spa-wellness.jpg",

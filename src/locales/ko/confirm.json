@@ -20,7 +20,7 @@
         "title": "연락처 정보",
         "fullName": "이름:",
         "phone": "전화번호:",
-        "socialAccountId": "Kakao / Whatsapp / Line / Zalo ID:",
+        "socialAccountId": "Kakaotalk / Whatsapp / Line / Zalo ID:",
         "email": "이메일:"
     },
     "spaLocation": {

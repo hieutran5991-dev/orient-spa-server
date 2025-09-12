@@ -20,7 +20,7 @@
     "title": "Contact info",
     "fullName": "Full name:",
     "phone": "Phone number:",
-    "socialAccountId": "Kakao / Whatsapp / Line / Zalo ID:",
+    "socialAccountId": "Kakaotalk / Whatsapp / Line / Zalo ID:",
     "email": "Email:"
   },
   "spaLocation": {
@@ -34,7 +34,7 @@
     "advance": "Please cancel or reschedule at least 24 hours in advance of your reservation time.",
     "confirmation": "Upon booking, we will send you a confirmation email to confirm whether we can arrange the service for you and in case fully booked, we will inform you the closest time available.",
     "urgent": "If you need to make change or make urgent booking please contact out hotline: +84 976 591 515 or email senspa.dn@gmail.com",
-    "arrive": "We suggest you to arrive at our spa 10 minutes in advance of the treatment time to relax before the treatment time."
+    "arrive": "We suggest you to arrive at our spa 10 minutes earlier to relax before the treatment time."
   },
   "loading": {
     "title": "Loading your booking details...",

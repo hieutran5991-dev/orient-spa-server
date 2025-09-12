@@ -30,104 +30,106 @@ const AboutUsContent = () => {
             {tCommon("aboutUs.welcomeTitle")}
           </h2>
 
-          <div className="tw:px-4 tw:py-8">
-            <p className="tw:text-[16px] tw:leading-relaxed tw:text-gray-800 tw:text-justify tw:space-y-6 tw:mb-12">
-              {tCommon("aboutUs.introText")}
-            </p>
+          <div className="tw:px-4 tw:py-4">
+            <div className="tw:text-center tw:space-y-6">
+              <p className="tw:text-[16px] tw:leading-relaxed tw:text-gray-800 tw:text-justify">
+                {tCommon("aboutUs.paragraph1")}
+              </p>
+            </div>
+          </div>
 
-            <div className="tw:w-full">
+          <div className="tw:w-full tw:px-4 tw:py-4">
+            <Swiper
+              spaceBetween={10}
+              navigation={true}
+              thumbs={{
+                swiper:
+                  thumbsSwiper && !thumbsSwiper.destroyed
+                    ? thumbsSwiper
+                    : null,
+              }}
+              modules={[FreeMode, Navigation, Thumbs]}
+              className="tw:rounded-lg tw:overflow-hidden tw:md:h-[600px] tw:h-[40vh] tw:mb-4"
+            >
+              {ABOUT_US_IMAGES.map((image) => (
+                <SwiperSlide key={image.id}>
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={1200}
+                    height={800}
+                    className="tw:w-full tw:h-full tw:object-cover"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            <div className="tw:relative">
               <Swiper
-                spaceBetween={10}
-                navigation={true}
-                thumbs={{
-                  swiper:
-                    thumbsSwiper && !thumbsSwiper.destroyed
-                      ? thumbsSwiper
-                      : null,
+                onSwiper={setThumbsSwiper}
+                spaceBetween={4}
+                slidesPerView={4}
+                freeMode={true}
+                watchSlidesProgress={true}
+                navigation={{
+                  nextEl: ".swiper-button-next-thumb",
+                  prevEl: ".swiper-button-prev-thumb",
                 }}
                 modules={[FreeMode, Navigation, Thumbs]}
-                className="tw:rounded-lg tw:overflow-hidden tw:md:h-[600px] tw:h-[40vh] tw:mb-4"
+                className="tw:h-[100px] tw:md:h-[210px] thumb-swiper "
               >
                 {ABOUT_US_IMAGES.map((image) => (
-                  <SwiperSlide key={image.id}>
+                  <SwiperSlide key={`thumb-${image.id}`}>
                     <Image
                       src={image.src}
                       alt={image.alt}
-                      width={1200}
-                      height={800}
-                      className="tw:w-full tw:h-full tw:object-cover"
+                      width={200}
+                      height={200}
+                      className="tw:w-full tw:h-full tw:object-cover tw:rounded tw:cursor-pointer tw:hover:opacity-100 tw:transition-all tw:duration-300 tw:border-2 tw:border-transparent"
                     />
                   </SwiperSlide>
                 ))}
               </Swiper>
 
-              <div className="tw:relative">
-                <Swiper
-                  onSwiper={setThumbsSwiper}
-                  spaceBetween={4}
-                  slidesPerView={4}
-                  freeMode={true}
-                  watchSlidesProgress={true}
-                  navigation={{
-                    nextEl: ".swiper-button-next-thumb",
-                    prevEl: ".swiper-button-prev-thumb",
-                  }}
-                  modules={[FreeMode, Navigation, Thumbs]}
-                  className="tw:h-[100px] tw:md:h-[210px] thumb-swiper "
+              <div className="swiper-button-prev-thumb tw:absolute tw:left-4 tw:top-1/2 tw:-translate-y-1/2 tw:z-10 tw:w-12 tw:h-12 tw:bg-white tw:bg-opacity-80 tw:rounded-full tw:flex tw:items-center tw:justify-center tw:shadow-md tw:cursor-pointer tw:hover:bg-opacity-100 tw:transition-all">
+                <svg
+                  className="tw:w-8 tw:h-8 tw:text-[#9e2265]"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
                 >
-                  {ABOUT_US_IMAGES.map((image) => (
-                    <SwiperSlide key={`thumb-${image.id}`}>
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        width={200}
-                        height={200}
-                        className="tw:w-full tw:h-full tw:object-cover tw:rounded tw:cursor-pointer tw:hover:opacity-100 tw:transition-all tw:duration-300 tw:border-2 tw:border-transparent"
-                      />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+                  <path
+                    fillRule="evenodd"
+                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
 
-                <div className="swiper-button-prev-thumb tw:absolute tw:left-4 tw:top-1/2 tw:-translate-y-1/2 tw:z-10 tw:w-12 tw:h-12 tw:bg-white tw:bg-opacity-80 tw:rounded-full tw:flex tw:items-center tw:justify-center tw:shadow-md tw:cursor-pointer tw:hover:bg-opacity-100 tw:transition-all">
-                  <svg
-                    className="tw:w-8 tw:h-8 tw:text-[#9e2265]"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-
-                <div className="swiper-button-next-thumb tw:absolute tw:right-4 tw:top-1/2 tw:-translate-y-1/2 tw:z-10 tw:w-12 tw:h-12 tw:bg-white tw:bg-opacity-80 tw:rounded-full tw:flex tw:items-center tw:justify-center tw:shadow-md tw:cursor-pointer tw:hover:bg-opacity-100 tw:transition-all">
-                  <svg
-                    className="tw:w-8 tw:h-8 tw:text-[#9e2265]"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
+              <div className="swiper-button-next-thumb tw:absolute tw:right-4 tw:top-1/2 tw:-translate-y-1/2 tw:z-10 tw:w-12 tw:h-12 tw:bg-white tw:bg-opacity-80 tw:rounded-full tw:flex tw:items-center tw:justify-center tw:shadow-md tw:cursor-pointer tw:hover:bg-opacity-100 tw:transition-all">
+                <svg
+                  className="tw:w-8 tw:h-8 tw:text-[#9e2265]"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
               </div>
             </div>
           </div>
 
-          <div className="tw:px-4 tw:pb-4">
+          <div className="tw:px-4 tw:py-4">
             <div className="tw:text-center tw:space-y-6">
               <p className="tw:text-[16px] tw:leading-relaxed tw:text-gray-800 tw:text-justify">
-                {tCommon("aboutUs.mission")}
+                {tCommon("aboutUs.paragraph2")}
               </p>
             </div>
           </div>
 
-          <div className="tw:bg-white tw:pt-8 tw:border-b tw:border-[#f7f3ef]">
+          <div className="tw:bg-white tw:pt-4 tw:border-b tw:border-[#f7f3ef]">
             <div className="tw:mx-auto tw:px-4">
               <div className="tw:rounded-lg tw:overflow-hidden tw:shadow-lg tw:w-full tw:mb-8">
                 <iframe
@@ -139,6 +141,22 @@ const AboutUsContent = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
+              </div>
+
+              <div className="tw:px-4 tw:py-4">
+                <div className="tw:text-center tw:space-y-6">
+                  <p className="tw:text-[16px] tw:leading-relaxed tw:text-gray-800 tw:text-justify">
+                    {tCommon("aboutUs.paragraph3")}
+                  </p>
+                </div>
+              </div>
+
+              <div className="tw:px-4">
+                <div className="tw:text-center tw:space-y-6">
+                  <p className="tw:text-[16px] tw:leading-relaxed tw:text-gray-800 tw:text-justify">
+                    {tCommon("aboutUs.paragraph4")}
+                  </p>
+                </div>
               </div>
 
               <div className="tw:flex tw:md:items-center tw:gap-4 tw:md:tw:gap-8 tw:text-gray-600 tw:flex-col tw:md:flex-row tw:md:justify-between tw:py-8">

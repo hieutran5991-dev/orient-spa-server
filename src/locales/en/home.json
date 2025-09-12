@@ -3,10 +3,10 @@
   "hero": {
     "tagline": "A relaxing escape for all your senses",
     "title": "SEN SPA Da Nang",
-    "subtitle": "A relaxing escape for all your senses, in the heart of DaNang."
+    "subtitle": "A relaxing escape for all your senses, in the heart of Da Nang."
   },
   "about": {
-    "description": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience, \nSEN SPA Da Nang currently operates 3 spas all in the heart of DaNang Old Quarter.\nWe offer foot and body massage, nails care and shampoo, as well as spa packages.\nOur spa is open from 10:00AM - 09:00PM daily. Advanced reservation is recommended especially during weekend."
+    "description": "Founded in 2023 with the aim to provide a relaxing spa experience for both travelers and local residents.\nLocated in the heart of the city, we take pride in our team of professional, highly skilled therapists.\nSEN SPA Da Nang offers a wide range of foot and body therapies, facial care, as well as spa packages."
   },
   "locations": {
     "title": "OUR LOCATIONS",
@@ -41,7 +41,7 @@
       },
       "location": {
         "title": "Convenient and central location",
-        "description": "All our spas are just a short walk from major attractions of Hanoi such as Hoan Kiem Lake and Saint Joseph Cathedral."
+        "description": "All our spas are just a short walk from iconic landmarks of Da Nang such as Dragon Bridge, Han River, and Con Market."
       },
       "service": {
         "title": "Skilled therapists and attentive receptionists",

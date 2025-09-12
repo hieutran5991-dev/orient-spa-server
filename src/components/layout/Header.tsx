@@ -339,12 +339,12 @@ const Header = () => {
                     >
                       {tCommon("navigation.aboutDropdown.gallery")}
                     </a>
-                    <a
+                    {/* <a
                       href="/blogs"
                       className={getDropdownActiveClasses('/blogs')}
                     >
                       {tCommon("navigation.aboutDropdown.blogs")}
-                    </a>
+                    </a> */}
                   </div>
                 </div>
               </div>
@@ -631,7 +631,7 @@ const Header = () => {
                         {tCommon("navigation.aboutDropdown.gallery")}
                       </a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a
                         href="/blogs"
                         onClick={closeMobileMenu}
@@ -639,7 +639,7 @@ const Header = () => {
                       >
                         {tCommon("navigation.aboutDropdown.blogs")}
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 )}
               </li>

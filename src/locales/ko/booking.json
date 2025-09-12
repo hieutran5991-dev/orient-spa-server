@@ -28,7 +28,7 @@
   "fullName": "이름",
   "countryCode": "국가 코드",
   "phoneNumber": "전화번호",
-  "socialAccountId": "Kakao / Whatsapp / Line / Zalo ID",
+  "socialAccountId": "Kakaotalk / Whatsapp / Line / Zalo ID",
   "email": "이메일",
   "additionalRequest": "추가 요청사항",
   "cancellationPolicy": "취소 정책",
