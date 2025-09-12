@@ -6,10 +6,10 @@ export interface Product {
   duration: number; // in minutes
   price: number;
   currency: string;
-  is_promoted: boolean;
-  promotion_description?: string;
-  promotion_details?: string;
   image_url?: string;
+  is_featured: boolean;
+  featured_product_description?: string;
+  featured_product_detail?: string;
 }
 
 export interface Category {

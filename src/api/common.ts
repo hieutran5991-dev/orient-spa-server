@@ -24,6 +24,11 @@ export const getListProducts: (params?: Record<any, any> | null) => Promise<Axio
   return await request.get("api/products", { params: { lang, ...params } });
 };
 
+export const getProductDetail: (id: string) => Promise<AxiosResponse<Product | undefined>> = async (id) => {
+  const lang = await getLocale();
+  return await request.get(`api/products/${id}`, { params: { lang } });
+};
+
 export const saveBooking = async (data: BookingSubmissionData) => {
   return await request.post("api/bookings", data);
 };

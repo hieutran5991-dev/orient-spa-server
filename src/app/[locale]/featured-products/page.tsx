@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 };
 export default async function FeaturedProductsPage() {
   const spaLocationRes = await getListSpa();
-  const productRes = await getListProducts();
+  const productRes = await getListProducts({ is_featured: true });
 
   return (
     <>
