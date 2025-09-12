@@ -18,9 +18,9 @@
   },
   "contactInfo": {
     "title": "Contact info",
-    "lastName": "Last name:",
-    "firstName": "First name:",
+    "fullName": "Full name:",
     "phone": "Phone number:",
+    "socialAccountId": "Kakao / Whatsapp / Line / Zalo ID:",
     "email": "Email:"
   },
   "spaLocation": {

@@ -8146,10 +8146,7 @@ jQuery(document).ready(function ($) {
   }
   $("#fromBook").validate({
     rules: {
-      first_name: {
-        required: true,
-      },
-      last_name: {
+      fullname: {
         required: true,
       },
       phone: {
@@ -8161,8 +8158,7 @@ jQuery(document).ready(function ($) {
       },
     },
     messages: {
-      first_name: gettext("Please fill missing information"),
-      last_name: gettext("Please fill missing information"),
+      fullname: gettext("Please fill missing information"),
       phone: gettext("Please fill missing information"),
       email: {
         required: gettext("Please input your email"),
@@ -8186,7 +8182,7 @@ jQuery(document).ready(function ($) {
       $(id_attr).removeClass("fa-times").addClass("fa-check");
     },
     errorElement: "span",
-    errorClass: "help-block",
+    errorClass: "error-helper-message",
     errorPlacement: function (error, element) {
       if (element.length) {
         error.insertAfter(element);

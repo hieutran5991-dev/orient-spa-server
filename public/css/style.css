@@ -242,6 +242,11 @@
   margin-bottom: 15px;
 }
 
+.error-helper-message {
+  color: #c33;
+  font-size: 12px;
+}
+
 /* Loading state styles */
 .btn:disabled {
   opacity: 0.6;

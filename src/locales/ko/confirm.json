@@ -18,9 +18,9 @@
     },
     "contactInfo": {
         "title": "연락처 정보",
-        "lastName": "성:",
-        "firstName": "이름:",
+        "fullName": "이름:",
         "phone": "전화번호:",
+        "socialAccountId": "Kakao / Whatsapp / Line / Zalo ID:",
         "email": "이메일:"
     },
     "spaLocation": {

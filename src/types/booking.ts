@@ -7,9 +7,9 @@ export interface BookingFormData {
     date: string;
     time: string;
     people: string;
-    first_name?: string;
-    last_name?: string;
+    full_name?: string;
     phone?: string;
+    social_account_id?: string;
     email?: string;
     content?: string;
     guest_1_services?: string[];
@@ -36,9 +36,9 @@ export interface BookingData<T = Array<Product[]>> {
     booking_date?: string;
     booking_time?: string;
     people?: string;
-    first_name?: string;
-    last_name?: string;
+    full_name?: string;
     phone?: string;
+    social_account_id?: string;
     email?: string;
     note?: string;
     booking_details?: T;

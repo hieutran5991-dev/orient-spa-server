@@ -75,7 +75,7 @@ const ConfirmContent = () => {
       <div className="s k2">
         <div className="container">
           <div className="k2_w fl">
-            <div className="k2_d tw:md:sticky tw:md:top-2 tw:md:self-start">
+            <div className="k2_d tw:[min-width:991px]:sticky tw:[min-width:991px]:top-2 tw:[min-width:991px]:self-start">
               <div className="k2_i">
                 <div className="k2_h hidden-sm hidden-xs">
                   {t("appointmentSummary.title")}
@@ -226,15 +226,9 @@ const ConfirmContent = () => {
                         <table>
                           <tbody>
                             <tr>
-                              <td>{t("contactInfo.lastName")}</td>
+                              <td>{t("contactInfo.fullName")}</td>
                               <td>
-                                <strong>{bookingData.last_name}</strong>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>{t("contactInfo.firstName")}</td>
-                              <td>
-                                <strong>{bookingData.first_name}</strong>
+                                <strong>{bookingData.full_name}</strong>
                               </td>
                             </tr>
                             <tr>
@@ -243,6 +237,16 @@ const ConfirmContent = () => {
                                 <strong>{bookingData.phone}</strong>
                               </td>
                             </tr>
+                            {bookingData.social_account_id && (
+                              <tr>
+                                <td>{t("contactInfo.socialAccountId")}</td>
+                                <td>
+                                  <strong>
+                                    {bookingData.social_account_id}
+                                  </strong>
+                                </td>
+                              </tr>
+                            )}
                             <tr>
                               <td>{t("contactInfo.email")}</td>
                               <td>

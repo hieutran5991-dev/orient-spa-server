@@ -168,17 +168,17 @@ const ContactContent = () => {
                 >
                   {loading ? "Sending..." : t("form.send")}
                 </button>
-              </form>
 
-              {status.message && (
-                <div
-                  className={`status-message ${
-                    status.type === "success" ? "success" : "error"
-                  }`}
-                >
-                  {status.message}
-                </div>
-              )}
+                {status.message && (
+                  <div
+                    className={`tw:mt-2 status-message ${
+                      status.type === "success" ? "success" : "error"
+                    }`}
+                  >
+                    {status.message}
+                  </div>
+                )}
+              </form>
 
               <div className="a5_d">
                 <div className="a5_k">

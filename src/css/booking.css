@@ -1528,12 +1528,43 @@ select.form-control {
   cursor: pointer;
 }
 .k2_i.ot .form-control:focus,
-.k2_i.ot .form-control:valid {
+.k2_i.ot .form-control:valid:not(.booking-not-required) {
   background-color: var(--main-light-color);
   padding-top: 20px;
 }
 .k2_i.ot .form-control:focus ~ .k2_v,
-.k2_i.ot .form-control:valid ~ .k2_v {
+.k2_i.ot .form-control:valid:not(.booking-not-required) ~ .k2_v {
+  top: 12px;
+  font-size: 1.4rem;
+}
+.booking-not-required::placeholder {
+  color: transparent;
+}
+.booking-not-required::placeholder { /* Standard syntax */
+  color: transparent;
+}
+
+/* Vendor prefixes for broader browser compatibility */
+.booking-not-required::-webkit-input-placeholder { /* Chrome, Safari, Edge */
+  color: transparent;
+}
+
+.booking-not-required:-moz-placeholder { /* Firefox 18- */
+  color: transparent;
+}
+
+.booking-not-required::-moz-placeholder { /* Firefox 19+ */
+  color: transparent;
+}
+
+.booking-not-required:-ms-input-placeholder { /* Internet Explorer */
+  color: transparent;
+}
+.k2_i.ot .form-control.booking-not-required:not(:placeholder-shown) {
+  background-color: var(--main-light-color);
+  padding-top: 20px;
+}
+.k2_i.ot .form-control.booking-not-required:not(:placeholder-shown) ~ .k2_v {
   top: 12px;
   font-size: 1.4rem;
 }

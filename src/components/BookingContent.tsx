@@ -25,9 +25,9 @@ const BookingContent = ({ products }: BookingContentProps) => {
     const savedData =
       sessionStorage.getItem(BOOKING_CONFIRM_KEY) ||
       sessionStorage.getItem(BOOKING_INIT_KEY);
-    if(!savedData) {
-        window.location.href = "/";
-        return
+    if (!savedData) {
+      window.location.href = "/";
+      return;
     }
 
     try {
@@ -40,7 +40,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
         (_, index) => `guest_${index + 1}_services`
       );
       setGuestForms(initialGuestForms);
-      return
+      return;
     } catch (_) {
       sessionStorage.removeItem(BOOKING_INIT_KEY);
       window.location.href = "/";
@@ -108,9 +108,9 @@ const BookingContent = ({ products }: BookingContentProps) => {
 
     const finalBookingData = {
       ...bookingData,
-      first_name: formData.get("first_name") as string,
-      last_name: formData.get("last_name") as string,
+      full_name: formData.get("full_name") as string,
       phone: formData.get("phone") as string,
+      social_account_id: formData.get("social_account_id") as string,
       email: formData.get("email") as string,
       note: formData.get("content") as string,
       booking_details: bookingDetails?.guestServiceInfo,
@@ -135,7 +135,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
       <div className="s k2">
         <div className="container">
           <div className="k2_w fl">
-            <div className="k2_d tw:md:sticky tw:md:top-2 tw:md:self-start">
+            <div className="k2_d tw:[min-width:991px]:sticky tw:[min-width:991px]:top-2 tw:[min-width:991px]:self-start">
               <div className="k2_i">
                 <div className="k2_h hidden-sm hidden-xs">
                   {t("appointmentSummary")}
@@ -281,82 +281,98 @@ const BookingContent = ({ products }: BookingContentProps) => {
                 <div className="k2_i ot">
                   <div className="k2_h">{t("contactInfo")}</div>
                   <div className="k2_b">
-                    <div className="s_g x2">
-                      <div className="s_gc">
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            name="last_name"
-                            className="form-control k2_r"
-                            required
-                            id="id_last_name"
-                            defaultValue={bookingData.last_name || ""}
-                          />
-                          <span className="k2_v">{t("lastName")}</span>
-                        </div>
-                      </div>
-                      <div className="s_gc">
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            name="first_name"
-                            className="form-control k2_r"
-                            required
-                            id="id_first_name"
-                            defaultValue={bookingData.first_name || ""}
-                          />
-                          <span className="k2_v">{t("firstName")}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="k2_p form-group">
-                      <div className="k2_pd has-feedback">
-                        <input
-                          type="text"
-                          defaultValue="(+84)"
-                          className="form-control js-phone"
-                          name="dials"
-                          readOnly
-                        />
-                        <span className="fc-feedback">
-                          <i className="fa fa-angle-down"></i>
-                        </span>
-                      </div>
-
-                      <div className="k2_ps">
-                        <div className="k2_sh hidden-lg hidden-md">
-                          <strong>{t("countryCode")}</strong>
-                          <span className="k2_sx k2_px">
-                            <i className="ic ic-close"></i>
-                          </span>
-                        </div>
-                        <div className="k2_ph">
-                          <strong>{t("selected")}</strong>
-                          <div className="k2_pc">
-                            {t("vietnam")}
-                            <span>(+84)</span>
-                          </div>
-                        </div>
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            placeholder={t("countryOrRegion")}
-                            className="form-control"
-                            id="country_search"
-                          />
-                        </div>
-                        <div className="k2_pb" id="book_phone"></div>
-                      </div>
-
+                    <div className="form-group">
                       <input
                         type="text"
-                        name="phone"
+                        name="full_name"
                         className="form-control"
-                        placeholder={t("phoneNumber")}
-                        id="id_phone"
-                        defaultValue={bookingData.phone || ""}
+                        required
+                        id="id_full_name"
+                        defaultValue={bookingData.full_name || ""}
                       />
+                      <span
+                        className="k2_v tw:cursor-pointer"
+                        onClick={() =>
+                          document.getElementById("id_full_name")?.focus()
+                        }
+                      >
+                        {t("fullName")} <span style={{ color: "#f33" }}>*</span>
+                      </span>
+                    </div>
+
+                    <div className="s_g x2">
+                      <div className="s_gc">
+                        <div className="k2_p form-group">
+                          <div className="k2_pd has-feedback">
+                            <input
+                              type="text"
+                              defaultValue="(+84)"
+                              className="form-control js-phone"
+                              name="dials"
+                              readOnly
+                            />
+                            <span className="fc-feedback">
+                              <i className="fa fa-angle-down"></i>
+                            </span>
+                          </div>
+
+                          <div className="k2_ps">
+                            <div className="k2_sh hidden-lg hidden-md">
+                              <strong>{t("countryCode")}</strong>
+                              <span className="k2_sx k2_px">
+                                <i className="ic ic-close"></i>
+                              </span>
+                            </div>
+                            <div className="k2_ph">
+                              <strong>{t("selected")}</strong>
+                              <div className="k2_pc">
+                                {t("vietnam")}
+                                <span>(+84)</span>
+                              </div>
+                            </div>
+                            <div className="form-group">
+                              <input
+                                type="text"
+                                placeholder={t("countryOrRegion")}
+                                className="form-control"
+                                id="country_search"
+                              />
+                            </div>
+                            <div className="k2_pb" id="book_phone"></div>
+                          </div>
+
+                          <input
+                            type="text"
+                            name="phone"
+                            className="form-control"
+                            placeholder={t("phoneNumber")}
+                            id="id_phone"
+                            defaultValue={bookingData.phone || ""}
+                          />
+                        </div>
+                      </div>
+                      <div className="s_gc">
+                        <div className="form-group">
+                          <input
+                            type="text"
+                            name="social_account_id"
+                            className="form-control booking-not-required"
+                            placeholder={'Not visible'}
+                            id="id_social_account_id"
+                            defaultValue={bookingData.social_account_id || ""}
+                          />
+                          <span
+                            className="k2_v tw:cursor-pointer"
+                            onClick={() =>
+                              document
+                                .getElementById("id_social_account_id")
+                                ?.focus()
+                            }
+                          >
+                            {t("socialAccountId")}
+                          </span>
+                        </div>
+                      </div>
                     </div>
 
                     <div className="form-group">
@@ -369,7 +385,12 @@ const BookingContent = ({ products }: BookingContentProps) => {
                         id="id_email"
                         defaultValue={bookingData.email || ""}
                       />
-                      <span className="k2_v">{t("email")}</span>
+                      <span className="k2_v tw:cursor-pointer" onClick={() =>
+                          document.getElementById("id_email")?.focus()
+                        }
+                      >
+                        {t("email")} <span style={{ color: "#f33" }}>*</span>
+                      </span>
                     </div>
 
                     <div className="form-group">
