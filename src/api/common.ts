@@ -1,10 +1,10 @@
 import request from "@/lib/axios";
 import { AxiosResponse } from "axios";
-import { Category } from "@/types/common";
+import { Category, Product } from "@/types/common";
+import { ContactSubmissionData } from "@/types/contact";
 import { SpaLocation } from "@/types/api";
 import { BookingSubmissionData } from "@/types/booking";
 import { getLocale } from "next-intl/server";
-import { Product } from "@/types/common";
 
 export const getListSpa: () => Promise<
   AxiosResponse<SpaLocation[] | undefined>
@@ -31,4 +31,8 @@ export const getProductDetail: (id: string) => Promise<AxiosResponse<Product | u
 
 export const saveBooking = async (data: BookingSubmissionData) => {
   return await request.post("api/bookings", data);
+};
+
+export const saveContact = async (data: ContactSubmissionData) => {
+  return await request.post("api/contacts", data);
 };

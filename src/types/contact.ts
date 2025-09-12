@@ -1,5 +1,5 @@
 export interface ContactFormData {
-  name: string;
+  full_name: string;
   email: string;
   title: string;
   content: string;
@@ -31,4 +31,11 @@ export interface EmailResult {
   messageId?: string;
   historyId?: number;
   error?: string;
+}
+
+export interface ContactSubmissionData {
+  full_name: string;
+  email: string;
+  title: string;
+  content: string;
 }

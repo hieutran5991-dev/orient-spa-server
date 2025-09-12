@@ -66,6 +66,7 @@ export default async function LocaleLayout({
         <Script src='/js/lib.js' strategy='afterInteractive'/>
 
         <div className="ntc"></div>
+        <div className="ntc-success"></div>
       </body>
     </html>
   )

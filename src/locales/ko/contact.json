@@ -9,17 +9,23 @@
         "emailAddress": "이메일 주소",
         "title": "제목",
         "content": "내용",
-        "submit": "메시지 보내기",
+        "send": "전송",
         "sending": "전송 중...",
+        "submit": "메시지 보내기",
         "success": "메시지가 성공적으로 전송되었습니다!",
         "error": "오류가 발생했습니다. 다시 시도해주세요."
     },
     "validation": {
-        "nameRequired": "이름을 입력해주세요",
-        "emailRequired": "이메일을 입력해주세요",
-        "emailInvalid": "유효한 이메일 주소를 입력해주세요",
-        "titleRequired": "제목을 입력해주세요",
-        "contentRequired": "내용을 입력해주세요"
+        "fullNameRequired": "전체 이름을 입력해주세요.",
+        "emailRequired": "이메일 주소를 입력해주세요.",
+        "emailInvalid": "유효한 이메일 주소를 입력해주세요.",
+        "titleRequired": "제목을 입력해주세요.",
+        "contentRequired": "내용을 입력해주세요."
+    },
+    "messages": {
+        "success": "메시지가 성공적으로 전송되었습니다. 곧 연락드리겠습니다!",
+        "error": "오류가 발생했습니다. 다시 시도해주세요.",
+        "networkError": "네트워크 오류입니다. 다시 시도해주세요."
     },
     "contactInfo": {
         "title": "연락처 정보",

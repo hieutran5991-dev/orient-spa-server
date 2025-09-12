@@ -8,6 +8,7 @@ import type { NamespaceKeys } from "use-intl";
 import Link from "next/link";
 import Image from "next/image";
 import { CONFIG } from "@/utils/constants";
+import { saveContact } from "@/api/common";
 
 const ContactContent = () => {
   const locale = useLocale() as Locale;
@@ -15,49 +16,123 @@ const ContactContent = () => {
   const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
 
   const [formData, setFormData] = useState<ContactFormData>({
-    name: "",
+    full_name: "",
     email: "",
     title: "",
     content: "",
   });
 
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<{
-    type: "success" | "error" | "";
-    message: string;
-  }>({ type: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<{[key: string]: string}>({});
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
   };
+
+  // Validation functions
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: {[key: string]: string} = {};
+    
+    if (!formData.full_name.trim()) {
+      newErrors.name = t("validation.fullNameRequired");
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = t("validation.emailRequired");
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = t("validation.emailInvalid");
+    }
+    
+    if (!formData.title.trim()) {
+      newErrors.title = t("validation.titleRequired");
+    }
+    
+    if (!formData.content.trim()) {
+      newErrors.content = t("validation.contentRequired");
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const scrollToFirstError = () => {
+    // Wait for state to update
+    setTimeout(() => {
+      const firstErrorField = Object.keys(errors)[0];
+      if (firstErrorField) {
+        const element = document.getElementById(firstErrorField);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          element.focus();
+        }
+      }
+    }, 100);
+  };
+
+  const clearForm = () => {
+    setFormData({
+      full_name: "",
+      email: "",
+      title: "",
+      content: "",
+    });
+    setErrors({});
+  };
+
+  const showModal = (isSuccess: boolean, message: string) => {
+    const ntc = document.querySelector(isSuccess ? ".ntc-success" : ".ntc");
+    if (ntc) {
+      (ntc as HTMLElement).style.display = "block";
+      (ntc as HTMLElement).style.opacity = "1";
+      (ntc as HTMLElement).style.transition = "opacity 1s ease-in-out";
+      ntc.textContent = message;
+    }
+
+    setTimeout(() => {
+      (ntc as HTMLElement).style.opacity = "0";
+    }, 2000);
+  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
-    setStatus({ type: "", message: "" });
+    
+    // Validate form fields
+    if (!validateForm()) {
+      scrollToFirstError();
+      return;
+    }
+
+    setIsSubmitting(true);
+    setErrors({});
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const response = await saveContact(formData);
 
-      const data = await response.json();
-
-      if (data.success) {
-        setStatus({ type: "success", message: data.message });
-        setFormData({ name: "", email: "", title: "", content: "" });
+      if (response.data) {
+        showModal(true, t("messages.success"));
+        clearForm();
       } else {
-        setStatus({ type: "error", message: data.message });
+        const errorMsg = response?.data?.message || t("messages.error");
+        showModal(false, errorMsg);
       }
-    } catch (_) {
-      setStatus({ type: "error", message: "Network error. Please try again." });
+    } catch (error) {
+      const errorMsg = t("messages.networkError");
+      showModal(false, errorMsg);
     } finally {
-      setLoading(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -100,14 +175,17 @@ const ContactContent = () => {
                   </span>
                   <input
                     type="text"
-                    name="name"
+                    name="full_name"
                     className="form-control"
                     id="name"
                     placeholder={t("form.fullName")}
-                    value={formData.name}
+                    value={formData.full_name}
                     onChange={handleChange}
                     required
                   />
+                  {errors.full_name && (
+                    <span className="error-helper-message">{errors.name}</span>
+                  )}
                 </div>
 
                 <div className="form-group">
@@ -115,7 +193,7 @@ const ContactContent = () => {
                     {t("form.emailAddress")} <span>*</span>
                   </span>
                   <input
-                    type="text"
+                    type="email"
                     name="email"
                     className="form-control"
                     id="email"
@@ -125,6 +203,9 @@ const ContactContent = () => {
                     onChange={handleChange}
                     required
                   />
+                  {errors.email && (
+                    <span className="error-helper-message">{errors.email}</span>
+                  )}
                 </div>
 
                 <div className="form-group">
@@ -141,6 +222,9 @@ const ContactContent = () => {
                     onChange={handleChange}
                     required
                   />
+                  {errors.title && (
+                    <span className="error-helper-message">{errors.title}</span>
+                  )}
                 </div>
 
                 <div className="form-group">
@@ -158,26 +242,19 @@ const ContactContent = () => {
                     onChange={handleChange}
                     required
                   ></textarea>
+                  {errors.content && (
+                    <span className="error-helper-message">{errors.content}</span>
+                  )}
                 </div>
 
                 <button
                   type="submit"
                   className="a5_fu btn btn-1"
                   id="btnContact"
-                  disabled={loading}
+                  disabled={isSubmitting}
                 >
-                  {loading ? "Sending..." : t("form.send")}
+                  {isSubmitting ? t("form.sending") : t("form.send")}
                 </button>
-
-                {status.message && (
-                  <div
-                    className={`tw:mt-2 status-message ${
-                      status.type === "success" ? "success" : "error"
-                    }`}
-                  >
-                    {status.message}
-                  </div>
-                )}
               </form>
 
               <div className="a5_d">
