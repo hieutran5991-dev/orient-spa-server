@@ -51,7 +51,7 @@ export default async function Home() {
   const spaLocationRes = await getListSpa();
   const spaLocations = spaLocationRes?.data || [];
 
-  const productRes = await getListProducts();
+  const productRes = await getListProducts({ is_featured: true });
   const products = productRes?.data || [];
 
   return (
