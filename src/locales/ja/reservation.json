@@ -14,7 +14,7 @@
       }
     }
   },
-  "welcomeMessage": "オリエントスパハノイへようこそ！以下の方法でスパのご予約をいただけます：",
+  "welcomeMessage": "SEN SPA Da Nangへようこそ！以下の方法でスパのご予約をいただけます：",
   "reservationMethods": {
     "phone": "お電話でのご予約",
     "messaging": "Whatsapp、Kakao、Wechat、Zaloでのメッセージ",
