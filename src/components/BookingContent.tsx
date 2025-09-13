@@ -135,7 +135,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
       <div className="s k2">
         <div className="container">
           <div className="k2_w fl">
-            <div className="k2_d tw:[min-width:991px]:sticky tw:[min-width:991px]:top-2 tw:[min-width:991px]:self-start">
+            <div className="k2_d sticky-lg">
               <div className="k2_i">
                 <div className="k2_h hidden-sm hidden-xs">
                   {t("appointmentSummary")}

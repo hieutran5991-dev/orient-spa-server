@@ -1394,6 +1394,15 @@ select.form-control {
     width: 100%;
   }
 }
+
+/* Sticky positioning for large screens */
+@media (min-width: 992px) {
+  .sticky-lg {
+    position: sticky;
+    top: 8px;
+    align-self: flex-start;
+  }
+}
 .k2_h {
   color: #594a39;
   font-weight: 600;
