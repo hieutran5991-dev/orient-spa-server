@@ -286,7 +286,7 @@ const ContactContent = () => {
                     </li>
                     <li>
                       <Link href={`tel:${CONFIG.PHONE_WITH_COUNTRY_CODE}`} className="hoverable-link">
-                        <i className="fa fa-phone tw:w-8"></i> {CONFIG.PHONE_NUMBER}
+                        <i className="fa fa-phone tw:w-8"></i> {CONFIG.PHONE_WITH_COUNTRY_CODE}
                       </Link>
                     </li>
                   </ul>

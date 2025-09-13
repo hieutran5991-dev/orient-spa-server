@@ -196,7 +196,7 @@ const AboutUsContent = () => {
                   <span style={{ fontSize: "14px", color: "#333" }}>
                     {tCommon('aboutUs.businessInfo.enquiry')} {" "}
                     <a href={`tel:${CONFIG.PHONE_WITH_COUNTRY_CODE}`}>
-                      {CONFIG.PHONE_NUMBER}
+                      {CONFIG.PHONE_WITH_COUNTRY_CODE}
                     </a>
                   </span>
                 </div>
