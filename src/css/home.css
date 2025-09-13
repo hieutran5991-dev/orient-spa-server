@@ -3149,9 +3149,10 @@ select.form-control {
   position: relative;
   padding-top: 100%;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 0;
   -webkit-background-size: contain;
   background-size: contain;
+  background-color: #110601f7;
 }
 
 .s4_a img {
