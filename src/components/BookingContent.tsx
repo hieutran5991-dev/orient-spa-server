@@ -232,7 +232,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
                                       </p>
                                     </div>
                                     <div className="s8_d">
-                                      <span>{service.duration}</span>
+                                      <span>{t("minutes", { minutes: service.duration })}</span>
                                       <strong>
                                         {formatPrice(service.price)}
                                       </strong>

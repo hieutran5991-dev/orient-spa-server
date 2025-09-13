@@ -47,5 +47,6 @@
   "additionalRequestPlaceholder": "도움이 필요하거나 추가 요청사항이 있으시면 언제든지 알려주세요. 귀하의 스파 경험을 맞춤화하거나 편의를 제공할 수 있도록 도와드리겠습니다.",
   "spaImageAlt": "스파",
   "defaultSpaName": "SEN SPA Da Nang",
-  "guestMustSelectService": "게스트는 최소 하나의 서비스를 선택해야 합니다."
+  "guestMustSelectService": "게스트는 최소 하나의 서비스를 선택해야 합니다.",
+  "minutes": "{minutes}분"
 }
