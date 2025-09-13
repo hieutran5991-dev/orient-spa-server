@@ -187,6 +187,15 @@ const Footer = ({ spaLocations }: FooterProps) => {
                         <i className="fa fa-instagram"></i>
                       </a>
                     </span>
+                    <span>
+                      <a
+                        href="https://www.tripadvisor.com.vn/Attraction_Review-g298085-d28147710-Reviews-Sen_Spa_Da_Nang-Da_Nang.html"
+                        target="_blank"
+                        rel="nofollow"
+                      >
+                        <i className="fa fa-tripadvisor"></i>
+                      </a>
+                    </span>
                   </div>
                 </div>
               </div>
