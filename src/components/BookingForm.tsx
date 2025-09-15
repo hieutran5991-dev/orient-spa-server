@@ -12,9 +12,10 @@ interface BookingFormProps {
   spaLocations: SpaLocation[]
   children?: React.ReactNode
   selectedService?: Product
+  id?: string
 }
 
-const BookingForm = ({ spaLocations, children, selectedService }: BookingFormProps) => {
+const BookingForm = ({ spaLocations, children, selectedService, id }: BookingFormProps) => {
   const locale = useLocale() as Locale
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [_error, _setError] = useState<string | null>(null)
@@ -111,7 +112,7 @@ const BookingForm = ({ spaLocations, children, selectedService }: BookingFormPro
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element
-      if (!target.closest('.s1_s2') && !target.closest('#f2')) {
+      if (!target.closest(`.s1_s2${id ? `-${id}` : ''}`) && !target.closest(`#f2${id ? `-${id}` : ''}`)) {
         setShowSpaDropdown(false)
       }
     }
@@ -122,24 +123,25 @@ const BookingForm = ({ spaLocations, children, selectedService }: BookingFormPro
 
   return (
     <>
-      <form id='formBookBox' className='s1_f' onSubmit={handleSubmit}>
+      <form id={`formBookBox${id ? `-${id}` : ''}`} className='s1_f' onSubmit={handleSubmit}>
         {children}
         <div className='row'>
           <div className='s1_g'>
             <div className='form-group has-feedback'>
               <input
                 type='text'
-                id='f2'
+                id={`f2${id ? `-${id}` : ''}`}
                 name='spa'
-                className='form-control u1 js-v2'
+                className={`form-control u1 js-v2${id ? `-${id}` : ''}`}
                 value={selectedSpa}
                 onChange={(e) => setSelectedSpa(e.target.value)}
                 onFocus={() => {
                   setShowSpaDropdown(true)
                 }}
                 required
+                autoComplete="off"
               />
-              <label htmlFor='f2' className='s1_v'>
+              <label htmlFor={`f2${id ? `-${id}` : ''}`} className='s1_v'>
                 {tBooking('location')}
               </label>
               <span className='fc-feedback'>
@@ -147,14 +149,14 @@ const BookingForm = ({ spaLocations, children, selectedService }: BookingFormPro
               </span>
 
               <div
-                className='s1_s w2 s1_s2'
+                className={`s1_s${id ? `-${id}` : ''} w2 s1_s2${id ? `-${id}` : ''}`}
                 style={{
                   display: showSpaDropdown ? 'block' : 'none'
                 }}
               >
                 <div className='s1_sh hidden-lg hidden-md'>
                   <div className='s1_st'>{tBooking('selectLocation')}</div>
-                  <span className='s1_x js-done' onClick={() => setShowSpaDropdown(false)}>
+                  <span className={`s1_x js-done${id ? `-${id}` : ''}`} onClick={() => setShowSpaDropdown(false)}>
                     <i className='ic ic-close'></i>
                   </span>
                 </div>
@@ -171,7 +173,7 @@ const BookingForm = ({ spaLocations, children, selectedService }: BookingFormPro
                 </div>
 
                 <div className='s1_sf hidden-lg hidden-md'>
-                  <span className='s1_su js-done btn btn-1 btn-block' onClick={() => setShowSpaDropdown(false)}>
+                  <span className={`s1_su js-done${id ? `-${id}` : ''} btn btn-1 btn-block`} onClick={() => setShowSpaDropdown(false)}>
                     {tBooking('done')}
                   </span>
                 </div>
@@ -180,51 +182,51 @@ const BookingForm = ({ spaLocations, children, selectedService }: BookingFormPro
           </div>
           <div className='s1_g'>
             <div className='form-group has-feedback'>
-              <input type='text' id='date' name='date' className='form-control u1 js-v1' required />
-              <label htmlFor='date' className='s1_v'>
+              <input type='text' id={`date${id ? `-${id}` : ''}`} name='date' className={`form-control u1 js-v1${id ? `-${id}` : ''}`} required autoComplete="off" />
+              <label htmlFor={`date${id ? `-${id}` : ''}`} className='s1_v'>
                 {tBooking('date')}
               </label>
               <span className='fc-feedback'>
                 <i className='fa fa-calendar'></i>
               </span>
 
-              <div className='s1_s w2 s1_s1'>
+              <div className={`s1_s${id ? `-${id}` : ''} w2 s1_s1${id ? `-${id}` : ''}`}>
                 <div className='s1_sh hidden-lg hidden-md'>
                   <div className='s1_st'>Select date</div>
-                  <span className='s1_x js-done'>
+                  <span className={`s1_x js-done${id ? `-${id}` : ''}`}>
                     <i className='ic ic-close'></i>
                   </span>
                 </div>
                 <div className='s1_sd'>
-                  <div className='s1_y' id='iDate'>
+                  <div className='s1_y' id={`iDate${id ? `-${id}` : ''}`}>
                     <div className='pika-single'></div>
                   </div>
                 </div>
                 <div className='s1_sf hidden-lg hidden-md'>
-                  <span className='s1_su js-done btn btn-1 btn-block'>Done</span>
+                  <span className={`s1_su js-done${id ? `-${id}` : ''} btn btn-1 btn-block`}>Done</span>
                 </div>
               </div>
             </div>
           </div>
           <div className='s1_g'>
             <div className='form-group has-feedback'>
-              <input type='text' id='f3' name='time' className='form-control u1 js-v3' required />
-              <label htmlFor='f3' className='s1_v'>
+              <input type='text' id={`f3${id ? `-${id}` : ''}`} name='time' className={`form-control u1 js-v3${id ? `-${id}` : ''}`} required autoComplete="off" />
+              <label htmlFor={`f3${id ? `-${id}` : ''}`} className='s1_v'>
                 {tBooking('time')}
               </label>
               <span className='fc-feedback'>
                 <i className='fa fa-angle-down'></i>
               </span>
 
-              <div className='s1_s w2 s1_s3'>
+              <div className={`s1_s${id ? `-${id}` : ''} w2 s1_s3${id ? `-${id}` : ''}`}>
                 <div className='s1_sh hidden-lg hidden-md'>
                   <div className='s1_st'>{tBooking('selectTime')}</div>
-                  <span className='s1_x js-done'>
+                  <span className={`s1_x js-done${id ? `-${id}` : ''}`}>
                     <i className='ic ic-close'></i>
                   </span>
                 </div>
                 <div className='s1_sd'>
-                  <div className='s1_k' id='listTimes'>
+                  <div className='s1_k' id={`listTimes${id ? `-${id}` : ''}`}>
                     <div className='s1_l'>
                       {tBooking('availabilityFor')} {timeSlots.availabilityDate}
                     </div>
@@ -240,25 +242,25 @@ const BookingForm = ({ spaLocations, children, selectedService }: BookingFormPro
                   </div>
                 </div>
                 <div className='s1_sf hidden-lg hidden-md'>
-                  <span className='s1_su js-done btn btn-1 btn-block'>{tBooking('done')}</span>
+                  <span className={`s1_su js-done${id ? `-${id}` : ''} btn btn-1 btn-block`}>{tBooking('done')}</span>
                 </div>
               </div>
             </div>
           </div>
           <div className='s1_g'>
             <div className='form-group has-feedback'>
-              <input type='text' id='f4' name='people' className='form-control u1 js-v4' required />
-              <label htmlFor='f4' className='s1_v'>
+              <input type='text' id={`f4${id ? `-${id}` : ''}`} name='people' className={`form-control u1 js-v4${id ? `-${id}` : ''}`} required autoComplete="off" />
+              <label htmlFor={`f4${id ? `-${id}` : ''}`} className='s1_v'>
                 {tBooking('guest')}
               </label>
               <span className='fc-feedback'>
                 <i className='fa fa-angle-down'></i>
               </span>
 
-              <div className='s1_s s1_s4'>
+              <div className={`s1_s${id ? `-${id}` : ''} s1_s4${id ? `-${id}` : ''}`}>
                 <div className='s1_sh hidden-lg hidden-md'>
                   <div className='s1_st'>{tBooking('selectGuest')}</div>
-                  <span className='s1_x js-done'>
+                  <span className={`s1_x js-done${id ? `-${id}` : ''}`}>
                     <i className='ic ic-close'></i>
                   </span>
                 </div>
@@ -281,7 +283,7 @@ const BookingForm = ({ spaLocations, children, selectedService }: BookingFormPro
             {_error}
           </div>
         )}
-        <button type='submit' className='btn btn-block btn-1 s1_u booknow' disabled={isSubmitting}>
+        <button type='submit' className={`btn btn-block btn-1 s1_u booknow${id ? `-${id}` : ''}`} disabled={isSubmitting}>
           {isSubmitting ? tBooking('processing') : tBooking('bookNow')}
         </button>
       </form>

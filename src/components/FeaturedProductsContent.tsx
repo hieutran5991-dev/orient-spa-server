@@ -75,7 +75,7 @@ const FeaturedProductsContent = ({
                 onClick={() => handleBookNow(product)}
                 className="tw:cursor-pointer"
               >
-                <div className="tw:relative tw:h-[440px] tw:overflow-hidden tw:flex tw:items-center tw:justify-center">
+                <div className="tw:relative tw:h-[380px] tw:overflow-hidden tw:flex tw:items-center tw:justify-center">
                   <img
                     src={
                       product.image_url

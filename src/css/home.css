@@ -2529,7 +2529,42 @@ select.form-control {
   }
 }
 
+.s1_s-form2 {
+  width: 100%;
+  z-index: 99;
+  display: none;
+  left: 0;
+}
+
+@media (min-width: 992px) {
+  .s1_s-form2 {
+    background-color: #fff;
+    position: absolute;
+    top: calc(100% + 16px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (max-width: 991px) {
+  .s1_s-form2 {
+    width: 100% !important;
+    background-color: #fff;
+    padding-bottom: 123px;
+    padding-top: 98px;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 .s1_s.w2 {
+  width: calc(200% + 14px);
+}
+
+.s1_s-form2.w2 {
   width: calc(200% + 14px);
 }
 
@@ -2736,6 +2771,17 @@ select.form-control {
 
 @media (max-width: 991px) {
   .s1_y {
+    border-top: 1px solid rgba(34, 34, 34, 0.1);
+  }
+}
+
+.s1_z-form2 {
+  position: absolute;
+  right: 0;
+}
+
+@media (max-width: 991px) {
+  .s1_y-form2 {
     border-top: 1px solid rgba(34, 34, 34, 0.1);
   }
 }
@@ -4928,6 +4974,10 @@ select.form-control {
   }
 
   .m8 .s1_z {
+    right: -176px;
+  }
+
+  .m8 .s1_z-form2 {
     right: -176px;
   }
 

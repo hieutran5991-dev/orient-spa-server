@@ -5147,6 +5147,7 @@ jQuery(document).ready(function ($) {
         $(".s1_s1").show();
     });
     $(".js-v2").click(function () {
+        $(".js-v2").blur();
         $(".s1_s1, .s1_s3, .s1_s4").hide();
         $(".s1_s2").show();
     });
@@ -5156,6 +5157,7 @@ jQuery(document).ready(function ($) {
         $('#spa_id').val($(this).attr('data-value'));
     });
     $(".js-v3").click(function () {
+        $(".js-v3").blur();
         $(".s1_s1, .s1_s2, .s1_s4").hide();
         $(".s1_s3").show();
         $(".s1_s3 dl dd").click(function () {
@@ -5164,6 +5166,7 @@ jQuery(document).ready(function ($) {
         });
     });
     $(".js-v4").click(function () {
+        $(".js-v4").blur();
         $(".s1_s1, .s1_s2, .s1_s3").hide();
         $(".s1_s4").show();
         $(".s1_s4 ul li").click(function () {

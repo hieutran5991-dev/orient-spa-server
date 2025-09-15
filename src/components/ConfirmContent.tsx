@@ -270,7 +270,7 @@ const ConfirmContent = () => {
                                     </strong>
                                   </td>
                                 </tr>
-                                <tr>
+                                <tr style={{ color: "green" }}>
                                   <td>
                                     <strong>
                                       {t("serviceDetails.discount10")}
@@ -278,7 +278,7 @@ const ConfirmContent = () => {
                                   </td>
                                   <td>
                                     <strong>
-                                      {tCommon(
+                                      - {tCommon(
                                         "prices",
                                         { 
                                           priceVnd: formatPriceWithCurrency((bookingData.total_price?.VND || 0) * 0.1, CURRENCY.VND),

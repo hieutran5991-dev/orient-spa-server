@@ -207,6 +207,10 @@
   display: block;
 }
 
+.s1_s-form2.active {
+  display: block;
+}
+
 .s1_d li,
 .s1_j dd,
 .s1_n li {

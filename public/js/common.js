@@ -10095,10 +10095,12 @@ jQuery(document).ready(function ($) {
         $(".s1_s1").show();
     });
     $(".js-v2").click(function () {
+        $(".js-v2").blur();
         $(".s1_s1, .s1_s3, .s1_s4").hide();
         $(".s1_s2").show();
     });
     $(".js-v3").click(function () {
+        $(".js-v3").blur();
         $(".s1_s1, .s1_s2, .s1_s4").hide();
         $(".s1_s3").show();
         $(".s1_s3 dl dd").click(function () {
@@ -10107,6 +10109,7 @@ jQuery(document).ready(function ($) {
         });
     });
     $(".js-v4").click(function () {
+        $(".js-v4").blur();
         $(".s1_s1, .s1_s2, .s1_s3").hide();
         $(".s1_s4").show();
         $(".s1_s4 ul li").click(function () {
@@ -10138,6 +10141,112 @@ jQuery(document).ready(function ($) {
             message: gettext('Please choose a time!')
         }, {
             id: '#f4',
+            message: gettext('Please choose number of people!')
+        }];
+        for (const field of fields) {
+            const val = $(field.id).val().trim();
+            if (!val) {
+                showAlert(field.message);
+                $(field.id).focus();
+                return false;
+            }
+        }
+    });
+});
+jQuery(document).ready(function ($) {
+    var ww = $(window).width();
+    var bd = true;
+    if (ww < 992) {
+        bd = false;
+        $('.s1_z-form2').click(function () {
+            $('body').removeClass('box-hidden');
+            $('.main-content, .a1, .s2').removeClass('zf');
+            $('.s1').hide();
+        });
+    }
+    $('.js-bk-form2').click(function () {
+        $('body').addClass('box-hidden');
+        $('.main-content, .a1, .s2').addClass('zf');
+        $('.m8').show();
+    });
+    $('.s1_z-form2').click(function () {
+        $('body').removeClass('box-hidden');
+        $('.main-content, .a1').removeClass('zf');
+        $('.m8').hide();
+    });
+    var picker = new Pikaday({
+        field: document.getElementById('date-form2'),
+        minDate: moment().toDate(),
+        format: 'DD-MM-YYYY',
+        container: document.getElementById('iDate-form2'),
+        bound: bd,
+        disableDayFn: function (date) {
+            var enabled_dates = ["2025-05-27", "2025-05-28",];
+            if ($.inArray(moment(date).format("YYYY-MM-DD"), enabled_dates) !== -1) {
+                return date;
+            }
+        },
+        onSelect: function () {
+            $(".js-v3-form2").val('');
+            $('#date_hide').val(this.getMoment().format('YYYY-MM-D'));
+            $('.s1_s-form2').hide();
+        },
+    });
+    $(".js-v1-form2").click(function () {
+        $(".s1_s2-form2, .s1_s3-form2").hide();
+        if (ww < 992) {
+            $('body').addClass('box-hidden');
+            $('.main-content').addClass('zf');
+        }
+        $(".s1_s1-form2").show();
+    });
+    $(".js-v2-form2").click(function () {
+        $(".js-v2-form2").blur();
+        $(".s1_s1-form2, .s1_s3-form2, .s1_s4-form2").hide();
+        $(".s1_s2-form2").show();
+    });
+    $(".js-v3-form2").click(function () {
+        $(".js-v3-form2").blur();
+        $(".s1_s1-form2, .s1_s2-form2, .s1_s4-form2").hide();
+        $(".s1_s3-form2").show();
+        $(".s1_s3-form2 dl dd").click(function () {
+            $(".s1_s3-form2").hide();
+            $(".js-v3-form2").val($(this).text());
+        });
+    });
+    $(".js-v4-form2").click(function () {
+        $(".js-v4-form2").blur();
+        $(".s1_s1-form2, .s1_s2-form2, .s1_s3-form2").hide();
+        $(".s1_s4-form2").show();
+        $(".s1_s4-form2 ul li").click(function () {
+            $(".s1_s4-form2").hide();
+            $(".js-v4-form2").val($(this).text());
+        });
+    });
+    $('.js-v1-form2, .js-v2-form2, .js-v3-form2, .js-v4-form2, .s1_s-form2').on('touchstart click', function (e) {
+        e.stopPropagation();
+    });
+    $('body').on('touchstart click', function (e) {
+        $(".s1_s-form2").hide();
+    });
+    $('.js-done-form2').click(function () {
+        $('.s1_s-form2').hide();
+    });
+    $('.u1').on('keydown paste input', function (e) {
+        e.preventDefault();
+    });
+    $('.booknow-form2').click(function () {
+        const fields = [{
+            id: '#f2-form2',
+            message: gettext('Please choose a location!')
+        }, {
+            id: '#date-form2',
+            message: gettext('Please choose a date!')
+        }, {
+            id: '#f3-form2',
+            message: gettext('Please choose a time!')
+        }, {
+            id: '#f4-form2',
             message: gettext('Please choose number of people!')
         }];
         for (const field of fields) {

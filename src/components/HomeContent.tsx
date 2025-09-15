@@ -134,7 +134,7 @@ const HomeContent = ({ spaLocations, products }: HomeContentProps) => {
         </div>
       </div>
 
-      <FeaturedProducts products={products} />
+      <FeaturedProducts spaLocations={spaLocations} products={products} />
 
       <People />
 
