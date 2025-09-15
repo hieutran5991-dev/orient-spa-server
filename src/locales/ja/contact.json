@@ -11,11 +11,7 @@
     "content": "内容",
     "contentPlaceholder": "内容...",
     "send": "送信",
-    "sending": "送信中...",
-    "captcha": {
-      "text": "ボット防止認証",
-      "button": "認証を開始するにはクリックしてください"
-    }
+    "sending": "送信中..."
   },
   "validation": {
     "fullNameRequired": "氏名は必須です。",

@@ -11,11 +11,7 @@
     "content": "Content",
     "contentPlaceholder": "Content...",
     "send": "Send",
-    "sending": "Sending...",
-    "captcha": {
-      "text": "Anti-Robot Verification",
-      "button": "Click to start verification"
-    }
+    "sending": "Sending..."
   },
   "validation": {
     "fullNameRequired": "Full name is required.",
