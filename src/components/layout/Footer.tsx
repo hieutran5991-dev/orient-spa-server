@@ -292,6 +292,16 @@ const Footer = ({ spaLocations }: FooterProps) => {
           <div>{tCommon("footer.copyrightLine1")}</div>
           <div>{tCommon("footer.copyrightLine2")}</div>
         </div>
+        <div className="tw:text-center">
+          {tCommon("footer.copyrightLine3")}{" "}
+          <a
+            className="tw:text-[var(--main-color)] tw:hover:underlink"
+            href="https://senspadanang.com"
+            rel="dofollow"
+          >
+            {tCommon("footer.copyrightLine4")}
+          </a>
+        </div>
       </div>
     </footer>
   );
