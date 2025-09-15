@@ -5,10 +5,11 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import type { NamespaceKeys } from "use-intl";
 import { saveBooking } from "@/api/common";
-import { BookingData, BookingSubmissionData, Product } from "@/types/booking";
-import { BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY } from "@/utils/constants";
-import { formatPrice } from "@/utils/format";
+import { BookingData, BookingSubmissionData } from "@/types/booking";
+import { Product } from "@/types/common";
+import { BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY, CURRENCY } from "@/utils/constants";
 import BookingSteps from "@/components/booking/BookingSteps";
+import { formatPriceWithCurrency } from "@/utils/format";
 
 const ConfirmContent = () => {
   const router = useRouter();
@@ -16,6 +17,7 @@ const ConfirmContent = () => {
   const [_isLoading, setIsLoading] = useState(true);
   const [isConfirming, setIsConfirming] = useState(false);
   const t = useTranslations("confirm" as NamespaceKeys<any, any>);
+  const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
 
   useEffect(() => {
     const savedData = sessionStorage.getItem(BOOKING_CONFIRM_KEY);
@@ -125,7 +127,13 @@ const ConfirmContent = () => {
                                     ) => (
                                       <tr key={serviceIndex}>
                                         <td>{service.name}</td>
-                                        <td>{formatPrice(service.price)}</td>
+                                        <td>{tCommon(
+                                          "prices",
+                                          {
+                                            priceVnd: formatPriceWithCurrency(service.prices.VND, CURRENCY.VND),
+                                            priceUsd: formatPriceWithCurrency(service.prices.USD, CURRENCY.USD)
+                                          }
+                                        )}</td>
                                       </tr>
                                     )
                                   )}
@@ -135,8 +143,7 @@ const ConfirmContent = () => {
                           )
                         )}
 
-                        {bookingData.total_price &&
-                          bookingData.total_price > 0 && (
+                        {Object.values(bookingData.total_price || {}).some(price => price > 0) && (
                             <div className="k2_di">
                               <table>
                                 <tbody>
@@ -148,7 +155,49 @@ const ConfirmContent = () => {
                                     </td>
                                     <td>
                                       <strong>
-                                        {formatPrice(bookingData.total_price)}
+                                        {tCommon(
+                                          "prices",
+                                          { 
+                                            priceVnd: formatPriceWithCurrency(bookingData.total_price?.VND || 0, CURRENCY.VND),
+                                            priceUsd: formatPriceWithCurrency(bookingData.total_price?.USD || 0, CURRENCY.USD)
+                                          }
+                                        )}
+                                      </strong>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <strong>
+                                        {t("serviceDetails.discount10")}
+                                      </strong>
+                                    </td>
+                                    <td>
+                                      <strong>
+                                        {tCommon(
+                                          "prices",
+                                          { 
+                                            priceVnd: formatPriceWithCurrency((bookingData.total_price?.VND || 0) * 0.1, CURRENCY.VND),
+                                            priceUsd: formatPriceWithCurrency((bookingData.total_price?.USD || 0) * 0.1, CURRENCY.USD)
+                                          }
+                                        )}
+                                      </strong>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <strong>
+                                        {t("serviceDetails.totalAfterDiscount")}
+                                      </strong>
+                                    </td>
+                                    <td>
+                                      <strong>
+                                        {tCommon(
+                                          "prices",
+                                          { 
+                                            priceVnd: formatPriceWithCurrency((bookingData.total_price?.VND || 0) - ((bookingData.total_price?.VND || 0) * 0.1), CURRENCY.VND),
+                                            priceUsd: formatPriceWithCurrency((bookingData.total_price?.USD || 0) - ((bookingData.total_price?.USD || 0) * 0.1), CURRENCY.USD)
+                                          }
+                                        )}
                                       </strong>
                                     </td>
                                   </tr>
@@ -183,7 +232,13 @@ const ConfirmContent = () => {
                                   (service: Product, serviceIndex: number) => (
                                     <tr key={serviceIndex}>
                                       <td>{service.name}</td>
-                                      <td>{formatPrice(service.price)}</td>
+                                      <td>{tCommon(
+                                        "prices",
+                                        { 
+                                          priceVnd: formatPriceWithCurrency(service.prices.VND, CURRENCY.VND),
+                                          priceUsd: formatPriceWithCurrency(service.prices.USD, CURRENCY.USD)
+                                        }
+                                      )}</td>
                                     </tr>
                                   )
                                 )}
@@ -193,8 +248,7 @@ const ConfirmContent = () => {
                         )
                       )}
 
-                      {bookingData.total_price &&
-                        bookingData.total_price > 0 && (
+                      {Object.values(bookingData.total_price || {}).some(price => price > 0) && (
                           <div className="k2_di">
                             <table>
                               <tbody>
@@ -206,7 +260,49 @@ const ConfirmContent = () => {
                                   </td>
                                   <td>
                                     <strong>
-                                      {formatPrice(bookingData.total_price)}
+                                      {tCommon(
+                                        "prices",
+                                        { 
+                                          priceVnd: formatPriceWithCurrency(bookingData.total_price?.VND || 0, CURRENCY.VND),
+                                          priceUsd: formatPriceWithCurrency(bookingData.total_price?.USD || 0, CURRENCY.USD)
+                                        }
+                                      )}
+                                    </strong>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <strong>
+                                      {t("serviceDetails.discount10")}
+                                    </strong>
+                                  </td>
+                                  <td>
+                                    <strong>
+                                      {tCommon(
+                                        "prices",
+                                        { 
+                                          priceVnd: formatPriceWithCurrency((bookingData.total_price?.VND || 0) * 0.1, CURRENCY.VND),
+                                          priceUsd: formatPriceWithCurrency((bookingData.total_price?.USD || 0) * 0.1, CURRENCY.USD)
+                                        }
+                                      )}
+                                    </strong>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <strong>
+                                      {t("serviceDetails.totalAfterDiscount")}
+                                    </strong>
+                                  </td>
+                                  <td>
+                                    <strong>
+                                      {tCommon(
+                                        "prices",
+                                        { 
+                                          priceVnd: formatPriceWithCurrency((bookingData.total_price?.VND || 0) - ((bookingData.total_price?.VND || 0) * 0.1), CURRENCY.VND),
+                                          priceUsd: formatPriceWithCurrency((bookingData.total_price?.USD || 0) - ((bookingData.total_price?.USD || 0) * 0.1), CURRENCY.USD)
+                                        }
+                                      )}
                                     </strong>
                                   </td>
                                 </tr>

@@ -8,12 +8,15 @@ import type { Locale } from "@/utils/constants";
 import type { NamespaceKeys } from "use-intl";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Product } from "@/types/common";
+import { CURRENCY } from "@/utils/constants";
+import { formatPriceWithCurrency } from "@/utils/format";
 
 const FeaturedProducts = ({ products }: { products: Product[] }) => {
   const locale = useLocale() as Locale;
   const t = useTranslations(
     "home" as NamespaceKeys<string, string>
   );
+  const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
 
   const swiperConfig = {
     slidesPerView: 1,
@@ -67,8 +70,13 @@ const FeaturedProducts = ({ products }: { products: Product[] }) => {
                           })}
                         </span>
                         <span className="s4_an">
-                          {featuredProduct.price.toLocaleString()}{" "}
-                          {featuredProduct.currency}
+                          {tCommon(
+                            "prices",
+                            { 
+                              priceVnd: formatPriceWithCurrency(featuredProduct.prices.VND, CURRENCY.VND),
+                              priceUsd: formatPriceWithCurrency(featuredProduct.prices.USD, CURRENCY.USD)
+                            }
+                          )}  
                         </span>
                       </div>
                     </div>
@@ -87,8 +95,13 @@ const FeaturedProducts = ({ products }: { products: Product[] }) => {
                         </li>
                         <li>
                           <strong>{t("featuredProducts.price")}: </strong>
-                          {featuredProduct.price.toLocaleString()}{" "}
-                          {featuredProduct.currency}
+                          {tCommon(
+                            "prices",
+                            { 
+                              priceVnd: formatPriceWithCurrency(featuredProduct.prices.VND, CURRENCY.VND),
+                              priceUsd: formatPriceWithCurrency(featuredProduct.prices.USD, CURRENCY.USD)
+                            }
+                          )}
                         </li>
                         <li>{featuredProduct.description}</li>
                       </ul>

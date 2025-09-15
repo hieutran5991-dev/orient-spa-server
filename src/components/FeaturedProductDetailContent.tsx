@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Product } from '@/types/common';
+import { formatPriceWithCurrency } from '@/utils/format';
+import { CURRENCY } from '@/utils/constants';
 
 interface FeaturedProductDetailContentProps {
   product: Product;
@@ -66,7 +68,13 @@ const FeaturedProductDetailContent = ({ product }: FeaturedProductDetailContentP
               </ul>
 
               <p><strong>{tServices('duration')}</strong>: {product.duration}&apos;</p>
-              <p><strong>{tServices('price')}</strong>: {product.price} VND</p>
+              <p><strong>{tServices('price')}</strong>: {tCommon(
+                "prices",
+                { 
+                  priceVnd: formatPriceWithCurrency(product.prices.VND, CURRENCY.VND),
+                  priceUsd: formatPriceWithCurrency(product.prices.USD, CURRENCY.USD)
+                }
+              )}</p>
 
               <div className="k2_cta">
                 <Link href={`/${locale}/booking`} className="btn btn-1 btn-block">

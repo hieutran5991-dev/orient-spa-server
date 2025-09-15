@@ -8016,10 +8016,36 @@ jQuery(document).ready(function ($) {
         .get()
     ),
   ];
+   function formatPriceWithCurrency(price, currency = "VND") {
+    if (currency === "VND") {
+      const priceNumber = typeof price === "string" ? parseInt(price) : Number(price);
+  
+      return Intl.NumberFormat("vi-VN", {
+        style: "currency",
+        currency: "VND",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      }).format(priceNumber).replace(/\./g, ',');
+    }
+  
+    if (currency === "USD") {
+      const priceNumber = typeof price === "string" ? parseFloat(price) : Number(price);
+  
+      return Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }).format(priceNumber);
+    }
+  };
   function updateSummaryBox() {
     const $box = $(".k2_ds");
     $box.empty();
-    let total = 0;
+    let total = {
+      VND: 0,
+      USD: 0
+    };
     getGuests().forEach((id) => {
       const services = $(`[name="guest_${id}_services"]:checked`).closest(
         ".s8_i"
@@ -8029,8 +8055,12 @@ jQuery(document).ready(function ($) {
       services.each(function () {
         const name = $(this).find("h3").text().trim();
         const priceText = $(this).find("strong").text().trim();
-        const price = parseInt(priceText.replace(/[^\d]/g, ""), 10) || 0;
-        total += price;
+        const vndMatch = priceText.match(/([\d.,]+)\s*₫/);
+        const usdMatch = priceText.match(/\(\s*\$([\d.,]+)\s*\)/i);
+        const priceVnd = vndMatch ? parseInt(vndMatch[1].replace(/[.,]/g, ""), 10) : 0;
+        const priceUsd = usdMatch ? parseFloat(parseFloat(usdMatch[1].replace(/[,]/g, "")).toFixed(2)) : 0;
+        total.VND += priceVnd;
+        total.USD += priceUsd;
         rows += `<tr><td>${name}</td><td>${priceText}</td></tr>`;
       });
       $box.append(`
@@ -8042,15 +8072,22 @@ jQuery(document).ready(function ($) {
                 </div>
             `);
     });
-    if (total > 0) {
+    if (total.VND > 0 || total.USD > 0) {
+      console.log(total);
       $box.append(`
                 <div class="k2_di">
                     <table>
                         <tr>
                             <td><strong>${gettext("Total price")}</strong></td>
-                            <td><strong>${total.toLocaleString(
-                              "vi-VN"
-                            )} VND</strong></td>
+                            <td><strong>${formatPriceWithCurrency(total.VND, "VND")} (${formatPriceWithCurrency(total.USD, "USD")})</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>${gettext("Discount 10%")}</strong></td>
+                            <td><strong>${formatPriceWithCurrency(total.VND * 0.1, "VND")} (${formatPriceWithCurrency(total.USD * 0.1, "USD")})</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>${gettext("Total after discount")}</strong></td>
+                            <td><strong>${formatPriceWithCurrency(total.VND - total.VND * 0.1, "VND")} (${formatPriceWithCurrency(total.USD - total.USD * 0.1, "USD")})</strong></td>
                         </tr>
                     </table>
                 </div>

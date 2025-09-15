@@ -3,8 +3,8 @@
 import { useTranslations, useLocale, type NamespaceKeys } from "next-intl";
 import Link from "next/link";
 import { useState, useMemo, useRef } from "react";
-import { type Locale } from "@/utils/constants";
-import { formatPrice } from "@/utils/format";
+import { CURRENCY, type Locale } from "@/utils/constants";
+import { formatPriceWithCurrency } from "@/utils/format";
 import { SpaLocation } from "@/types/api";
 import { Category, Product } from "@/types/common";
 import BookingForm from "./BookingForm";
@@ -22,6 +22,7 @@ const ServicesPricesContent = ({
 }: ServicesPricesContentProps) => {
   const locale = useLocale() as Locale;
   const t = useTranslations("services" as NamespaceKeys<string, string>);
+  const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
   const [activeTab, setActiveTab] = useState(
     categories.length ? categories[0].id : 1
   );
@@ -152,7 +153,15 @@ const ServicesPricesContent = ({
                             <span>
                               {service.duration} {t("minutes")}
                             </span>
-                            <strong>{formatPrice(service.price)}</strong>
+                            <strong>
+                              {tCommon(
+                                "prices",
+                                { 
+                                  priceVnd: formatPriceWithCurrency(service.prices.VND, CURRENCY.VND),
+                                  priceUsd: formatPriceWithCurrency(service.prices.USD, CURRENCY.USD)
+                                }
+                              )}
+                            </strong>
                           </div>
                         </div>
 

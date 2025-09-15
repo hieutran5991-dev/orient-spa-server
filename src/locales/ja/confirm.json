@@ -14,7 +14,9 @@
   },
   "serviceDetails": {
     "title": "サービス詳細",
-    "totalPrice": "合計料金"
+    "totalPrice": "合計料金",
+    "discount10": "10%割引",
+    "totalAfterDiscount": "割引後の合計"
   },
   "contactInfo": {
     "title": "連絡先情報",

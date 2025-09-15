@@ -4,8 +4,10 @@ export interface Product {
   description: string;
   category_id: number;
   duration: number; // in minutes
-  price: number;
-  currency: string;
+  prices: {
+    VND: number;
+    USD: number;
+  };
   image_url?: string;
   is_featured: boolean;
   featured_product_description?: string;

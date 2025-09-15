@@ -1,7 +1,8 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import type { Locale } from "@/utils/constants";
+import { CURRENCY, type Locale } from "@/utils/constants";
+import { formatPriceWithCurrency } from "@/utils/format";
 import type { NamespaceKeys } from "use-intl";
 import type { Product } from "@/types/common";
 import React, { useState } from "react";
@@ -108,7 +109,13 @@ const FeaturedProductsContent = ({
                     </li>
                     <li className="tw:text-2xl tw:leading-relaxed">
                       <strong>{t("price")}: </strong>
-                      {product.price.toLocaleString()} {product.currency}
+                      {tCommon(
+                        "prices",
+                        { 
+                          priceVnd: formatPriceWithCurrency(product.prices.VND, CURRENCY.VND),
+                          priceUsd: formatPriceWithCurrency(product.prices.USD, CURRENCY.USD)
+                        }
+                      )}
                     </li>
                     <li className="tw:text-2xl tw:leading-relaxed">
                       <strong>{t("description")}: </strong>

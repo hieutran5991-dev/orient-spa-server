@@ -5,7 +5,8 @@ import { useTranslations, useLocale } from 'next-intl'
 import {BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY, type Locale} from '@/utils/constants'
 import type { NamespaceKeys } from 'use-intl'
 import { SpaLocation } from '@/types/api'
-import { BookingData, Product } from '@/types/booking'
+import { BookingData } from '@/types/booking'
+import { Product } from '@/types/common'
 
 interface BookingFormProps {
   spaLocations: SpaLocation[]
@@ -38,7 +39,10 @@ const BookingForm = ({ spaLocations, children, selectedService }: BookingFormPro
     const formData = new FormData(form)
 
     const bookingData: BookingData<Array<Product[]>> = {
-      total_price: 0,
+      total_price: {
+        VND: 0,
+        USD: 0
+      },
       agency_name: selectedSpa,
       agency_id: selectedSpaId,
       booking_date: formData.get('date') as string,

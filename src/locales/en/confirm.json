@@ -14,7 +14,9 @@
   },
   "serviceDetails": {
     "title": "Your Service Details",
-    "totalPrice": "Total price"
+    "totalPrice": "Total price",
+    "discount10": "Discount 10%",
+    "totalAfterDiscount": "Total after discount"
   },
   "contactInfo": {
     "title": "Contact info",

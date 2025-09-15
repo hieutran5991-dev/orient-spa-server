@@ -75,3 +75,8 @@ export const ABOUT_US_IMAGES = [
 ];
 
 export const DOMAIN_URL = process.env.NEXT_PUBLIC_DOMAIN_URL || 'http://localhost:3000';
+
+export const CURRENCY = {
+  VND: 'VND',
+  USD: 'USD'
+} as const

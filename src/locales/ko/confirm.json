@@ -14,7 +14,9 @@
     },
     "serviceDetails": {
         "title": "서비스 상세 정보",
-        "totalPrice": "총 가격"
+        "totalPrice": "총 가격",
+        "discount10": "10% 할인",
+        "totalAfterDiscount": "할인 후 총 가격"
     },
     "contactInfo": {
         "title": "연락처 정보",

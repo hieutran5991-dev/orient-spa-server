@@ -4,10 +4,11 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import type { NamespaceKeys } from "use-intl";
-import type { BookingData, Product } from "@/types/booking";
-import { formatPrice } from "@/utils/format";
-import { BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY } from "@/utils/constants";
+import type { BookingData } from "@/types/booking";
+import { Product } from "@/types/common";
+import { BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY, CURRENCY } from "@/utils/constants";
 import BookingSteps from "@/components/booking/BookingSteps";
+import { formatPriceWithCurrency } from "@/utils/format";
 
 interface BookingContentProps {
   products: Product[];
@@ -20,6 +21,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const t = useTranslations("booking" as NamespaceKeys<string, string>);
+  const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
 
   useEffect(() => {
     const savedData =
@@ -52,11 +54,17 @@ const BookingContent = ({ products }: BookingContentProps) => {
   ):
     | {
         guestServiceInfo: Array<Product[]>;
-        totalPrice: number;
+        totalPrice: {
+          VND: number;
+          USD: number
+        };
       }
     | Record<string, never> => {
     if (!guestForms?.length) return {};
-    let totalPrice = 0;
+    let totalPrice = {
+      VND: 0,
+      USD: 0
+    };
 
     const guestServiceInfo = guestForms.reduce((details, guestKey) => {
       const services = formData.getAll(guestKey) as string[];
@@ -67,7 +75,8 @@ const BookingContent = ({ products }: BookingContentProps) => {
             const product = products.find((p) => p.id === Number(productId));
             if (product) {
               acc.push(product);
-              totalPrice += product.price;
+              totalPrice.VND += product.prices.VND;
+              totalPrice.USD += parseFloat(product.prices.USD.toFixed(2));
             }
             return acc;
           },
@@ -234,7 +243,13 @@ const BookingContent = ({ products }: BookingContentProps) => {
                                     <div className="s8_d">
                                       <span>{t("minutes", { minutes: service.duration })}</span>
                                       <strong>
-                                        {formatPrice(service.price)}
+                                        {tCommon(
+                                          "prices",
+                                          { 
+                                            priceVnd: formatPriceWithCurrency(service.prices.VND, CURRENCY.VND),
+                                            priceUsd: formatPriceWithCurrency(service.prices.USD, CURRENCY.USD)
+                                          }
+                                        )}
                                       </strong>
                                     </div>
                                   </div>
