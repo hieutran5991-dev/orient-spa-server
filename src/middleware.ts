@@ -1,10 +1,10 @@
 import createMiddleware from 'next-intl/middleware';
-import { SUPPORTED_LANGUAGE, DEFAULT_LANGUAGE } from '@/utils/constants';
-import type { LocalePrefix } from "next-intl/dist/types/routing/types";
+import { SUPPORTED_LOCALE_PATH, DEFAULT_LOCALE_PATH } from '@/utils/constants';
+import type { LocalePrefix } from "next-intl/routing";
 
 export default createMiddleware({
-  locales: SUPPORTED_LANGUAGE,
-  defaultLocale: DEFAULT_LANGUAGE,
+  locales: SUPPORTED_LOCALE_PATH,
+  defaultLocale: DEFAULT_LOCALE_PATH,
   localePrefix: 'as-needed' as LocalePrefix
 });
 

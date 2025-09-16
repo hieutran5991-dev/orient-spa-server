@@ -1,11 +1,12 @@
 import { getRequestConfig } from 'next-intl/server'
 import { hasLocale } from 'next-intl'
-import { SUPPORTED_LANGUAGE, DEFAULT_LANGUAGE } from '@/utils/constants'
-import blogsContent from "@/components/BlogsContent";
+import { SUPPORTED_LANGUAGE, DEFAULT_LANGUAGE, MAP_LOCALE_PATH_TO_LANGUAGE } from '@/utils/constants'
 
 export default getRequestConfig(async ({ requestLocale }) => {
   const requested = await requestLocale
-  const locale = hasLocale(SUPPORTED_LANGUAGE, requested) ? requested : DEFAULT_LANGUAGE
+
+  const mappedLocale = MAP_LOCALE_PATH_TO_LANGUAGE[requested as keyof typeof MAP_LOCALE_PATH_TO_LANGUAGE] || requested
+  const locale = hasLocale(SUPPORTED_LANGUAGE, mappedLocale) ? mappedLocale : DEFAULT_LANGUAGE
 
   const [
     commonMessages,

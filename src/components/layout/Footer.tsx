@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useEffect } from "react";
-import type { Locale } from "@/utils/constants";
 import type { SpaLocation } from "@/types/api";
 import type { NamespaceKeys } from "use-intl";
 import { CONFIG } from "@/utils/constants";
@@ -14,7 +13,6 @@ interface FooterProps {
 
 const Footer = ({ spaLocations }: FooterProps) => {
   const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
-  const locale = useLocale() as Locale;
 
   useEffect(() => {
     const handleScrollToTop = () => {
@@ -119,7 +117,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
                   <ul className="f_n fl">
                     <li className="tw:w-[50%]">
                       <a
-                        href={`/${locale}/about-us`}
+                        href="/about-us"
                         className="hoverable-link"
                       >
                         {tCommon("footer.navigation.aboutUs")}
@@ -127,7 +125,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
                     </li>
                     <li className="tw:w-[50%]">
                       <a
-                        href={`/${locale}/menu-prices`}
+                        href="/menu-prices"
                         className="hoverable-link"
                       >
                         {tCommon("footer.navigation.spaMenu")}
@@ -135,27 +133,27 @@ const Footer = ({ spaLocations }: FooterProps) => {
                     </li>
                     <li className="tw:w-[50%]">
                       <a
-                        href={`/${locale}/featured-products`}
+                        href="/featured-products"
                         className="hoverable-link"
                       >
                         {tCommon("footer.navigation.featuredProducts")}
                       </a>
                     </li>
                     <li className="tw:w-[50%]">
-                      <a href={`/${locale}/contact`} className="hoverable-link">
+                      <a href="/contact" className="hoverable-link">
                         {tCommon("footer.navigation.contactUs")}
                       </a>
                     </li>
                     <li className="tw:w-[50%]">
                       <a
-                        href={`/${locale}/reservation`}
+                        href="/reservation"
                         className="hoverable-link"
                       >
                         {tCommon("footer.navigation.bookOnline")}
                       </a>
                     </li>
                     <li className="tw:w-[50%]">
-                      <a href={`/${locale}/blogs`} className="hoverable-link">
+                      <a href="/blogs" className="hoverable-link">
                         {tCommon("footer.navigation.blogs")}
                       </a>
                     </li>

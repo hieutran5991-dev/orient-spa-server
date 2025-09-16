@@ -1,9 +1,8 @@
 import Image from 'next/image'
-import { useTranslations, useLocale } from 'next-intl'
+import { useTranslations } from 'next-intl'
 import type { NamespaceKeys } from 'use-intl'
 import type { SpaLocation } from '@/types/api'
 import BookingForm from './BookingForm'
-import type { Locale } from '@/utils/constants'
 import People from "@/components/home/People";
 import Guests from "@/components/home/Guests";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
@@ -15,7 +14,6 @@ interface HomeContentProps {
 }
 
 const HomeContent = ({ spaLocations, products }: HomeContentProps) => {
-  const locale = useLocale() as Locale
   const t = useTranslations('home' as NamespaceKeys<any, any>)
   const tCommon = useTranslations('common' as NamespaceKeys<any, any>)
 

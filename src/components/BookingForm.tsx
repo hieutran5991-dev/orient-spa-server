@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { useTranslations, useLocale } from 'next-intl'
-import {BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY, type Locale} from '@/utils/constants'
+import { useTranslations } from 'next-intl'
+import { BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY } from '@/utils/constants'
 import type { NamespaceKeys } from 'use-intl'
 import { SpaLocation } from '@/types/api'
 import { BookingData } from '@/types/booking'
@@ -16,7 +16,6 @@ interface BookingFormProps {
 }
 
 const BookingForm = ({ spaLocations, children, selectedService, id }: BookingFormProps) => {
-  const locale = useLocale() as Locale
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [_error, _setError] = useState<string | null>(null)
   const [selectedSpa, setSelectedSpa] = useState('')
@@ -58,7 +57,7 @@ const BookingForm = ({ spaLocations, children, selectedService, id }: BookingFor
     try {
       sessionStorage.setItem(BOOKING_INIT_KEY, JSON.stringify(bookingData))
       sessionStorage.removeItem(BOOKING_CONFIRM_KEY)
-      window.location.href = `/${locale}/booking`
+      window.location.href = '/booking'
     } catch (_error) {
     } finally {
       setIsSubmitting(false)

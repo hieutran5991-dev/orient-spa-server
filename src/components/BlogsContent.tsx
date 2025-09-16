@@ -1,7 +1,6 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
-import type { Locale } from "@/utils/constants";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import type { NamespaceKeys } from "use-intl";
 import React from "react";
@@ -74,8 +73,7 @@ const blogPosts = [
 
 const BlogsContent = () => {
   const t = useTranslations("blogs" as NamespaceKeys<string, string>);
-  const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
-  const locale = useLocale() as Locale;
+
 
   return (
     <main className="tw:bg-white tw:min-h-screen">
@@ -109,7 +107,7 @@ const BlogsContent = () => {
                     {blogPosts[0].excerpt}
                   </p>
                   <Link
-                    href={`/${locale}/blogs/${blogPosts[0].id}`}
+                    href={`/blogs/${blogPosts[0].id}`}
                     className="tw:inline-block tw:w-fit tw:bg-[var(--main-color)] tw:text-white tw:px-6 tw:py-3 tw:rounded-md tw:font-medium tw:transition-colors tw:duration-300 tw:hover:bg-[var(--hover-color)] tw:uppercase tw:text-xl tw:tracking-wide"
                   >
                     {t("readMore")}
@@ -154,7 +152,7 @@ const BlogsContent = () => {
                       {formatDate(post.date)}
                     </span>
                     <Link
-                      href={`/${locale}/blogs/${post.id}`}
+                      href={`/blogs/${post.id}`}
                       className="tw:text-[var(--main-color)] tw:font-medium tw:text-xl tw:hover:underline"
                     >
                       {t("readMore")}

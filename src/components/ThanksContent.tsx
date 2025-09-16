@@ -1,13 +1,12 @@
 "use client";
 
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import type { NamespaceKeys } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
 import BookingSteps from "@/components/booking/BookingSteps";
 
 const ThanksContent = () => {
-  const locale = useLocale();
   const t = useTranslations("thanks" as NamespaceKeys<string, string>);
 
   return (
@@ -43,7 +42,7 @@ const ThanksContent = () => {
                   <strong>{t("emailConfirmation.correct")}</strong>
                   {t("emailConfirmation.text2")}{" "}
                   <Link
-                    href={`/${locale}/contact`}
+                    href="/contact"
                     className="tw:text-[var(--main-color)] tw:no-underline tw:font-medium tw:hover:underline"
                   >
                     {t("emailConfirmation.contactUs")}
@@ -54,7 +53,7 @@ const ThanksContent = () => {
 
               <div>
                 <a
-                  href={`/${locale}`}
+                  href="/"
                   className="tw:bg-[var(--main-color)] tw:hover:bg-[var(--hover-color)] tw:text-white tw:py-5 tw:px-12 tw:border-0 tw:rounded-md tw:text-xl tw:md:text-2xl tw:no-underline tw:inline-block tw:transition-colors tw:duration-300"
                 >
                   {t("backToHomePage")}

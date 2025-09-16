@@ -1,9 +1,9 @@
 "use client";
 
-import { useTranslations, useLocale, type NamespaceKeys } from "next-intl";
+import { useTranslations, type NamespaceKeys } from "next-intl";
 import Link from "next/link";
 import { useState, useMemo, useRef } from "react";
-import { CURRENCY, type Locale } from "@/utils/constants";
+import { CURRENCY } from "@/utils/constants";
 import { formatPriceWithCurrency } from "@/utils/format";
 import { SpaLocation } from "@/types/api";
 import { Category, Product } from "@/types/common";
@@ -20,7 +20,6 @@ const ServicesPricesContent = ({
   categories,
   products,
 }: ServicesPricesContentProps) => {
-  const locale = useLocale() as Locale;
   const t = useTranslations("services" as NamespaceKeys<string, string>);
   const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
   const [activeTab, setActiveTab] = useState(
@@ -184,7 +183,7 @@ const ServicesPricesContent = ({
               <div className="a8_c text-center">
                 <p>
                   <strong>{t("note")}</strong> {t("noteText")}{" "}
-                  <Link href={`/${locale}/contact`}>
+                  <Link href="/contact">
                     {t("navigation.contact")}
                   </Link>
                   {t("noteEnd")}
@@ -196,7 +195,7 @@ const ServicesPricesContent = ({
           <div className="a8_c text-center">
             <p className="tw:mb-0">
               {t("subtitle")}{" "}
-              <Link href={`/${locale}/featured-products`}>
+              <Link href="/featured-products">
                 {t("navigation.featuredProducts")}
               </Link>
               . <span dangerouslySetInnerHTML={{ __html: t("hotlineText") }} />

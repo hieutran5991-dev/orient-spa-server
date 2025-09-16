@@ -7,7 +7,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Product } from '@/types/common';
 import { formatPriceWithCurrency } from '@/utils/format';
-import { CURRENCY } from '@/utils/constants';
+import { CURRENCY, getPathSegment } from '@/utils/constants';
 
 interface FeaturedProductDetailContentProps {
   product: Product;
@@ -15,6 +15,7 @@ interface FeaturedProductDetailContentProps {
 
 const FeaturedProductDetailContent = ({ product }: FeaturedProductDetailContentProps) => {
   const locale = useLocale() as Locale;
+  const pathSegment = getPathSegment(locale);
   const t = useTranslations('featuredProducts');
   const tCommon = useTranslations('common');
   const tServices = useTranslations('services');
@@ -34,8 +35,8 @@ const FeaturedProductDetailContent = ({ product }: FeaturedProductDetailContentP
 
       <div className="s a3 text-center" >
         <ul className="breadcrumb">
-          <li><Link href={`/${locale}`}>{tCommon('navigation.home')}</Link></li>
-          <li><Link href={`/${locale}/featured-products`}>{t('title')}</Link></li>
+          <li><Link href={`/${pathSegment}`}>{tCommon('navigation.home')}</Link></li>
+          <li><Link href={`/${pathSegment}/featured-products`}>{t('title')}</Link></li>
           <li className="active">{product.name}</li>
         </ul>
       </div>
@@ -77,7 +78,7 @@ const FeaturedProductDetailContent = ({ product }: FeaturedProductDetailContentP
               )}</p>
 
               <div className="k2_cta">
-                <Link href={`/${locale}/booking`} className="btn btn-1 btn-block">
+                <Link href={`/${pathSegment}/booking`} className="btn btn-1 btn-block">
                   {t('bookThisFeaturedProduct')}
                 </Link>
               </div>
@@ -100,7 +101,7 @@ const FeaturedProductDetailContent = ({ product }: FeaturedProductDetailContentP
                   <div key={otherFeaturedProduct.id} className="s_gc" >
                     <div className="k1_i" >
                       <Link
-                        href={`/${locale}/featured-products/${otherFeaturedProduct.slug}`}
+                        href={`/${pathSegment}/featured-products/${otherFeaturedProduct.slug}`}
                         className="k1_a"
                         style={{ backgroundImage: `url(${otherFeaturedProduct.image})` }}
                       >
@@ -116,7 +117,7 @@ const FeaturedProductDetailContent = ({ product }: FeaturedProductDetailContentP
 
                     <div className="k1_b" >
                       <h3 className="k1_t">
-                        <Link href={`/${locale}/featured-products/${otherFeaturedProduct.slug}`}>
+                        <Link href={`/${pathSegment}/featured-products/${otherFeaturedProduct.slug}`}>
                           {otherFeaturedProduct.name}
                         </Link>
                       </h3>
@@ -127,7 +128,7 @@ const FeaturedProductDetailContent = ({ product }: FeaturedProductDetailContentP
                         ))}
                       </ul>
 
-                      <Link href={`/${locale}/featured-products/${otherFeaturedProduct.slug}`} className="k1_v">
+                      <Link href={`/${pathSegment}/featured-products/${otherFeaturedProduct.slug}`} className="k1_v">
                         {t('readMore')}
                       </Link>
                     </div>

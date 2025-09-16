@@ -4,7 +4,7 @@ import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import '../globals.css'
 import Script from 'next/script'
-import {SUPPORTED_LANGUAGE, type Locale, CONFIG} from '@/utils/constants'
+import {SUPPORTED_LOCALE_PATH, type LocalePath, CONFIG, MAP_LOCALE_PATH_TO_LANGUAGE} from '@/utils/constants'
 
 export const metadata: Metadata = {
   title: CONFIG.SPA_NAME,
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 }
 
 export function generateStaticParams() {
-  return SUPPORTED_LANGUAGE.map((locale) => ({ locale }))
+  return SUPPORTED_LOCALE_PATH.map((locale) => ({ locale }))
 }
 
 export default async function LocaleLayout({
@@ -25,14 +25,14 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params
 
-  if (!SUPPORTED_LANGUAGE.includes(locale as Locale)) {
+  if (!SUPPORTED_LOCALE_PATH.includes(locale as LocalePath)) {
     notFound()
   }
 
   const messages = await getMessages()
 
   return (
-    <html lang={locale}>
+    <html lang={MAP_LOCALE_PATH_TO_LANGUAGE[locale as LocalePath]}>
       <head>
         {/* Google Tag Manager */}
         <script>

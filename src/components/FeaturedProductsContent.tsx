@@ -1,7 +1,7 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
-import { CURRENCY, type Locale } from "@/utils/constants";
+import { useTranslations } from "next-intl";
+import { CURRENCY } from "@/utils/constants";
 import { formatPriceWithCurrency } from "@/utils/format";
 import type { NamespaceKeys } from "use-intl";
 import type { Product } from "@/types/common";
@@ -22,7 +22,6 @@ const FeaturedProductsContent = ({
     "featuredProducts" as NamespaceKeys<string, string>
   );
   const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
-  const locale = useLocale() as Locale;
 
   const [showBookingModal, setShowBookingModal] = useState(false);
   const [selectedService, setSelectedService] = useState<Product | undefined>(

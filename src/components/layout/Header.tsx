@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
-import { CONFIG, type Locale, SUPPORTED_LANGUAGE } from "@/utils/constants";
+import { CONFIG, type Locale, MAP_LANGUAGE_TO_LOCALE_PATH } from "@/utils/constants";
 import type { NamespaceKeys } from "use-intl";
 
 const Header = () => {
@@ -24,7 +24,9 @@ const Header = () => {
       return ["/about-us", "/customer-moment", "/gallery", "/blogs"].includes(pathname);
     }
 
-    return (pathname.replace(`/${locale}`, "") || "/") === path;
+
+    const pathSegment = MAP_LANGUAGE_TO_LOCALE_PATH[locale];
+    return (pathname.replace(`/${pathSegment}`, "") || "/") === path;
   };
 
   const getNavLinkClasses = (path: string) => {
@@ -38,7 +40,9 @@ const Header = () => {
   const getDropdownActiveClasses = (path: string) => {
     const baseClasses = "tw:block tw:px-6 tw:py-4 tw:text-14 tw:transition-colors tw:duration-150";
     const activeClasses = "tw:bg-pink-50 tw:text-[var(--main-color)] tw:font-medium";
-    return `${baseClasses} ${(pathname.replace(`/${locale}`, "") || "/") === path ? activeClasses : "tw:text-gray-700 tw:hover:bg-gray-50"}`;
+
+    const pathSegment = MAP_LANGUAGE_TO_LOCALE_PATH[locale];
+    return `${baseClasses} ${(pathname.replace(`/${pathSegment}`, "") || "/") === path ? activeClasses : "tw:text-gray-700 tw:hover:bg-gray-50"}`;
   };
 
   const getMobileNavLinkClasses = (path: string) => {
@@ -58,8 +62,9 @@ const Header = () => {
     const activeClasses = "tw:text-[var(--main-color)] tw:font-semibold";
     const inactiveClasses = "tw:text-gray-900";
 
+    const pathSegment = MAP_LANGUAGE_TO_LOCALE_PATH[locale];
     return `${baseClasses} ${
-      (pathname.replace(`/${locale}`, "") || "/") === path ? activeClasses : inactiveClasses
+      (pathname.replace(`/${pathSegment}`, "") || "/") === path ? activeClasses : inactiveClasses
     }`;
   };
 
@@ -112,10 +117,13 @@ const Header = () => {
 
   const handleLanguageChange = (newLocale: Locale) => {
     const segments = pathname.split("/");
-    if (SUPPORTED_LANGUAGE.includes(segments[1] as Locale)) {
+
+    if (segments[1] && ['en', 'jp', 'kr'].includes(segments[1])) {
       segments.splice(1, 1);
     }
-    window.location.href = `/${newLocale}${segments.join("/")}`;
+
+    const pathSegment = MAP_LANGUAGE_TO_LOCALE_PATH[newLocale];
+    window.location.href = `/${pathSegment}${segments.join("/")}`;
   };
 
   const toggleMobileMenu = () => {
@@ -443,7 +451,7 @@ const Header = () => {
             </button>
 
             <div className="tw:flex tw:flex-col tw:items-center">
-              <a href={`/${locale}`} className="tw:flex tw:items-center">
+              <a href="/" className="tw:flex tw:items-center">
                 <Image
                   src="/images/logo.jpeg"
                   alt="SEN SPA Da Nang"

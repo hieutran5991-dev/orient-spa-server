@@ -1,10 +1,9 @@
 'use client';
 
 import React from 'react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
-import type { Locale } from '@/utils/constants';
 import type {NamespaceKeys} from "use-intl";
 
 // Guest photos data
@@ -42,7 +41,6 @@ const guestPhotos = [
 ];
 
 const Guests: React.FC = () => {
-	const locale = useLocale() as Locale;
 	const t = useTranslations('guests' as NamespaceKeys<string, string> );
 
 	return (

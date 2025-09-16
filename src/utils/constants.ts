@@ -1,6 +1,28 @@
 export const SUPPORTED_LANGUAGE = ['en', 'ja', 'ko'] as const
+export const SUPPORTED_LOCALE_PATH = ['en', 'jp', 'kr'] as const
 export const DEFAULT_LANGUAGE = 'en' as const
+export const DEFAULT_LOCALE_PATH = 'en' as const
 export type Locale = (typeof SUPPORTED_LANGUAGE)[number]
+export type LocalePath = (typeof SUPPORTED_LOCALE_PATH)[number]
+
+// Mapping từ path segment sang language code
+export const MAP_LOCALE_PATH_TO_LANGUAGE = {
+  en: 'en',
+  jp: 'ja', 
+  kr: 'ko',
+} as const
+
+// Mapping từ language code sang path segment
+export const MAP_LANGUAGE_TO_LOCALE_PATH = {
+  en: 'en',
+  ja: 'jp',
+  ko: 'kr',
+} as const
+
+// Utility function để map locale sang path segment
+export const getPathSegment = (locale: string): string => {
+  return MAP_LANGUAGE_TO_LOCALE_PATH[locale as keyof typeof MAP_LANGUAGE_TO_LOCALE_PATH] || locale;
+}
 
 export const BOOKING_INIT_KEY = 'booking_form_data' as string;
 

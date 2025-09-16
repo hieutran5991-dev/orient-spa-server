@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, FormEvent, ChangeEvent } from "react";
-import { useTranslations, useLocale } from "next-intl";
-import type { Locale } from "@/utils/constants";
+import { useTranslations } from "next-intl";
 import type { ContactFormData } from "@/types/contact";
 import type { NamespaceKeys } from "use-intl";
 import Link from "next/link";
@@ -11,7 +10,6 @@ import { CONFIG } from "@/utils/constants";
 import { saveContact } from "@/api/common";
 
 const ContactContent = () => {
-  const locale = useLocale() as Locale;
   const t = useTranslations("contact" as NamespaceKeys<string, string>);
   const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
 
@@ -145,7 +143,7 @@ const ContactContent = () => {
       <div className="s a3 text-center">
         <ul className="breadcrumb">
           <li>
-            <Link href={`/${locale}`}>{tCommon("navigation.home")}</Link>
+            <Link href="/">{tCommon("navigation.home")}</Link>
           </li>
           <li className="active">{t("title")}</li>
         </ul>

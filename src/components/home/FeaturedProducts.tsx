@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 // import Image from "next/image";
-import type { Locale } from "@/utils/constants";
 import type { NamespaceKeys } from "use-intl";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Product } from "@/types/common";
@@ -19,7 +18,6 @@ const FeaturedProducts = ({
   spaLocations: SpaLocation[];
   products: Product[];
 }) => {
-  const locale = useLocale() as Locale;
   const t = useTranslations("home" as NamespaceKeys<string, string>);
   const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
 
