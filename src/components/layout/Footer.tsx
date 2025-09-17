@@ -3,16 +3,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { useEffect } from "react";
+import {useEffect, useState} from "react";
 import type { SpaLocation } from "@/types/api";
 import type { NamespaceKeys } from "use-intl";
-import { CONFIG } from "@/utils/constants";
+import {CONFIG, MAIN_HOST} from "@/utils/constants";
 interface FooterProps {
   spaLocations: SpaLocation[];
 }
 
 const Footer = ({ spaLocations }: FooterProps) => {
   const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
+
+  const [isDisplaySenSpa, setIsDisplaySenSpa] = useState(false);
+
+  useEffect(() => {
+    const hostname = window.location.hostname;
+    setIsDisplaySenSpa(hostname !== MAIN_HOST)
+  }, []);
 
   useEffect(() => {
     const handleScrollToTop = () => {
@@ -290,16 +297,19 @@ const Footer = ({ spaLocations }: FooterProps) => {
           <div>{tCommon("footer.copyrightLine1")}</div>
           <div>{tCommon("footer.copyrightLine2")}</div>
         </div>
-        <div className="tw:text-center">
-          {tCommon("footer.copyrightLine3")}{" "}
-          <a
-            className="tw:text-[var(--main-color)] tw:hover:underlink"
-            href="https://senspadanang.com"
-            rel="dofollow"
-          >
-            {tCommon("footer.copyrightLine4")}
-          </a>
-        </div>
+
+        {isDisplaySenSpa && (
+          <div className="tw:text-center">
+            {tCommon("footer.copyrightLine3")}{" "}
+            <a
+              className="tw:text-[var(--main-color)] tw:hover:underlink"
+              href="https://senspadanang.com"
+              rel="dofollow"
+            >
+              {tCommon("footer.copyrightLine4")}
+            </a>
+          </div>
+        )}
       </div>
     </footer>
   );

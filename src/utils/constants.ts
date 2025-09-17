@@ -8,7 +8,7 @@ export type LocalePath = (typeof SUPPORTED_LOCALE_PATH)[number]
 // Mapping từ path segment sang language code
 export const MAP_LOCALE_PATH_TO_LANGUAGE = {
   en: 'en',
-  jp: 'ja', 
+  jp: 'ja',
   kr: 'ko',
 } as const
 
@@ -102,3 +102,5 @@ export const CURRENCY = {
   VND: 'VND',
   USD: 'USD'
 } as const
+
+export const MAIN_HOST = 'senspadanang.com' as const;
