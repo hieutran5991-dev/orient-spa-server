@@ -159,11 +159,11 @@ const Footer = ({ spaLocations }: FooterProps) => {
                         {tCommon("footer.navigation.bookOnline")}
                       </a>
                     </li>
-                    <li className="tw:w-[50%]">
+                    {/* <li className="tw:w-[50%]">
                       <a href="/blogs" className="hoverable-link">
                         {tCommon("footer.navigation.blogs")}
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>
@@ -226,17 +226,24 @@ const Footer = ({ spaLocations }: FooterProps) => {
               </span>
             </div>
             <a
-              href="https://qr.kakao.com/talk/EicqtwXI6griqg1G99.rFTSkaJo-"
+              href="https://qr.kakao.com/talk/LDai_5BIuEvHqivW1VkyKsw.sJs-"
               rel="nofollow"
               target="_blank"
               className="sP_i"
             >
               <span>
-                <i className="ic ic-talk"></i>
+              <span>
+                <Image
+                  src="/fonts/kakaotalk-logo.svg"
+                  alt="Kakao Talk"
+                  width={24}
+                  height={24}
+                />
+              </span>
               </span>
             </a>
             <a
-              href={`https://wa.me/${CONFIG.PHONE_WITH_COUNTRY_CODE}`}
+              href={'https://wa.me/84976591515'}
               rel="nofollow"
               target="_blank"
               className="sP_i"
