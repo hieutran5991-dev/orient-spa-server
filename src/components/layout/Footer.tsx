@@ -243,7 +243,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
               </span>
             </a>
             <a
-              href={'https://wa.me/84976591515'}
+              href={`https://wa.me/${CONFIG.PHONE}`}
               rel="nofollow"
               target="_blank"
               className="sP_i"
@@ -273,7 +273,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
               </span>
             </a>
             <a
-              href={`https://zalo.me/${CONFIG.PHONE_WITH_COUNTRY_CODE}`}
+              href={`https://zalo.me/${CONFIG.PHONE}`}
               rel="nofollow"
               target="_blank"
               className="sP_i"
