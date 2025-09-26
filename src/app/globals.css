@@ -73,6 +73,9 @@
 
 .box-hidden {
   overflow: hidden !important;
+  /* height: 100vh;
+  touch-action: none;
+  -ms-touch-action: none; */
 }
 
 .fa-map:before {

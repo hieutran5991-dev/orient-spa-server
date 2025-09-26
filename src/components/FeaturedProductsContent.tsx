@@ -31,11 +31,15 @@ const FeaturedProductsContent = ({
   const handleBookNow = (service: Product) => {
     setSelectedService(service);
     setShowBookingModal(true);
+
+    document.body.classList.add("box-hidden");
   };
 
   const closeModal = () => {
     setShowBookingModal(false);
     setSelectedService(undefined);
+
+    document.body.classList.remove("box-hidden");
   };
 
   return (
