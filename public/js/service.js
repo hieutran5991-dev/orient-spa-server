@@ -5139,7 +5139,7 @@ jQuery(document).ready(function ($) {
         },
     });
     $(".js-v1").click(function () {
-        $(".s1_s2, .s1_s3").hide();
+        $(".s1_s2, .s1_s3, .s1_s4").hide();
         if (ww < 992) {
             $('body').addClass('box-hidden');
             $('.main-content').addClass('zf');

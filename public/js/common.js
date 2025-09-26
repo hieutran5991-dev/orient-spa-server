@@ -10052,6 +10052,11 @@ jQuery(document).ready(function ($) {
     var bd = true;
     if (ww < 992) {
         bd = false;
+        $('span.a1_a').click(function () {
+            $('body').addClass('box-hidden');
+            $('.main-content, .a1').addClass('zf');
+            $('.s1').show();
+        });
         $('.s1_z').click(function () {
             $('body').removeClass('box-hidden');
             $('.main-content, .a1').removeClass('zf');
@@ -10087,7 +10092,7 @@ jQuery(document).ready(function ($) {
         },
     });
     $(".js-v1").click(function () {
-        $(".s1_s2, .s1_s3").hide();
+        $(".s1_s2, .s1_s3, .s1_s4").hide();
         if (ww < 992) {
             $('body').addClass('box-hidden');
             $('.main-content').addClass('zf');
@@ -10193,7 +10198,7 @@ jQuery(document).ready(function ($) {
         },
     });
     $(".js-v1-form2").click(function () {
-        $(".s1_s2-form2, .s1_s3-form2").hide();
+        $(".s1_s2-form2, .s1_s3-form2, .s1_s4-form2").hide();
         if (ww < 992) {
             $('body').addClass('box-hidden');
             $('.main-content').addClass('zf');

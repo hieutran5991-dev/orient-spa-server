@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import type { NamespaceKeys } from 'use-intl'
@@ -7,6 +9,7 @@ import People from "@/components/home/People";
 import Guests from "@/components/home/Guests";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import { Product } from "@/types/common";
+import { useSearchParams } from 'next/navigation'
 
 interface HomeContentProps {
   spaLocations: SpaLocation[],
@@ -16,6 +19,8 @@ interface HomeContentProps {
 const HomeContent = ({ spaLocations, products }: HomeContentProps) => {
   const t = useTranslations('home' as NamespaceKeys<any, any>)
   const tCommon = useTranslations('common' as NamespaceKeys<any, any>)
+  const params = useSearchParams()
+  const isBookingNow = params.get('booking_now') as string !== 'menu'
 
   const heroBanners = [
     {
@@ -111,7 +116,10 @@ const HomeContent = ({ spaLocations, products }: HomeContentProps) => {
             </div>
           </BookingForm>
         </div>
-        <a className='a1_a btn hidden-lg hidden-md tw:text-white' href="/menu-prices">{t('bookNow')}</a>
+        {isBookingNow
+          ? <span className='a1_a btn hidden-lg hidden-md'>{t('bookNow')}</span>
+          : <a className='a1_a btn hidden-lg hidden-md tw:text-white' href='/menu-prices'>{t('bookNow')}</a>
+        }        
       </div>
 
       <div className='s sH s2'>
