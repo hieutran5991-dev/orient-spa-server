@@ -8167,13 +8167,23 @@ jQuery(document).ready(function ($) {
   $("body").on("touchstart click", function (e) {
     $(".s1_s").hide();
   });
-  $(".js-done").click(function () {
-    $(".k2_s").hide();
-    $("body").removeClass("box-hidden");
-    $(".main-content").removeClass("zf");
+  $(".js-done").click(function (e) {
+    if (!$(e.target).closest(".k2_s").length) {
+      $(".k2_s").hide();
+      $("body").removeClass("box-hidden");
+      $(".main-content").removeClass("zf");
+    }
   });
   $("body").on("touchstart click", function (e) {
-    $(".k2_ps, .k2_s").hide();
+    e.stopPropagation();
+    if (
+      !$(e.target).closest(".k2_ps").length && !$(e.target).closest(".k2_s").length
+    ) {
+
+      $(".k2_ps, .k2_s").hide();
+      $("body").removeClass("box-hidden");
+      $(".main-content").removeClass("zf");
+    }
   });
   if (ww < 992) {
     $(".k2_dt").click(function () {

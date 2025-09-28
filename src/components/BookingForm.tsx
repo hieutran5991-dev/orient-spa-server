@@ -271,7 +271,7 @@ const BookingForm = ({ spaLocations, children, selectedService, id }: BookingFor
                   </ul>
                 </div>
                 <div className='s1_sf hidden-lg hidden-md'>
-                  <span className='s1_su js-done btn btn-1 btn-block'>{tBooking('done')}</span>
+                  <span className={`s1_su js-done${id ? `-${id}` : ''} btn btn-1 btn-block`}>{tBooking('done')}</span>
                 </div>
               </div>
             </div>
