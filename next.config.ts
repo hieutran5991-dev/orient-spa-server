@@ -26,6 +26,16 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  rewrites: async () => [
+    {
+      source: "/treatment-menu",
+      destination: "/en/menu-prices",
+    },
+    {
+      source: "/:locale/treatment-menu",
+      destination: "/:locale/menu-prices",
+    },
+  ],
 };
 
 export default withNextIntl(nextConfig);
