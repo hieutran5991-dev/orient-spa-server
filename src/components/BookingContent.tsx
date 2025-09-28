@@ -118,7 +118,8 @@ const BookingContent = ({ products }: BookingContentProps) => {
     const finalBookingData = {
       ...bookingData,
       full_name: formData.get("full_name") as string,
-      phone: formData.get("dials") + (formData.get("phone") as string),
+      tel_prefix: formData.get("dials") as string,
+      phone: formData.get("phone") as string,
       social_account_id: formData.get("social_account_id") as string,
       email: formData.get("email") as string,
       note: formData.get("content") as string,
@@ -321,7 +322,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
                           <div className="k2_pd has-feedback">
                             <input
                               type="text"
-                              defaultValue="(+84)"
+                              defaultValue={bookingData.tel_prefix || '(+84)'}
                               className="form-control js-phone"
                               name="dials"
                               readOnly

@@ -11,6 +11,7 @@ export interface BookingData<T = Array<Product[]>> {
     booking_time?: string;
     people?: string;
     full_name?: string;
+    tel_prefix?: string;
     phone?: string;
     social_account_id?: string;
     email?: string;
