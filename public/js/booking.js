@@ -8073,7 +8073,6 @@ jQuery(document).ready(function ($) {
             `);
     });
     if (total.VND > 0 || total.USD > 0) {
-      console.log(total);
       $box.append(`
                 <div class="k2_di">
                     <table>

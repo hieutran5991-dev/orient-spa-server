@@ -118,7 +118,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
     const finalBookingData = {
       ...bookingData,
       full_name: formData.get("full_name") as string,
-      phone: formData.get("phone") as string,
+      phone: formData.get("dials") + (formData.get("phone") as string),
       social_account_id: formData.get("social_account_id") as string,
       email: formData.get("email") as string,
       note: formData.get("content") as string,
