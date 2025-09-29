@@ -8168,14 +8168,12 @@ jQuery(document).ready(function ($) {
     $(".s1_s").hide();
   });
   $(".js-done").click(function (e) {
-    if (!$(e.target).closest(".k2_s").length) {
-      $(".k2_s").hide();
-      $("body").removeClass("box-hidden");
-      $(".main-content").removeClass("zf");
-    }
+    $(".k2_s").hide();
+    $("body").removeClass("box-hidden");
+    $(".main-content").removeClass("zf");
   });
   $("body").on("touchstart click", function (e) {
-    e.stopPropagation();
+    // e.stopPropagation();
     if (
       !$(e.target).closest(".k2_ps").length && !$(e.target).closest(".k2_s").length
     ) {
