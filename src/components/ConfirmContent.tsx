@@ -46,7 +46,8 @@ const ConfirmContent = () => {
     try {
       const submitData: BookingSubmissionData = {
         ...bookingData,
-        phone: bookingData.tel_prefix?.replace(/[()]/g, "") + (bookingData.phone || ""),
+        tel_prefix: bookingData.tel_prefix?.replace(/[()]/g, ""),
+        phone: bookingData.phone || "",
         booking_details: bookingData.booking_details?.reduce(
           (acc, services, index) => {
             const guestKey = `guest_${index + 1}_services`;
@@ -56,7 +57,6 @@ const ConfirmContent = () => {
           {} as Record<string, (string | number)[]>
         ),
       };
-      delete submitData.tel_prefix;
       const result = await saveBooking(submitData);
 
       if (result) {
