@@ -3,8 +3,9 @@ import Layout from "@/components/layout/Layout";
 import FeaturedProductsContent from "@/components/FeaturedProductsContent";
 import { getListProducts, getListSpa } from "@/api/common";
 import Script from "next/script";
-import { CONFIG, DOMAIN_URL } from "@/utils/constants";
+import { DOMAIN_URL } from "@/utils/constants";
 import { Metadata } from "next";
+import { getJSFileWithCacheBusting } from "@/utils/cacheBusting";
 
 export const metadata: Metadata = {
   title: "Featured Spa Packages | SEN SPA Da Nang – Best Spa Da Nang",
@@ -199,7 +200,7 @@ export default async function FeaturedProductsPage() {
         }}
       />
 
-      <Script src="/js/service.js" strategy="afterInteractive" />
+      <Script src={getJSFileWithCacheBusting('service.js')} strategy="afterInteractive" />
     </>
   );
 }

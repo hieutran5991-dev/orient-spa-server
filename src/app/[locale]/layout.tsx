@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import '../globals.css'
 import Script from 'next/script'
 import {SUPPORTED_LOCALE_PATH, type LocalePath, CONFIG, MAP_LOCALE_PATH_TO_LANGUAGE} from '@/utils/constants'
+import { getJSFileWithCacheBusting } from '@/utils/cacheBusting'
 
 export const metadata: Metadata = {
   title: CONFIG.SPA_NAME,
@@ -63,7 +64,7 @@ export default async function LocaleLayout({
         {/* End Google Tag Manager (noscript) */}
 
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
-        <Script src='/js/lib.js' strategy='afterInteractive'/>
+        <Script src={getJSFileWithCacheBusting('lib.js')} strategy='afterInteractive'/>
 
         <div className="ntc"></div>
         <div className="ntc-success"></div>

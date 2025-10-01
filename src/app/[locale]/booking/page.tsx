@@ -5,6 +5,7 @@ import Script from 'next/script';
 import { getListProducts, getListSpa } from "@/api/common";
 import { DOMAIN_URL } from '@/utils/constants';
 import { Metadata } from 'next';
+import { getJSFileWithCacheBusting } from '@/utils/cacheBusting';
 
 export const metadata: Metadata = {
   title: "Booking | SEN SPA Da Nang",
@@ -47,7 +48,7 @@ export default async function BookingPage() {
   return (
     <Layout className="booking-container" spaLocations={spaLocationRes?.data || []}>
       <BookingContent products={productRes?.data || []}/>
-      <Script src="/js/booking.js" strategy="afterInteractive"/>
+      <Script src={getJSFileWithCacheBusting('booking.js')} strategy="afterInteractive"/>
     </Layout>
   );
 }

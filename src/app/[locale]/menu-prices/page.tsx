@@ -5,6 +5,7 @@ import { getListCategories, getListProducts, getListSpa } from '@/api/common';
 import Script from 'next/script';
 import { CONFIG, DOMAIN_URL } from '@/utils/constants';
 import { Metadata } from 'next';
+import { getJSFileWithCacheBusting } from '@/utils/cacheBusting';
 
 export const metadata: Metadata = {
   title: "Massage Menu & Prices | SEN SPA Da Nang – Best Spa Da Nang",
@@ -263,7 +264,7 @@ export default async function ServicesPage() {
         }}
       />
 
-      <Script src="/js/service.js" strategy="afterInteractive" />
+      <Script src={getJSFileWithCacheBusting('service.js')} strategy="afterInteractive" />
     </>
   );
 }

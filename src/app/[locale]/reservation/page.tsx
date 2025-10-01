@@ -5,6 +5,7 @@ import Script from 'next/script'
 import { getListSpa } from '@/api/common'
 import { CONFIG, DOMAIN_URL } from '@/utils/constants'
 import { Metadata } from 'next'
+import { getJSFileWithCacheBusting } from '@/utils/cacheBusting'
 
 export const metadata: Metadata = {
   title: "Reservation | SEN SPA Da Nang – Book Your Massage Now",
@@ -50,7 +51,7 @@ export default async function ReservationPage() {
     <>
       <Layout spaLocations={spaLocations?.data || []}>
         <ReservationContent spaLocations={spaLocations?.data || []} />
-        <Script src='/js/service.js' strategy='afterInteractive' />
+        <Script src={getJSFileWithCacheBusting('service.js')} strategy='afterInteractive' />
       </Layout>
 
       {/* JSON-LD: Breadcrumbs */}
