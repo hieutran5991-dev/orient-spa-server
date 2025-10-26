@@ -1,21 +1,20 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import type { NamespaceKeys } from "use-intl";
-import type { BookingData } from "@/types/booking";
+import type { BookingData, BookingSubmissionData } from "@/types/booking";
 import { Product } from "@/types/common";
 import { BOOKING_CONFIRM_KEY, BOOKING_INIT_KEY, CURRENCY } from "@/utils/constants";
 import BookingSteps from "@/components/booking/BookingSteps";
 import { formatPriceWithCurrency } from "@/utils/format";
+import { saveBooking } from "@/api/common";
 
 interface BookingContentProps {
   products: Product[];
 }
 
 const BookingContent = ({ products }: BookingContentProps) => {
-  const router = useRouter();
   const [bookingData, setBookingData] = useState<BookingData>({});
   const [guestForms, setGuestForms] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -94,46 +93,57 @@ const BookingContent = ({ products }: BookingContentProps) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
+    try {
+      const form = e.target as HTMLFormElement;
+      const formData = new FormData(form);
 
-    let valid = true;
-    for (let i = 0; i < guestForms.length; i++) {
-      const guestServices = formData.getAll(`guest_${i + 1}_services`);
-      if (guestServices.length === 0) {
-        valid = false;
-        const query = `input[name='guest_${i + 1}_services_input']`;
-        (document.querySelector(query) as HTMLElement)?.focus();
-        break;
+      let valid = true;
+      for (let i = 0; i < guestForms.length; i++) {
+        const guestServices = formData.getAll(`guest_${i + 1}_services`);
+        if (guestServices.length === 0) {
+          valid = false;
+          const query = `input[name='guest_${i + 1}_services_input']`;
+          (document.querySelector(query) as HTMLElement)?.focus();
+          break;
+        }
       }
-    }
 
-    if (!valid) {
+      if (!valid) {
+        setIsSubmitting(false);
+        return;
+      }
+
+      const bookingDetails = buildBookingDetails(formData as FormData);
+
+      const submitData: BookingSubmissionData = {
+        ...bookingData,
+        full_name: formData.get("full_name") as string,
+        tel_prefix: (formData.get("dials") as string)?.replace(/[()]/g, ""),
+        phone: (formData.get("phone") as string) || "",
+        social_account_id: formData.get("social_account_id") as string,
+        email: formData.get("email") as string,
+        note: formData.get("content") as string,
+        booking_details: bookingDetails?.guestServiceInfo?.reduce(
+          (acc, services, index) => {
+            const guestKey = `guest_${index + 1}_services`;
+            acc[guestKey] = services.map((service) => service.id);
+            return acc;
+          },
+          {} as Record<string, (string | number)[]>
+        ),
+        total_price: bookingDetails?.totalPrice,
+      };
+      const result = await saveBooking(submitData);
+
+      if (result) {
+        // sessionStorage.removeItem(BOOKING_CONFIRM_KEY);
+        // sessionStorage.removeItem(BOOKING_INIT_KEY);
+        window.location.href = "/thanks";
+      }
+    } catch (_error) {
+    } finally {
       setIsSubmitting(false);
-      return;
     }
-
-    const bookingDetails = buildBookingDetails(formData as FormData);
-
-    const finalBookingData = {
-      ...bookingData,
-      full_name: formData.get("full_name") as string,
-      tel_prefix: formData.get("dials") as string,
-      phone: formData.get("phone") as string,
-      social_account_id: formData.get("social_account_id") as string,
-      email: formData.get("email") as string,
-      note: formData.get("content") as string,
-      booking_details: bookingDetails?.guestServiceInfo,
-      total_price: bookingDetails?.totalPrice,
-    };
-
-    sessionStorage.setItem(
-      BOOKING_CONFIRM_KEY,
-      JSON.stringify(finalBookingData)
-    );
-    router.push("/confirm");
-
-    setIsSubmitting(false);
   };
 
   return (
@@ -447,7 +457,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
                   className="btn btn-1 btn-block k2_u"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? t("processing") : t("reviewYourBooking")}{" "}
+                  {isSubmitting ? t("processing") : t("confirm")}{" "}
                   <i className="fa fa-angle-right"></i>
                 </button>
               </div>

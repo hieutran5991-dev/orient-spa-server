@@ -48,5 +48,6 @@
   "spaImageAlt": "スパ",
   "defaultSpaName": "SEN SPA Da Nang & Nails",
   "guestMustSelectService": "ゲストは少なくとも1つのサービスを選択する必要があります。",
-  "minutes": "{minutes}分"
+  "minutes": "{minutes}分",
+  "confirm": "確認"
 }
