@@ -8080,13 +8080,10 @@ jQuery(document).ready(function ($) {
                             <td><strong>${gettext("Total price")}</strong></td>
                             <td><strong>${formatPriceWithCurrency(total.VND, "VND")} (${formatPriceWithCurrency(total.USD, "USD")})</strong></td>
                         </tr>
-                        <tr style="color: green;">
-                            <td><strong>${gettext("Discount 10%")}</strong></td>
-                            <td><strong>- ${formatPriceWithCurrency(total.VND * 0.1, "VND")} (${formatPriceWithCurrency(total.USD * 0.1, "USD")})</strong></td>
-                        </tr>
+                       
                         <tr>
-                            <td><strong>${gettext("Total after discount")}</strong></td>
-                            <td><strong>${formatPriceWithCurrency(total.VND - total.VND * 0.1, "VND")} (${formatPriceWithCurrency(total.USD - total.USD * 0.1, "USD")})</strong></td>
+                            <td><strong>${gettext("Total")}</strong></td>
+                            <td><strong>${formatPriceWithCurrency(total.VND , "VND")} (${formatPriceWithCurrency(total.USD, "USD")})</strong></td>
                         </tr>
                     </table>
                 </div>
