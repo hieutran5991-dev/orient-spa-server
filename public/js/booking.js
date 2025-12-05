@@ -8061,6 +8061,7 @@ jQuery(document).ready(function ($) {
         const priceUsd = usdMatch ? parseFloat(parseFloat(usdMatch[1].replace(/[,]/g, "")).toFixed(2)) : 0;
         total.VND += priceVnd;
         total.USD += priceUsd;
+        window.total_usd = total.USD;
         rows += `<tr><td>${name}</td><td>${priceText}</td></tr>`;
       });
       $box.append(`
