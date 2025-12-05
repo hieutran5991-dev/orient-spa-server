@@ -65,6 +65,7 @@ export default async function LocaleLayout({
 
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
         <Script src={getJSFileWithCacheBusting('lib.js')} strategy='afterInteractive'/>
+        <Script src={getJSFileWithCacheBusting('gclid-tracker.js')} strategy='afterInteractive'/>
 
         <div className="ntc"></div>
         <div className="ntc-success"></div>
