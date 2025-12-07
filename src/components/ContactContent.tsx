@@ -277,7 +277,7 @@ const ContactContent = () => {
                     <li>
                       <Link
                         href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
-                        className="hoverable-link"
+                        className="hoverable-link map-link"
                       >
                         <i className="fa fa-map-marker tw:w-8"></i> {CONFIG.SPA_LOCATION}
                       </Link>

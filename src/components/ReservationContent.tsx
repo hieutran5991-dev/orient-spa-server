@@ -42,6 +42,7 @@ const ReservationContent = ({ spaLocations }: ReservationContentProps) => {
                   <div className="a6_c">
                     <div>
                       <a
+                        className="map-link"
                         href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
                         target="_blank"
                         rel="nofollow"

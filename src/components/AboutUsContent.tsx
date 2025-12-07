@@ -162,6 +162,7 @@ const AboutUsContent = () => {
               <div className="tw:flex tw:md:items-center tw:gap-4 tw:md:tw:gap-8 tw:text-gray-600 tw:flex-col tw:md:flex-row tw:md:justify-between tw:py-8">
                 <div>
                   <a
+                    className="map-link"
                     href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
                     target="_blank"
                     rel="nofollow"

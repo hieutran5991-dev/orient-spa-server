@@ -75,7 +75,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
                             href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
                             rel="nofollow"
                             target="_blank"
-                            className="hoverable-link"
+                            className="hoverable-link map-link"
                           >
                             {location.address}
                           </Link>
@@ -225,11 +225,11 @@ const Footer = ({ spaLocations }: FooterProps) => {
                 <i className="fa fa-angle-up"></i>
               </span>
             </div>
-            <a
+            <a 
               href="https://qr.kakao.com/talk/LDai_5BIuEvHqivW1VkyKsw.sJs-"
               rel="nofollow"
               target="_blank"
-              className="sP_i"
+              className="sP_i talk-link"
             >
               <span>
               <span>
@@ -246,7 +246,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
               href={`https://wa.me/${CONFIG.PHONE}`}
               rel="nofollow"
               target="_blank"
-              className="sP_i"
+              className="sP_i talk-link"
             >
               <span>
                 <Image
@@ -261,7 +261,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
               href="https://line.me/ti/p/lgR6MK5ug3"
               rel="nofollow"
               target="_blank"
-              className="sP_i"
+              className="sP_i talk-link"
             >
               <span>
                 <Image
@@ -276,7 +276,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
               href={`https://zalo.me/${CONFIG.PHONE}`}
               rel="nofollow"
               target="_blank"
-              className="sP_i"
+              className="sP_i talk-link"
             >
               <span>
                 <Image
@@ -289,7 +289,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
             </a>
             <a
               href={`tel:${CONFIG.PHONE_WITH_COUNTRY_CODE}`}
-              className="sP_i tw:after:hidden"
+              className="sP_i tw:after:hidden talk-link"
             >
               <span>
                 <i className="ic ic-phone"></i>
