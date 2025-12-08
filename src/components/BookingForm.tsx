@@ -282,7 +282,7 @@ const BookingForm = ({ spaLocations, children, selectedService, id }: BookingFor
             {_error}
           </div>
         )}
-        <button type='submit' className={`btn btn-block btn-1 s1_u booknow${id ? `-${id}` : ''}`} disabled={isSubmitting}>
+        <button type='submit' className={`btn-book-now btn btn-block btn-1 s1_u booknow${id ? `-${id}` : ''}`} disabled={isSubmitting}>
           {isSubmitting ? tBooking('processing') : tBooking('bookNow')}
         </button>
       </form>
