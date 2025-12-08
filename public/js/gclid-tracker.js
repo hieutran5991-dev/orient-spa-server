@@ -50,6 +50,30 @@
         }
     };
     
+    // Hàm để lấy phone đầy đủ (dials + phone)
+    function getFullPhone() {
+        try {
+            var dialsInput = document.querySelector('input[name="dials"]');
+            var phoneInput = document.querySelector('input[name="phone"]');
+            var dials = dialsInput ? dialsInput.value.trim() : '';
+            var phone = phoneInput ? phoneInput.value.trim() : '';
+            
+            // Loại bỏ dấu ngoặc đơn và khoảng trắng từ dials
+            dials = dials.replace(/[()]/g, '').trim();
+            
+            // Ghép dials và phone
+            if (dials && phone) {
+                return dials + phone;
+            } else if (phone) {
+                return phone;
+            } else {
+                return '';
+            }
+        } catch (e) {
+            return '';
+        }
+    }
+    
     // Hàm để lưu phone vào localStorage
     window.setPhone = function(phone) {
         try {
@@ -108,8 +132,33 @@
     // Hàm để setup event listeners cho form booking
     function setupBookingFormListeners() {
         setupInputListener('input[name="full_name"]', 'name', window.setName);
-        setupInputListener('input[name="phone"]', 'phone', window.setPhone);
         setupInputListener('input[name="email"]', 'email', window.setEmail);
+        
+        // Setup listener cho phone và dials - cả hai đều trigger lưu phone đầy đủ
+        var phoneInput = document.querySelector('input[name="phone"]');
+        var dialsInput = document.querySelector('input[name="dials"]');
+        
+        var saveFullPhone = function() {
+            var fullPhone = getFullPhone();
+            window.setPhone(fullPhone);
+        };
+        
+        if (phoneInput && !phoneInput.dataset.trackerSetup) {
+            phoneInput.dataset.trackerSetup = 'true';
+            phoneInput.addEventListener('input', saveFullPhone);
+            if (phoneInput.value) {
+                saveFullPhone();
+            }
+        }
+        
+        if (dialsInput && !dialsInput.dataset.trackerSetup) {
+            dialsInput.dataset.trackerSetup = 'true';
+            dialsInput.addEventListener('input', saveFullPhone);
+            dialsInput.addEventListener('change', saveFullPhone);
+            if (dialsInput.value) {
+                saveFullPhone();
+            }
+        }
     }
     
     // Setup listeners khi DOM ready
@@ -171,13 +220,23 @@
             if (name === 'full_name') {
                 // Lưu ngay khi nhập, kể cả khi chỉ có 1 ký tự
                 window.setName(value);
-            } else if (name === 'phone') {
-                // Lưu ngay khi nhập, kể cả khi chỉ có 1 ký tự
-                window.setPhone(value);
+            } else if (name === 'phone' || name === 'dials') {
+                // Khi phone hoặc dials thay đổi, lưu phone đầy đủ (dials + phone)
+                var fullPhone = getFullPhone();
+                window.setPhone(fullPhone);
             } else if (name === 'email') {
                 // Lưu ngay khi nhập, kể cả khi chỉ có 1 ký tự
                 window.setEmail(value);
             }
+        }
+    });
+    
+    // Cũng lắng nghe change event cho dials (khi chọn từ dropdown)
+    document.addEventListener('change', function(e) {
+        var target = e.target;
+        if (target && target.tagName === 'INPUT' && target.getAttribute('name') === 'dials') {
+            var fullPhone = getFullPhone();
+            window.setPhone(fullPhone);
         }
     });
     
