@@ -17,9 +17,8 @@
     if (gclid) {
         try {
             localStorage.setItem('gclid', gclid);
-            console.log('gclid saved to localStorage:', gclid);
         } catch (e) {
-            console.error('Error saving gclid to localStorage:', e);
+            // Silent fail
         }
     }
     
@@ -28,7 +27,6 @@
         try {
             return localStorage.getItem('gclid') || '';
         } catch (e) {
-            console.error('Error reading gclid from localStorage:', e);
             return '';
         }
     };
@@ -38,11 +36,8 @@
         try {
             // Lưu ngay cả khi email rỗng (để xóa khi người dùng xóa hết)
             localStorage.setItem('email', email || '');
-            if (email) {
-                console.log('email saved to localStorage:', email);
-            }
         } catch (e) {
-            console.error('Error saving email to localStorage:', e);
+            // Silent fail
         }
     };
     
@@ -51,7 +46,6 @@
         try {
             return localStorage.getItem('email') || '';
         } catch (e) {
-            console.error('Error reading email from localStorage:', e);
             return '';
         }
     };
@@ -61,11 +55,8 @@
         try {
             // Lưu ngay cả khi phone rỗng (để xóa khi người dùng xóa hết)
             localStorage.setItem('phone', phone || '');
-            if (phone) {
-                console.log('phone saved to localStorage:', phone);
-            }
         } catch (e) {
-            console.error('Error saving phone to localStorage:', e);
+            // Silent fail
         }
     };
     
@@ -74,7 +65,6 @@
         try {
             return localStorage.getItem('phone') || '';
         } catch (e) {
-            console.error('Error reading phone from localStorage:', e);
             return '';
         }
     };
@@ -84,11 +74,8 @@
         try {
             // Lưu ngay cả khi name rỗng (để xóa khi người dùng xóa hết)
             localStorage.setItem('name', name || '');
-            if (name) {
-                console.log('name saved to localStorage:', name);
-            }
         } catch (e) {
-            console.error('Error saving name to localStorage:', e);
+            // Silent fail
         }
     };
     
@@ -97,7 +84,6 @@
         try {
             return localStorage.getItem('name') || '';
         } catch (e) {
-            console.error('Error reading name from localStorage:', e);
             return '';
         }
     };
