@@ -16,6 +16,7 @@ export interface BookingData<T = Array<Product[]>> {
     social_account_id?: string;
     email?: string;
     note?: string;
+    gclid?: string;
     booking_details?: T;
     total_price?: {
         VND: number;

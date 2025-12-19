@@ -115,6 +115,11 @@ const BookingContent = ({ products }: BookingContentProps) => {
 
       const bookingDetails = buildBookingDetails(formData as FormData);
 
+      // Lấy gclid từ localStorage nếu có
+      const gclid = typeof window !== 'undefined' && (window as any).getGclid 
+        ? (window as any).getGclid() 
+        : '';
+
       const submitData: BookingSubmissionData = {
         ...bookingData,
         full_name: formData.get("full_name") as string,
@@ -123,6 +128,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
         social_account_id: formData.get("social_account_id") as string,
         email: formData.get("email") as string,
         note: formData.get("content") as string,
+        gclid: gclid || undefined,
         booking_details: bookingDetails?.guestServiceInfo?.reduce(
           (acc, services, index) => {
             const guestKey = `guest_${index + 1}_services`;
