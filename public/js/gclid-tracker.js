@@ -2,16 +2,10 @@
 (function() {
     'use strict';
     
-    // Hàm lấy parameter từ URL
-    function getUrlParameter(name) {
-        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-        var results = regex.exec(location.search);
-        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    }
+
     
-    // Lấy gclid từ URL
-    var gclid = getUrlParameter('gclid');
+    const urlParams = new URLSearchParams(window.location.search);
+    const gclid = urlParams.get('gclid') || '';
     
     // Nếu có gclid trong URL, lưu vào localStorage
     if (gclid) {
