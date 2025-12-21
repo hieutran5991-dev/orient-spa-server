@@ -115,9 +115,15 @@ const BookingContent = ({ products }: BookingContentProps) => {
 
       const bookingDetails = buildBookingDetails(formData as FormData);
 
-      // Lấy gclid từ localStorage nếu có
+      // Lấy gclid, wbraid, gbraid từ localStorage nếu có
       const gclid = typeof window !== 'undefined' && (window as any).getGclid 
         ? (window as any).getGclid() 
+        : '';
+      const wbraid = typeof window !== 'undefined' && (window as any).getWbraid 
+        ? (window as any).getWbraid() 
+        : '';
+      const gbraid = typeof window !== 'undefined' && (window as any).getGbraid 
+        ? (window as any).getGbraid() 
         : '';
 
       const submitData: BookingSubmissionData = {
@@ -129,6 +135,8 @@ const BookingContent = ({ products }: BookingContentProps) => {
         email: formData.get("email") as string,
         note: formData.get("content") as string,
         gclid: gclid || undefined,
+        wbraid: wbraid || undefined,
+        gbraid: gbraid || undefined,
         booking_details: bookingDetails?.guestServiceInfo?.reduce(
           (acc, services, index) => {
             const guestKey = `guest_${index + 1}_services`;

@@ -17,6 +17,8 @@ export interface BookingData<T = Array<Product[]>> {
     email?: string;
     note?: string;
     gclid?: string;
+    wbraid?: string;
+    gbraid?: string;
     booking_details?: T;
     total_price?: {
         VND: number;
