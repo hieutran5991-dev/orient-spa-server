@@ -21,6 +21,7 @@ const BookingForm = ({ spaLocations, children, selectedService, id }: BookingFor
   const [selectedSpa, setSelectedSpa] = useState('')
   const [selectedSpaId, setSelectedSpaId] = useState<string | number>('')
   const [showSpaDropdown, setShowSpaDropdown] = useState(false)
+  const [selectedDate, setSelectedDate] = useState<string>('')
 
   const tBooking = useTranslations('booking' as NamespaceKeys<string, string>)
 
@@ -30,6 +31,78 @@ const BookingForm = ({ spaLocations, children, selectedService, id }: BookingFor
       setSelectedSpa(spaLocations[0].name)
     }
   }, [spaLocations])
+
+  // Listen to date changes
+  useEffect(() => {
+    const dateInput = document.getElementById(`date${id ? `-${id}` : ''}`) as HTMLInputElement
+    if (!dateInput) return
+
+    const handleDateChange = () => {
+      const currentValue = dateInput.value || ''
+      if (currentValue !== selectedDate) {
+        setSelectedDate(currentValue)
+      }
+    }
+
+    // Listen to input changes
+    dateInput.addEventListener('change', handleDateChange)
+    dateInput.addEventListener('input', handleDateChange)
+
+    // Also check periodically for changes (in case Pikaday updates the value directly)
+    const interval = setInterval(handleDateChange, 200)
+
+    return () => {
+      dateInput.removeEventListener('change', handleDateChange)
+      dateInput.removeEventListener('input', handleDateChange)
+      clearInterval(interval)
+    }
+  }, [id, selectedDate])
+
+  // Check if a time slot has passed today
+  const isTimePassed = (time: string): boolean => {
+    if (!selectedDate) return false
+    
+    try {
+      // Parse selected date (format: DD-MM-YYYY from Pikaday)
+      const dateParts = selectedDate.split('-')
+      if (dateParts.length !== 3) return false
+      
+      const selectedDay = parseInt(dateParts[0], 10)
+      const selectedMonth = parseInt(dateParts[1], 10) - 1 // Month is 0-indexed
+      const selectedYear = parseInt(dateParts[2], 10)
+      
+      // Validate parsed values
+      if (isNaN(selectedDay) || isNaN(selectedMonth) || isNaN(selectedYear)) return false
+      
+      // Check if selected date is today
+      const today = new Date()
+      const isToday = 
+        selectedDay === today.getDate() &&
+        selectedMonth === today.getMonth() &&
+        selectedYear === today.getFullYear()
+      
+      if (!isToday) return false
+      
+      // Parse time (format: HH:MM)
+      const timeParts = time.split(':')
+      if (timeParts.length !== 2) return false
+      
+      const timeHour = parseInt(timeParts[0], 10)
+      const timeMinute = parseInt(timeParts[1], 10)
+      
+      // Validate parsed time
+      if (isNaN(timeHour) || isNaN(timeMinute)) return false
+      
+      // Create date object for the time slot
+      const now = new Date()
+      const timeSlotDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), timeHour, timeMinute, 0, 0)
+      
+      // Compare with current time
+      return timeSlotDate < now
+    } catch {
+      return false
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -233,9 +306,24 @@ const BookingForm = ({ spaLocations, children, selectedService, id }: BookingFor
                     {timeSlots.periods.map((period) => (
                       <dl key={period.id} className='s1_j'>
                         <dt>{period.period}:</dt>
-                        {period.times.map((time) => (
-                          <dd key={time}>{time}</dd>
-                        ))}
+                        {period.times.map((time) => {
+                          const passed = isTimePassed(time)
+                          return (
+                            <dd 
+                              key={time} 
+                              className={passed ? 'is-passed' : ''}
+                              style={passed ? {
+                                opacity: 1,
+                                color: '#999',
+                                textDecoration: 'line-through',
+                                cursor: 'default',
+                                pointerEvents: 'none'
+                              } : undefined}
+                            >
+                              {time}
+                            </dd>
+                          )
+                        })}
                       </dl>
                     ))}
                   </div>
