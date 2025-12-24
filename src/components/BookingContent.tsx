@@ -18,6 +18,8 @@ const BookingContent = ({ products }: BookingContentProps) => {
   const [bookingData, setBookingData] = useState<BookingData>({});
   const [guestForms, setGuestForms] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedApp, setSelectedApp] = useState<string>(bookingData.social_app || "kakaotalk");
+  const [isAppDropdownOpen, setIsAppDropdownOpen] = useState(false);
 
   const t = useTranslations("booking" as NamespaceKeys<string, string>);
   const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
@@ -34,6 +36,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
     try {
       const parsedData = JSON.parse(savedData);
       setBookingData(parsedData);
+      setSelectedApp(parsedData.social_app || "kakaotalk");
 
       const numPeople = parseInt(parsedData.people || "1");
       const initialGuestForms = Array.from(
@@ -47,6 +50,23 @@ const BookingContent = ({ products }: BookingContentProps) => {
       window.location.href = "/";
     }
   }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest('.dropdown')) {
+        setIsAppDropdownOpen(false);
+      }
+    };
+
+    if (isAppDropdownOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isAppDropdownOpen]);
 
   const buildBookingDetails = (
     formData: FormData
@@ -131,6 +151,8 @@ const BookingContent = ({ products }: BookingContentProps) => {
         full_name: formData.get("full_name") as string,
         tel_prefix: (formData.get("dials") as string)?.replace(/[()]/g, ""),
         phone: (formData.get("phone") as string) || "",
+        vn_phone_number: formData.get("vn_phone_number") as string,
+        social_app: selectedApp,
         social_account_id: formData.get("social_account_id") as string,
         email: formData.get("email") as string,
         note: formData.get("content") as string,
@@ -339,6 +361,23 @@ const BookingContent = ({ products }: BookingContentProps) => {
                         {t("fullName")} <span style={{ color: "#f33" }}>*</span>
                       </span>
                     </div>
+                    <div className="form-group">
+                      <input
+                        type="email"
+                        name="email"
+                        className="form-control"
+                        maxLength={320}
+                        required
+                        id="id_email"
+                        defaultValue={bookingData.email || ""}
+                      />
+                      <span className="k2_v tw:cursor-pointer" onClick={() =>
+                          document.getElementById("id_email")?.focus()
+                        }
+                      >
+                        {t("email")} <span style={{ color: "#f33" }}>*</span>
+                      </span>
+                    </div>
 
                     <div className="s_g x2">
                       <div className="s_gc">
@@ -391,47 +430,115 @@ const BookingContent = ({ products }: BookingContentProps) => {
                           />
                         </div>
                       </div>
+
                       <div className="s_gc">
-                        <div className="form-group">
+                        <div className="k2_p form-group">
+
+                          <div className="k2_pd social-app-select has-feedback">
+                            <div className="dropdown" onClick={() => setIsAppDropdownOpen(!isAppDropdownOpen)}>
+                              <button 
+                                type="button"
+                                className="dropbtn"
+                                
+                              >
+                                {selectedApp === "kakaotalk" && "Kakaotalk"}
+                                {selectedApp === "whatsapp" && "Whatsapp"}
+                                {selectedApp === "line" && "Line"}
+                                {selectedApp === "zalo" && "Zalo"}
+                                {!selectedApp && t("selectSocialApp")}
+                              </button>
+                              <div 
+                                className="dropdown-content"
+                                style={{ display: isAppDropdownOpen ? "block" : "none" }}
+                              >
+                                <a 
+                                  href="#" 
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    setSelectedApp("kakaotalk");
+                                    setIsAppDropdownOpen(false);
+                                  }}
+                                >
+                                  Kakaotalk
+                                </a>
+                                <a 
+                                  href="#" 
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    setSelectedApp("whatsapp");
+                                    setIsAppDropdownOpen(false);
+                                  }}
+                                >
+                                  Whatsapp
+                                </a>
+                                <a 
+                                  href="#" 
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    setSelectedApp("line");
+                                    setIsAppDropdownOpen(false);
+                                  }}
+                                >
+                                  Line
+                                </a>
+                                <a 
+                                  href="#" 
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    setSelectedApp("zalo");
+                                    setIsAppDropdownOpen(false);
+                                  }}
+                                >
+                                  Zalo
+                                </a>
+                              </div>
+                            </div>
+                            <span className="fc-feedback">
+                              <i className="fa fa-angle-down"></i>
+                            </span>
+                            <input
+                              type="hidden"
+                              name="social_app"
+                              value={selectedApp}
+                            />
+                          </div>
+
+                          
+
                           <input
                             type="text"
                             name="social_account_id"
-                            className="form-control booking-not-required"
-                            placeholder={'Not visible'}
+                            className="form-control app-id-input"
+                            placeholder={t("socialAccountId")}
                             id="id_social_account_id"
                             defaultValue={bookingData.social_account_id || ""}
                           />
-                          <span
-                            className="k2_v tw:cursor-pointer"
-                            onClick={() =>
-                              document
-                                .getElementById("id_social_account_id")
-                                ?.focus()
-                            }
-                          >
-                            {t("socialAccountId")}
-                          </span>
                         </div>
                       </div>
+                      <div className="s_gc phone-vn-container">
+                        <div className="k2_p form-group">
+                          <div className="k2_pd phone-vn-prefix">
+                          <input
+                              type="text"
+                              defaultValue="(+84)"
+                              className="form-control"
+                              readOnly
+                            />
+                          </div>
+                          <input
+                            type="text"
+                            name="vn_phone_number"
+                            className="form-control phone-vn-input"
+                            placeholder={t("temporaryVietnamPhoneNumber") || "Temporary Vietnam Phone Number"}
+                            id="id_vn_phone_number"
+                            defaultValue={bookingData.vn_phone_number || ""}
+                          />
+                        </div>
+                      </div>
+                      
                     </div>
 
-                    <div className="form-group">
-                      <input
-                        type="email"
-                        name="email"
-                        className="form-control"
-                        maxLength={320}
-                        required
-                        id="id_email"
-                        defaultValue={bookingData.email || ""}
-                      />
-                      <span className="k2_v tw:cursor-pointer" onClick={() =>
-                          document.getElementById("id_email")?.focus()
-                        }
-                      >
-                        {t("email")} <span style={{ color: "#f33" }}>*</span>
-                      </span>
-                    </div>
+                   
 
                     <div className="form-group">
                       <span className="form-label k2_l">

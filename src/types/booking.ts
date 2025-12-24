@@ -13,6 +13,8 @@ export interface BookingData<T = Array<Product[]>> {
     full_name?: string;
     tel_prefix?: string;
     phone?: string;
+    vn_phone_number?: string;   
+    social_app?: string;
     social_account_id?: string;
     email?: string;
     note?: string;
