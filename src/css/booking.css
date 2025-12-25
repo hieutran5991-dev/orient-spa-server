@@ -529,7 +529,7 @@ input[type='search'] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 45px;
+  width: 25px;
   height: 50px;
   font-size: 1.6rem;
   pointer-events: none;

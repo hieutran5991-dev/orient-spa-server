@@ -18,7 +18,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
   const [bookingData, setBookingData] = useState<BookingData>({});
   const [guestForms, setGuestForms] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [selectedApp, setSelectedApp] = useState<string>(bookingData.social_app || "kakaotalk");
+  const [selectedApp, setSelectedApp] = useState<string>(bookingData.social_app || "");
   const [isAppDropdownOpen, setIsAppDropdownOpen] = useState(false);
 
   const t = useTranslations("booking" as NamespaceKeys<string, string>);
@@ -36,7 +36,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
     try {
       const parsedData = JSON.parse(savedData);
       setBookingData(parsedData);
-      setSelectedApp(parsedData.social_app || "kakaotalk");
+      setSelectedApp(parsedData.social_app || "");
 
       const numPeople = parseInt(parsedData.people || "1");
       const initialGuestForms = Array.from(
@@ -445,12 +445,22 @@ const BookingContent = ({ products }: BookingContentProps) => {
                                 {selectedApp === "whatsapp" && "Whatsapp"}
                                 {selectedApp === "line" && "Line"}
                                 {selectedApp === "zalo" && "Zalo"}
-                                {!selectedApp && t("selectSocialApp")}
+                                {selectedApp === "" && t("selectSocialApp")}
                               </button>
                               <div 
                                 className="dropdown-content"
                                 style={{ display: isAppDropdownOpen ? "block" : "none" }}
                               >
+                                <a 
+                                  href="#" 
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    setSelectedApp("");
+                                    setIsAppDropdownOpen(false);
+                                  }}
+                                >
+                                  {t("selectSocialApp")}
+                                </a>
                                 <a 
                                   href="#" 
                                   onClick={(e) => {
@@ -499,7 +509,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
                             <input
                               type="hidden"
                               name="social_app"
-                              value={selectedApp}
+                              value={selectedApp || ""}
                             />
                           </div>
 
