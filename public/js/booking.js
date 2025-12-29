@@ -6650,6 +6650,26 @@ function showAlert(text) {
 });
 var countries = [
   {
+    name: "Japan",
+    code: "JP",
+    dial: "+81",
+  },
+  {
+    name: "Korea, Republic of South Korea",
+    code: "KR",
+    dial: "+82",
+  },
+  {
+    name: "Singapore",
+    code: "SG",
+    dial: "+65",
+  },
+  {
+    name: "Hong Kong",
+    code: "HK",
+    dial: "+852",
+  },
+  {
     name: "Afghanistan",
     code: "AF",
     dial: "+93",
@@ -7135,11 +7155,6 @@ var countries = [
     dial: "+504",
   },
   {
-    name: "Hong Kong",
-    code: "HK",
-    dial: "+852",
-  },
-  {
     name: "Hungary",
     code: "HU",
     dial: "+36",
@@ -7195,11 +7210,6 @@ var countries = [
     dial: "+1876",
   },
   {
-    name: "Japan",
-    code: "JP",
-    dial: "+81",
-  },
-  {
     name: "Jersey",
     code: "JE",
     dial: "+44",
@@ -7228,11 +7238,6 @@ var countries = [
     name: "Korea, Democratic People's Republic of Korea",
     code: "KP",
     dial: "+850",
-  },
-  {
-    name: "Korea, Republic of South Korea",
-    code: "KR",
-    dial: "+82",
   },
   {
     name: "Kosovo",
@@ -7643,11 +7648,6 @@ var countries = [
     name: "Sierra Leone",
     code: "SL",
     dial: "+232",
-  },
-  {
-    name: "Singapore",
-    code: "SG",
-    dial: "+65",
   },
   {
     name: "Slovakia",
