@@ -21,7 +21,7 @@ export const getListCategories: () => Promise<
 
 export const getListProducts: (params?: Record<any, any> | null) => Promise<AxiosResponse<Product[] | []>> = async (params = {}) => {
   const lang = await getLocale();
-  return await request.get("api/products", { params: { lang, ...params } });
+  return await request.get("api/products?per_page=100", { params: { lang, ...params } });
 };
 
 export const getProductDetail: (id: string) => Promise<AxiosResponse<Product | undefined>> = async (id) => {
