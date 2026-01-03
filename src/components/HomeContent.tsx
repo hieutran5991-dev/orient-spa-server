@@ -10,6 +10,7 @@ import Guests from "@/components/home/Guests";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import { Product } from "@/types/common";
 import { useSearchParams } from 'next/navigation'
+import { useEffect, useRef } from 'react'
 
 interface HomeContentProps {
   spaLocations: SpaLocation[],
@@ -21,6 +22,7 @@ const HomeContent = ({ spaLocations, products }: HomeContentProps) => {
   const tCommon = useTranslations('common' as NamespaceKeys<any, any>)
   const params = useSearchParams()
   const isBookingNow = params.get('booking_now') as string !== 'menu'
+  const preloadedBanners = useRef<Set<number>>(new Set([1])) // Preload first 1 banners
 
   const heroBanners = [
     {
@@ -85,6 +87,51 @@ const HomeContent = ({ spaLocations, products }: HomeContentProps) => {
     ]
   }
 
+  // Preload next banner when swiper changes slide
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const preloadNextBanner = (currentIndex: number) => {
+      const nextIndex = (currentIndex + 1) % heroBanners.length;
+      const nextBanner = heroBanners[nextIndex];
+      
+      if (!preloadedBanners.current.has(nextBanner.id)) {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = nextBanner.src;
+        document.head.appendChild(link);
+        preloadedBanners.current.add(nextBanner.id);
+      }
+    };
+
+    // Wait for Swiper to initialize (from common.js)
+    const checkSwiper = setInterval(() => {
+      const swiperEl = document.querySelector('.js-a1');
+      if (swiperEl && (swiperEl as any).swiper) {
+        clearInterval(checkSwiper);
+        const swiper = (swiperEl as any).swiper;
+        
+        // Preload next banner on slide change
+        swiper.on('slideChange', () => {
+          preloadNextBanner(swiper.activeIndex);
+        });
+        
+        // Preload next banner initially
+        preloadNextBanner(swiper.activeIndex);
+      }
+    }, 100);
+
+    // Cleanup after 5 seconds if swiper not found
+    setTimeout(() => {
+      clearInterval(checkSwiper);
+    }, 5000);
+
+    return () => {
+      clearInterval(checkSwiper);
+    };
+  }, []);
+
   return (
     <>
       <div className='s a1'>
@@ -94,7 +141,17 @@ const HomeContent = ({ spaLocations, products }: HomeContentProps) => {
               {heroBanners.map((banner) => (
                 <div key={banner.id} className='swiper-slide'>
                   <div className='a1_i'>
-                    <Image src={banner.src} alt={banner.alt} width={1200} height={600} priority={banner.id === 1} />
+                    <Image 
+                      src={banner.src} 
+                      alt={banner.alt} 
+                      width={1200} 
+                      height={600} 
+                      sizes="100vw"
+                      priority={banner.id === 1}
+                      loading={banner.id === 1 ? undefined : 'lazy'}
+                      fetchPriority={banner.id === 1 ? 'high' : 'low'}
+                      quality={banner.id === 1 ? 90 : 85}
+                    />
                   </div>
                 </div>
               ))}
