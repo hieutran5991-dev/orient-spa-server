@@ -193,6 +193,80 @@ const BookingForm = ({ spaLocations, children, selectedService, id }: BookingFor
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  // Ensure date input is clickable immediately, independent of Swiper initialization
+  useEffect(() => {
+    const dateFieldId = `date${id ? `-${id}` : ''}`
+    const dateInputClass = `.js-v1${id ? `-${id}` : ''}`
+    
+    // Use a retry mechanism to find the date input (in case it's not rendered yet)
+    let retryCount = 0
+    const maxRetries = 10
+    
+    const setupDateClickHandler = () => {
+      const dateInput = document.querySelector(dateInputClass) as HTMLElement
+      if (!dateInput) {
+        if (retryCount < maxRetries) {
+          retryCount++
+          setTimeout(setupDateClickHandler, 50)
+        }
+        return
+      }
+
+      const handleDateClick = (e: Event) => {
+        // Don't prevent default if common.js handler should handle it
+        // But ensure our handler runs first to show the picker
+        
+        // Hide other dropdowns
+        const otherDropdowns = document.querySelectorAll(`.s1_s2${id ? `-${id}` : ''}, .s1_s3${id ? `-${id}` : ''}, .s1_s4${id ? `-${id}` : ''}`)
+        otherDropdowns.forEach((el) => {
+          ;(el as HTMLElement).style.display = 'none'
+        })
+
+        // Show date picker immediately
+        const datePicker = document.querySelector(`.s1_s1${id ? `-${id}` : ''}`) as HTMLElement
+        if (datePicker) {
+          datePicker.style.display = 'block'
+        }
+
+        // Try to trigger Pikaday if it's already initialized (from common.js)
+        const dateField = document.getElementById(dateFieldId) as HTMLInputElement
+        if (dateField && (dateField as any)._pikaday) {
+          const picker = (dateField as any)._pikaday
+          if (picker && typeof picker.show === 'function') {
+            // Hide all other Pikaday popups first
+            const allPikadayPopups = document.querySelectorAll('.pika-single')
+            allPikadayPopups.forEach((popup) => {
+              const popupEl = popup as HTMLElement
+              if (popupEl.style.display !== 'none') {
+                popupEl.style.display = 'none'
+              }
+            })
+            picker.show()
+          }
+        }
+
+        // For mobile
+        const ww = window.innerWidth
+        if (ww < 992) {
+          document.body.classList.add('box-hidden')
+          document.querySelector('.main-content')?.classList.add('zf')
+        }
+      }
+
+      // Add click handler with capture phase to run before common.js handlers
+      dateInput.addEventListener('click', handleDateClick, { capture: true, passive: true })
+      
+      return () => {
+        dateInput.removeEventListener('click', handleDateClick, { capture: true })
+      }
+    }
+
+    // Start setup immediately
+    const cleanup = setupDateClickHandler()
+    
+    return cleanup
+  }, [id])
+
   return (
     <>
       <form id={`formBookBox${id ? `-${id}` : ''}`} className='s1_f' onSubmit={handleSubmit}>
