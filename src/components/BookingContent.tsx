@@ -15,11 +15,14 @@ interface BookingContentProps {
 }
 
 const BookingContent = ({ products }: BookingContentProps) => {
-  const [bookingData, setBookingData] = useState<BookingData>({});
+  // Initialize as null to avoid hydration mismatch
+  // Will be loaded from sessionStorage in useEffect (client-side only)
+  const [bookingData, setBookingData] = useState<BookingData | null>(null);
   const [guestForms, setGuestForms] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [selectedApp, setSelectedApp] = useState<string>(bookingData.social_app || "");
+  const [selectedApp, setSelectedApp] = useState<string>("");
   const [isAppDropdownOpen, setIsAppDropdownOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const t = useTranslations("booking" as NamespaceKeys<string, string>);
   const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
@@ -44,6 +47,7 @@ const BookingContent = ({ products }: BookingContentProps) => {
         (_, index) => `guest_${index + 1}_services`
       );
       setGuestForms(initialGuestForms);
+      setIsLoading(false);
       return;
     } catch (_) {
       sessionStorage.removeItem(BOOKING_INIT_KEY);
@@ -182,6 +186,24 @@ const BookingContent = ({ products }: BookingContentProps) => {
     }
   };
 
+  // Don't render until data is loaded to avoid hydration mismatch
+  if (isLoading || !bookingData) {
+    return (
+      <main className="main-content">
+        <div className="s k1">
+          <BookingSteps currentStep={2} />
+        </div>
+        <div className="s k2">
+          <div className="container">
+            <div className="text-center py-12">
+              <div className="text-gray-500">{t("loading")}</div>
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className="main-content">
       <div className="s k1">
@@ -306,9 +328,9 @@ const BookingContent = ({ products }: BookingContentProps) => {
                                       name={`guest_${guestIndex + 1}_services`}
                                       value={service.id}
                                       id={`c_${guestIndex + 1}_${service.id}`}
-                                      checked={bookingData?.booking_details?.[
+                                      defaultChecked={bookingData?.booking_details?.[
                                         guestIndex
-                                      ]?.some((e) => e.id === service.id)}
+                                      ]?.some((e) => e.id === service.id) || false}
                                     />
                                     <label
                                       htmlFor={`c_${guestIndex + 1}_${

@@ -51,5 +51,6 @@
   "defaultSpaName": "SEN SPA Da Nang",
   "guestMustSelectService": "게스트는 최소 하나의 서비스를 선택해야 합니다.",
   "minutes": "{minutes}분",
-  "confirm": "확인"
+  "confirm": "확인",
+  "loading": "로딩 중..."
 }

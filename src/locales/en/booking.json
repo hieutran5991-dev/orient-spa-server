@@ -51,5 +51,6 @@
   "defaultSpaName": "SEN SPA Da Nang",
   "guestMustSelectService": "Guest must select at least one service.",
   "minutes": "{minutes} minutes",
-  "confirm": "CONFIRM"
+  "confirm": "CONFIRM",
+  "loading": "Loading..."
 }
