@@ -64,6 +64,7 @@ export default async function LocaleLayout({
         {/* End Google Tag Manager (noscript) */}
 
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        {/* <Script src={getJSFileWithCacheBusting('security-blocker.js')} strategy='afterInteractive'/> */}
         <Script src={getJSFileWithCacheBusting('lib.js')} strategy='afterInteractive'/>
         <Script src={getJSFileWithCacheBusting('gclid-tracker.js')} strategy='afterInteractive'/>
 
