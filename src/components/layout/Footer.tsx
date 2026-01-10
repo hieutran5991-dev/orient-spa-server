@@ -55,22 +55,9 @@ const Footer = ({ spaLocations }: FooterProps) => {
     setShowChatConfirm(true);
   };
 
-  const handleConfirmChat = () => {
-    if (pendingChatLink) {
-      window.open(pendingChatLink, "_blank", "noopener,noreferrer");
-    }
-    setShowChatConfirm(false);
-    setPendingChatLink(null);
-    setPendingChatApp("");
-  };
 
   const handleCancelChat = (e?: React.MouseEvent) => {
-    if (e) {
-      e.stopPropagation();
-    }
     setShowChatConfirm(false);
-    setPendingChatLink(null);
-    setPendingChatApp("");
   };
 
   useEffect(() => {
@@ -509,7 +496,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => {
-                  e.stopPropagation();
+                  // e.stopPropagation();
                   if (pendingChatLink) {
                     handleCancelChat();
                   } else {
