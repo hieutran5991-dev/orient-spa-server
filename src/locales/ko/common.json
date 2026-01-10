@@ -77,5 +77,11 @@
     "ja": "日本語",
     "ko": "한국어"
   },
+  "chatConfirm": {
+    "title": "채팅 열기",
+    "message": "{app}을(를) 열어서 채팅하시겠습니까?",
+    "confirm": "열기",
+    "cancel": "취소"
+  },
   "prices": "{priceVnd} ({priceUsd})"
 }

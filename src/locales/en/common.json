@@ -83,5 +83,11 @@
     "ja": "日本語",
     "ko": "한국어"
   },
+  "chatConfirm": {
+    "title": "Open Chat",
+    "message": "Do you want to open {app} to chat with us?",
+    "confirm": "Open",
+    "cancel": "Cancel"
+  },
   "prices": "{priceVnd} ({priceUsd})"
 }

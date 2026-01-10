@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import {useEffect, useState} from "react";
+import { createPortal } from "react-dom";
 import type { SpaLocation } from "@/types/api";
 import type { NamespaceKeys } from "use-intl";
 import {CONFIG, MAIN_HOST} from "@/utils/constants";
@@ -15,8 +16,13 @@ const Footer = ({ spaLocations }: FooterProps) => {
   const tCommon = useTranslations("common" as NamespaceKeys<string, string>);
 
   const [isDisplaySenSpa, setIsDisplaySenSpa] = useState(false);
+  const [showChatConfirm, setShowChatConfirm] = useState(false);
+  const [pendingChatLink, setPendingChatLink] = useState<string | null>(null);
+  const [pendingChatApp, setPendingChatApp] = useState<string>("");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const hostname = window.location.hostname;
     setIsDisplaySenSpa(hostname !== MAIN_HOST)
   }, []);
@@ -36,6 +42,48 @@ const Footer = ({ spaLocations }: FooterProps) => {
 
     handleScrollToTop();
   }, []);
+
+  const handleChatClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string, appName: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const nativeEvent = e.nativeEvent;
+    if (nativeEvent && typeof (nativeEvent as any).stopImmediatePropagation === 'function') {
+      (nativeEvent as any).stopImmediatePropagation();
+    }
+    setPendingChatLink(link);
+    setPendingChatApp(appName);
+    setShowChatConfirm(true);
+  };
+
+  const handleConfirmChat = () => {
+    if (pendingChatLink) {
+      window.open(pendingChatLink, "_blank", "noopener,noreferrer");
+    }
+    setShowChatConfirm(false);
+    setPendingChatLink(null);
+    setPendingChatApp("");
+  };
+
+  const handleCancelChat = (e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation();
+    }
+    setShowChatConfirm(false);
+    setPendingChatLink(null);
+    setPendingChatApp("");
+  };
+
+  useEffect(() => {
+    if (showChatConfirm) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [showChatConfirm]);
 
   return (
     <footer className="f">
@@ -230,6 +278,8 @@ const Footer = ({ spaLocations }: FooterProps) => {
               rel="nofollow"
               target="_blank"
               className="sP_i talk-link"
+              data-app="KakaoTalk"
+              onClick={(e) => handleChatClick(e, "https://qr.kakao.com/talk/LDai_5BIuEvHqivW1VkyKsw.sJs-", "KakaoTalk")}
             >
               <span>
               <span>
@@ -247,6 +297,8 @@ const Footer = ({ spaLocations }: FooterProps) => {
               rel="nofollow"
               target="_blank"
               className="sP_i talk-link"
+              data-app="WhatsApp"
+              onClick={(e) => handleChatClick(e, `https://wa.me/${CONFIG.PHONE}`, "WhatsApp")}
             >
               <span>
                 <Image
@@ -262,6 +314,8 @@ const Footer = ({ spaLocations }: FooterProps) => {
               rel="nofollow"
               target="_blank"
               className="sP_i talk-link"
+              data-app="Line"
+              onClick={(e) => handleChatClick(e, "https://line.me/ti/p/lgR6MK5ug3", "Line")}
             >
               <span>
                 <Image
@@ -277,6 +331,8 @@ const Footer = ({ spaLocations }: FooterProps) => {
               rel="nofollow"
               target="_blank"
               className="sP_i talk-link"
+              data-app="Zalo"
+              onClick={(e) => handleChatClick(e, `https://zalo.me/${CONFIG.PHONE}`, "Zalo")}
             >
               <span>
                 <Image
@@ -318,6 +374,186 @@ const Footer = ({ spaLocations }: FooterProps) => {
           </div>
         )}
       </div>
+
+      {/* Chat Confirmation Modal */}
+      {mounted && showChatConfirm && createPortal(
+        <>
+          <style>{`
+            @keyframes fadeInScale {
+              from {
+                opacity: 0;
+                transform: scale(0.95);
+              }
+              to {
+                opacity: 1;
+                transform: scale(1);
+              }
+            }
+          `}</style>
+          <div 
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 99999,
+              padding: '1rem'
+            }}
+            onClick={(e) => handleCancelChat(e)}
+          >
+          <div 
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.6)',
+              backdropFilter: 'blur(8px)',
+              zIndex: 99998,
+              cursor: 'pointer',
+              transition: 'opacity 0.2s ease'
+            }}
+            onClick={(e) => handleCancelChat(e)}
+          ></div>
+          <div 
+            style={{
+              position: 'relative',
+              backgroundColor: '#ffffff',
+              borderRadius: '1rem',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05)',
+              maxWidth: '32rem',
+              width: '100%',
+              padding: 0,
+              zIndex: 100000,
+              animation: 'fadeInScale 0.2s ease-out',
+              overflow: 'hidden'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 style={{
+              fontSize: '1.75rem',
+              fontWeight: 700,
+              color: '#ffffff',
+              marginBottom: '2rem',
+              marginTop: 0,
+              marginLeft: 0,
+              marginRight: 0,
+              padding: '1.5rem 2rem',
+              textAlign: 'center',
+              letterSpacing: '-0.02em',
+              backgroundColor: 'var(--main-color)',
+              borderBottom: '2px solid rgba(255, 255, 255, 0.2)',
+              width: '100%',
+              boxSizing: 'border-box',
+              boxShadow: '0 4px 6px -1px rgba(158, 34, 101, 0.3), 0 2px 4px -1px rgba(158, 34, 101, 0.2)'
+            }}>
+              {tCommon("chatConfirm.title")}
+            </h3>
+            <div style={{ padding: '0 2rem 2rem 2rem' }}>
+            <p style={{
+              color: '#6b7280',
+              marginBottom: '2rem',
+              fontSize: '1.4rem',
+              lineHeight: '1.71428',
+              textAlign: 'center'
+            }}>
+              {tCommon("chatConfirm.message", { app: pendingChatApp })}
+            </p>
+            <div style={{
+              display: 'flex',
+              gap: '0.75rem',
+              justifyContent: 'space-between',
+              width: '100%'
+            }}>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleCancelChat(e);
+                }}
+                style={{
+                  flex: 1,
+                  padding: '1rem 1.5rem',
+                  color: '#374151',
+                  backgroundColor: '#f9fafb',
+                  borderRadius: '0.75rem',
+                  border: '1px solid #e5e7eb',
+                  cursor: 'pointer',
+                  fontSize: '1.4rem',
+                  fontWeight: 600,
+                  transition: 'all 0.2s ease',
+                  boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#f3f4f6';
+                  e.currentTarget.style.borderColor = '#d1d5db';
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                  e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#f9fafb';
+                  e.currentTarget.style.borderColor = '#e5e7eb';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 1px 2px 0 rgba(0, 0, 0, 0.05)';
+                }}
+              >
+                {tCommon("chatConfirm.cancel")}
+              </button>
+              <a
+                href={pendingChatLink || '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (pendingChatLink) {
+                    handleCancelChat();
+                  } else {
+                    e.preventDefault();
+                  }
+                }}
+                style={{
+                  flex: 1,
+                  padding: '1rem 1.5rem',
+                  color: '#ffffff',
+                  backgroundColor: 'var(--main-color)',
+                  borderRadius: '0.75rem',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontSize: '1.4rem',
+                  fontWeight: 600,
+                  transition: 'all 0.2s ease',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  boxShadow: '0 4px 6px -1px rgba(158, 34, 101, 0.3)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.opacity = '0.95';
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                  e.currentTarget.style.boxShadow = '0 6px 12px -2px rgba(158, 34, 101, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.opacity = '1';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(158, 34, 101, 0.3)';
+                }}
+              >
+                {tCommon("chatConfirm.confirm")}
+              </a>
+            </div>
+            </div>
+          </div>
+        </div>
+        </>,
+        document.body
+      )}
     </footer>
   );
 };
