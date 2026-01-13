@@ -83,5 +83,11 @@
     "confirm": "열기",
     "cancel": "취소"
   },
+  "callConfirm": {
+    "title": "전화 걸기",
+    "message": "{phone}로 전화하시겠습니까?",
+    "confirm": "전화하기",
+    "cancel": "취소"
+  },
   "prices": "{priceVnd} ({priceUsd})"
 }

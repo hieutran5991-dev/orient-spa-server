@@ -89,5 +89,11 @@
     "confirm": "開く",
     "cancel": "キャンセル"
   },
+  "callConfirm": {
+    "title": "電話をかける",
+    "message": "{phone}に電話しますか？",
+    "confirm": "電話する",
+    "cancel": "キャンセル"
+  },
   "prices": "{priceVnd} ({priceUsd})"
 }

@@ -89,5 +89,11 @@
     "confirm": "Open",
     "cancel": "Cancel"
   },
+  "callConfirm": {
+    "title": "Make a Call",
+    "message": "Do you want to call {phone}?",
+    "confirm": "Call",
+    "cancel": "Cancel"
+  },
   "prices": "{priceVnd} ({priceUsd})"
 }
