@@ -83,6 +83,12 @@
     "confirm": "열기",
     "cancel": "취소"
   },
+  "addressConfirm": {
+    "title": "지도 열기",
+    "message": "Google지도를 열어서 위치를 확인하시겠습니까: {address}?",
+    "confirm": "열기",
+    "cancel": "취소"
+  },
   "callConfirm": {
     "title": "전화 걸기",
     "message": "{phone}로 전화하시겠습니까?",

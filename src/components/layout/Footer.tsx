@@ -19,9 +19,9 @@ const Footer = ({ spaLocations }: FooterProps) => {
   const [showChatConfirm, setShowChatConfirm] = useState(false);
   const [pendingChatLink, setPendingChatLink] = useState<string | null>(null);
   const [pendingChatApp, setPendingChatApp] = useState<string>("");
-  const [showCallConfirm, setShowCallConfirm] = useState(false);
-  const [pendingCallLink, setPendingCallLink] = useState<string | null>(null);
-  const [pendingCallPhone, setPendingCallPhone] = useState<string>("");
+  const [showAddressConfirm, setShowAddressConfirm] = useState(false);
+  const [pendingAddressLink, setPendingAddressLink] = useState<string | null>(null);
+  const [pendingAddress, setPendingAddress] = useState<string>("");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -58,28 +58,32 @@ const Footer = ({ spaLocations }: FooterProps) => {
     setShowChatConfirm(true);
   };
 
-  const handleCallClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string, phone: string) => {
+  const handleCancelChat = (e?: React.MouseEvent) => {
+    setShowChatConfirm(false);
+    setPendingChatLink(null);
+    setPendingChatApp("");
+  };
+
+  const handleAddressClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string, address: string) => {
     e.preventDefault();
     e.stopPropagation();
     const nativeEvent = e.nativeEvent;
     if (nativeEvent && typeof (nativeEvent as any).stopImmediatePropagation === 'function') {
       (nativeEvent as any).stopImmediatePropagation();
     }
-    setPendingCallLink(link);
-    setPendingCallPhone(phone);
-    setShowCallConfirm(true);
+    setPendingAddressLink(link);
+    setPendingAddress(address);
+    setShowAddressConfirm(true);
   };
 
-  const handleCancelChat = (e?: React.MouseEvent) => {
-    setShowChatConfirm(false);
-  };
-
-  const handleCancelCall = (e?: React.MouseEvent) => {
-    setShowCallConfirm(false);
+  const handleCancelAddress = (e?: React.MouseEvent) => {
+    setShowAddressConfirm(false);
+    setPendingAddressLink(null);
+    setPendingAddress("");
   };
 
   useEffect(() => {
-    if (showChatConfirm || showCallConfirm) {
+    if (showChatConfirm || showAddressConfirm) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
@@ -88,7 +92,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, [showChatConfirm, showCallConfirm]);
+  }, [showChatConfirm, showAddressConfirm]);
 
   return (
     <footer className="f">
@@ -124,14 +128,15 @@ const Footer = ({ spaLocations }: FooterProps) => {
                           ></i>
                         </div>
                         <span style={{ fontSize: "14px", color: "#333" }}>
-                          <Link
+                          <a
                             href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
                             rel="nofollow"
                             target="_blank"
                             className="hoverable-link map-link"
+                            onClick={(e) => handleAddressClick(e, "https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9", location.address)}
                           >
                             {location.address}
-                          </Link>
+                          </a>
                         </span>
                       </div>
 
@@ -348,15 +353,6 @@ const Footer = ({ spaLocations }: FooterProps) => {
                 />
               </span>
             </a>
-            <a
-              href={`tel:${CONFIG.PHONE_WITH_COUNTRY_CODE}`}
-              className="sP_i tw:after:hidden talk-link"
-              onClick={(e) => handleCallClick(e, `tel:${CONFIG.PHONE_WITH_COUNTRY_CODE}`, CONFIG.PHONE_WITH_COUNTRY_CODE)}
-            >
-              <span>
-                <i className="ic ic-phone"></i>
-              </span>
-            </a>
           </div>
         </div>
       </div>
@@ -561,8 +557,8 @@ const Footer = ({ spaLocations }: FooterProps) => {
         document.body
       )}
 
-      {/* Call Confirmation Modal */}
-      {mounted && showCallConfirm && createPortal(
+      {/* Address Confirmation Modal */}
+      {mounted && showAddressConfirm && createPortal(
         <>
           <style>{`
             @keyframes fadeInScale {
@@ -589,7 +585,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
               zIndex: 99999,
               padding: '1rem'
             }}
-            onClick={(e) => handleCancelCall(e)}
+            onClick={(e) => handleCancelAddress(e)}
           >
           <div 
             style={{
@@ -604,7 +600,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
               cursor: 'pointer',
               transition: 'opacity 0.2s ease'
             }}
-            onClick={(e) => handleCancelCall(e)}
+            onClick={(e) => handleCancelAddress(e)}
           ></div>
           <div 
             style={{
@@ -638,7 +634,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
               boxSizing: 'border-box',
               boxShadow: '0 4px 6px -1px rgba(158, 34, 101, 0.3), 0 2px 4px -1px rgba(158, 34, 101, 0.2)'
             }}>
-              {tCommon("callConfirm.title")}
+              {tCommon("addressConfirm.title")}
             </h3>
             <div style={{ padding: '0 2rem 2rem 2rem' }}>
             <p style={{
@@ -648,7 +644,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
               lineHeight: '1.71428',
               textAlign: 'center'
             }}>
-              {tCommon("callConfirm.message", { phone: pendingCallPhone })}
+              {tCommon("addressConfirm.message", { address: pendingAddress })}
             </p>
             <div style={{
               display: 'flex',
@@ -660,7 +656,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
                 type="button"
                 onClick={(e) => {
                   e.stopPropagation();
-                  handleCancelCall(e);
+                  handleCancelAddress(e);
                 }}
                 style={{
                   flex: 1,
@@ -688,13 +684,15 @@ const Footer = ({ spaLocations }: FooterProps) => {
                   e.currentTarget.style.boxShadow = '0 1px 2px 0 rgba(0, 0, 0, 0.05)';
                 }}
               >
-                {tCommon("callConfirm.cancel")}
+                {tCommon("addressConfirm.cancel")}
               </button>
               <a
-                href={pendingCallLink || '#'}
+                href={pendingAddressLink || '#'}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={(e) => {
-                  if (pendingCallLink) {
-                    handleCancelCall();
+                  if (pendingAddressLink) {
+                    handleCancelAddress();
                   } else {
                     e.preventDefault();
                   }
@@ -728,7 +726,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
                   e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(158, 34, 101, 0.3)';
                 }}
               >
-                {tCommon("callConfirm.confirm")}
+                {tCommon("addressConfirm.confirm")}
               </a>
             </div>
             </div>
@@ -737,6 +735,7 @@ const Footer = ({ spaLocations }: FooterProps) => {
         </>,
         document.body
       )}
+
     </footer>
   );
 };

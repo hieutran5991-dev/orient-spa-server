@@ -89,6 +89,12 @@
     "confirm": "Open",
     "cancel": "Cancel"
   },
+  "addressConfirm": {
+    "title": "Open Map",
+    "message": "Do you want to open Google Maps to view the location: {address}?",
+    "confirm": "Open",
+    "cancel": "Cancel"
+  },
   "callConfirm": {
     "title": "Make a Call",
     "message": "Do you want to call {phone}?",

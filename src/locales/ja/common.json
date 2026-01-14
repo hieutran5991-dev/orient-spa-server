@@ -89,6 +89,12 @@
     "confirm": "開く",
     "cancel": "キャンセル"
   },
+  "addressConfirm": {
+    "title": "地図を開く",
+    "message": "Googleマップを開いて場所を確認しますか：{address}？",
+    "confirm": "開く",
+    "cancel": "キャンセル"
+  },
   "callConfirm": {
     "title": "電話をかける",
     "message": "{phone}に電話しますか？",

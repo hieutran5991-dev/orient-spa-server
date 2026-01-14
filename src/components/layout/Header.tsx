@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
+import { createPortal } from "react-dom";
 import { CONFIG, type Locale, MAP_LANGUAGE_TO_LOCALE_PATH } from "@/utils/constants";
 import type { NamespaceKeys } from "use-intl";
 
@@ -17,6 +18,10 @@ const Header = () => {
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const [isMobileAboutSubmenuOpen, setIsMobileAboutSubmenuOpen] = useState(['/about-us', '/customer-moment', '/gallery', '/blogs'].includes(pathname));
+  const [showAddressConfirm, setShowAddressConfirm] = useState(false);
+  const [pendingAddressLink, setPendingAddressLink] = useState<string | null>(null);
+  const [pendingAddress, setPendingAddress] = useState<string>("");
+  const [mounted, setMounted] = useState(false);
 
   const isActivePath = (path: string) => {
     if (!pathname) return false;
@@ -69,6 +74,10 @@ const Header = () => {
   };
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -79,6 +88,36 @@ const Header = () => {
       document.body.style.overflow = "unset";
     };
   }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    if (showAddressConfirm) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [showAddressConfirm]);
+
+  const handleAddressClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string, address: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const nativeEvent = e.nativeEvent;
+    if (nativeEvent && typeof (nativeEvent as any).stopImmediatePropagation === 'function') {
+      (nativeEvent as any).stopImmediatePropagation();
+    }
+    setPendingAddressLink(link);
+    setPendingAddress(address);
+    setShowAddressConfirm(true);
+  };
+
+  const handleCancelAddress = (e?: React.MouseEvent) => {
+    setShowAddressConfirm(false);
+    setPendingAddressLink(null);
+    setPendingAddress("");
+  };
 
   // Close mobile language dropdown when clicking outside
   useEffect(() => {
@@ -211,15 +250,6 @@ const Header = () => {
       <div className="tw:bg-white tw:border-b tw:border-gray-200 tw:py-6">
         <div className="tw:max-w-[1200px] tw:px-4 tw:flex tw:items-center tw:mx-auto tw:text-2xl">
           <div className="tw:flex tw:items-center tw:justify-center tw:md:justify-start tw:space-x-6 tw:w-full">
-            <div className="tw:flex tw:items-center tw:gap-2 tw:mr-12">
-              <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
-                <i className="fa fa-phone tw:text-white tw:text-[17px]" />
-              </div>
-              <span style={{ fontSize: "14px", color: "#333" }}>
-                <a href={`tel:${CONFIG.PHONE_WITH_COUNTRY_CODE}`}>{CONFIG.PHONE_WITH_COUNTRY_CODE}</a>
-              </span>
-            </div>
-
             <div className="tw:hidden tw:md:flex tw:items-center tw:gap-2">
               <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
                 <i className="fa fa-envelope-o tw:text-white tw:text-[17px]" />
@@ -234,6 +264,7 @@ const Header = () => {
                 href="https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9"
                 target="_blank"
                 rel="nofollow"
+                onClick={(e) => handleAddressClick(e, "https://maps.app.goo.gl/xrjA7b8YpQhA3q1b9", CONFIG.SPA_LOCATION)}
               >
                 <div className="tw:flex tw:items-center tw:gap-2">
                   <div className="tw:w-[28px] tw:h-[28px] tw:leading-[28px] tw:text-center tw:bg-[var(--main-color)] tw:rounded-full">
@@ -672,6 +703,185 @@ const Header = () => {
             </ul>
           </nav>
         </div>
+      )}
+
+      {/* Address Confirmation Modal */}
+      {mounted && showAddressConfirm && createPortal(
+        <>
+          <style>{`
+            @keyframes fadeInScale {
+              from {
+                opacity: 0;
+                transform: scale(0.95);
+              }
+              to {
+                opacity: 1;
+                transform: scale(1);
+              }
+            }
+          `}</style>
+          <div 
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 99999,
+              padding: '1rem'
+            }}
+            onClick={(e) => handleCancelAddress(e)}
+          >
+          <div 
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.6)',
+              backdropFilter: 'blur(8px)',
+              zIndex: 99998,
+              cursor: 'pointer',
+              transition: 'opacity 0.2s ease'
+            }}
+            onClick={(e) => handleCancelAddress(e)}
+          ></div>
+          <div 
+            style={{
+              position: 'relative',
+              backgroundColor: '#ffffff',
+              borderRadius: '1rem',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05)',
+              maxWidth: '32rem',
+              width: '100%',
+              padding: 0,
+              zIndex: 100000,
+              animation: 'fadeInScale 0.2s ease-out',
+              overflow: 'hidden'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 style={{
+              fontSize: '1.75rem',
+              fontWeight: 700,
+              color: '#ffffff',
+              marginBottom: '2rem',
+              marginTop: 0,
+              marginLeft: 0,
+              marginRight: 0,
+              padding: '1.5rem 2rem',
+              textAlign: 'center',
+              letterSpacing: '-0.02em',
+              backgroundColor: 'var(--main-color)',
+              borderBottom: '2px solid rgba(255, 255, 255, 0.2)',
+              width: '100%',
+              boxSizing: 'border-box',
+              boxShadow: '0 4px 6px -1px rgba(158, 34, 101, 0.3), 0 2px 4px -1px rgba(158, 34, 101, 0.2)'
+            }}>
+              {tCommon("addressConfirm.title")}
+            </h3>
+            <div style={{ padding: '0 2rem 2rem 2rem' }}>
+            <p style={{
+              color: '#6b7280',
+              marginBottom: '2rem',
+              fontSize: '1.4rem',
+              lineHeight: '1.71428',
+              textAlign: 'center'
+            }}>
+              {tCommon("addressConfirm.message", { address: pendingAddress })}
+            </p>
+            <div style={{
+              display: 'flex',
+              gap: '0.75rem',
+              justifyContent: 'space-between',
+              width: '100%'
+            }}>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleCancelAddress(e);
+                }}
+                style={{
+                  flex: 1,
+                  padding: '1rem 1.5rem',
+                  color: '#374151',
+                  backgroundColor: '#f9fafb',
+                  borderRadius: '0.75rem',
+                  border: '1px solid #e5e7eb',
+                  cursor: 'pointer',
+                  fontSize: '1.4rem',
+                  fontWeight: 600,
+                  transition: 'all 0.2s ease',
+                  boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#f3f4f6';
+                  e.currentTarget.style.borderColor = '#d1d5db';
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                  e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#f9fafb';
+                  e.currentTarget.style.borderColor = '#e5e7eb';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 1px 2px 0 rgba(0, 0, 0, 0.05)';
+                }}
+              >
+                {tCommon("addressConfirm.cancel")}
+              </button>
+              <a
+                href={pendingAddressLink || '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => {
+                  if (pendingAddressLink) {
+                    handleCancelAddress();
+                  } else {
+                    e.preventDefault();
+                  }
+                }}
+                style={{
+                  flex: 1,
+                  padding: '1rem 1.5rem',
+                  color: '#ffffff',
+                  backgroundColor: 'var(--main-color)',
+                  borderRadius: '0.75rem',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontSize: '1.4rem',
+                  fontWeight: 600,
+                  transition: 'all 0.2s ease',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  boxShadow: '0 4px 6px -1px rgba(158, 34, 101, 0.3)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.opacity = '0.95';
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                  e.currentTarget.style.boxShadow = '0 6px 12px -2px rgba(158, 34, 101, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.opacity = '1';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(158, 34, 101, 0.3)';
+                }}
+              >
+                {tCommon("addressConfirm.confirm")}
+              </a>
+            </div>
+            </div>
+          </div>
+        </div>
+        </>,
+        document.body
       )}
     </>
   );
