@@ -201,8 +201,8 @@ const ServicesPricesContent = ({
               . <span dangerouslySetInnerHTML={{ __html: t("hotlineText") }} />
             </p>
             <a
-              href="/pdf/Menu_SenSpa_Danang_2025.pdf"
-              download="Menu_SenSpa_Danang_2025.pdf"
+              href="/pdf/Menu_SenSpa_Danang_2026.pdf"
+              download="Menu_SenSpa_Danang_2026.pdf"
               className="btn btn-1 btn-block a5_sa tw:mt-[32px]"
             >
               {t("downloadMenu")}
