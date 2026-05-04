@@ -68,7 +68,7 @@ jobs:
             pm2 stop spa || true
 
             # Clean existing deployment but keep node_modules
-            find /var/www/spa -mindepth 1 -not -name 'deployment.tar.gz' -not -name 'node_modules' -delete
+            rm -rf /var/www/spa/*
 
       - name: Copy deployment package to VPS
         uses: appleboy/scp-action@v0.1.7
