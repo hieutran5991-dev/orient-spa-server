@@ -88,6 +88,10 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
           script: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
+            
+            node -v # Kiểm tra xem đã ra v25 chưa
             cd /var/www/spa
 
             # Extract deployment package
